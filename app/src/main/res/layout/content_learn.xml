@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/videoCard"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="0dp">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/videoThumbnail"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    android:background="#424242"/>
+
+                <ImageView
+                    android:id="@+id/playButton"
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_play_arrow"
+                    android:background="@drawable/circle_bg_red"
+                    android:padding="16dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    app:tint="#FFFFFF"/>
+
+                <WebView
+                    android:id="@+id/videoWebView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:visibility="gone"/>
+            </FrameLayout>
+        </androidx.cardview.widget.CardView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="12dp"
+            android:gravity="top">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="What is User-centered-Design process? Simply understand it"
+                android:textColor="#1E1E1E"
+                android:fontFamily="serif"
+                android:textSize="15sp"
+                android:lineSpacingExtra="2dp"
+                android:textStyle="italic"/>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="@drawable/bg_pill_gray"
+                android:paddingHorizontal="4dp"
+                android:paddingVertical="4dp"
+                android:layout_marginStart="16dp">
+
+                <ImageView
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
+                    android:padding="6dp"
+                    android:src="@drawable/ic_thumb_up"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    app:tint="#616161"/>
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="16dp"
+                    android:layout_gravity="center_vertical"
+                    android:background="#BDBDBD"/>
+
+                <ImageView
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
+                    android:padding="6dp"
+                    android:src="@drawable/ic_thumb_down"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    app:tint="#616161"/>
+            </LinearLayout>
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/dashed_line_horizontal"
+            android:layerType="software" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="User-Centric Design (UCD)"
+            android:textColor="#1E1E1E"
+            android:fontFamily="serif"
+            android:textSize="20sp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="User-Centric Design is a systematic design approach that prioritizes user needs, behaviors, limitations, and contexts at every stage of product development. Design decisions are validated by how effectively they help users achieve their goals, not by visual preference or technical convenience."
+            android:textColor="#424242"
+            android:textSize="15sp"
+            android:lineSpacingMultiplier="1.4"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="1. Core Principle"
+            android:textColor="#1E1E1E"
+            android:fontFamily="serif"
+            android:textSize="18sp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:orientation="horizontal">
+
+            <View
+                android:layout_width="2dp"
+                android:layout_height="match_parent"
+                android:background="#BDBDBD"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="A product is well designed only if it enables users to accomplish their intended tasks efficiently, confidently, and without unnecessary cognitive effort."
+                android:textColor="#616161"
+                android:textSize="14sp"
+                android:lineSpacingMultiplier="1.3"/>
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Visual appeal supports usability; it never replaces it."
+            android:textColor="#424242"
+            android:textSize="15sp"/>
+
+        <Space android:layout_width="match_parent" android:layout_height="40dp"/>
+
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

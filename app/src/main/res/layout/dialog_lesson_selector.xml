@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="12dp"
+    app:cardElevation="8dp"
+    android:background="#FFFFFF">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Design Essentials UI/UX:\nFigma"
+                android:textColor="#1E1E1E"
+                android:fontFamily="serif"
+                android:textSize="18sp"
+                android:lineSpacingExtra="2dp"/>
+
+            <ImageView
+                android:id="@+id/closeDialog"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_close"
+                android:clickable="true"
+                android:focusable="true"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                app:tint="#616161"/>
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="8dp"
+            android:background="#E0E0E0"/>
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:maxHeight="400dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/lesson1Item"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="UI/UX Basics"
+                    android:textColor="#1E1E1E"
+                    android:textSize="15sp"
+                    android:paddingVertical="12dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:background="?attr/selectableItemBackground"/>
+
+                <TextView
+                    android:id="@+id/lesson2Item"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="User-centered design"
+                    android:textColor="#1E1E1E"
+                    android:textSize="15sp"
+                    android:paddingVertical="12dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:background="?attr/selectableItemBackground"/>
+
+                <TextView
+                    android:id="@+id/lesson3Item"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Design principles"
+                    android:textColor="#1E1E1E"
+                    android:textSize="15sp"
+                    android:paddingVertical="12dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:background="?attr/selectableItemBackground"/>
+
+                <TextView
+                    android:id="@+id/lesson4Item"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Wireframing &amp; UX flows"
+                    android:textColor="#1E1E1E"
+                    android:textSize="15sp"
+                    android:paddingVertical="12dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:background="?attr/selectableItemBackground"/>
+
+                <TextView
+                    android:id="@+id/lesson5Item"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="UI/UX Basics"
+                    android:textColor="#1E1E1E"
+                    android:textSize="15sp"
+                    android:paddingVertical="12dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:background="?attr/selectableItemBackground"/>
+
+                <TextView
+                    android:id="@+id/lesson6Item"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Design System"
+                    android:textColor="#1E1E1E"
+                    android:textSize="15sp"
+                    android:paddingVertical="12dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:background="?attr/selectableItemBackground"/>
+
+                <TextView
+                    android:id="@+id/lesson7Item"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Advanced Figma Features"
+                    android:textColor="#1E1E1E"
+                    android:textSize="15sp"
+                    android:paddingVertical="12dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:background="?attr/selectableItemBackground"/>
+
+                <TextView
+                    android:id="@+id/lesson8Item"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Responsive Design &amp; Accessibility"
+                    android:textColor="#1E1E1E"
+                    android:textSize="15sp"
+                    android:paddingVertical="12dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:background="?attr/selectableItemBackground"/>
+
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="BaseResultIcon">
+        <item name="android:layout_width">24dp</item>
+        <item name="android:layout_height">24dp</item>
+    </style>
+
+    <style name="CorrectIcon" parent="BaseResultIcon">
+        <item name="android:src">@drawable/ic_correct</item>
+    </style>
+
+    <style name="WrongIcon" parent="BaseResultIcon">
+        <item name="android:src">@drawable/ic_wrong</item>
+    </style>
+
+    <style name="HomeActionChip">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@drawable/bg_chip_white</item>
+        <item name="android:paddingHorizontal">20dp</item>
+        <item name="android:paddingVertical">16dp</item>
+        <item name="android:layout_marginTop">12dp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">#1E1E1E</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:fontFamily">sans-serif</item>
+    </style>
+    
+    <style name="BottomNavActiveIndicator">
+        <item name="android:color">@android:color/transparent</item>
+    </style>
+    
+    <style name="CustomChipStyle" parent="Widget.MaterialComponents.Chip.Action">
+        <item name="chipBackgroundColor">#EFEBE4</item>
+        <item name="android:textColor">#4A4A4A</item>
+        <item name="chipCornerRadius">18dp</item>
+        <item name="chipStrokeWidth">0dp</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="checkedIconVisible">false</item>
+        <item name="rippleColor">#D7CCC8</item>
+    </style>
+    
+    <style name="SpeakerNameStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">#1E1E1E</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">italic</item>
+        <item name="android:fontFamily">serif</item>
+        <item name="android:layout_marginBottom">8dp</item>
+    </style>
+
+    <style name="TranscriptBodyStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">#424242</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:lineSpacingMultiplier">1.4</item>
+        <item name="android:fontFamily">sans-serif</item>
+    </style>
+
+    <style name="TranscriptDividerStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1dp</item>
+        <item name="android:background">#EEEEEE</item>
+        <item name="android:layout_marginTop">20dp</item>
+        <item name="android:layout_marginBottom">20dp</item>
+    </style>
+    
+    <style name="DividerStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1dp</item>
+        <item name="android:background">#F5F5F5</item>
+        <item name="android:layout_marginLeft">20dp</item>
+        <item name="android:layout_marginRight">20dp</item>
+    </style>
+
+    <style name="CalendarDay">
+        <item name="android:layout_width">32dp</item>
+        <item name="android:layout_height">32dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:layout_margin">4dp</item>
+    </style>
+    
+    <style name="CalendarDay.Gray" parent="CalendarDay">
+        <item name="android:background">@drawable/circle_gray_light</item>
+        <item name="android:textColor">#9E9E9E</item>
+    </style>
+    
+    <style name="CalendarDay.Green" parent="CalendarDay">
+        <item name="android:background">@drawable/circle_green_light</item>
+        <item name="android:textColor">#2E7D32</item>
+    </style>
+    
+    <style name="CalendarDay.Blue" parent="CalendarDay">
+        <item name="android:background">@drawable/circle_blue_light</item>
+        <item name="android:textColor">#1565C0</item>
+    </style>
+
+    <style name="CalendarDay.Yellow" parent="CalendarDay">
+        <item name="android:background">@drawable/circle_yellow_light</item>
+        <item name="android:textColor">#F57F17</item>
+    </style>
+
+    <style name="LegendItem">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">10sp</item>
+        <item name="android:textColor">#616161</item>
+        <item name="android:drawablePadding">4dp</item>
+    </style>
+
+    <style name="TabPillActive">
+        <item name="android:background">@drawable/bg_pill_white</item>
+        <item name="android:textColor">#1E1E1E</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:paddingStart">16dp</item>
+        <item name="android:paddingEnd">16dp</item>
+        <item name="android:paddingTop">8dp</item>
+        <item name="android:paddingBottom">8dp</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:layout_marginEnd">8dp</item>
+    </style>
+
+    <style name="TabPillInactive">
+        <item name="android:background">@null</item>
+        <item name="android:textColor">#757575</item>
+        <item name="android:paddingStart">16dp</item>
+        <item name="android:paddingEnd">16dp</item>
+        <item name="android:paddingTop">8dp</item>
+        <item name="android:paddingBottom">8dp</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:layout_marginEnd">8dp</item>
+    </style>
+    
+    <style name="BottomNavItem">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:gravity">center</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+
+    <style name="BottomNavIcon">
+        <item name="android:layout_width">24dp</item>
+        <item name="android:layout_height">24dp</item>
+    </style>
+    
+    <style name="BottomNavText">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">10sp</item>
+        <item name="android:layout_marginTop">4dp</item>
+        <item name="android:textColor">#BDBDBD</item>
+    </style>
+</resources>

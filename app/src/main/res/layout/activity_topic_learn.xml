@@ -1,0 +1,340 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F9F9F9">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/headerContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#F9F9F9"
+        android:paddingTop="56dp"
+        android:paddingBottom="8dp"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/ivBack"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginStart="20dp"
+            android:src="@drawable/ic_arrow_back"
+            app:tint="#1E1E1E"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <LinearLayout
+            android:id="@+id/titleRow"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:paddingHorizontal="20dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toBottomOf="@id/ivBack">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="User Centric Design"
+                android:fontFamily="serif"
+                android:textSize="24sp"
+                android:textColor="#1E1E1E" />
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginStart="8dp"
+                android:src="@drawable/ic_expand_more"
+                app:tint="#616161" />
+        </LinearLayout>
+
+        <HorizontalScrollView
+            android:id="@+id/tabsScrollView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:scrollbars="none"
+            android:clipToPadding="false"
+            android:paddingHorizontal="20dp"
+            app:layout_constraintTop_toBottomOf="@id/titleRow">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <LinearLayout
+                    android:id="@+id/tabLearn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginEnd="20dp"
+                    android:gravity="center_horizontal"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:background="?attr/selectableItemBackground">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:paddingBottom="8dp">
+                        
+                        <ImageView
+                            android:id="@+id/iconLearn"
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
+                            android:src="@drawable/ic_book_open"
+                            app:tint="#1E1E1E"/>
+                            
+                        <TextView
+                            android:id="@+id/textLearn"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="6dp"
+                            android:text="Learn"
+                            android:textColor="#1E1E1E"
+                            android:textSize="15sp"/>
+                    </LinearLayout>
+                    
+                    <View
+                        android:id="@+id/indicatorLearn"
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:background="#1E1E1E"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/tabPodcast"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginEnd="20dp"
+                    android:gravity="center_horizontal"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:background="?attr/selectableItemBackground">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:paddingBottom="8dp">
+
+                        <ImageView
+                            android:id="@+id/iconPodcast"
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
+                            android:src="@drawable/ic_podcast"
+                            app:tint="#757575"/>
+
+                        <TextView
+                            android:id="@+id/textPodcast"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="6dp"
+                            android:text="Podcast"
+                            android:textColor="#757575"
+                            android:textSize="15sp"/>
+                    </LinearLayout>
+                    
+                    <View
+                        android:id="@+id/indicatorPodcast"
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:background="#00000000"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/tabQuiz"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginEnd="20dp"
+                    android:gravity="center_horizontal"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:background="?attr/selectableItemBackground">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:paddingBottom="8dp">
+
+                        <ImageView
+                            android:id="@+id/iconQuiz"
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
+                            android:src="@drawable/ic_brain"
+                            app:tint="#757575"/>
+
+                        <TextView
+                            android:id="@+id/textQuiz"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="6dp"
+                            android:text="Quiz"
+                            android:textColor="#757575"
+                            android:textSize="15sp"/>
+                    </LinearLayout>
+                    
+                    <View
+                        android:id="@+id/indicatorQuiz"
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:background="#00000000"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/tabFlashcard"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginEnd="20dp"
+                    android:gravity="center_horizontal"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:background="?attr/selectableItemBackground">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:paddingBottom="8dp">
+
+                        <ImageView
+                            android:id="@+id/iconFlashcard"
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
+                            android:src="@drawable/ic_layers"
+                            app:tint="#757575"/>
+
+                        <TextView
+                            android:id="@+id/textFlashcard"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="6dp"
+                            android:text="Flashcards"
+                            android:textColor="#757575"
+                            android:textSize="15sp"/>
+                    </LinearLayout>
+                    
+                    <View
+                        android:id="@+id/indicatorFlashcard"
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:background="#00000000"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/tabQBank"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center_horizontal"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:background="?attr/selectableItemBackground">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:paddingBottom="8dp">
+
+                        <ImageView
+                            android:id="@+id/iconQBank"
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
+                            android:src="@drawable/ic_question_bank"
+                            app:tint="#757575"/>
+
+                        <TextView
+                            android:id="@+id/textQBank"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="6dp"
+                            android:text="Q. Bank"
+                            android:textColor="#757575"
+                            android:textSize="15sp"/>
+                    </LinearLayout>
+                    
+                    <View
+                        android:id="@+id/indicatorQBank"
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:background="#00000000"/>
+                </LinearLayout>
+
+            </LinearLayout>
+        </HorizontalScrollView>
+        
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#E0E0E0"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <FrameLayout
+        android:id="@+id/contentContainer"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/headerContainer"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <include
+            android:id="@+id/learnContent"
+            layout="@layout/content_learn"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="visible" />
+
+        <include
+            android:id="@+id/podcastContent"
+            layout="@layout/content_podcast"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone" />
+
+        <include
+            android:id="@+id/quizContent"
+            layout="@layout/content_quiz"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone" />
+
+        <include
+            android:id="@+id/quizResultContent"
+            layout="@layout/content_quiz_result"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone" />
+
+        <include
+            android:id="@+id/flashcardContent"
+            layout="@layout/content_flashcard"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone" />
+
+        <include
+            android:id="@+id/qbankContent"
+            layout="@layout/content_qbank"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone" />
+
+    </FrameLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

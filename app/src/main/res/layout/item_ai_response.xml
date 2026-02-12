@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/ai_intro_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Below is a clear, structured explanation of Chemical Bonding, followed by common mistakes students make. This is written in a student-friendly, exam-oriented way (JEE / NEET aligned)."
+        android:textColor="#1E1E1E"
+        android:textSize="15sp"
+        android:lineSpacingExtra="5dp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginVertical="16dp"
+        android:background="#E0E0E0" />
+
+    <LinearLayout
+        android:id="@+id/ai_content_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" />
+
+</LinearLayout>
