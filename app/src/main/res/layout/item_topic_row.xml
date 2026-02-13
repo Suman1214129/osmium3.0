@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/WeakTopicRow">
+    
+    <TextView
+        android:id="@+id/tvTopic"
+        style="@style/TopicText"/>
+    
+    <TextView
+        android:id="@+id/tvAccuracy"
+        style="@style/AccuracyText"/>
+</LinearLayout>

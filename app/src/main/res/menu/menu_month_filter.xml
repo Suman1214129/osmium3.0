@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/menu_this_month"
+        android:title="This month" />
+    <item
+        android:id="@+id/menu_last_month"
+        android:title="Last month" />
+    <item
+        android:id="@+id/menu_last_3_months"
+        android:title="Last 3 months" />
+    <item
+        android:id="@+id/menu_last_6_months"
+        android:title="Last 6 months" />
+    <item
+        android:id="@+id/menu_this_year"
+        android:title="This year" />
+</menu>

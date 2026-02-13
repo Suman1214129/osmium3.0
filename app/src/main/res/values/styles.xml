@@ -155,4 +155,112 @@
         <item name="android:layout_marginTop">4dp</item>
         <item name="android:textColor">#BDBDBD</item>
     </style>
+
+    <style name="DayBox">
+        <item name="android:layout_width">24dp</item>
+        <item name="android:layout_height">24dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">11sp</item>
+        <item name="android:textColor">#1E1E1E</item>
+        <item name="android:layout_margin">2dp</item>
+    </style>
+
+    <style name="DayBox.Neutral" parent="DayBox">
+        <item name="android:background">@drawable/bg_day_neutral</item>
+    </style>
+
+    <style name="DayBox.Green" parent="DayBox">
+        <item name="android:background">@drawable/bg_day_green</item>
+    </style>
+
+    <style name="DayBox.Orange" parent="DayBox">
+        <item name="android:background">@drawable/bg_day_orange</item>
+    </style>
+
+    <style name="DayBox.Blue" parent="DayBox">
+        <item name="android:background">@drawable/bg_day_blue</item>
+    </style>
+
+    <style name="ChartLabel">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">10sp</item>
+        <item name="android:textColor">#757575</item>
+    </style>
+
+    <style name="ChartXLabel">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">10sp</item>
+        <item name="android:textColor">#616161</item>
+    </style>
+
+    <style name="ChartGridLine">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1dp</item>
+        <item name="android:background">@drawable/dashed_line_horizontal_light</item>
+        <item name="android:layerType">software</item>
+    </style>
+
+    <style name="ChartYLabel">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">10sp</item>
+        <item name="android:textColor">#757575</item>
+    </style>
+
+    <style name="DashedGridLine">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1dp</item>
+        <item name="android:background">@drawable/dashed_line_horizontal_light</item>
+        <item name="android:layerType">software</item>
+    </style>
+
+    <style name="SolidBaseLine">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1dp</item>
+        <item name="android:background">#E0E0E0</item>
+    </style>
+
+    <style name="ChartDataPoint">
+        <item name="android:layout_width">8dp</item>
+        <item name="android:layout_height">8dp</item>
+        <item name="android:background">@drawable/circle_outline_gold</item>
+    </style>
+
+    <style name="WeakTopicRow">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:orientation">horizontal</item>
+        <item name="android:layout_marginBottom">16dp</item>
+        <item name="android:gravity">top</item>
+    </style>
+
+    <style name="TopicText">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">#1E1E1E</item>
+        <item name="android:layout_marginEnd">16dp</item>
+        <item name="android:lineSpacingExtra">2dp</item>
+    </style>
+
+    <style name="AccuracyText">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">#9E511E</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="AccuracyTextGreen">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">#4CAF50</item>
+        <item name="android:textStyle">bold</item>
+    </style>
 </resources>
