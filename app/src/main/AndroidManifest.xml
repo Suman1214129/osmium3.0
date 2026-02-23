@@ -33,6 +33,15 @@
             android:name="com.osmiumai.app.SignupActivity"
             android:exported="false" />
         <activity
+            android:name="com.osmiumai.app.LoginActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.osmiumai.app.LoginEmailActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.osmiumai.app.SignupEmailActivity"
+            android:exported="false" />
+        <activity
             android:name="com.osmiumai.app.WelcomeActivity"
             android:exported="true">
             <intent-filter>

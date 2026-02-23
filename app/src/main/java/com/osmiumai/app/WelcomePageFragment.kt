@@ -67,17 +67,15 @@ class WelcomePageFragment : Fragment() {
         }
         
         binding.btnGoogle.setOnClickListener {
-            startActivity(Intent(requireContext(), MainActivity::class.java))
-            activity?.finish()
-        }
-        
-        binding.btnEmail.setOnClickListener {
             startActivity(Intent(requireContext(), SignupActivity::class.java))
         }
         
-        binding.btnEmailSignup.setOnClickListener {
-            startActivity(Intent(requireContext(), MainActivity::class.java))
-            activity?.finish()
+        binding.btnPhone.setOnClickListener {
+            startActivity(Intent(requireContext(), SignupActivity::class.java))
+        }
+        
+        binding.btnEmail.setOnClickListener {
+            startActivity(Intent(requireContext(), SignupEmailActivity::class.java))
         }
     }
 

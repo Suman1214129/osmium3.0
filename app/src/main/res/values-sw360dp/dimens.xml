@@ -1,0 +1,9 @@
+<resources>
+    <!-- Medium screen dimensions -->
+    <dimen name="bottom_nav_height">68dp</dimen>
+    <dimen name="header_top_margin">12dp</dimen>
+    <dimen name="logo_top_margin">20dp</dimen>
+    <dimen name="content_horizontal_padding">24dp</dimen>
+    <dimen name="content_top_padding">16dp</dimen>
+    <dimen name="section_spacing">28dp</dimen>
+</resources>

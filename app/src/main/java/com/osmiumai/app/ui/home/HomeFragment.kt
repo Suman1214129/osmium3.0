@@ -46,12 +46,31 @@ class HomeFragment : Fragment() {
         binding.analyticsCard.setOnClickListener {
             findNavController().navigate(R.id.navigation_profile)
         }
+        
+        binding.courseCardNuclearPhysics.setOnClickListener {
+            val intent = Intent(requireContext(), com.osmiumai.app.CourseOverviewActivity::class.java)
+            startActivity(intent)
+        }
+        
+        binding.courseCardDSA.setOnClickListener {
+            val intent = Intent(requireContext(), com.osmiumai.app.CourseOverviewActivity::class.java)
+            startActivity(intent)
+        }
+        
+        binding.courseCardJava.setOnClickListener {
+            val intent = Intent(requireContext(), com.osmiumai.app.CourseOverviewActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     private fun setupScrollListener() {
         binding.testsScrollView.setOnScrollChangeListener { _, scrollX, _, _, _ ->
-            val pageWidth = 316 // 300dp page width + 16dp margin
-            val currentPage = (scrollX + pageWidth / 2) / pageWidth
+            val screenWidth = resources.displayMetrics.widthPixels
+            val currentPage = when {
+                scrollX < screenWidth / 2 -> 0
+                scrollX < screenWidth + screenWidth / 2 -> 1
+                else -> 2
+            }
             updateDots(currentPage)
         }
         setupTabClickListeners()

@@ -79,8 +79,12 @@ class TestsFragment : Fragment() {
     }
     
     private fun updatePaginationDots(scrollX: Int) {
-        val pageWidth = 336 // 320dp card width + 16dp margin
-        val currentPage = (scrollX + pageWidth / 2) / pageWidth
+        val screenWidth = resources.displayMetrics.widthPixels
+        val currentPage = when {
+            scrollX < screenWidth / 2 -> 0
+            scrollX < screenWidth + screenWidth / 2 -> 1
+            else -> 2
+        }
         
         dots.forEachIndexed { index, dot ->
             if (index == currentPage) {

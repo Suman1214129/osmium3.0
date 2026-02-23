@@ -1,5 +1,13 @@
 <resources>
-    <!-- Default screen margins, per the Android Design guidelines. -->
+    <!-- Default screen margins -->
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
+    
+    <!-- Responsive dimensions -->
+    <dimen name="bottom_nav_height">64dp</dimen>
+    <dimen name="header_top_margin">8dp</dimen>
+    <dimen name="logo_top_margin">16dp</dimen>
+    <dimen name="content_horizontal_padding">20dp</dimen>
+    <dimen name="content_top_padding">12dp</dimen>
+    <dimen name="section_spacing">24dp</dimen>
 </resources>

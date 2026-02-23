@@ -21,7 +21,7 @@ class WelcomeActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.viewPager.adapter = WelcomePagerAdapter(this)
-        binding.viewPager.isUserInputEnabled = false
+        binding.viewPager.isUserInputEnabled = true
         
         binding.viewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
             override fun onPageSelected(position: Int) {

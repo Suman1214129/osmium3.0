@@ -1,0 +1,9 @@
+<resources>
+    <!-- Tablet dimensions -->
+    <dimen name="bottom_nav_height">72dp</dimen>
+    <dimen name="header_top_margin">16dp</dimen>
+    <dimen name="logo_top_margin">24dp</dimen>
+    <dimen name="content_horizontal_padding">32dp</dimen>
+    <dimen name="content_top_padding">20dp</dimen>
+    <dimen name="section_spacing">32dp</dimen>
+</resources>

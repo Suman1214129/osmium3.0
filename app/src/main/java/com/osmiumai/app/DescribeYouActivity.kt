@@ -3,6 +3,7 @@ package com.osmiumai.app
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.widget.EditText
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
@@ -25,6 +26,8 @@ class DescribeYouActivity : AppCompatActivity() {
 
         setupChips()
         setupSections()
+        setupSkillsChips()
+        setupCareerChips()
 
         binding.ivBack.setOnClickListener {
             finish()
@@ -53,6 +56,46 @@ class DescribeYouActivity : AppCompatActivity() {
                 chip.setBackgroundResource(R.drawable.bg_chip_selected)
                 chip.setTextColor(0xFFFFFFFF.toInt())
                 selectedChip = chip
+            }
+        }
+    }
+    
+    private fun setupSkillsChips() {
+        val etSkillOther = findViewById<EditText>(R.id.etSkillOther)
+        val skillChips = listOf(
+            findViewById<TextView>(R.id.chipSkillProgramming),
+            findViewById<TextView>(R.id.chipSkillMath),
+            findViewById<TextView>(R.id.chipSkillScience),
+            findViewById<TextView>(R.id.chipSkillOther)
+        )
+        
+        skillChips.forEach { chip ->
+            chip.setOnClickListener {
+                if (chip.id == R.id.chipSkillOther) {
+                    etSkillOther.visibility = View.VISIBLE
+                } else {
+                    etSkillOther.visibility = View.GONE
+                }
+            }
+        }
+    }
+    
+    private fun setupCareerChips() {
+        val etCareerOther = findViewById<EditText>(R.id.etCareerOther)
+        val careerChips = listOf(
+            findViewById<TextView>(R.id.chipCareerEngineering),
+            findViewById<TextView>(R.id.chipCareerMedical),
+            findViewById<TextView>(R.id.chipCareerCivil),
+            findViewById<TextView>(R.id.chipCareerOther)
+        )
+        
+        careerChips.forEach { chip ->
+            chip.setOnClickListener {
+                if (chip.id == R.id.chipCareerOther) {
+                    etCareerOther.visibility = View.VISIBLE
+                } else {
+                    etCareerOther.visibility = View.GONE
+                }
             }
         }
     }

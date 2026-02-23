@@ -218,26 +218,35 @@ class TopicLearnActivity : AppCompatActivity() {
             playButton.visibility = View.GONE
             videoWebView?.visibility = View.VISIBLE
             
-            videoWebView?.settings?.javaScriptEnabled = true
-            videoWebView?.settings?.mediaPlaybackRequiresUserGesture = false
-            videoWebView?.settings?.domStorageEnabled = true
+            videoWebView?.settings?.apply {
+                javaScriptEnabled = true
+                mediaPlaybackRequiresUserGesture = false
+                domStorageEnabled = true
+                loadWithOverviewMode = true
+                useWideViewPort = true
+                setSupportZoom(false)
+                mixedContentMode = android.webkit.WebSettings.MIXED_CONTENT_ALWAYS_ALLOW
+            }
             videoWebView?.webChromeClient = WebChromeClient()
+            videoWebView?.webViewClient = android.webkit.WebViewClient()
             
             val videoHtml = """
                 <!DOCTYPE html>
                 <html>
                 <head>
+                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
                     <style>
-                        body { margin: 0; padding: 0; background: #000; }
-                        .video-container { position: relative; width: 100%; height: 100vh; }
+                        * { margin: 0; padding: 0; }
+                        body { background: #000; }
+                        .container { position: relative; width: 100%; padding-bottom: 56.25%; }
                         iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
                     </style>
                 </head>
                 <body>
-                    <div class="video-container">
-                        <iframe src="https://www.youtube.com/embed/$youtubeVideoId?autoplay=1&controls=1&modestbranding=1&rel=0&showinfo=0" 
+                    <div class="container">
+                        <iframe src="https://www.youtube-nocookie.com/embed/$youtubeVideoId?playsinline=1&rel=0" 
                                 frameborder="0" 
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                                 allowfullscreen>
                         </iframe>
                     </div>
@@ -245,7 +254,7 @@ class TopicLearnActivity : AppCompatActivity() {
                 </html>
             """.trimIndent()
             
-            videoWebView?.loadData(videoHtml, "text/html", "utf-8")
+            videoWebView?.loadDataWithBaseURL("https://www.youtube-nocookie.com", videoHtml, "text/html", "utf-8", null)
         }
     }
     

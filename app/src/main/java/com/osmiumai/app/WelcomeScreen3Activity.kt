@@ -18,12 +18,12 @@ class WelcomeScreen3Activity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.btnContinue.setOnClickListener {
-            startActivity(Intent(this, WelcomeScreen4Activity::class.java))
+            startActivity(Intent(this, MainActivity::class.java))
             finish()
         }
         
         binding.btnSkip.setOnClickListener {
-            startActivity(Intent(this, WelcomeScreen4Activity::class.java))
+            startActivity(Intent(this, MainActivity::class.java))
             finish()
         }
     }
