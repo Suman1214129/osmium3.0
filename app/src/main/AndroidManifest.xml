@@ -16,9 +16,25 @@
         android:theme="@style/Theme.Susu"
         tools:targetApi="31">
         <activity
-            android:name=".MainActivity"
+            android:name="com.osmiumai.app.MainActivity"
             android:exported="true"
             android:label="@string/app_name">
+        </activity>
+        <activity
+            android:name="com.osmiumai.app.DescribeYouActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.osmiumai.app.ProfileDetailsActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.osmiumai.app.VerifyOtpActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.osmiumai.app.SignupActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.osmiumai.app.WelcomeActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -26,26 +42,48 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".UploadPapersActivity"
+            android:name="com.osmiumai.app.WelcomeScreen1Activity"
             android:exported="false" />
         <activity
-            android:name=".MockTestActivity"
+            android:name="com.osmiumai.app.WelcomeScreen2Activity"
             android:exported="false" />
         <activity
-            android:name=".TestAnalyticsActivity"
+            android:name="com.osmiumai.app.WelcomeScreen3Activity"
             android:exported="false" />
         <activity
-            android:name=".StartCourseActivity"
+            android:name="com.osmiumai.app.WelcomeScreen4Activity"
             android:exported="false" />
         <activity
-            android:name=".CourseOverviewActivity"
+            android:name="com.osmiumai.app.UploadPapersActivity"
             android:exported="false" />
         <activity
-            android:name=".TopicLearnActivity"
+            android:name="com.osmiumai.app.MockTestActivity"
             android:exported="false" />
         <activity
-            android:name=".PodcastLearnActivity"
+            android:name="com.osmiumai.app.TestAnalyticsActivity"
             android:exported="false" />
+        <activity
+            android:name="com.osmiumai.app.StartCourseActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.osmiumai.app.CourseOverviewActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.osmiumai.app.TopicLearnActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.osmiumai.app.PodcastLearnActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.osmiumai.app.ui.settings.SettingsActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.osmiumai.app.ui.notifications.NotificationsActivity"
+            android:exported="false" />
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>

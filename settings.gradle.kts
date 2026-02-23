@@ -19,6 +19,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "susu"
+rootProject.name = "Osmium AI"
 include(":app")
  

@@ -33,6 +33,7 @@
             <View android:layout_width="0dp" android:layout_height="1dp" android:layout_weight="1" />
 
             <ImageView
+                android:id="@+id/btnNotifications"
                 android:layout_width="32dp"
                 android:layout_height="32dp"
                 android:layout_marginEnd="12dp"
@@ -42,6 +43,7 @@
                 app:tint="#1E1E1E" />
 
             <ImageView
+                android:id="@+id/btnSettings"
                 android:layout_width="32dp"
                 android:layout_height="32dp"
                 android:background="@drawable/circle_white"
@@ -70,6 +72,7 @@
                 android:layout_marginStart="12dp">
 
                 <TextView
+                    android:id="@+id/tvUserName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Oracle Khatua"
@@ -78,6 +81,7 @@
                     android:textSize="16sp"/>
 
                 <TextView
+                    android:id="@+id/tvUserEmail"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Khatua@osmium.com"
@@ -86,6 +90,7 @@
             </LinearLayout>
 
             <TextView
+                android:id="@+id/btnEditProfile"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Edit profile"
@@ -656,7 +661,7 @@
                         <View style="@style/SolidBaseLine"/>
                     </LinearLayout>
 
-                    <com.example.susu.views.LineChartView
+                    <com.osmiumai.app.views.LineChartView
                         android:layout_width="0dp"
                         android:layout_height="0dp"
                         app:layout_constraintStart_toStartOf="@id/gridLines"

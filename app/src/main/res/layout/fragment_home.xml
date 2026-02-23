@@ -39,6 +39,7 @@
             </LinearLayout>
 
             <ImageView
+                android:id="@+id/btnNotificationHome"
                 android:layout_width="22dp"
                 android:layout_height="22dp"
                 android:src="@drawable/ic_bell"/>
@@ -100,10 +101,13 @@
 
         <!-- Analytics Card -->
         <com.google.android.material.card.MaterialCardView
+            android:id="@+id/analyticsCard"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:cardCornerRadius="18dp"
             app:cardElevation="0dp"
+            android:clickable="true"
+            android:focusable="true"
             android:layout_marginBottom="34dp">
 
             <FrameLayout
