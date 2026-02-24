@@ -22,8 +22,6 @@ class TestAnalyticsActivity : AppCompatActivity() {
         supportActionBar?.hide()
         
         binding.backButton.setOnClickListener {
-            val intent = Intent(this, MockTestActivity::class.java)
-            startActivity(intent)
             finish()
         }
         

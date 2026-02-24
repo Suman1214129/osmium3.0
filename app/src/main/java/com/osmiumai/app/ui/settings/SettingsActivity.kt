@@ -9,6 +9,7 @@ import com.osmiumai.app.WelcomeActivity
 import com.osmiumai.app.databinding.ActivitySettingsBinding
 import com.osmiumai.app.databinding.DialogEditProfileBinding
 import com.google.android.material.bottomsheet.BottomSheetDialog
+import com.osmiumai.app.ui.notifications.NotificationsActivity
 
 class SettingsActivity : AppCompatActivity() {
 
@@ -27,60 +28,60 @@ class SettingsActivity : AppCompatActivity() {
     private fun setupClickListeners() {
         binding.btnBack.setOnClickListener { finish() }
         
-        binding.btnManageSubscription.setOnClickListener {
-            showSubscriptionDialog()
+        // Files Section
+        binding.btnFileManager.setOnClickListener {
+            startActivity(Intent(this, FileManagerActivity::class.java))
         }
 
+        binding.btnCloudStorage.setOnClickListener {
+            Toast.makeText(this, "Cloud Storage", Toast.LENGTH_SHORT).show()
+        }
+
+        binding.btnDownloads.setOnClickListener {
+            startActivity(Intent(this, DownloadsActivity::class.java))
+        }
+
+        // Account Section
         binding.btnEditProfile.setOnClickListener {
             showEditProfileDialog()
         }
 
-        binding.btnChangePassword.setOnClickListener {
-            Toast.makeText(this, "Change Password", Toast.LENGTH_SHORT).show()
+        binding.btnNotifications.setOnClickListener {
+            startActivity(Intent(this, NotificationsActivity::class.java))
         }
 
-        binding.switchNotifications.setOnCheckedChangeListener { _, isChecked ->
-            Toast.makeText(this, "Notifications ${if (isChecked) "enabled" else "disabled"}", Toast.LENGTH_SHORT).show()
+        binding.btnNotificationSettings.setOnClickListener {
+            startActivity(Intent(this, NotificationSettingsActivity::class.java))
         }
 
-        binding.switchReminders.setOnCheckedChangeListener { _, isChecked ->
-            Toast.makeText(this, "Daily reminders ${if (isChecked) "enabled" else "disabled"}", Toast.LENGTH_SHORT).show()
+        binding.btnPrivacySecurity.setOnClickListener {
+            Toast.makeText(this, "Privacy & Security", Toast.LENGTH_SHORT).show()
         }
 
-        binding.btnLanguage.setOnClickListener {
-            showLanguageDialog()
+        binding.btnSubscription.setOnClickListener {
+            startActivity(Intent(this, SubscriptionActivity::class.java))
         }
 
+        // Support Section
         binding.btnHelp.setOnClickListener {
-            Toast.makeText(this, "Help & Support", Toast.LENGTH_SHORT).show()
+            startActivity(Intent(this, HelpCenterActivity::class.java))
         }
 
-        binding.btnPrivacy.setOnClickListener {
-            Toast.makeText(this, "Privacy Policy", Toast.LENGTH_SHORT).show()
+        binding.btnContactUs.setOnClickListener {
+            Toast.makeText(this, "Contact Us", Toast.LENGTH_SHORT).show()
         }
 
-        binding.btnAbout.setOnClickListener {
-            Toast.makeText(this, "About Osmium App", Toast.LENGTH_SHORT).show()
+        binding.btnFeedback.setOnClickListener {
+            startActivity(Intent(this, FeedbackActivity::class.java))
         }
 
+        // Logout
         binding.btnLogout.setOnClickListener {
             showLogoutDialog()
         }
     }
 
-    private fun showSubscriptionDialog() {
-        AlertDialog.Builder(this)
-            .setTitle("Manage Subscription")
-            .setMessage("Your Premium Plan is active until Dec 31, 2024.\n\nWould you like to:")
-            .setPositiveButton("Renew") { _, _ ->
-                Toast.makeText(this, "Redirecting to payment...", Toast.LENGTH_SHORT).show()
-            }
-            .setNegativeButton("Cancel Subscription") { _, _ ->
-                Toast.makeText(this, "Subscription cancelled", Toast.LENGTH_SHORT).show()
-            }
-            .setNeutralButton("Close", null)
-            .show()
-    }
+
 
     private fun showEditProfileDialog() {
         val dialog = BottomSheetDialog(this)
@@ -98,15 +99,7 @@ class SettingsActivity : AppCompatActivity() {
         dialog.show()
     }
 
-    private fun showLanguageDialog() {
-        val languages = arrayOf("English", "Hindi", "Spanish", "French")
-        AlertDialog.Builder(this)
-            .setTitle("Select Language")
-            .setItems(languages) { _, which ->
-                Toast.makeText(this, "Language: ${languages[which]}", Toast.LENGTH_SHORT).show()
-            }
-            .show()
-    }
+
 
     private fun showLogoutDialog() {
         AlertDialog.Builder(this)

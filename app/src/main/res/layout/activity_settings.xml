@@ -3,31 +3,26 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F7F5F3">
+    android:background="#F9F9F9">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:paddingStart="20dp"
-        android:paddingEnd="20dp"
-        android:paddingTop="16dp"
-        android:paddingBottom="20dp"
-        android:layout_marginTop="40dp">
+        android:paddingHorizontal="20dp"
+        android:paddingTop="56dp"
+        android:paddingBottom="32dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:paddingBottom="20dp">
+            android:paddingBottom="24dp">
 
             <ImageView
                 android:id="@+id/btnBack"
-                android:layout_width="32dp"
-                android:layout_height="32dp"
-                android:background="@drawable/circle_gray_very_light"
-                android:padding="8dp"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
                 android:src="@drawable/ic_arrow_left"
                 app:tint="#1E1E1E" />
 
@@ -37,14 +32,26 @@
                 android:layout_marginStart="16dp"
                 android:layout_weight="1"
                 android:text="Settings"
+                android:fontFamily="@font/baskervville"
                 android:textColor="#1E1E1E"
-                android:textSize="20sp"
+                android:textSize="24sp"
                 android:textStyle="bold" />
         </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            android:text="Files"
+            android:fontFamily="@font/public_sans"
+            android:textColor="#616161"
+            android:textSize="13sp"
+            android:textStyle="bold" />
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
             app:cardBackgroundColor="#FFFFFF"
             app:cardCornerRadius="16dp"
             app:cardElevation="0dp">
@@ -52,138 +59,106 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="20dp">
+                android:orientation="vertical">
 
                 <LinearLayout
+                    android:id="@+id/btnFileManager"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical"
-                    android:orientation="horizontal">
+                    android:paddingHorizontal="20dp"
+                    android:paddingVertical="16dp"
+                    android:background="?attr/selectableItemBackground">
 
                     <ImageView
-                        android:layout_width="48dp"
-                        android:layout_height="48dp"
-                        android:background="@drawable/bg_premium_pill"
-                        android:padding="12dp"
-                        android:src="@drawable/ic_diamond"
-                        app:tint="#4D3F15" />
-
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="12dp"
-                        android:layout_weight="1"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Premium Plan"
-                            android:textColor="#1E1E1E"
-                            android:textSize="16sp"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Active until Dec 31, 2024"
-                            android:textColor="#757575"
-                            android:textSize="12sp" />
-                    </LinearLayout>
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/ic_layers"
+                        app:tint="#1E1E1E" />
 
                     <TextView
-                        android:id="@+id/btnManageSubscription"
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/bg_btn_outline_gray"
-                        android:paddingStart="12dp"
-                        android:paddingTop="8dp"
-                        android:paddingEnd="12dp"
-                        android:paddingBottom="8dp"
-                        android:text="Manage"
+                        android:layout_marginStart="16dp"
+                        android:layout_weight="1"
+                        android:text="File Manager"
+                        android:fontFamily="@font/public_sans"
                         android:textColor="#1E1E1E"
-                        android:textSize="12sp"
-                        android:textStyle="bold" />
+                        android:textSize="15sp" />
+
+                    <ImageView
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:src="@drawable/ic_chevron_right"
+                        app:tint="#9E9E9E" />
                 </LinearLayout>
 
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginBottom="16dp"
-                    android:background="#F5F5F5" />
+                <View style="@style/DividerStyle"/>
 
                 <LinearLayout
+                    android:id="@+id/btnCloudStorage"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:gravity="center_vertical"
+                    android:paddingHorizontal="20dp"
+                    android:paddingVertical="16dp"
+                    android:background="?attr/selectableItemBackground">
 
-                    <LinearLayout
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/ic_upload"
+                        app:tint="#1E1E1E" />
+
+                    <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
                         android:layout_weight="1"
-                        android:gravity="center"
-                        android:orientation="vertical">
+                        android:text="Cloud Storage"
+                        android:fontFamily="@font/public_sans"
+                        android:textColor="#1E1E1E"
+                        android:textSize="15sp" />
 
-                        <ImageView
-                            android:layout_width="24dp"
-                            android:layout_height="24dp"
-                            android:src="@drawable/ic_check_circle"
-                            app:tint="#4CAF50" />
+                    <ImageView
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:src="@drawable/ic_chevron_right"
+                        app:tint="#9E9E9E" />
+                </LinearLayout>
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="8dp"
-                            android:text="Unlimited Tests"
-                            android:textColor="#616161"
-                            android:textSize="11sp" />
-                    </LinearLayout>
+                <View style="@style/DividerStyle"/>
 
-                    <LinearLayout
+                <LinearLayout
+                    android:id="@+id/btnDownloads"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:paddingHorizontal="20dp"
+                    android:paddingVertical="16dp"
+                    android:background="?attr/selectableItemBackground">
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/ic_arrow_down"
+                        app:tint="#1E1E1E" />
+
+                    <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
                         android:layout_weight="1"
-                        android:gravity="center"
-                        android:orientation="vertical">
+                        android:text="Downloads"
+                        android:fontFamily="@font/public_sans"
+                        android:textColor="#1E1E1E"
+                        android:textSize="15sp" />
 
-                        <ImageView
-                            android:layout_width="24dp"
-                            android:layout_height="24dp"
-                            android:src="@drawable/ic_check_circle"
-                            app:tint="#4CAF50" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="8dp"
-                            android:text="AI Mentor"
-                            android:textColor="#616161"
-                            android:textSize="11sp" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:orientation="vertical">
-
-                        <ImageView
-                            android:layout_width="24dp"
-                            android:layout_height="24dp"
-                            android:src="@drawable/ic_check_circle"
-                            app:tint="#4CAF50" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="8dp"
-                            android:text="Ad-Free"
-                            android:textColor="#616161"
-                            android:textSize="11sp" />
-                    </LinearLayout>
+                    <ImageView
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:src="@drawable/ic_chevron_right"
+                        app:tint="#9E9E9E" />
                 </LinearLayout>
             </LinearLayout>
         </androidx.cardview.widget.CardView>
@@ -191,16 +166,17 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
             android:layout_marginBottom="12dp"
             android:text="Account"
-            android:textColor="#1E1E1E"
-            android:textSize="16sp"
+            android:fontFamily="@font/public_sans"
+            android:textColor="#616161"
+            android:textSize="13sp"
             android:textStyle="bold" />
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
             app:cardBackgroundColor="#FFFFFF"
             app:cardCornerRadius="16dp"
             app:cardElevation="0dp">
@@ -214,21 +190,16 @@
                     android:id="@+id/btnEditProfile"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="?attr/selectableItemBackground"
-                    android:clickable="true"
-                    android:focusable="true"
                     android:gravity="center_vertical"
-                    android:orientation="horizontal"
-                    android:paddingStart="20dp"
-                    android:paddingTop="16dp"
-                    android:paddingEnd="20dp"
-                    android:paddingBottom="16dp">
+                    android:paddingHorizontal="20dp"
+                    android:paddingVertical="16dp"
+                    android:background="?attr/selectableItemBackground">
 
                     <ImageView
                         android:layout_width="20dp"
                         android:layout_height="20dp"
                         android:src="@drawable/ic_user_circle"
-                        app:tint="#616161" />
+                        app:tint="#1E1E1E" />
 
                     <TextView
                         android:layout_width="0dp"
@@ -236,8 +207,9 @@
                         android:layout_marginStart="16dp"
                         android:layout_weight="1"
                         android:text="Edit Profile"
+                        android:fontFamily="@font/public_sans"
                         android:textColor="#1E1E1E"
-                        android:textSize="14sp" />
+                        android:textSize="15sp" />
 
                     <ImageView
                         android:layout_width="16dp"
@@ -246,87 +218,22 @@
                         app:tint="#9E9E9E" />
                 </LinearLayout>
 
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginStart="56dp"
-                    android:background="#F5F5F5" />
+                <View style="@style/DividerStyle"/>
 
                 <LinearLayout
-                    android:id="@+id/btnChangePassword"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="?attr/selectableItemBackground"
-                    android:clickable="true"
-                    android:focusable="true"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal"
-                    android:paddingStart="20dp"
-                    android:paddingTop="16dp"
-                    android:paddingEnd="20dp"
-                    android:paddingBottom="16dp">
-
-                    <ImageView
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
-                        android:src="@drawable/ic_settings"
-                        app:tint="#616161" />
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
-                        android:layout_weight="1"
-                        android:text="Change Password"
-                        android:textColor="#1E1E1E"
-                        android:textSize="14sp" />
-
-                    <ImageView
-                        android:layout_width="16dp"
-                        android:layout_height="16dp"
-                        android:src="@drawable/ic_chevron_right"
-                        app:tint="#9E9E9E" />
-                </LinearLayout>
-            </LinearLayout>
-        </androidx.cardview.widget.CardView>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:layout_marginBottom="12dp"
-            android:text="Preferences"
-            android:textColor="#1E1E1E"
-            android:textSize="16sp"
-            android:textStyle="bold" />
-
-        <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:cardBackgroundColor="#FFFFFF"
-            app:cardCornerRadius="16dp"
-            app:cardElevation="0dp">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <LinearLayout
+                    android:id="@+id/btnNotifications"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical"
-                    android:orientation="horizontal"
-                    android:paddingStart="20dp"
-                    android:paddingTop="16dp"
-                    android:paddingEnd="20dp"
-                    android:paddingBottom="16dp">
+                    android:paddingHorizontal="20dp"
+                    android:paddingVertical="16dp"
+                    android:background="?attr/selectableItemBackground">
 
                     <ImageView
                         android:layout_width="20dp"
                         android:layout_height="20dp"
                         android:src="@drawable/ic_bell"
-                        app:tint="#616161" />
+                        app:tint="#1E1E1E" />
 
                     <TextView
                         android:layout_width="0dp"
@@ -334,96 +241,111 @@
                         android:layout_marginStart="16dp"
                         android:layout_weight="1"
                         android:text="Notifications"
+                        android:fontFamily="@font/public_sans"
                         android:textColor="#1E1E1E"
-                        android:textSize="14sp" />
+                        android:textSize="15sp" />
 
-                    <androidx.appcompat.widget.SwitchCompat
-                        android:id="@+id/switchNotifications"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:checked="true" />
+                    <ImageView
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:src="@drawable/ic_chevron_right"
+                        app:tint="#9E9E9E" />
                 </LinearLayout>
 
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginStart="56dp"
-                    android:background="#F5F5F5" />
+                <View style="@style/DividerStyle"/>
 
                 <LinearLayout
+                    android:id="@+id/btnNotificationSettings"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical"
-                    android:orientation="horizontal"
-                    android:paddingStart="20dp"
-                    android:paddingTop="16dp"
-                    android:paddingEnd="20dp"
-                    android:paddingBottom="16dp">
+                    android:paddingHorizontal="20dp"
+                    android:paddingVertical="16dp"
+                    android:background="?attr/selectableItemBackground">
 
                     <ImageView
                         android:layout_width="20dp"
                         android:layout_height="20dp"
-                        android:src="@drawable/ic_activity"
-                        app:tint="#616161" />
+                        android:src="@drawable/ic_tune"
+                        app:tint="#1E1E1E" />
 
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
                         android:layout_weight="1"
-                        android:text="Daily Reminders"
+                        android:text="Notification Settings"
+                        android:fontFamily="@font/public_sans"
                         android:textColor="#1E1E1E"
-                        android:textSize="14sp" />
+                        android:textSize="15sp" />
 
-                    <androidx.appcompat.widget.SwitchCompat
-                        android:id="@+id/switchReminders"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:checked="true" />
+                    <ImageView
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:src="@drawable/ic_chevron_right"
+                        app:tint="#9E9E9E" />
                 </LinearLayout>
 
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginStart="56dp"
-                    android:background="#F5F5F5" />
+                <View style="@style/DividerStyle"/>
 
                 <LinearLayout
-                    android:id="@+id/btnLanguage"
+                    android:id="@+id/btnPrivacySecurity"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="?attr/selectableItemBackground"
-                    android:clickable="true"
-                    android:focusable="true"
                     android:gravity="center_vertical"
-                    android:orientation="horizontal"
-                    android:paddingStart="20dp"
-                    android:paddingTop="16dp"
-                    android:paddingEnd="20dp"
-                    android:paddingBottom="16dp">
+                    android:paddingHorizontal="20dp"
+                    android:paddingVertical="16dp"
+                    android:background="?attr/selectableItemBackground">
 
                     <ImageView
                         android:layout_width="20dp"
                         android:layout_height="20dp"
-                        android:src="@drawable/ic_info"
-                        app:tint="#616161" />
+                        android:src="@drawable/ic_eye"
+                        app:tint="#1E1E1E" />
 
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
                         android:layout_weight="1"
-                        android:text="Language"
+                        android:text="Privacy &amp; Security"
+                        android:fontFamily="@font/public_sans"
                         android:textColor="#1E1E1E"
-                        android:textSize="14sp" />
+                        android:textSize="15sp" />
+
+                    <ImageView
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:src="@drawable/ic_chevron_right"
+                        app:tint="#9E9E9E" />
+                </LinearLayout>
+
+                <View style="@style/DividerStyle"/>
+
+                <LinearLayout
+                    android:id="@+id/btnSubscription"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:paddingHorizontal="20dp"
+                    android:paddingVertical="16dp"
+                    android:background="?attr/selectableItemBackground">
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/ic_diamond"
+                        app:tint="#1E1E1E" />
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginEnd="8dp"
-                        android:text="English"
-                        android:textColor="#757575"
-                        android:textSize="13sp" />
+                        android:layout_marginStart="16dp"
+                        android:layout_weight="1"
+                        android:text="Subscription"
+                        android:fontFamily="@font/public_sans"
+                        android:textColor="#1E1E1E"
+                        android:textSize="15sp" />
 
                     <ImageView
                         android:layout_width="16dp"
@@ -437,16 +359,17 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
             android:layout_marginBottom="12dp"
             android:text="Support"
-            android:textColor="#1E1E1E"
-            android:textSize="16sp"
+            android:fontFamily="@font/public_sans"
+            android:textColor="#616161"
+            android:textSize="13sp"
             android:textStyle="bold" />
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
             app:cardBackgroundColor="#FFFFFF"
             app:cardCornerRadius="16dp"
             app:cardElevation="0dp">
@@ -460,122 +383,94 @@
                     android:id="@+id/btnHelp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="?attr/selectableItemBackground"
-                    android:clickable="true"
-                    android:focusable="true"
                     android:gravity="center_vertical"
-                    android:orientation="horizontal"
-                    android:paddingStart="20dp"
-                    android:paddingTop="16dp"
-                    android:paddingEnd="20dp"
-                    android:paddingBottom="16dp">
-
-                    <ImageView
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
-                        android:src="@drawable/ic_info_outline"
-                        app:tint="#616161" />
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
-                        android:layout_weight="1"
-                        android:text="Help &amp; Support"
-                        android:textColor="#1E1E1E"
-                        android:textSize="14sp" />
-
-                    <ImageView
-                        android:layout_width="16dp"
-                        android:layout_height="16dp"
-                        android:src="@drawable/ic_chevron_right"
-                        app:tint="#9E9E9E" />
-                </LinearLayout>
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginStart="56dp"
-                    android:background="#F5F5F5" />
-
-                <LinearLayout
-                    android:id="@+id/btnPrivacy"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="?attr/selectableItemBackground"
-                    android:clickable="true"
-                    android:focusable="true"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal"
-                    android:paddingStart="20dp"
-                    android:paddingTop="16dp"
-                    android:paddingEnd="20dp"
-                    android:paddingBottom="16dp">
-
-                    <ImageView
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
-                        android:src="@drawable/ic_settings"
-                        app:tint="#616161" />
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
-                        android:layout_weight="1"
-                        android:text="Privacy Policy"
-                        android:textColor="#1E1E1E"
-                        android:textSize="14sp" />
-
-                    <ImageView
-                        android:layout_width="16dp"
-                        android:layout_height="16dp"
-                        android:src="@drawable/ic_chevron_right"
-                        app:tint="#9E9E9E" />
-                </LinearLayout>
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginStart="56dp"
-                    android:background="#F5F5F5" />
-
-                <LinearLayout
-                    android:id="@+id/btnAbout"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="?attr/selectableItemBackground"
-                    android:clickable="true"
-                    android:focusable="true"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal"
-                    android:paddingStart="20dp"
-                    android:paddingTop="16dp"
-                    android:paddingEnd="20dp"
-                    android:paddingBottom="16dp">
+                    android:paddingHorizontal="20dp"
+                    android:paddingVertical="16dp"
+                    android:background="?attr/selectableItemBackground">
 
                     <ImageView
                         android:layout_width="20dp"
                         android:layout_height="20dp"
                         android:src="@drawable/ic_info"
-                        app:tint="#616161" />
+                        app:tint="#1E1E1E" />
 
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
                         android:layout_weight="1"
-                        android:text="About"
+                        android:text="Help Center"
+                        android:fontFamily="@font/public_sans"
                         android:textColor="#1E1E1E"
-                        android:textSize="14sp" />
+                        android:textSize="15sp" />
+
+                    <ImageView
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:src="@drawable/ic_chevron_right"
+                        app:tint="#9E9E9E" />
+                </LinearLayout>
+
+                <View style="@style/DividerStyle"/>
+
+                <LinearLayout
+                    android:id="@+id/btnContactUs"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:paddingHorizontal="20dp"
+                    android:paddingVertical="16dp"
+                    android:background="?attr/selectableItemBackground">
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/ic_mail"
+                        app:tint="#1E1E1E" />
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginEnd="8dp"
-                        android:text="v1.0.0"
-                        android:textColor="#757575"
-                        android:textSize="13sp" />
+                        android:layout_marginStart="16dp"
+                        android:layout_weight="1"
+                        android:text="Contact Us"
+                        android:fontFamily="@font/public_sans"
+                        android:textColor="#1E1E1E"
+                        android:textSize="15sp" />
+
+                    <ImageView
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:src="@drawable/ic_chevron_right"
+                        app:tint="#9E9E9E" />
+                </LinearLayout>
+
+                <View style="@style/DividerStyle"/>
+
+                <LinearLayout
+                    android:id="@+id/btnFeedback"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:paddingHorizontal="20dp"
+                    android:paddingVertical="16dp"
+                    android:background="?attr/selectableItemBackground">
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/ic_chat_bubble"
+                        app:tint="#1E1E1E" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_weight="1"
+                        android:text="Feedback"
+                        android:fontFamily="@font/public_sans"
+                        android:textColor="#1E1E1E"
+                        android:textSize="15sp" />
 
                     <ImageView
                         android:layout_width="16dp"
@@ -586,25 +481,38 @@
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
-        <TextView
+        <androidx.cardview.widget.CardView
             android:id="@+id/btnLogout"
             android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:layout_marginTop="24dp"
-            android:background="@drawable/bg_btn_outline_gray"
-            android:gravity="center"
-            android:text="Log Out"
-            android:textColor="#D32F2F"
-            android:textSize="14sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="16dp"
-            android:text="Osmium App © 2024"
-            android:textColor="#9E9E9E"
-            android:textSize="12sp" />
+            app:cardBackgroundColor="#FFFFFF"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="0dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:paddingVertical="16dp"
+                android:background="?attr/selectableItemBackground">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/ic_arrow_right"
+                    android:rotation="180"
+                    app:tint="#D32F2F" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:text="Logout"
+                    android:fontFamily="@font/public_sans"
+                    android:textColor="#D32F2F"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
     </LinearLayout>
 </ScrollView>

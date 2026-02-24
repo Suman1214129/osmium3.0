@@ -45,7 +45,8 @@
                     android:text="Design Essentials UI/UX: Figma"
                     android:textColor="#1E1E1E"
                     android:textSize="32sp"
-                    android:fontFamily="@font/libre_baskerville"
+                    android:fontFamily="@font/baskervville"
+                    android:textStyle="bold"
                     android:lineSpacingExtra="4dp"
                     android:layout_marginTop="24dp"/>
 
@@ -74,7 +75,7 @@
                         android:layout_height="wrap_content"
                         android:text="9 lessons"
                         android:fontFamily="@font/public_sans"
-                        android:textColor="#616161"
+                        android:textColor="#1e1e1e"
                         android:textSize="12sp" />
                 </LinearLayout>
 
@@ -126,7 +127,8 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
                         android:text="Introduction:"
-                        android:fontFamily="@font/libre_baskerville"
+                        android:fontFamily="@font/baskervville"
+                        android:textStyle="bold"
                         android:textSize="16sp"
                         android:textColor="#1E1E1E"/>
                 </LinearLayout>
@@ -135,11 +137,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
-                    android:text="This course introduces the core principles of UI/UX design and teaches how to turn ideas into clean, user-friendly interfaces using Figma. You'll learn design fundamentals, practical workflows, and hands-on skills to create real-world app and web screens from scratch."
                     android:fontFamily="@font/public_sans"
-                    android:textColor="#616161"
-                    android:textSize="14sp"
-                    android:lineSpacingMultiplier="1.4"/>
+                    android:lineSpacingMultiplier="1.4"
+                    android:text="This course introduces the core principles of UI/UX design and teaches how to turn ideas into clean, user-friendly interfaces using Figma. You'll learn design fundamentals, practical workflows, and hands-on skills to create real-world app and web screens from scratch."
+                    android:textColor="#0F0E0E"
+                    android:textSize="14sp" />
             </LinearLayout>
 
             <LinearLayout
@@ -161,7 +163,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:text="Lessons:"
-                    android:fontFamily="@font/libre_baskerville"
+                    android:fontFamily="@font/baskervville"
+                    android:textStyle="bold"
                     android:textSize="16sp"
                     android:textColor="#1E1E1E"/>
             </LinearLayout>

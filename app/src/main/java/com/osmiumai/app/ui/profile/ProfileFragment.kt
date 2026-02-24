@@ -8,6 +8,7 @@ import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.PopupMenu
 import android.widget.TextView
 import androidx.core.view.GestureDetectorCompat
@@ -24,6 +25,8 @@ class ProfileFragment : Fragment() {
     private val binding get() = _binding!!
     private var isShowingWeakTopics = true
     private lateinit var gestureDetector: GestureDetectorCompat
+    private lateinit var weakCard: View
+    private lateinit var strongCard: View
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -40,13 +43,10 @@ class ProfileFragment : Fragment() {
         setupExamTabs()
         setupStrengthTabs()
         setupSuggestionTabs()
-        setupSwipeGesture()
-        setupNavigationButtons()
+        setupTopicsCards()
         setupEditProfile()
         setupSettings()
         setupNotifications()
-        updateTopicsList(true)
-        updateDots()
     }
 
     private fun setupMonthDropdown() {
@@ -80,15 +80,21 @@ class ProfileFragment : Fragment() {
         binding.tabSuggestionNeetUg.setOnClickListener { selectSuggestionTab(binding.tabSuggestionNeetUg) }
     }
 
-    private fun setupSwipeGesture() {
+    private fun setupTopicsCards() {
+        weakCard = binding.root.findViewById(R.id.weakTopicsCard)
+        strongCard = binding.root.findViewById(R.id.strongTopicsCard)
+        
+        populateCard(weakCard, true)
+        populateCard(strongCard, false)
+        
         gestureDetector = GestureDetectorCompat(requireContext(), object : GestureDetector.SimpleOnGestureListener() {
             override fun onFling(e1: MotionEvent?, e2: MotionEvent, velocityX: Float, velocityY: Float): Boolean {
                 if (e1 == null) return false
                 val diffX = e2.x - e1.x
                 if (abs(diffX) > abs(e2.y - e1.y) && abs(diffX) > 100) {
-                    if (diffX > 0) {
+                    if (diffX > 0 && !isShowingWeakTopics) {
                         showWeakTopics()
-                    } else {
+                    } else if (diffX < 0 && isShowingWeakTopics) {
                         showStrongTopics()
                     }
                     return true
@@ -96,16 +102,108 @@ class ProfileFragment : Fragment() {
                 return false
             }
         })
-
-        binding.root.findViewById<View>(R.id.listContainer)?.setOnTouchListener { _, event ->
+        
+        binding.root.findViewById<View>(R.id.topicsCardContainer).setOnTouchListener { _, event ->
             gestureDetector.onTouchEvent(event)
-            false
+            true
+        }
+        
+        updateDots()
+    }
+    
+    private fun populateCard(card: View, isWeak: Boolean) {
+        val headerTopic = card.findViewById<TextView>(R.id.headerTopic)
+        val listContainer = card.findViewById<LinearLayout>(R.id.listContainer)
+        val tvPagination = card.findViewById<TextView>(R.id.tvPagination)
+        
+        headerTopic.text = if (isWeak) "Weak Topics" else "Strong Topics"
+        
+        val topics = if (isWeak) {
+            listOf(
+                "Electrostatic Potential & Capacitance" to "25.5%",
+                "Gauss's Law and Applications" to "26.4%",
+                "Photoelectric Effect" to "31.4%",
+                "Moving Charges and Magnetism" to "36.6%",
+                "Wave Optics – Young's Double Slit Experiment" to "45.9%"
+            )
+        } else {
+            listOf(
+                "Current Electricity - Kirchhoff's Laws" to "91.1%",
+                "Semiconductor Devices - PN Junction" to "86.4%",
+                "Stoke's Law" to "81.2%",
+                "Logic Gates & Digital Electronics" to "76.6%",
+                "Ray Optics - Refraction through Lenses" to "65.6%"
+            )
+        }
+        
+        tvPagination.text = "${topics.size} Topics"
+        
+        listContainer.removeAllViews()
+        topics.forEach { (topic, accuracy) ->
+            val row = layoutInflater.inflate(R.layout.item_topic_row, listContainer, false)
+            row.findViewById<TextView>(R.id.tvTopic).text = topic
+            row.findViewById<TextView>(R.id.tvAccuracy).apply {
+                text = accuracy
+                setTextColor(if (isWeak) 0xFF9E511E.toInt() else 0xFF4CAF50.toInt())
+            }
+            listContainer.addView(row)
         }
     }
-
-    private fun setupNavigationButtons() {
-        binding.btnNext.setOnClickListener { showStrongTopics() }
-        binding.btnPrev.setOnClickListener { showWeakTopics() }
+    
+    private fun showWeakTopics() {
+        strongCard.animate()
+            .translationX(strongCard.width.toFloat())
+            .alpha(0f)
+            .setDuration(300)
+            .setInterpolator(android.view.animation.DecelerateInterpolator())
+            .withEndAction {
+                strongCard.visibility = View.GONE
+                strongCard.translationX = 0f
+                weakCard.visibility = View.VISIBLE
+                weakCard.translationX = -weakCard.width.toFloat()
+                weakCard.alpha = 0f
+                weakCard.animate()
+                    .translationX(0f)
+                    .alpha(1f)
+                    .setDuration(300)
+                    .setInterpolator(android.view.animation.DecelerateInterpolator())
+                    .start()
+            }.start()
+        isShowingWeakTopics = true
+        updateDots()
+    }
+    
+    private fun showStrongTopics() {
+        weakCard.animate()
+            .translationX(-weakCard.width.toFloat())
+            .alpha(0f)
+            .setDuration(300)
+            .setInterpolator(android.view.animation.DecelerateInterpolator())
+            .withEndAction {
+                weakCard.visibility = View.GONE
+                weakCard.translationX = 0f
+                strongCard.visibility = View.VISIBLE
+                strongCard.translationX = strongCard.width.toFloat()
+                strongCard.alpha = 0f
+                strongCard.animate()
+                    .translationX(0f)
+                    .alpha(1f)
+                    .setDuration(300)
+                    .setInterpolator(android.view.animation.DecelerateInterpolator())
+                    .start()
+            }.start()
+        isShowingWeakTopics = false
+        updateDots()
+    }
+    
+    private fun updateDots() {
+        if (isShowingWeakTopics) {
+            binding.dot1.setBackgroundResource(R.drawable.dot_active)
+            binding.dot2.setBackgroundResource(R.drawable.dot_inactive)
+        } else {
+            binding.dot1.setBackgroundResource(R.drawable.dot_inactive)
+            binding.dot2.setBackgroundResource(R.drawable.dot_active)
+        }
     }
 
     private fun setupEditProfile() {
@@ -158,64 +256,7 @@ class ProfileFragment : Fragment() {
         dialog.show()
     }
 
-    private fun showWeakTopics() {
-        if (isShowingWeakTopics) return
-        isShowingWeakTopics = true
-        binding.headerTopic.text = "Weak Topics"
-        updateTopicsList(true)
-        updateDots()
-    }
 
-    private fun showStrongTopics() {
-        if (!isShowingWeakTopics) return
-        isShowingWeakTopics = false
-        binding.headerTopic.text = "Strong Topics"
-        updateTopicsList(false)
-        updateDots()
-    }
-
-    private fun updateDots() {
-        if (isShowingWeakTopics) {
-            binding.dot1.setBackgroundResource(R.drawable.dot_active)
-            binding.dot2.setBackgroundResource(R.drawable.dot_inactive)
-        } else {
-            binding.dot1.setBackgroundResource(R.drawable.dot_inactive)
-            binding.dot2.setBackgroundResource(R.drawable.dot_active)
-        }
-    }
-
-    private fun updateTopicsList(isWeak: Boolean) {
-        val container = binding.listContainer
-        container.removeAllViews()
-
-        val topics = if (isWeak) {
-            listOf(
-                "Electrostatic Potential & Capacitance" to "25.5%",
-                "Gauss's Law and Applications" to "26.4%",
-                "Photoelectric Effect" to "31.4%",
-                "Moving Charges and Magnetism" to "36.6%",
-                "Wave Optics – Young's Double Slit Experiment" to "45.9%"
-            )
-        } else {
-            listOf(
-                "Current Electricity - Kirchhoff's Laws" to "91.1%",
-                "Semiconductor Devices - PN Junction" to "86.4%",
-                "Stoke's Law" to "81.2%",
-                "Logic Gates & Digital Electronics" to "76.6%",
-                "Ray Optics - Refraction through Lenses" to "65.6%"
-            )
-        }
-
-        topics.forEach { (topic, accuracy) ->
-            val row = layoutInflater.inflate(R.layout.item_topic_row, container, false)
-            row.findViewById<TextView>(R.id.tvTopic).text = topic
-            row.findViewById<TextView>(R.id.tvAccuracy).apply {
-                text = accuracy
-                setTextColor(if (isWeak) 0xFF9E511E.toInt() else 0xFF4CAF50.toInt())
-            }
-            container.addView(row)
-        }
-    }
 
     private fun selectTab(selectedTab: View) {
         listOf(binding.tabJeeMains, binding.tabGate, binding.tabNeetUg).forEach { tab ->

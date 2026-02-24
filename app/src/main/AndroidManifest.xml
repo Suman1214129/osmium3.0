@@ -9,9 +9,9 @@
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
-        android:icon="@drawable/osmium2"
+        android:icon="@drawable/osmium_copy"
         android:label="@string/app_name"
-        android:roundIcon="@drawable/osmium2"
+        android:roundIcon="@drawable/osmium_copy"
         android:supportsRtl="true"
         android:theme="@style/Theme.Susu"
         tools:targetApi="31">
@@ -85,6 +85,24 @@
             android:exported="false" />
         <activity
             android:name="com.osmiumai.app.ui.settings.SettingsActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.osmiumai.app.ui.settings.FileManagerActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.osmiumai.app.ui.settings.DownloadsActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.osmiumai.app.ui.settings.NotificationSettingsActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.osmiumai.app.ui.settings.SubscriptionActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.osmiumai.app.ui.settings.FeedbackActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.osmiumai.app.ui.settings.HelpCenterActivity"
             android:exported="false" />
         <activity
             android:name="com.osmiumai.app.ui.notifications.NotificationsActivity"

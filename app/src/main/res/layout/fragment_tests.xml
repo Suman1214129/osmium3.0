@@ -106,7 +106,8 @@
             android:layout_height="wrap_content"
             android:text="Recent done tests"
             android:textSize="18sp"
-            android:fontFamily="@font/libre_baskerville"
+            android:fontFamily="@font/baskervville"
+            android:textStyle="bold"
             android:textColor="#1C1C1C"
             android:layout_marginBottom="8dp"/>
 
@@ -203,119 +204,142 @@
                     <com.google.android.material.card.MaterialCardView
                         android:layout_width="320dp"
                         android:layout_height="wrap_content"
-                        app:cardCornerRadius="20dp"
+                        app:cardCornerRadius="16dp"
                         app:cardElevation="0dp"
-                        android:backgroundTint="#FFFFFF"
-                        app:strokeColor="#E0E0E0"
+                        app:cardBackgroundColor="#FFFFFF"
+                        app:strokeColor="#EEEEEE"
                         app:strokeWidth="1dp"
                         android:layout_marginBottom="12dp">
 
-                        <LinearLayout
+                        <androidx.constraintlayout.widget.ConstraintLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:orientation="vertical"
-                            android:padding="16dp">
+                            android:padding="20dp">
 
                             <LinearLayout
+                                android:id="@+id/datePill"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:orientation="horizontal"
+                                android:background="@drawable/bg_pill_outline_gray"
                                 android:gravity="center_vertical"
-                                android:background="@drawable/date_section_bg"
-                                android:paddingHorizontal="8dp"
-                                android:paddingVertical="4dp"
-                                android:layout_marginBottom="8dp">
+                                android:orientation="horizontal"
+                                android:paddingHorizontal="12dp"
+                                android:paddingVertical="6dp"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent">
 
                                 <ImageView
-                                    android:layout_width="16dp"
-                                    android:layout_height="16dp"
+                                    android:layout_width="14dp"
+                                    android:layout_height="14dp"
                                     android:src="@drawable/ic_calendar"
-                                    android:layout_marginEnd="6dp"/>
+                                    app:tint="#757575" />
 
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
+                                    android:layout_marginStart="6dp"
                                     android:text="16 May, 2025"
-                                    android:textSize="12sp"
-                                    android:textColor="#8B8B8B"/>
-
+                                    android:textColor="#757575"
+                                    android:textSize="12sp" />
                             </LinearLayout>
+
+                            <ImageView
+                                android:id="@+id/btnMore"
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:src="@drawable/ic_more_vert"
+                                app:layout_constraintBottom_toBottomOf="@id/datePill"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toTopOf="@id/datePill"
+                                app:tint="#757575" />
+
+                            <TextView
+                                android:id="@+id/tvTitle"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="16dp"
+                                android:fontFamily="sans-serif-medium"
+                                android:text="DSA with Java"
+                                android:textColor="#1E1E1E"
+                                android:textSize="18sp"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@id/datePill" />
 
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
+                                android:layout_marginTop="16dp"
                                 android:orientation="horizontal"
-                                android:gravity="center_vertical"
-                                android:layout_marginBottom="8dp">
-
-                                <TextView
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:text="DSA with Java"
-                                    android:textSize="18sp"
-                                    android:textStyle="bold"
-                                    android:textColor="#1C1C1C"/>
-
-                                <ImageView
-                                    android:layout_width="16dp"
-                                    android:layout_height="16dp"
-                                    android:src="@drawable/ic_more_vert"
-                                    android:tint="#8B8B8B"/>
-
-                            </LinearLayout>
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="horizontal">
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@id/tvTitle">
 
                                 <LinearLayout
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:orientation="horizontal"
                                     android:gravity="center_vertical"
-                                    android:layout_marginEnd="24dp">
+                                    android:orientation="horizontal">
 
                                     <View
                                         android:layout_width="8dp"
                                         android:layout_height="8dp"
-                                        android:background="@drawable/dot_active"
-                                        android:layout_marginEnd="8dp"/>
+                                        android:background="@drawable/circle_dot_cyan" />
 
                                     <TextView
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:text="Marks: 78/150"
-                                        android:textSize="14sp"
-                                        android:textColor="#1C1C1C"/>
+                                        android:layout_marginStart="6dp"
+                                        android:text="Marks: "
+                                        android:textColor="#616161"
+                                        android:textSize="13sp" />
 
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="78"
+                                        android:textColor="#1E1E1E"
+                                        android:textSize="13sp"
+                                        android:textStyle="bold" />
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="/150"
+                                        android:textColor="#757575"
+                                        android:textSize="11sp" />
                                 </LinearLayout>
 
                                 <LinearLayout
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:orientation="horizontal"
-                                    android:gravity="center_vertical">
+                                    android:layout_marginStart="24dp"
+                                    android:gravity="center_vertical"
+                                    android:orientation="horizontal">
 
                                     <View
                                         android:layout_width="8dp"
                                         android:layout_height="8dp"
-                                        android:background="@drawable/dot_inactive"
-                                        android:layout_marginEnd="8dp"/>
+                                        android:background="@drawable/circle_dot_gold" />
 
                                     <TextView
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:text="Accuracy: 91.1%"
-                                        android:textSize="14sp"
-                                        android:textColor="#1C1C1C"/>
+                                        android:layout_marginStart="6dp"
+                                        android:text="Accuracy: "
+                                        android:textColor="#616161"
+                                        android:textSize="13sp" />
 
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="91.1%"
+                                        android:textColor="#1E1E1E"
+                                        android:textSize="13sp"
+                                        android:textStyle="bold" />
                                 </LinearLayout>
 
                             </LinearLayout>
-
-                        </LinearLayout>
+                        </androidx.constraintlayout.widget.ConstraintLayout>
 
                     </com.google.android.material.card.MaterialCardView>
 
@@ -323,118 +347,141 @@
                     <com.google.android.material.card.MaterialCardView
                         android:layout_width="320dp"
                         android:layout_height="wrap_content"
-                        app:cardCornerRadius="20dp"
+                        app:cardCornerRadius="16dp"
                         app:cardElevation="0dp"
-                        android:backgroundTint="#FFFFFF"
-                        app:strokeColor="#E0E0E0"
+                        app:cardBackgroundColor="#FFFFFF"
+                        app:strokeColor="#EEEEEE"
                         app:strokeWidth="1dp">
 
-                        <LinearLayout
+                        <androidx.constraintlayout.widget.ConstraintLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:orientation="vertical"
-                            android:padding="16dp">
+                            android:padding="20dp">
 
                             <LinearLayout
+                                android:id="@+id/datePill2"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:orientation="horizontal"
+                                android:background="@drawable/bg_pill_outline_gray"
                                 android:gravity="center_vertical"
-                                android:background="@drawable/date_section_bg"
-                                android:paddingHorizontal="8dp"
-                                android:paddingVertical="4dp"
-                                android:layout_marginBottom="8dp">
+                                android:orientation="horizontal"
+                                android:paddingHorizontal="12dp"
+                                android:paddingVertical="6dp"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent">
 
                                 <ImageView
-                                    android:layout_width="16dp"
-                                    android:layout_height="16dp"
+                                    android:layout_width="14dp"
+                                    android:layout_height="14dp"
                                     android:src="@drawable/ic_calendar"
-                                    android:layout_marginEnd="6dp"/>
+                                    app:tint="#757575" />
 
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
+                                    android:layout_marginStart="6dp"
                                     android:text="26 May, 2025"
-                                    android:textSize="12sp"
-                                    android:textColor="#8B8B8B"/>
-
+                                    android:textColor="#757575"
+                                    android:textSize="12sp" />
                             </LinearLayout>
+
+                            <ImageView
+                                android:id="@+id/btnMore2"
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:src="@drawable/ic_more_vert"
+                                app:layout_constraintBottom_toBottomOf="@id/datePill2"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toTopOf="@id/datePill2"
+                                app:tint="#757575" />
+
+                            <TextView
+                                android:id="@+id/tvTitle2"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="16dp"
+                                android:fontFamily="sans-serif-medium"
+                                android:text="JEE MAIN 1"
+                                android:textColor="#1E1E1E"
+                                android:textSize="18sp"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@id/datePill2" />
 
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
+                                android:layout_marginTop="16dp"
                                 android:orientation="horizontal"
-                                android:gravity="center_vertical"
-                                android:layout_marginBottom="8dp">
-
-                                <TextView
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:text="JEE MAIN 1"
-                                    android:textSize="18sp"
-                                    android:textStyle="bold"
-                                    android:textColor="#1C1C1C"/>
-
-                                <ImageView
-                                    android:layout_width="16dp"
-                                    android:layout_height="16dp"
-                                    android:src="@drawable/ic_more_vert"
-                                    android:tint="#8B8B8B"/>
-
-                            </LinearLayout>
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="horizontal">
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@id/tvTitle2">
 
                                 <LinearLayout
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:orientation="horizontal"
                                     android:gravity="center_vertical"
-                                    android:layout_marginEnd="24dp">
+                                    android:orientation="horizontal">
 
                                     <View
                                         android:layout_width="8dp"
                                         android:layout_height="8dp"
-                                        android:background="@drawable/dot_active"
-                                        android:layout_marginEnd="8dp"/>
+                                        android:background="@drawable/circle_dot_cyan" />
 
                                     <TextView
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:text="Marks: 181/300"
-                                        android:textSize="14sp"
-                                        android:textColor="#1C1C1C"/>
+                                        android:layout_marginStart="6dp"
+                                        android:text="Marks: "
+                                        android:textColor="#616161"
+                                        android:textSize="13sp" />
 
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="181"
+                                        android:textColor="#1E1E1E"
+                                        android:textSize="13sp"
+                                        android:textStyle="bold" />
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="/300"
+                                        android:textColor="#757575"
+                                        android:textSize="11sp" />
                                 </LinearLayout>
 
                                 <LinearLayout
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:orientation="horizontal"
-                                    android:gravity="center_vertical">
+                                    android:layout_marginStart="24dp"
+                                    android:gravity="center_vertical"
+                                    android:orientation="horizontal">
 
                                     <View
                                         android:layout_width="8dp"
                                         android:layout_height="8dp"
-                                        android:background="@drawable/dot_inactive"
-                                        android:layout_marginEnd="8dp"/>
+                                        android:background="@drawable/circle_dot_gold" />
 
                                     <TextView
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:text="Accuracy: 74.6%"
-                                        android:textSize="14sp"
-                                        android:textColor="#1C1C1C"/>
+                                        android:layout_marginStart="6dp"
+                                        android:text="Accuracy: "
+                                        android:textColor="#616161"
+                                        android:textSize="13sp" />
 
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="74.6%"
+                                        android:textColor="#1E1E1E"
+                                        android:textSize="13sp"
+                                        android:textStyle="bold" />
                                 </LinearLayout>
 
                             </LinearLayout>
-
-                        </LinearLayout>
+                        </androidx.constraintlayout.widget.ConstraintLayout>
 
                     </com.google.android.material.card.MaterialCardView>
 
@@ -451,119 +498,142 @@
                     <com.google.android.material.card.MaterialCardView
                         android:layout_width="320dp"
                         android:layout_height="wrap_content"
-                        app:cardCornerRadius="20dp"
+                        app:cardCornerRadius="16dp"
                         app:cardElevation="0dp"
-                        android:backgroundTint="#FFFFFF"
-                        app:strokeColor="#E0E0E0"
+                        app:cardBackgroundColor="#FFFFFF"
+                        app:strokeColor="#EEEEEE"
                         app:strokeWidth="1dp"
                         android:layout_marginBottom="12dp">
 
-                        <LinearLayout
+                        <androidx.constraintlayout.widget.ConstraintLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:orientation="vertical"
-                            android:padding="16dp">
+                            android:padding="20dp">
 
                             <LinearLayout
+                                android:id="@+id/datePill3"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:orientation="horizontal"
+                                android:background="@drawable/bg_pill_outline_gray"
                                 android:gravity="center_vertical"
-                                android:background="@drawable/date_section_bg"
-                                android:paddingHorizontal="8dp"
-                                android:paddingVertical="4dp"
-                                android:layout_marginBottom="8dp">
+                                android:orientation="horizontal"
+                                android:paddingHorizontal="12dp"
+                                android:paddingVertical="6dp"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent">
 
                                 <ImageView
-                                    android:layout_width="16dp"
-                                    android:layout_height="16dp"
+                                    android:layout_width="14dp"
+                                    android:layout_height="14dp"
                                     android:src="@drawable/ic_calendar"
-                                    android:layout_marginEnd="6dp"/>
+                                    app:tint="#757575" />
 
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
+                                    android:layout_marginStart="6dp"
                                     android:text="12 May, 2025"
-                                    android:textSize="12sp"
-                                    android:textColor="#8B8B8B"/>
-
+                                    android:textColor="#757575"
+                                    android:textSize="12sp" />
                             </LinearLayout>
+
+                            <ImageView
+                                android:id="@+id/btnMore3"
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:src="@drawable/ic_more_vert"
+                                app:layout_constraintBottom_toBottomOf="@id/datePill3"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toTopOf="@id/datePill3"
+                                app:tint="#757575" />
+
+                            <TextView
+                                android:id="@+id/tvTitle3"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="16dp"
+                                android:fontFamily="sans-serif-medium"
+                                android:text="Physics Mechanics"
+                                android:textColor="#1E1E1E"
+                                android:textSize="18sp"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@id/datePill3" />
 
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
+                                android:layout_marginTop="16dp"
                                 android:orientation="horizontal"
-                                android:gravity="center_vertical"
-                                android:layout_marginBottom="8dp">
-
-                                <TextView
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:text="Physics Mechanics"
-                                    android:textSize="18sp"
-                                    android:textStyle="bold"
-                                    android:textColor="#1C1C1C"/>
-
-                                <ImageView
-                                    android:layout_width="16dp"
-                                    android:layout_height="16dp"
-                                    android:src="@drawable/ic_more_vert"
-                                    android:tint="#8B8B8B"/>
-
-                            </LinearLayout>
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="horizontal">
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@id/tvTitle3">
 
                                 <LinearLayout
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:orientation="horizontal"
                                     android:gravity="center_vertical"
-                                    android:layout_marginEnd="24dp">
+                                    android:orientation="horizontal">
 
                                     <View
                                         android:layout_width="8dp"
                                         android:layout_height="8dp"
-                                        android:background="@drawable/dot_active"
-                                        android:layout_marginEnd="8dp"/>
+                                        android:background="@drawable/circle_dot_cyan" />
 
                                     <TextView
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:text="Marks: 92/120"
-                                        android:textSize="14sp"
-                                        android:textColor="#1C1C1C"/>
+                                        android:layout_marginStart="6dp"
+                                        android:text="Marks: "
+                                        android:textColor="#616161"
+                                        android:textSize="13sp" />
 
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="92"
+                                        android:textColor="#1E1E1E"
+                                        android:textSize="13sp"
+                                        android:textStyle="bold" />
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="/120"
+                                        android:textColor="#757575"
+                                        android:textSize="11sp" />
                                 </LinearLayout>
 
                                 <LinearLayout
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:orientation="horizontal"
-                                    android:gravity="center_vertical">
+                                    android:layout_marginStart="24dp"
+                                    android:gravity="center_vertical"
+                                    android:orientation="horizontal">
 
                                     <View
                                         android:layout_width="8dp"
                                         android:layout_height="8dp"
-                                        android:background="@drawable/dot_inactive"
-                                        android:layout_marginEnd="8dp"/>
+                                        android:background="@drawable/circle_dot_gold" />
 
                                     <TextView
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:text="Accuracy: 76.7%"
-                                        android:textSize="14sp"
-                                        android:textColor="#1C1C1C"/>
+                                        android:layout_marginStart="6dp"
+                                        android:text="Accuracy: "
+                                        android:textColor="#616161"
+                                        android:textSize="13sp" />
 
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="76.7%"
+                                        android:textColor="#1E1E1E"
+                                        android:textSize="13sp"
+                                        android:textStyle="bold" />
                                 </LinearLayout>
 
                             </LinearLayout>
-
-                        </LinearLayout>
+                        </androidx.constraintlayout.widget.ConstraintLayout>
 
                     </com.google.android.material.card.MaterialCardView>
 
@@ -571,118 +641,141 @@
                     <com.google.android.material.card.MaterialCardView
                         android:layout_width="320dp"
                         android:layout_height="wrap_content"
-                        app:cardCornerRadius="20dp"
+                        app:cardCornerRadius="16dp"
                         app:cardElevation="0dp"
-                        android:backgroundTint="#FFFFFF"
-                        app:strokeColor="#E0E0E0"
+                        app:cardBackgroundColor="#FFFFFF"
+                        app:strokeColor="#EEEEEE"
                         app:strokeWidth="1dp">
 
-                        <LinearLayout
+                        <androidx.constraintlayout.widget.ConstraintLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:orientation="vertical"
-                            android:padding="16dp">
+                            android:padding="20dp">
 
                             <LinearLayout
+                                android:id="@+id/datePill4"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:orientation="horizontal"
+                                android:background="@drawable/bg_pill_outline_gray"
                                 android:gravity="center_vertical"
-                                android:background="@drawable/date_section_bg"
-                                android:paddingHorizontal="8dp"
-                                android:paddingVertical="4dp"
-                                android:layout_marginBottom="8dp">
+                                android:orientation="horizontal"
+                                android:paddingHorizontal="12dp"
+                                android:paddingVertical="6dp"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent">
 
                                 <ImageView
-                                    android:layout_width="16dp"
-                                    android:layout_height="16dp"
+                                    android:layout_width="14dp"
+                                    android:layout_height="14dp"
                                     android:src="@drawable/ic_calendar"
-                                    android:layout_marginEnd="6dp"/>
+                                    app:tint="#757575" />
 
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
+                                    android:layout_marginStart="6dp"
                                     android:text="08 May, 2025"
-                                    android:textSize="12sp"
-                                    android:textColor="#8B8B8B"/>
-
+                                    android:textColor="#757575"
+                                    android:textSize="12sp" />
                             </LinearLayout>
+
+                            <ImageView
+                                android:id="@+id/btnMore4"
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:src="@drawable/ic_more_vert"
+                                app:layout_constraintBottom_toBottomOf="@id/datePill4"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toTopOf="@id/datePill4"
+                                app:tint="#757575" />
+
+                            <TextView
+                                android:id="@+id/tvTitle4"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="16dp"
+                                android:fontFamily="sans-serif-medium"
+                                android:text="Chemistry Organic"
+                                android:textColor="#1E1E1E"
+                                android:textSize="18sp"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@id/datePill4" />
 
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
+                                android:layout_marginTop="16dp"
                                 android:orientation="horizontal"
-                                android:gravity="center_vertical"
-                                android:layout_marginBottom="8dp">
-
-                                <TextView
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:text="Chemistry Organic"
-                                    android:textSize="18sp"
-                                    android:textStyle="bold"
-                                    android:textColor="#1C1C1C"/>
-
-                                <ImageView
-                                    android:layout_width="16dp"
-                                    android:layout_height="16dp"
-                                    android:src="@drawable/ic_more_vert"
-                                    android:tint="#8B8B8B"/>
-
-                            </LinearLayout>
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="horizontal">
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@id/tvTitle4">
 
                                 <LinearLayout
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:orientation="horizontal"
                                     android:gravity="center_vertical"
-                                    android:layout_marginEnd="24dp">
+                                    android:orientation="horizontal">
 
                                     <View
                                         android:layout_width="8dp"
                                         android:layout_height="8dp"
-                                        android:background="@drawable/dot_active"
-                                        android:layout_marginEnd="8dp"/>
+                                        android:background="@drawable/circle_dot_cyan" />
 
                                     <TextView
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:text="Marks: 65/100"
-                                        android:textSize="14sp"
-                                        android:textColor="#1C1C1C"/>
+                                        android:layout_marginStart="6dp"
+                                        android:text="Marks: "
+                                        android:textColor="#616161"
+                                        android:textSize="13sp" />
 
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="65"
+                                        android:textColor="#1E1E1E"
+                                        android:textSize="13sp"
+                                        android:textStyle="bold" />
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="/100"
+                                        android:textColor="#757575"
+                                        android:textSize="11sp" />
                                 </LinearLayout>
 
                                 <LinearLayout
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:orientation="horizontal"
-                                    android:gravity="center_vertical">
+                                    android:layout_marginStart="24dp"
+                                    android:gravity="center_vertical"
+                                    android:orientation="horizontal">
 
                                     <View
                                         android:layout_width="8dp"
                                         android:layout_height="8dp"
-                                        android:background="@drawable/dot_inactive"
-                                        android:layout_marginEnd="8dp"/>
+                                        android:background="@drawable/circle_dot_gold" />
 
                                     <TextView
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:text="Accuracy: 65.0%"
-                                        android:textSize="14sp"
-                                        android:textColor="#1C1C1C"/>
+                                        android:layout_marginStart="6dp"
+                                        android:text="Accuracy: "
+                                        android:textColor="#616161"
+                                        android:textSize="13sp" />
 
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="65.0%"
+                                        android:textColor="#1E1E1E"
+                                        android:textSize="13sp"
+                                        android:textStyle="bold" />
                                 </LinearLayout>
 
                             </LinearLayout>
-
-                        </LinearLayout>
+                        </androidx.constraintlayout.widget.ConstraintLayout>
 
                     </com.google.android.material.card.MaterialCardView>
 
@@ -698,119 +791,142 @@
                     <com.google.android.material.card.MaterialCardView
                         android:layout_width="320dp"
                         android:layout_height="wrap_content"
-                        app:cardCornerRadius="20dp"
+                        app:cardCornerRadius="16dp"
                         app:cardElevation="0dp"
-                        android:backgroundTint="#FFFFFF"
-                        app:strokeColor="#E0E0E0"
+                        app:cardBackgroundColor="#FFFFFF"
+                        app:strokeColor="#EEEEEE"
                         app:strokeWidth="1dp"
                         android:layout_marginBottom="12dp">
 
-                        <LinearLayout
+                        <androidx.constraintlayout.widget.ConstraintLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:orientation="vertical"
-                            android:padding="16dp">
+                            android:padding="20dp">
 
                             <LinearLayout
+                                android:id="@+id/datePill5"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:orientation="horizontal"
+                                android:background="@drawable/bg_pill_outline_gray"
                                 android:gravity="center_vertical"
-                                android:background="@drawable/date_section_bg"
-                                android:paddingHorizontal="8dp"
-                                android:paddingVertical="4dp"
-                                android:layout_marginBottom="8dp">
+                                android:orientation="horizontal"
+                                android:paddingHorizontal="12dp"
+                                android:paddingVertical="6dp"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent">
 
                                 <ImageView
-                                    android:layout_width="16dp"
-                                    android:layout_height="16dp"
+                                    android:layout_width="14dp"
+                                    android:layout_height="14dp"
                                     android:src="@drawable/ic_calendar"
-                                    android:layout_marginEnd="6dp"/>
+                                    app:tint="#757575" />
 
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
+                                    android:layout_marginStart="6dp"
                                     android:text="05 May, 2025"
-                                    android:textSize="12sp"
-                                    android:textColor="#8B8B8B"/>
-
+                                    android:textColor="#757575"
+                                    android:textSize="12sp" />
                             </LinearLayout>
+
+                            <ImageView
+                                android:id="@+id/btnMore5"
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:src="@drawable/ic_more_vert"
+                                app:layout_constraintBottom_toBottomOf="@id/datePill5"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toTopOf="@id/datePill5"
+                                app:tint="#757575" />
+
+                            <TextView
+                                android:id="@+id/tvTitle5"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="16dp"
+                                android:fontFamily="sans-serif-medium"
+                                android:text="Mathematics Calculus"
+                                android:textColor="#1E1E1E"
+                                android:textSize="18sp"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@id/datePill5" />
 
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
+                                android:layout_marginTop="16dp"
                                 android:orientation="horizontal"
-                                android:gravity="center_vertical"
-                                android:layout_marginBottom="8dp">
-
-                                <TextView
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:text="Mathematics Calculus"
-                                    android:textSize="18sp"
-                                    android:textStyle="bold"
-                                    android:textColor="#1C1C1C"/>
-
-                                <ImageView
-                                    android:layout_width="16dp"
-                                    android:layout_height="16dp"
-                                    android:src="@drawable/ic_more_vert"
-                                    android:tint="#8B8B8B"/>
-
-                            </LinearLayout>
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="horizontal">
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@id/tvTitle5">
 
                                 <LinearLayout
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:orientation="horizontal"
                                     android:gravity="center_vertical"
-                                    android:layout_marginEnd="24dp">
+                                    android:orientation="horizontal">
 
                                     <View
                                         android:layout_width="8dp"
                                         android:layout_height="8dp"
-                                        android:background="@drawable/dot_active"
-                                        android:layout_marginEnd="8dp"/>
+                                        android:background="@drawable/circle_dot_cyan" />
 
                                     <TextView
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:text="Marks: 88/120"
-                                        android:textSize="14sp"
-                                        android:textColor="#1C1C1C"/>
+                                        android:layout_marginStart="6dp"
+                                        android:text="Marks: "
+                                        android:textColor="#616161"
+                                        android:textSize="13sp" />
 
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="88"
+                                        android:textColor="#1E1E1E"
+                                        android:textSize="13sp"
+                                        android:textStyle="bold" />
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="/120"
+                                        android:textColor="#757575"
+                                        android:textSize="11sp" />
                                 </LinearLayout>
 
                                 <LinearLayout
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:orientation="horizontal"
-                                    android:gravity="center_vertical">
+                                    android:layout_marginStart="24dp"
+                                    android:gravity="center_vertical"
+                                    android:orientation="horizontal">
 
                                     <View
                                         android:layout_width="8dp"
                                         android:layout_height="8dp"
-                                        android:background="@drawable/dot_inactive"
-                                        android:layout_marginEnd="8dp"/>
+                                        android:background="@drawable/circle_dot_gold" />
 
                                     <TextView
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:text="Accuracy: 73.3%"
-                                        android:textSize="14sp"
-                                        android:textColor="#1C1C1C"/>
+                                        android:layout_marginStart="6dp"
+                                        android:text="Accuracy: "
+                                        android:textColor="#616161"
+                                        android:textSize="13sp" />
 
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="73.3%"
+                                        android:textColor="#1E1E1E"
+                                        android:textSize="13sp"
+                                        android:textStyle="bold" />
                                 </LinearLayout>
 
                             </LinearLayout>
-
-                        </LinearLayout>
+                        </androidx.constraintlayout.widget.ConstraintLayout>
 
                     </com.google.android.material.card.MaterialCardView>
 
@@ -818,118 +934,141 @@
                     <com.google.android.material.card.MaterialCardView
                         android:layout_width="320dp"
                         android:layout_height="wrap_content"
-                        app:cardCornerRadius="20dp"
+                        app:cardCornerRadius="16dp"
                         app:cardElevation="0dp"
-                        android:backgroundTint="#FFFFFF"
-                        app:strokeColor="#E0E0E0"
+                        app:cardBackgroundColor="#FFFFFF"
+                        app:strokeColor="#EEEEEE"
                         app:strokeWidth="1dp">
 
-                        <LinearLayout
+                        <androidx.constraintlayout.widget.ConstraintLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:orientation="vertical"
-                            android:padding="16dp">
+                            android:padding="20dp">
 
                             <LinearLayout
+                                android:id="@+id/datePill6"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:orientation="horizontal"
+                                android:background="@drawable/bg_pill_outline_gray"
                                 android:gravity="center_vertical"
-                                android:background="@drawable/date_section_bg"
-                                android:paddingHorizontal="8dp"
-                                android:paddingVertical="4dp"
-                                android:layout_marginBottom="8dp">
+                                android:orientation="horizontal"
+                                android:paddingHorizontal="12dp"
+                                android:paddingVertical="6dp"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent">
 
                                 <ImageView
-                                    android:layout_width="16dp"
-                                    android:layout_height="16dp"
+                                    android:layout_width="14dp"
+                                    android:layout_height="14dp"
                                     android:src="@drawable/ic_calendar"
-                                    android:layout_marginEnd="6dp"/>
+                                    app:tint="#757575" />
 
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
+                                    android:layout_marginStart="6dp"
                                     android:text="02 May, 2025"
-                                    android:textSize="12sp"
-                                    android:textColor="#8B8B8B"/>
-
+                                    android:textColor="#757575"
+                                    android:textSize="12sp" />
                             </LinearLayout>
+
+                            <ImageView
+                                android:id="@+id/btnMore6"
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:src="@drawable/ic_more_vert"
+                                app:layout_constraintBottom_toBottomOf="@id/datePill6"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toTopOf="@id/datePill6"
+                                app:tint="#757575" />
+
+                            <TextView
+                                android:id="@+id/tvTitle6"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="16dp"
+                                android:fontFamily="sans-serif-medium"
+                                android:text="English Grammar"
+                                android:textColor="#1E1E1E"
+                                android:textSize="18sp"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@id/datePill6" />
 
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
+                                android:layout_marginTop="16dp"
                                 android:orientation="horizontal"
-                                android:gravity="center_vertical"
-                                android:layout_marginBottom="8dp">
-
-                                <TextView
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:text="English Grammar"
-                                    android:textSize="18sp"
-                                    android:textStyle="bold"
-                                    android:textColor="#1C1C1C"/>
-
-                                <ImageView
-                                    android:layout_width="16dp"
-                                    android:layout_height="16dp"
-                                    android:src="@drawable/ic_more_vert"
-                                    android:tint="#8B8B8B"/>
-
-                            </LinearLayout>
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="horizontal">
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@id/tvTitle6">
 
                                 <LinearLayout
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:orientation="horizontal"
                                     android:gravity="center_vertical"
-                                    android:layout_marginEnd="24dp">
+                                    android:orientation="horizontal">
 
                                     <View
                                         android:layout_width="8dp"
                                         android:layout_height="8dp"
-                                        android:background="@drawable/dot_active"
-                                        android:layout_marginEnd="8dp"/>
+                                        android:background="@drawable/circle_dot_cyan" />
 
                                     <TextView
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:text="Marks: 45/60"
-                                        android:textSize="14sp"
-                                        android:textColor="#1C1C1C"/>
+                                        android:layout_marginStart="6dp"
+                                        android:text="Marks: "
+                                        android:textColor="#616161"
+                                        android:textSize="13sp" />
 
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="45"
+                                        android:textColor="#1E1E1E"
+                                        android:textSize="13sp"
+                                        android:textStyle="bold" />
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="/60"
+                                        android:textColor="#757575"
+                                        android:textSize="11sp" />
                                 </LinearLayout>
 
                                 <LinearLayout
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:orientation="horizontal"
-                                    android:gravity="center_vertical">
+                                    android:layout_marginStart="24dp"
+                                    android:gravity="center_vertical"
+                                    android:orientation="horizontal">
 
                                     <View
                                         android:layout_width="8dp"
                                         android:layout_height="8dp"
-                                        android:background="@drawable/dot_inactive"
-                                        android:layout_marginEnd="8dp"/>
+                                        android:background="@drawable/circle_dot_gold" />
 
                                     <TextView
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:text="Accuracy: 75.0%"
-                                        android:textSize="14sp"
-                                        android:textColor="#1C1C1C"/>
+                                        android:layout_marginStart="6dp"
+                                        android:text="Accuracy: "
+                                        android:textColor="#616161"
+                                        android:textSize="13sp" />
 
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="75.0%"
+                                        android:textColor="#1E1E1E"
+                                        android:textSize="13sp"
+                                        android:textStyle="bold" />
                                 </LinearLayout>
 
                             </LinearLayout>
-
-                        </LinearLayout>
+                        </androidx.constraintlayout.widget.ConstraintLayout>
 
                     </com.google.android.material.card.MaterialCardView>
 

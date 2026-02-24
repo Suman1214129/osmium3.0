@@ -9,45 +9,54 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.osmiumai.app.databinding.ActivityMockTestBinding
 
+data class MockQuestion(val id: Int, val subject: String, val questionText: String, val optionA: String, val optionB: String, val optionC: String, val optionD: String)
+
 class MockTestActivity : AppCompatActivity() {
     
     private lateinit var binding: ActivityMockTestBinding
     private var countDownTimer: CountDownTimer? = null
-    private val testDurationMillis = 3 * 60 * 60 * 1000L // 3 hours in milliseconds
-    private var selectedOption: Int = -1 // -1 means no option selected, 0=A, 1=B, 2=C, 3=D
+    private var currentSubject = 0
+    private var currentQuestionIndex = 0
+    private val userAnswers = mutableMapOf<Int, Int>()
     
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMockTestBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        
-        // Hide action bar
         supportActionBar?.hide()
-        
         setupUI()
         setupTabClickListeners()
         setupOptionClickListeners()
         startTimer()
+        loadQuestion()
+    }
+    
+    private fun getQuestion(subject: Int, index: Int): MockQuestion {
+        val id = subject * 25 + index + 1
+        return when(subject) {
+            0 -> MockQuestion(id, "Physics", "Question ${index+1}: A particle moves with constant acceleration. Find the acceleration.", "1 m/s²", "2 m/s²", "3 m/s²", "4 m/s²")
+            1 -> MockQuestion(id, "Chemistry", "Question ${index+1}: What is the atomic number of Carbon?", "4", "6", "8", "12")
+            else -> MockQuestion(id, "Mathematics", "Question ${index+1}: What is the value of π (pi)?", "3.14", "2.71", "1.41", "1.73")
+        }
     }
     
     private fun setupUI() {
         binding.submitButton.setOnClickListener {
             startActivity(Intent(this, TestAnalyticsActivity::class.java))
         }
-        
         binding.previousButton.setOnClickListener {
-            // Handle previous question
+            if (currentQuestionIndex > 0) {
+                currentQuestionIndex--
+                loadQuestion()
+            }
         }
-        
         binding.nextButton.setOnClickListener {
-            // Handle next question
+            if (currentQuestionIndex < 24) {
+                currentQuestionIndex++
+                loadQuestion()
+            }
         }
-        
-        binding.menuIcon.setOnClickListener {
-            toggleSidebar()
-        }
-        
-        // Close sidebar when clicking outside (on the root layout)
+        binding.menuIcon.setOnClickListener { toggleSidebar() }
         binding.root.setOnClickListener {
             if (binding.sidebar.translationX == 0f) {
                 closeSidebar()
@@ -55,11 +64,22 @@ class MockTestActivity : AppCompatActivity() {
         }
     }
     
+    private fun loadQuestion() {
+        val question = getQuestion(currentSubject, currentQuestionIndex)
+        val scrollView = binding.root.getChildAt(0) as? android.view.ViewGroup
+        val mainLayout = scrollView?.getChildAt(1) as? android.widget.ScrollView
+        val contentLayout = mainLayout?.getChildAt(0) as? android.widget.LinearLayout
+        (contentLayout?.getChildAt(0) as? TextView)?.text = question.questionText
+        val optionsContainer = contentLayout?.getChildAt(1) as? android.widget.LinearLayout
+        ((optionsContainer?.getChildAt(0) as? android.widget.LinearLayout)?.getChildAt(1) as? TextView)?.text = question.optionA
+        ((optionsContainer?.getChildAt(2) as? android.widget.LinearLayout)?.getChildAt(1) as? TextView)?.text = question.optionB
+        ((optionsContainer?.getChildAt(4) as? android.widget.LinearLayout)?.getChildAt(1) as? TextView)?.text = question.optionC
+        ((optionsContainer?.getChildAt(6) as? android.widget.LinearLayout)?.getChildAt(1) as? TextView)?.text = question.optionD
+        userAnswers[question.id]?.let { selectOption(it) } ?: clearOptionSelection()
+    }
+    
     private fun toggleSidebar() {
-        val sidebar = binding.sidebar
-        val isVisible = sidebar.translationX == 0f
-        
-        if (isVisible) {
+        if (binding.sidebar.translationX == 0f) {
             closeSidebar()
         } else {
             openSidebar()
@@ -67,39 +87,45 @@ class MockTestActivity : AppCompatActivity() {
     }
     
     private fun openSidebar() {
-        binding.sidebar.animate()
-            .translationX(0f)
-            .setDuration(300)
-            .start()
+        binding.sidebar.animate().translationX(0f).setDuration(300).start()
     }
     
     private fun closeSidebar() {
-        binding.sidebar.animate()
-            .translationX(320f * resources.displayMetrics.density)
-            .setDuration(300)
-            .start()
+        binding.sidebar.animate().translationX(320f * resources.displayMetrics.density).setDuration(300).start()
     }
     
     private fun setupOptionClickListeners() {
-        binding.optionA.setOnClickListener { selectOption(0) }
-        binding.optionB.setOnClickListener { selectOption(1) }
-        binding.optionC.setOnClickListener { selectOption(2) }
-        binding.optionD.setOnClickListener { selectOption(3) }
+        binding.optionA.setOnClickListener { 
+            userAnswers[getQuestion(currentSubject, currentQuestionIndex).id] = 0
+            selectOption(0) 
+        }
+        binding.optionB.setOnClickListener { 
+            userAnswers[getQuestion(currentSubject, currentQuestionIndex).id] = 1
+            selectOption(1) 
+        }
+        binding.optionC.setOnClickListener { 
+            userAnswers[getQuestion(currentSubject, currentQuestionIndex).id] = 2
+            selectOption(2) 
+        }
+        binding.optionD.setOnClickListener { 
+            userAnswers[getQuestion(currentSubject, currentQuestionIndex).id] = 3
+            selectOption(3) 
+        }
     }
     
-    private fun selectOption(optionIndex: Int) {
-        // Reset all options
+    private fun clearOptionSelection() {
         binding.optionACircle.setBackgroundResource(R.drawable.bg_option_circle)
         binding.optionBCircle.setBackgroundResource(R.drawable.bg_option_circle)
         binding.optionCCircle.setBackgroundResource(R.drawable.bg_option_circle)
         binding.optionDCircle.setBackgroundResource(R.drawable.bg_option_circle)
-        binding.optionACircle.setTextColor(ContextCompat.getColor(this, android.R.color.darker_gray))
-        binding.optionBCircle.setTextColor(ContextCompat.getColor(this, android.R.color.darker_gray))
-        binding.optionCCircle.setTextColor(ContextCompat.getColor(this, android.R.color.darker_gray))
-        binding.optionDCircle.setTextColor(ContextCompat.getColor(this, android.R.color.darker_gray))
-        
-        // Set selected option
-        selectedOption = optionIndex
+        binding.optionACircle.setTextColor(android.graphics.Color.parseColor("#6F6F6F"))
+        binding.optionBCircle.setTextColor(android.graphics.Color.parseColor("#6F6F6F"))
+        binding.optionCCircle.setTextColor(android.graphics.Color.parseColor("#6F6F6F"))
+        binding.optionDCircle.setTextColor(android.graphics.Color.parseColor("#6F6F6F"))
+    }
+    
+    private fun selectOption(optionIndex: Int) {
+        clearOptionSelection()
         when (optionIndex) {
             0 -> {
                 binding.optionACircle.setBackgroundResource(R.drawable.bg_option_selected)
@@ -121,55 +147,61 @@ class MockTestActivity : AppCompatActivity() {
     }
     
     private fun startTimer() {
-        countDownTimer = object : CountDownTimer(testDurationMillis, 1000) {
+        countDownTimer = object : CountDownTimer(3 * 60 * 60 * 1000L, 1000) {
             override fun onTick(millisUntilFinished: Long) {
                 val hours = millisUntilFinished / (1000 * 60 * 60)
                 val minutes = (millisUntilFinished % (1000 * 60 * 60)) / (1000 * 60)
                 val seconds = (millisUntilFinished % (1000 * 60)) / 1000
-                
-                val timeString = String.format("%02d:%02d:%02d", hours, minutes, seconds)
-                binding.timerText.text = timeString
+                binding.timerText.text = String.format("%02d:%02d:%02d", hours, minutes, seconds)
             }
-            
-            override fun onFinish() {
-                binding.timerText.text = "00:00:00"
-                // Auto-submit test when timer ends
-            }
+            override fun onFinish() { binding.timerText.text = "00:00:00" }
         }.start()
     }
     
     private fun setupTabClickListeners() {
-        binding.physicsTab.setOnClickListener { selectTab(0) }
-        binding.chemistryTab.setOnClickListener { selectTab(1) }
-        binding.mathsTab.setOnClickListener { selectTab(2) }
+        binding.physicsTab.setOnClickListener { 
+            currentSubject = 0
+            currentQuestionIndex = 0
+            selectTab(0)
+            loadQuestion()
+        }
+        binding.chemistryTab.setOnClickListener { 
+            currentSubject = 1
+            currentQuestionIndex = 0
+            selectTab(1)
+            loadQuestion()
+        }
+        binding.mathsTab.setOnClickListener { 
+            currentSubject = 2
+            currentQuestionIndex = 0
+            selectTab(2)
+            loadQuestion()
+        }
     }
     
     private fun selectTab(tabIndex: Int) {
-        // Reset all tabs
-        binding.physicsText.setTextColor(ContextCompat.getColor(this, android.R.color.darker_gray))
-        binding.chemistryText.setTextColor(ContextCompat.getColor(this, android.R.color.darker_gray))
-        binding.mathsText.setTextColor(ContextCompat.getColor(this, android.R.color.darker_gray))
+        binding.physicsText.setTextColor(android.graphics.Color.parseColor("#8B8B8B"))
+        binding.chemistryText.setTextColor(android.graphics.Color.parseColor("#8B8B8B"))
+        binding.mathsText.setTextColor(android.graphics.Color.parseColor("#8B8B8B"))
         binding.physicsText.setTypeface(null, android.graphics.Typeface.NORMAL)
         binding.chemistryText.setTypeface(null, android.graphics.Typeface.NORMAL)
         binding.mathsText.setTypeface(null, android.graphics.Typeface.NORMAL)
         binding.physicsUnderline.visibility = View.INVISIBLE
         binding.chemistryUnderline.visibility = View.INVISIBLE
         binding.mathsUnderline.visibility = View.INVISIBLE
-        
-        // Set active tab
         when (tabIndex) {
             0 -> {
-                binding.physicsText.setTextColor(ContextCompat.getColor(this, R.color.black))
+                binding.physicsText.setTextColor(android.graphics.Color.parseColor("#1C1C1C"))
                 binding.physicsText.setTypeface(null, android.graphics.Typeface.BOLD)
                 binding.physicsUnderline.visibility = View.VISIBLE
             }
             1 -> {
-                binding.chemistryText.setTextColor(ContextCompat.getColor(this, R.color.black))
+                binding.chemistryText.setTextColor(android.graphics.Color.parseColor("#1C1C1C"))
                 binding.chemistryText.setTypeface(null, android.graphics.Typeface.BOLD)
                 binding.chemistryUnderline.visibility = View.VISIBLE
             }
             2 -> {
-                binding.mathsText.setTextColor(ContextCompat.getColor(this, R.color.black))
+                binding.mathsText.setTextColor(android.graphics.Color.parseColor("#1C1C1C"))
                 binding.mathsText.setTypeface(null, android.graphics.Typeface.BOLD)
                 binding.mathsUnderline.visibility = View.VISIBLE
             }

@@ -45,23 +45,33 @@
                 android:src="@drawable/ic_bell"/>
         </LinearLayout>
 
-        <!-- Greeting -->
-        <TextView
+        <!-- Greeting UPDATED -->
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/libre_baskerville"
-            android:text="Hello"
-            android:textColor="#1B1B1B"
-            android:textSize="30sp" />
+            android:orientation="vertical"
+            android:layout_marginBottom="28dp">
 
-        <TextView
-            android:text="Oracle Khatua"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="30sp"
-            android:fontFamily="@font/public_sans"
-            android:textColor="#989898"
-            android:layout_marginBottom="28dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Hello"
+                android:textColor="#1E1E1E"
+                android:textSize="36sp"
+                android:fontFamily="@font/baskervville"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Oracle Khatua"
+                android:textColor="#9E9E9E"
+                android:textSize="32sp"
+                android:fontFamily="@font/baskervville"
+                android:textStyle="bold|italic" />
+
+        </LinearLayout>
+        
 
         <!-- Start New Course Button -->
         <androidx.cardview.widget.CardView
@@ -137,19 +147,19 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:fontFamily="sans-serif"
                             android:text="See your Analytics"
-                            android:textSize="16sp"
-                            android:fontFamily="@font/libre_baskerville"
-                            android:textColor="#1C1C1C"/>
+                            android:textColor="#333333"
+                            android:textSize="20sp" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Check how's your performance"
-                            android:textSize="13sp"
-                            android:fontFamily="@font/public_sans"
-                            android:textColor="#6F6F6F"
-                            android:layout_marginTop="2dp"/>
+                            android:textSize="15sp"
+                            android:fontFamily="sans-serif"
+                            android:textColor="#78848F"
+                            android:layout_marginTop="4dp"/>
                     </LinearLayout>
 
                     <!-- Arrow -->
@@ -170,7 +180,8 @@
             android:layout_height="wrap_content"
             android:text="Your courses"
             android:textSize="20sp"
-            android:fontFamily="@font/libre_baskerville"
+            android:fontFamily="@font/baskervville"
+            android:textStyle="bold"
             android:textColor="#000000"
             android:layout_marginBottom="4dp" />
 
@@ -246,7 +257,8 @@
                             android:layout_height="wrap_content"
                             android:text="Nuclear Physics"
                             android:textSize="15sp"
-                            android:fontFamily="@font/libre_baskerville"
+                            android:fontFamily="@font/baskervville"
+                            android:textStyle="bold"
                             android:textColor="#1C1C1C"
                             android:lineSpacingExtra="2dp"/>
 
@@ -341,7 +353,8 @@
                             android:layout_height="wrap_content"
                             android:text="Data Structure &amp; Algorithm in Java"
                             android:textSize="15sp"
-                            android:fontFamily="@font/libre_baskerville"
+                            android:fontFamily="@font/baskervville"
+                            android:textStyle="bold"
                             android:textColor="#1C1C1C"
                             android:lineSpacingExtra="2dp"/>
 
@@ -435,7 +448,8 @@
                             android:layout_height="wrap_content"
                             android:text="Java"
                             android:textSize="15sp"
-                            android:fontFamily="@font/libre_baskerville"
+                            android:fontFamily="@font/baskervville"
+                            android:textStyle="bold"
                             android:textColor="#1C1C1C"
                             android:lineSpacingExtra="2dp"/>
 
@@ -489,7 +503,8 @@
             android:layout_height="wrap_content"
             android:text="Recent done tests"
             android:textSize="20sp"
-            android:fontFamily="@font/libre_baskerville"
+            android:fontFamily="@font/baskervville"
+            android:textStyle="bold"
             android:textColor="#000000"
             android:layout_marginBottom="4dp" />
 
@@ -572,7 +587,8 @@
                                     android:layout_height="wrap_content"
                                     android:text="DSA with Java"
                                     android:textSize="16sp"
-                                    android:fontFamily="@font/libre_baskerville"
+                                    android:fontFamily="@font/baskervville"
+                                    android:textStyle="bold"
                                     android:textColor="#1C1C1C"
                                     android:layout_marginTop="2dp"/>
                             </LinearLayout>
@@ -635,7 +651,8 @@
                                     android:layout_height="wrap_content"
                                     android:text="JEE Mains"
                                     android:textSize="16sp"
-                                    android:fontFamily="@font/libre_baskerville"
+                                    android:fontFamily="@font/baskervville"
+                                    android:textStyle="bold"
                                     android:textColor="#1C1C1C"
                                     android:layout_marginTop="2dp"/>
                             </LinearLayout>
@@ -708,7 +725,8 @@
                                     android:layout_height="wrap_content"
                                     android:text="Physics Mock Test"
                                     android:textSize="16sp"
-                                    android:fontFamily="@font/libre_baskerville"
+                                    android:fontFamily="@font/baskervville"
+                                    android:textStyle="bold"
                                     android:textColor="#1C1C1C"
                                     android:layout_marginTop="2dp"/>
                             </LinearLayout>
@@ -771,7 +789,8 @@
                                     android:layout_height="wrap_content"
                                     android:text="Chemistry Test"
                                     android:textSize="16sp"
-                                    android:fontFamily="@font/libre_baskerville"
+                                    android:fontFamily="@font/baskervville"
+                                    android:textStyle="bold"
                                     android:textColor="#1C1C1C"
                                     android:layout_marginTop="2dp"/>
                             </LinearLayout>
@@ -843,7 +862,8 @@
                                     android:layout_height="wrap_content"
                                     android:text="Mathematics"
                                     android:textSize="16sp"
-                                    android:fontFamily="@font/libre_baskerville"
+                                    android:fontFamily="@font/baskervville"
+                                    android:textStyle="bold"
                                     android:textColor="#1C1C1C"
                                     android:layout_marginTop="2dp"/>
                             </LinearLayout>
@@ -906,7 +926,8 @@
                                     android:layout_height="wrap_content"
                                     android:text="Biology Test"
                                     android:textSize="16sp"
-                                    android:fontFamily="@font/libre_baskerville"
+                                    android:fontFamily="@font/baskervville"
+                                    android:textStyle="bold"
                                     android:textColor="#1C1C1C"
                                     android:layout_marginTop="2dp"/>
                             </LinearLayout>
@@ -962,7 +983,8 @@
             android:layout_height="wrap_content"
             android:text="Suggested actions"
             android:textSize="20sp"
-            android:fontFamily="@font/libre_baskerville"
+            android:fontFamily="@font/baskervville"
+            android:textStyle="bold"
             android:textColor="#000000"
             android:layout_marginBottom="4dp" />
 
@@ -1160,7 +1182,8 @@
             android:layout_height="wrap_content"
             android:text="Recommended career path"
             android:textSize="20sp"
-            android:fontFamily="@font/libre_baskerville"
+            android:fontFamily="@font/baskervville"
+            android:textStyle="bold"
             android:textColor="#000000"
             android:layout_marginTop="32dp"
             android:layout_marginBottom="4dp" />
@@ -1219,7 +1242,8 @@
                             android:layout_height="wrap_content"
                             android:text="Software Developer"
                             android:textSize="18sp"
-                            android:fontFamily="@font/libre_baskerville"
+                            android:fontFamily="@font/baskervville"
+                            android:textStyle="bold"
                             android:textColor="#1C1C1C"
                             android:layout_marginBottom="8dp"/>
 
@@ -1269,7 +1293,8 @@
                             android:layout_height="wrap_content"
                             android:text="Android Developer"
                             android:textSize="18sp"
-                            android:fontFamily="@font/libre_baskerville"
+                            android:fontFamily="@font/baskervville"
+                            android:textStyle="bold"
                             android:textColor="#1C1C1C"
                             android:layout_marginBottom="8dp"/>
 

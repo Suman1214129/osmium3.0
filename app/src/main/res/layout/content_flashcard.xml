@@ -64,7 +64,8 @@
                     android:text="What is the difference between accuracy and precision?"
                     android:textColor="#FFFFFF"
                     android:textSize="22sp"
-                    android:fontFamily="serif"
+                    android:fontFamily="@font/baskervville"
+                    android:textStyle="bold"
                     android:lineSpacingMultiplier="1.3"
                     android:gravity="top|start"/>
 
