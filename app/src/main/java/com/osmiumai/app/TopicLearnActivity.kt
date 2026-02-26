@@ -8,8 +8,11 @@ import android.view.View
 import android.webkit.WebChromeClient
 import android.widget.PopupWindow
 import android.widget.TextView
+import android.widget.ImageView
+import android.widget.ProgressBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import androidx.lifecycle.lifecycleScope
 import com.osmiumai.app.databinding.ActivityTopicLearnBinding
 import com.osmiumai.app.databinding.DialogLessonSelectorBinding
 import kotlinx.coroutines.CoroutineScope
@@ -17,12 +20,28 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import java.net.URL
+import java.io.File
 
 class TopicLearnActivity : AppCompatActivity() {
     
     private lateinit var binding: ActivityTopicLearnBinding
     private var popupWindow: PopupWindow? = null
     private val youtubeVideoId = "4OVptMIxsT4"
+    private lateinit var ttsService: SarvamTTSService
+    private lateinit var podcastGenerator: PodcastGenerator
+    private var currentAudioFile: File? = null
+    private var isPodcastPlaying = false
+    private var progressUpdateRunnable: Runnable? = null
+    private val handler = android.os.Handler(android.os.Looper.getMainLooper())
+    private var currentSegmentIndex = 0
+    private val segmentDurations = mutableListOf<Int>()
+    private val textViews = mutableListOf<TextView>()
+    private val segmentTexts = listOf(
+        "Today we are discussing a concept that quietly defines whether a product succeeds or fails User-Centric Design. It is a term that is often used but rarely understood in its full depth.",
+        "That is true. Many people assume user-centric design is about making interfaces look clean or visually appealing. In reality it is far more fundamental. It is about designing products around human behavior not assumptions.",
+        "Exactly. At its core user-centric design asks a very simple question What is the user trying to achieve and what stands in their way?",
+        "And answering that requires shifting perspective. Instead of asking What features can we add we need to ask."
+    )
     
     private var currentFlashcardIndex = 0
     private var isShowingAnswer = false
@@ -73,6 +92,8 @@ class TopicLearnActivity : AppCompatActivity() {
         setContentView(binding.root)
         
         supportActionBar?.hide()
+        ttsService = SarvamTTSService(this)
+        podcastGenerator = PodcastGenerator(this, ttsService)
         
         binding.ivBack.setOnClickListener {
             finish()
@@ -121,6 +142,7 @@ class TopicLearnActivity : AppCompatActivity() {
         binding.root.findViewById<View>(R.id.quizContent).visibility = View.GONE
         binding.root.findViewById<View>(R.id.quizResultContent).visibility = View.GONE
         binding.root.findViewById<View>(R.id.flashcardContent).visibility = View.GONE
+        binding.root.findViewById<View>(R.id.qbankContent).visibility = View.GONE
         
         binding.iconLearn.setColorFilter(ContextCompat.getColor(this, R.color.black))
         binding.textLearn.setTextColor(ContextCompat.getColor(this, R.color.black))
@@ -137,6 +159,10 @@ class TopicLearnActivity : AppCompatActivity() {
         binding.iconFlashcard.setColorFilter(ContextCompat.getColor(this, R.color.gray_600))
         binding.textFlashcard.setTextColor(ContextCompat.getColor(this, R.color.gray_600))
         binding.indicatorFlashcard.setBackgroundColor(android.graphics.Color.TRANSPARENT)
+        
+        binding.iconQBank.setColorFilter(ContextCompat.getColor(this, R.color.gray_600))
+        binding.textQBank.setTextColor(ContextCompat.getColor(this, R.color.gray_600))
+        binding.indicatorQBank.setBackgroundColor(android.graphics.Color.TRANSPARENT)
     }
     
     private fun switchToPodcast() {
@@ -145,6 +171,7 @@ class TopicLearnActivity : AppCompatActivity() {
         binding.root.findViewById<View>(R.id.quizContent).visibility = View.GONE
         binding.root.findViewById<View>(R.id.quizResultContent).visibility = View.GONE
         binding.root.findViewById<View>(R.id.flashcardContent).visibility = View.GONE
+        binding.root.findViewById<View>(R.id.qbankContent).visibility = View.GONE
         
         binding.iconPodcast.setColorFilter(ContextCompat.getColor(this, R.color.black))
         binding.textPodcast.setTextColor(ContextCompat.getColor(this, R.color.black))
@@ -161,6 +188,12 @@ class TopicLearnActivity : AppCompatActivity() {
         binding.iconFlashcard.setColorFilter(ContextCompat.getColor(this, R.color.gray_600))
         binding.textFlashcard.setTextColor(ContextCompat.getColor(this, R.color.gray_600))
         binding.indicatorFlashcard.setBackgroundColor(android.graphics.Color.TRANSPARENT)
+        
+        binding.iconQBank.setColorFilter(ContextCompat.getColor(this, R.color.gray_600))
+        binding.textQBank.setTextColor(ContextCompat.getColor(this, R.color.gray_600))
+        binding.indicatorQBank.setBackgroundColor(android.graphics.Color.TRANSPARENT)
+        
+        setupPodcastControls()
     }
     
     private fun switchToQuiz() {
@@ -169,6 +202,7 @@ class TopicLearnActivity : AppCompatActivity() {
         binding.root.findViewById<View>(R.id.quizContent).visibility = View.VISIBLE
         binding.root.findViewById<View>(R.id.quizResultContent).visibility = View.GONE
         binding.root.findViewById<View>(R.id.flashcardContent).visibility = View.GONE
+        binding.root.findViewById<View>(R.id.qbankContent).visibility = View.GONE
         
         binding.iconQuiz.setColorFilter(ContextCompat.getColor(this, R.color.black))
         binding.textQuiz.setTextColor(ContextCompat.getColor(this, R.color.black))
@@ -185,6 +219,10 @@ class TopicLearnActivity : AppCompatActivity() {
         binding.iconFlashcard.setColorFilter(ContextCompat.getColor(this, R.color.gray_600))
         binding.textFlashcard.setTextColor(ContextCompat.getColor(this, R.color.gray_600))
         binding.indicatorFlashcard.setBackgroundColor(android.graphics.Color.TRANSPARENT)
+        
+        binding.iconQBank.setColorFilter(ContextCompat.getColor(this, R.color.gray_600))
+        binding.textQBank.setTextColor(ContextCompat.getColor(this, R.color.gray_600))
+        binding.indicatorQBank.setBackgroundColor(android.graphics.Color.TRANSPARENT)
         
         loadQuizQuestion()
         setupQuizButtons()
@@ -293,8 +331,228 @@ class TopicLearnActivity : AppCompatActivity() {
         popupWindow?.showAsDropDown(anchorView, 0, 16)
     }
     
+    private fun setupPodcastControls() {
+        binding.root.postDelayed({
+            val podcastContent = binding.root.findViewById<View>(R.id.podcastContent)
+            val playButton = podcastContent?.findViewById<ImageView>(R.id.btnPlayPodcast)
+            val progressBar = podcastContent?.findViewById<android.widget.SeekBar>(R.id.podcastProgressBar)
+            val btnForward = podcastContent?.findViewById<ImageView>(R.id.btnForward)
+            val btnBackward = podcastContent?.findViewById<ImageView>(R.id.btnBackward)
+            
+            textViews.clear()
+            textViews.add(podcastContent?.findViewById(R.id.text1)!!)
+            textViews.add(podcastContent?.findViewById(R.id.text2)!!)
+            textViews.add(podcastContent?.findViewById(R.id.text3)!!)
+            textViews.add(podcastContent?.findViewById(R.id.text4)!!)
+            
+            // Initialize text views with gray color
+            textViews.forEachIndexed { index, textView ->
+                textView.text = segmentTexts[index]
+                textView.setTextColor(0xFF757575.toInt())
+            }
+            
+            playButton?.setOnClickListener {
+                lifecycleScope.launch {
+                    if (currentAudioFile == null) {
+                        val segments = listOf(
+                            PodcastSegment("Today we are discussing a concept that quietly defines whether a product succeeds or fails User-Centric Design. It is a term that is often used but rarely understood in its full depth.", "shubh"),
+                            PodcastSegment("That is true. Many people assume user-centric design is about making interfaces look clean or visually appealing. In reality it is far more fundamental. It is about designing products around human behavior not assumptions.", "roopa"),
+                            PodcastSegment("Exactly. At its core user-centric design asks a very simple question What is the user trying to achieve and what stands in their way?", "shubh"),
+                            PodcastSegment("And answering that requires shifting perspective. Instead of asking What features can we add we need to ask.", "roopa")
+                        )
+                        
+                        val result = podcastGenerator.generatePodcast(segments)
+                        result.onSuccess { file ->
+                            currentAudioFile = file
+                            ttsService.playAudio(file, 
+                                onCompletion = {
+                                    isPodcastPlaying = false
+                                    playButton.setImageResource(R.drawable.ic_play_podcast)
+                                    stopProgressUpdate()
+                                    resetHighlight()
+                                }
+                            )
+                            // Use actual segment durations from generator
+                            handler.postDelayed({
+                                segmentDurations.clear()
+                                segmentDurations.addAll(podcastGenerator.segmentDurations)
+                                android.util.Log.d("Podcast", "Actual durations: $segmentDurations")
+                            }, 500)
+                            playButton.setImageResource(R.drawable.ic_pause)
+                            isPodcastPlaying = true
+                            startProgressUpdate(progressBar)
+                        }
+                    } else {
+                        if (isPodcastPlaying) {
+                            ttsService.pauseAudio()
+                            playButton.setImageResource(R.drawable.ic_play_podcast)
+                            isPodcastPlaying = false
+                            stopProgressUpdate()
+                        } else {
+                            if (ttsService.getCurrentPosition() > 0) {
+                                ttsService.resumeAudio()
+                            } else {
+                                ttsService.playAudio(currentAudioFile!!) {
+                                    isPodcastPlaying = false
+                                    playButton.setImageResource(R.drawable.ic_play_podcast)
+                                    stopProgressUpdate()
+                                    resetHighlight()
+                                }
+                            }
+                            playButton.setImageResource(R.drawable.ic_pause)
+                            isPodcastPlaying = true
+                            startProgressUpdate(progressBar)
+                        }
+                    }
+                }
+            }
+            
+            btnForward?.setOnClickListener {
+                val newPosition = ttsService.getCurrentPosition() + 10000
+                ttsService.seekTo(newPosition.coerceAtMost(ttsService.getDuration()))
+            }
+            
+            btnBackward?.setOnClickListener {
+                val newPosition = ttsService.getCurrentPosition() - 10000
+                ttsService.seekTo(newPosition.coerceAtLeast(0))
+            }
+            
+            progressBar?.setOnSeekBarChangeListener(object : android.widget.SeekBar.OnSeekBarChangeListener {
+                override fun onProgressChanged(seekBar: android.widget.SeekBar?, progress: Int, fromUser: Boolean) {
+                    if (fromUser) {
+                        val newPosition = (ttsService.getDuration() * progress / 100)
+                        ttsService.seekTo(newPosition)
+                    }
+                }
+                override fun onStartTrackingTouch(seekBar: android.widget.SeekBar?) {}
+                override fun onStopTrackingTouch(seekBar: android.widget.SeekBar?) {}
+            })
+        }, 100)
+    }
+    
+    private fun calculateSegmentDurations() {
+        val duration = ttsService.getDuration()
+        val segmentDuration = duration / 4
+        segmentDurations.clear()
+        repeat(4) { segmentDurations.add(segmentDuration) }
+    }
+    
+    private fun highlightCurrentSegment(position: Int) {
+        if (segmentDurations.isEmpty() || textViews.isEmpty()) {
+            android.util.Log.d("Podcast", "Skipping highlight - durations: ${segmentDurations.size}, views: ${textViews.size}")
+            return
+        }
+        
+        var accumulated = 0
+        for (i in segmentDurations.indices) {
+            accumulated += segmentDurations[i]
+            if (position < accumulated) {
+                if (currentSegmentIndex != i) {
+                    currentSegmentIndex = i
+                    android.util.Log.d("Podcast", "Switching to segment $i")
+                    scrollToSegment(i)
+                }
+                val segmentStart = accumulated - segmentDurations[i]
+                val segmentProgress = (position - segmentStart).toFloat() / segmentDurations[i]
+                android.util.Log.d("Podcast", "Segment $i progress: $segmentProgress, position: $position")
+                updateWordHighlight(i, segmentProgress)
+                break
+            }
+        }
+    }
+    
+    private fun updateWordHighlight(index: Int, progress: Float) {
+        val textView = textViews.getOrNull(index) ?: return
+        val text = segmentTexts.getOrNull(index) ?: return
+        val words = text.split(" ")
+        val currentWordIndex = (words.size * progress).toInt().coerceIn(0, words.size - 1)
+        
+        android.util.Log.d("Podcast", "Highlighting segment $index, word $currentWordIndex/${words.size}")
+        
+        val spannable = android.text.SpannableString(text)
+        var charIndex = 0
+        
+        words.forEachIndexed { wordIndex, word ->
+            val start = charIndex
+            val end = charIndex + word.length
+            
+            if (wordIndex <= currentWordIndex) {
+                spannable.setSpan(
+                    android.text.style.BackgroundColorSpan(0xFFF3E1D7.toInt()),
+                    start, end,
+                    android.text.Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+                )
+                spannable.setSpan(
+                    android.text.style.ForegroundColorSpan(0xFF1E1E1E.toInt()),
+                    start, end,
+                    android.text.Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+                )
+            } else {
+                spannable.setSpan(
+                    android.text.style.ForegroundColorSpan(0xFF757575.toInt()),
+                    start, end,
+                    android.text.Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+                )
+            }
+            
+            charIndex = end + 1
+        }
+        
+        textView.text = spannable
+    }
+    
+    private fun resetHighlight() {
+        textViews.forEachIndexed { index, textView ->
+            textView.text = segmentTexts[index]
+            textView.setTextColor(0xFF757575.toInt())
+        }
+        currentSegmentIndex = 0
+    }
+    
+    private fun scrollToSegment(index: Int) {
+        val podcastContent = binding.root.findViewById<View>(R.id.podcastContent)
+        val scrollView = podcastContent?.findViewById<androidx.core.widget.NestedScrollView>(R.id.podcastScrollView)
+        val textView = textViews.getOrNull(index)
+        
+        textView?.let {
+            scrollView?.post {
+                val location = IntArray(2)
+                it.getLocationInWindow(location)
+                val scrollViewLocation = IntArray(2)
+                scrollView.getLocationInWindow(scrollViewLocation)
+                val relativeTop = location[1] - scrollViewLocation[1]
+                scrollView.smoothScrollTo(0, scrollView.scrollY + relativeTop - 150)
+            }
+        }
+    }
+    
+    private fun startProgressUpdate(progressBar: android.widget.SeekBar?) {
+        progressUpdateRunnable = object : Runnable {
+            override fun run() {
+                if (isPodcastPlaying) {
+                    val duration = ttsService.getDuration()
+                    val position = ttsService.getCurrentPosition()
+                    if (duration > 0) {
+                        val progress = (position * 100 / duration)
+                        progressBar?.progress = progress
+                        highlightCurrentSegment(position)
+                    }
+                    handler.postDelayed(this, 100)
+                }
+            }
+        }
+        handler.post(progressUpdateRunnable!!)
+    }
+    
+    private fun stopProgressUpdate() {
+        progressUpdateRunnable?.let { handler.removeCallbacks(it) }
+    }
+
+    
     override fun onDestroy() {
         super.onDestroy()
+        stopProgressUpdate()
+        ttsService.release()
         popupWindow?.dismiss()
         val videoWebView = binding.root.findViewById<android.webkit.WebView>(R.id.videoWebView)
         videoWebView?.destroy()
@@ -605,8 +863,8 @@ class TopicLearnActivity : AppCompatActivity() {
         val seeAnswer = flashcardContent.findViewById<TextView>(R.id.seeAnswer)
         val divider = flashcardContent.findViewById<View>(R.id.divider)
         
-        cardView.animate().scaleX(0.95f).scaleY(0.95f).setDuration(80).withEndAction {
-            cardView.animate().rotationY(90f).setDuration(120).withEndAction {
+        cardView.animate().scaleX(0.95f).scaleY(0.95f).setDuration(200).withEndAction {
+            cardView.animate().rotationY(90f).setDuration(300).withEndAction {
                 if (isShowingAnswer) {
                     flashcardText.text = flashcards[currentFlashcardIndex].first
                     flashcardText.setTextColor(ContextCompat.getColor(this, R.color.white))
@@ -625,8 +883,8 @@ class TopicLearnActivity : AppCompatActivity() {
                     isShowingAnswer = true
                 }
                 cardView.rotationY = -90f
-                cardView.animate().rotationY(0f).setDuration(120).withEndAction {
-                    cardView.animate().scaleX(1f).scaleY(1f).setDuration(80).start()
+                cardView.animate().rotationY(0f).setDuration(300).withEndAction {
+                    cardView.animate().scaleX(1f).scaleY(1f).setDuration(200).start()
                 }.start()
             }.start()
         }.start()

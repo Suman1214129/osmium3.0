@@ -153,7 +153,7 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:id="@+id/tabQuiz"
+                    android:id="@+id/tabQBank"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
@@ -171,24 +171,24 @@
                         android:paddingBottom="8dp">
 
                         <ImageView
-                            android:id="@+id/iconQuiz"
+                            android:id="@+id/iconQBank"
                             android:layout_width="18dp"
                             android:layout_height="18dp"
-                            android:src="@drawable/ic_brain"
+                            android:src="@drawable/ic_question_bank"
                             app:tint="#757575"/>
 
                         <TextView
-                            android:id="@+id/textQuiz"
+                            android:id="@+id/textQBank"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="6dp"
-                            android:text="Quiz"
+                            android:text="Q. Bank"
                             android:textColor="#757575"
                             android:textSize="15sp"/>
                     </LinearLayout>
                     
                     <View
-                        android:id="@+id/indicatorQuiz"
+                        android:id="@+id/indicatorQBank"
                         android:layout_width="match_parent"
                         android:layout_height="2dp"
                         android:background="#00000000"/>
@@ -237,7 +237,7 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:id="@+id/tabQBank"
+                    android:id="@+id/tabQuiz"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
@@ -254,24 +254,24 @@
                         android:paddingBottom="8dp">
 
                         <ImageView
-                            android:id="@+id/iconQBank"
+                            android:id="@+id/iconQuiz"
                             android:layout_width="18dp"
                             android:layout_height="18dp"
-                            android:src="@drawable/ic_question_bank"
+                            android:src="@drawable/ic_brain"
                             app:tint="#757575"/>
 
                         <TextView
-                            android:id="@+id/textQBank"
+                            android:id="@+id/textQuiz"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="6dp"
-                            android:text="Q. Bank"
+                            android:text="Quiz"
                             android:textColor="#757575"
                             android:textSize="15sp"/>
                     </LinearLayout>
                     
                     <View
-                        android:id="@+id/indicatorQBank"
+                        android:id="@+id/indicatorQuiz"
                         android:layout_width="match_parent"
                         android:layout_height="2dp"
                         android:background="#00000000"/>

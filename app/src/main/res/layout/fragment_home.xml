@@ -1210,11 +1210,14 @@
 
                 <!-- Software Developer Card -->
                 <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/careerCardSoftware"
                     android:layout_width="240dp"
                     android:layout_height="wrap_content"
                     app:cardCornerRadius="12dp"
                     app:cardElevation="0dp"
                     android:backgroundTint="#F1F0EC"
+                    android:clickable="true"
+                    android:focusable="true"
                     android:layout_marginEnd="16dp">
 
                     <LinearLayout
@@ -1262,11 +1265,14 @@
 
                 <!-- Android Developer Card -->
                 <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/careerCardAndroid"
                     android:layout_width="240dp"
                     android:layout_height="wrap_content"
                     app:cardCornerRadius="12dp"
                     app:cardElevation="0dp"
-                    android:backgroundTint="#F1F0EC">
+                    android:backgroundTint="#F1F0EC"
+                    android:clickable="true"
+                    android:focusable="true">
 
                     <LinearLayout
                         android:layout_width="match_parent"

@@ -4,6 +4,9 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
 
     <application
         android:allowBackup="true"
@@ -18,10 +21,14 @@
         <activity
             android:name="com.osmiumai.app.MainActivity"
             android:exported="true"
+            android:windowSoftInputMode="adjustPan"
             android:label="@string/app_name">
         </activity>
         <activity
             android:name="com.osmiumai.app.DescribeYouActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.osmiumai.app.PlanSelectionActivity"
             android:exported="false" />
         <activity
             android:name="com.osmiumai.app.ProfileDetailsActivity"
@@ -43,7 +50,8 @@
             android:exported="false" />
         <activity
             android:name="com.osmiumai.app.WelcomeActivity"
-            android:exported="true">
+            android:exported="true"
+            android:theme="@style/Theme.Susu.Splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -107,10 +115,23 @@
         <activity
             android:name="com.osmiumai.app.ui.notifications.NotificationsActivity"
             android:exported="false" />
+        <activity
+            android:name="com.osmiumai.app.CareerRoadmapActivity"
+            android:exported="false" />
 
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.provider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
     </application>
 
 </manifest>

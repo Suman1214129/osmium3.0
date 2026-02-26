@@ -1,0 +1,12 @@
+// Example: How to launch CareerRoadmapActivity from career card clicks
+// Add this code in your Fragment/Activity where career cards are displayed
+
+// In your adapter or click listener:
+careerCard.setOnClickListener {
+    val intent = Intent(context, CareerRoadmapActivity::class.java)
+    intent.putExtra("CAREER_TITLE", "Frontend Developer") // Pass the career title
+    context.startActivity(intent)
+}
+
+// For different career paths, just change the title:
+// "Backend Developer", "Data Scientist", "Mobile Developer", etc.

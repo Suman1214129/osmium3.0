@@ -3,6 +3,7 @@ package com.osmiumai.app
 import android.content.Intent
 import android.os.Bundle
 import android.text.InputType
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.osmiumai.app.databinding.ActivityLoginBinding
 
@@ -32,6 +33,20 @@ class LoginActivity : AppCompatActivity() {
         }
 
         binding.fabNext.setOnClickListener {
+            val phoneNumber = binding.etPhone.text.toString().trim()
+            val password = binding.etPassword.text.toString().trim()
+            if (phoneNumber.isEmpty()) {
+                Toast.makeText(this, "Please enter phone number", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+            if (phoneNumber.length != 10) {
+                Toast.makeText(this, "Phone number must be exactly 10 digits", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+            if (password.isEmpty()) {
+                Toast.makeText(this, "Please enter password", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
             startActivity(Intent(this, MainActivity::class.java))
             finish()
         }

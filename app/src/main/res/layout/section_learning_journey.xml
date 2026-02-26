@@ -51,13 +51,13 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="8dp"
-            android:background="@drawable/bg_chip_selected"
+            android:background="@drawable/bg_chip_unselected"
             android:clickable="true"
             android:focusable="true"
             android:paddingHorizontal="16dp"
             android:paddingVertical="8dp"
             android:text="School Student"
-            android:textColor="#FFFFFF"
+            android:textColor="#616161"
             android:textSize="13sp" />
 
         <LinearLayout

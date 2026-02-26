@@ -3,6 +3,7 @@ package com.osmiumai.app
 import android.content.Intent
 import android.os.Bundle
 import android.text.InputType
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.osmiumai.app.databinding.ActivityLoginEmailBinding
 
@@ -32,6 +33,20 @@ class LoginEmailActivity : AppCompatActivity() {
         }
 
         binding.fabNext.setOnClickListener {
+            val email = binding.etEmail.text.toString().trim()
+            val password = binding.etPassword.text.toString().trim()
+            if (email.isEmpty()) {
+                Toast.makeText(this, "Please enter email", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+            if (!android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+                Toast.makeText(this, "Please enter valid email", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+            if (password.isEmpty()) {
+                Toast.makeText(this, "Please enter password", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
             startActivity(Intent(this, MainActivity::class.java))
             finish()
         }

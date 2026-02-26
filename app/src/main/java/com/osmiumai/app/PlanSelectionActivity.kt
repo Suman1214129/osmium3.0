@@ -1,22 +1,28 @@
-package com.osmiumai.app.ui.settings
+package com.osmiumai.app
 
+import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
-import android.view.View
+import android.util.Log
 import android.widget.Toast
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager2.widget.ViewPager2
-import com.osmiumai.app.R
-import com.osmiumai.app.databinding.ActivitySubscriptionBinding
+import com.osmiumai.app.databinding.ActivityPlanSelectionBinding
+import com.osmiumai.app.ui.settings.PlanData
+import com.osmiumai.app.ui.settings.PlansPagerAdapter
+import com.razorpay.Checkout
+import com.razorpay.PaymentResultListener
+import org.json.JSONObject
 
-class SubscriptionActivity : AppCompatActivity() {
+class PlanSelectionActivity : AppCompatActivity(), PaymentResultListener {
 
-    private lateinit var binding: ActivitySubscriptionBinding
+    private lateinit var binding: ActivityPlanSelectionBinding
     private lateinit var adapter: PlansPagerAdapter
+    private var selectedPlan: PlanData? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivitySubscriptionBinding.inflate(layoutInflater)
+        binding = ActivityPlanSelectionBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         supportActionBar?.hide()
@@ -35,7 +41,7 @@ class SubscriptionActivity : AppCompatActivity() {
                 feature2 = "Limited downloads",
                 feature3 = "Basic support",
                 idealFor = "Beginners",
-                buttonText = "Current Plan"
+                buttonText = "Start Free"
             ),
             PlanData(
                 name = "Premium",
@@ -45,7 +51,7 @@ class SubscriptionActivity : AppCompatActivity() {
                 feature2 = "Unlimited downloads",
                 feature3 = "Priority support",
                 idealFor = "Regular learners",
-                buttonText = "Upgrade Now",
+                buttonText = "Get Premium",
                 showBadge = true
             ),
             PlanData(
@@ -56,16 +62,17 @@ class SubscriptionActivity : AppCompatActivity() {
                 feature2 = "Offline access",
                 feature3 = "Certification",
                 idealFor = "Professional development",
-                buttonText = "Select Plan"
+                buttonText = "Get Pro"
             )
         )
 
         adapter = PlansPagerAdapter(plans) { plan ->
-            Toast.makeText(this, "Selected ${plan.name} plan", Toast.LENGTH_SHORT).show()
+            selectedPlan = plan
+            handlePlanSelection(plan)
         }
 
         binding.viewPagerPlans.adapter = adapter
-        binding.viewPagerPlans.setCurrentItem(2, false)
+        binding.viewPagerPlans.setCurrentItem(1, false)
 
         binding.viewPagerPlans.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
             override fun onPageSelected(position: Int) {
@@ -73,7 +80,7 @@ class SubscriptionActivity : AppCompatActivity() {
             }
         })
 
-        updateDots(2)
+        updateDots(1)
     }
 
     private fun updateDots(position: Int) {
@@ -106,20 +113,60 @@ class SubscriptionActivity : AppCompatActivity() {
 
     private fun setupClickListeners() {
         binding.btnBack.setOnClickListener { finish() }
+    }
 
-        binding.btnCancelSubscription.setOnClickListener {
-            showCancelDialog()
+    private fun handlePlanSelection(plan: PlanData) {
+        when (plan.name) {
+            "Basic" -> {
+                // Free plan - navigate directly
+                navigateToHome()
+            }
+            "Premium" -> {
+                // Premium plan - initiate payment
+                startRazorpayPayment(999, "Premium Plan")
+            }
+            "Pro" -> {
+                // Pro plan - initiate payment
+                startRazorpayPayment(9999, "Pro Plan")
+            }
         }
     }
 
-    private fun showCancelDialog() {
-        AlertDialog.Builder(this)
-            .setTitle("Cancel Subscription")
-            .setMessage("Are you sure you want to cancel your subscription? You will lose access to premium features.")
-            .setPositiveButton("Cancel Subscription") { _, _ ->
-                Toast.makeText(this, "Subscription cancelled", Toast.LENGTH_SHORT).show()
-            }
-            .setNegativeButton("Keep Subscription", null)
-            .show()
+    private fun startRazorpayPayment(amount: Int, planName: String) {
+        val checkout = Checkout()
+        checkout.setKeyID("rzp_test_SKT1GVrIMucXHH")
+
+        try {
+            val options = JSONObject()
+            options.put("name", "Osmium AI")
+            options.put("description", planName)
+            options.put("currency", "INR")
+            options.put("amount", amount * 100)
+            options.put("theme.color", "#3399cc")
+            
+            val prefill = JSONObject()
+            prefill.put("email", "user@example.com")
+            prefill.put("contact", "9999999999")
+            options.put("prefill", prefill)
+
+            checkout.open(this, options)
+        } catch (e: Exception) {
+            Toast.makeText(this, "Error: ${e.message}", Toast.LENGTH_SHORT).show()
+            Log.e("RazorpayError", e.message ?: "Unknown error")
+        }
+    }
+
+    override fun onPaymentSuccess(razorpayPaymentId: String?) {
+        Toast.makeText(this, "Payment Successful: $razorpayPaymentId", Toast.LENGTH_LONG).show()
+        navigateToHome()
+    }
+
+    override fun onPaymentError(code: Int, response: String?) {
+        Toast.makeText(this, "Payment Failed: $response", Toast.LENGTH_LONG).show()
+    }
+
+    private fun navigateToHome() {
+        startActivity(Intent(this, MainActivity::class.java))
+        finishAffinity()
     }
 }

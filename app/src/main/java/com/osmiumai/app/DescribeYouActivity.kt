@@ -7,6 +7,7 @@ import android.widget.EditText
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.osmiumai.app.databinding.ActivityDescribeYouBinding
@@ -14,7 +15,9 @@ import com.osmiumai.app.databinding.ActivityDescribeYouBinding
 class DescribeYouActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityDescribeYouBinding
-    private var selectedChip: TextView? = null
+    private var selectedLearningChip: TextView? = null
+    private var selectedSkillChip: TextView? = null
+    private var selectedCareerChip: TextView? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,7 +27,7 @@ class DescribeYouActivity : AppCompatActivity() {
         binding = ActivityDescribeYouBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        setupChips()
+        setupLearningChips()
         setupSections()
         setupSkillsChips()
         setupCareerChips()
@@ -34,28 +37,40 @@ class DescribeYouActivity : AppCompatActivity() {
         }
 
         binding.btnGetStarted.setOnClickListener {
-            startActivity(Intent(this, MainActivity::class.java))
+            if (selectedLearningChip == null) {
+                Toast.makeText(this, "Please select your learning journey", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+            if (selectedSkillChip == null) {
+                Toast.makeText(this, "Please select skills you're interested in", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+            if (selectedCareerChip == null) {
+                Toast.makeText(this, "Please select your career path", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+            startActivity(Intent(this, PlanSelectionActivity::class.java))
             finish()
         }
     }
     
-    private fun setupChips() {
+    private fun setupLearningChips() {
         val chips = listOf<TextView>(
             findViewById(R.id.chip1), findViewById(R.id.chip2), findViewById(R.id.chip3), findViewById(R.id.chip4),
             findViewById(R.id.chip5), findViewById(R.id.chip6), findViewById(R.id.chip7), findViewById(R.id.chip8)
         )
         
-        selectedChip = findViewById(R.id.chip1)
-        
         chips.forEach { chip ->
+            chip.setBackgroundResource(R.drawable.bg_chip_unselected)
+            chip.setTextColor(0xFF616161.toInt())
             chip.setOnClickListener {
-                selectedChip?.let { previous ->
+                selectedLearningChip?.let { previous ->
                     previous.setBackgroundResource(R.drawable.bg_chip_unselected)
                     previous.setTextColor(0xFF616161.toInt())
                 }
                 chip.setBackgroundResource(R.drawable.bg_chip_selected)
                 chip.setTextColor(0xFFFFFFFF.toInt())
-                selectedChip = chip
+                selectedLearningChip = chip
             }
         }
     }
@@ -71,6 +86,14 @@ class DescribeYouActivity : AppCompatActivity() {
         
         skillChips.forEach { chip ->
             chip.setOnClickListener {
+                selectedSkillChip?.let { previous ->
+                    previous.setBackgroundResource(R.drawable.bg_chip_unselected)
+                    previous.setTextColor(0xFF616161.toInt())
+                }
+                chip.setBackgroundResource(R.drawable.bg_chip_selected)
+                chip.setTextColor(0xFFFFFFFF.toInt())
+                selectedSkillChip = chip
+                
                 if (chip.id == R.id.chipSkillOther) {
                     etSkillOther.visibility = View.VISIBLE
                 } else {
@@ -91,6 +114,14 @@ class DescribeYouActivity : AppCompatActivity() {
         
         careerChips.forEach { chip ->
             chip.setOnClickListener {
+                selectedCareerChip?.let { previous ->
+                    previous.setBackgroundResource(R.drawable.bg_chip_unselected)
+                    previous.setTextColor(0xFF616161.toInt())
+                }
+                chip.setBackgroundResource(R.drawable.bg_chip_selected)
+                chip.setTextColor(0xFFFFFFFF.toInt())
+                selectedCareerChip = chip
+                
                 if (chip.id == R.id.chipCareerOther) {
                     etCareerOther.visibility = View.VISIBLE
                 } else {

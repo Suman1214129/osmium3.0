@@ -30,6 +30,7 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         setupScrollListener()
         setupClickListeners()
+        setupCareerCardListeners()
     }
 
     private fun setupClickListeners() {
@@ -59,6 +60,22 @@ class HomeFragment : Fragment() {
         
         binding.courseCardJava.setOnClickListener {
             val intent = Intent(requireContext(), com.osmiumai.app.CourseOverviewActivity::class.java)
+            startActivity(intent)
+        }
+    }
+
+    private fun setupCareerCardListeners() {
+        // Software Developer Card
+        view?.findViewById<View>(R.id.careerCardSoftware)?.setOnClickListener {
+            val intent = Intent(requireContext(), com.osmiumai.app.CareerRoadmapActivity::class.java)
+            intent.putExtra("CAREER_TITLE", "Software Developer")
+            startActivity(intent)
+        }
+        
+        // Android Developer Card
+        view?.findViewById<View>(R.id.careerCardAndroid)?.setOnClickListener {
+            val intent = Intent(requireContext(), com.osmiumai.app.CareerRoadmapActivity::class.java)
+            intent.putExtra("CAREER_TITLE", "Android Developer")
             startActivity(intent)
         }
     }

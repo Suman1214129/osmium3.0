@@ -42,41 +42,44 @@
                     android:background="?attr/selectableItemBackgroundBorderless"
                     app:tint="#1E1E1E" />
 
+                <ImageView
+                    android:layout_width="120dp"
+                    android:layout_height="32dp"
+                    android:layout_marginStart="16dp"
+                    android:src="@drawable/osmium"
+                    android:scaleType="fitStart" />
+
                 <View
                     android:layout_width="0dp"
                     android:layout_height="1dp"
                     android:layout_weight="1" />
 
-                <LinearLayout
+                <TextView
+                    android:id="@+id/pro_badge"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal">
-
-                    <ImageView
-                        android:layout_width="120dp"
-                        android:layout_height="32dp"
-                        android:src="@drawable/osmium"
-                        android:scaleType="fitStart"
-                        android:layout_marginEnd="8dp" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/bg_badge_pro"
-                        android:paddingHorizontal="6dp"
-                        android:paddingVertical="2dp"
-                        android:text="PRO"
-                        android:textColor="#5D4037"
-                        android:textSize="10sp"
-                        android:textStyle="bold"
-                        android:letterSpacing="0.05"/>
-                </LinearLayout>
+                    android:background="@drawable/bg_badge_pro"
+                    android:paddingHorizontal="6dp"
+                    android:paddingVertical="2dp"
+                    android:text="PRO"
+                    android:textColor="#5D4037"
+                    android:textSize="10sp"
+                    android:textStyle="bold"
+                    android:letterSpacing="0.05"
+                    android:visibility="gone"/>
             </LinearLayout>
+
+            <ImageView
+                android:layout_width="79dp"
+                android:layout_height="71dp"
+                android:layout_marginTop="80dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/osmium2" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
                 android:fontFamily="@font/baskervville"
                 android:textStyle="bold"
                 android:text="Hi, Oracle Khatua"
@@ -93,118 +96,157 @@
                 android:textColor="#1E1E1E"
                 android:textSize="40sp" />
 
-            <TextView
+            <LinearLayout
                 android:id="@+id/chip_study_plan"
-                style="@style/HomeActionChip"
-                android:layout_marginTop="24dp"
-                android:clickable="true"
-                android:focusable="true"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
                 android:background="@drawable/bg_chip_white"
-                android:text="Start today's study plan" />
+                android:padding="16dp"
+                android:clickable="true"
+                android:focusable="true">
 
-            <TextView
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:text="What does my name mean?"
+                    android:textColor="#1E1E1E"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+            <LinearLayout
                 android:id="@+id/chip_weak_areas"
-                style="@style/HomeActionChip"
-                android:clickable="true"
-                android:focusable="true"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
                 android:background="@drawable/bg_chip_white"
-                android:text="Analyze my weak areas" />
+                android:padding="16dp"
+                android:clickable="true"
+                android:focusable="true">
 
-            <TextView
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:text="Help me plan a weekend trip"
+                    android:textColor="#1E1E1E"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+            <LinearLayout
                 android:id="@+id/chip_study_next"
-                style="@style/HomeActionChip"
-                android:clickable="true"
-                android:focusable="true"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
                 android:background="@drawable/bg_chip_white"
-                android:text="What should I study next?" />
+                android:padding="16dp"
+                android:clickable="true"
+                android:focusable="true">
 
-            <TextView
-                android:id="@+id/chip_exam_topics"
-                style="@style/HomeActionChip"
-                android:clickable="true"
-                android:focusable="true"
-                android:background="@drawable/bg_chip_white"
-                android:text="Predict important exam topics" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:text="Latest AI news in India"
+                    android:textColor="#1E1E1E"
+                    android:textSize="16sp" />
+            </LinearLayout>
         </LinearLayout>
 
-        <ScrollView
-            android:id="@+id/chat_scroll_view"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/chat_container_layout"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:fillViewport="true"
-            android:paddingBottom="120dp"
-            android:clipToPadding="false"
             android:visibility="gone"
             app:layout_constraintBottom_toTopOf="@+id/bottom_input_area"
             app:layout_constraintTop_toTopOf="parent">
 
             <LinearLayout
+                android:id="@+id/chat_header"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingHorizontal="24dp"
+                android:paddingTop="24dp"
+                android:paddingBottom="8dp"
+                android:layout_marginTop="40dp"
+                android:background="#F9F9F9"
+                app:layout_constraintTop_toTopOf="parent">
 
-                <!-- Chat Header -->
                 <LinearLayout
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical"
-                    android:orientation="horizontal"
-                    android:paddingHorizontal="24dp"
-                    android:paddingTop="24dp"
-                    android:paddingBottom="16dp"
-                    android:layout_marginTop="40dp">
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:gravity="center_vertical"
-                        android:orientation="horizontal">
-
-                        <ImageView
-                            android:layout_width="120dp"
-                            android:layout_height="32dp"
-                            android:src="@drawable/osmium"
-                            android:scaleType="fitStart"
-                            android:layout_marginEnd="8dp" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="8dp"
-                            android:background="@drawable/bg_badge_pro"
-                            android:paddingHorizontal="6dp"
-                            android:paddingVertical="2dp"
-                            android:text="PRO"
-                            android:textColor="#5D4037"
-                            android:textSize="10sp"
-                            android:textStyle="bold"
-                            android:letterSpacing="0.05" />
-                    </LinearLayout>
-
-                    <View
-                        android:layout_width="0dp"
-                        android:layout_height="1dp"
-                        android:layout_weight="1" />
+                    android:orientation="horizontal">
 
                     <ImageView
-                        android:id="@+id/chat_menu_button"
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
-                        android:src="@drawable/ic_menu"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:background="?attr/selectableItemBackgroundBorderless"
-                        app:tint="#1E1E1E" />
+                        android:layout_width="120dp"
+                        android:layout_height="32dp"
+                        android:src="@drawable/osmium"
+                        android:scaleType="fitStart"
+                        android:layout_marginEnd="8dp" />
+
+                    <TextView
+                        android:id="@+id/pro_badge_chat"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:background="@drawable/bg_badge_pro"
+                        android:paddingHorizontal="6dp"
+                        android:paddingVertical="2dp"
+                        android:text="PRO"
+                        android:textColor="#5D4037"
+                        android:textSize="10sp"
+                        android:textStyle="bold"
+                        android:letterSpacing="0.05"
+                        android:visibility="gone" />
                 </LinearLayout>
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_weight="1" />
+
+                <ImageView
+                    android:id="@+id/chat_menu_button"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/ic_menu"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    app:tint="#1E1E1E" />
+            </LinearLayout>
+
+            <ScrollView
+                android:id="@+id/chat_scroll_view"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:fillViewport="false"
+                android:clipToPadding="false"
+                android:paddingBottom="24dp"
+                android:overScrollMode="always"
+                android:scrollbars="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/chat_header">
 
                 <LinearLayout
                     android:id="@+id/chat_container"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:padding="16dp" />
-            </LinearLayout>
-        </ScrollView>
+                    android:padding="16dp"
+                    android:paddingBottom="200dp" />
+            </ScrollView>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/bottom_input_area"
@@ -213,9 +255,149 @@
             android:background="@drawable/bg_bottom_sheet_rounded"
             android:paddingTop="16dp"
             android:paddingBottom="24dp"
-            android:layout_marginBottom="0dp"
             android:elevation="10dp"
             app:layout_constraintBottom_toBottomOf="parent">
+
+            <LinearLayout
+                android:id="@+id/attachment_options"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:paddingHorizontal="32dp"
+                android:paddingBottom="24dp"
+                android:visibility="gone"
+                app:layout_constraintBottom_toTopOf="@id/input_container">
+
+                <LinearLayout
+                    android:id="@+id/option_camera"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:padding="12dp">
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        app:cardCornerRadius="16dp"
+                        app:cardElevation="0dp"
+                        app:cardBackgroundColor="#F5F5F5">
+
+                        <ImageView
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/ic_camera"
+                            app:tint="#1E1E1E"/>
+                    </androidx.cardview.widget.CardView>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:text="Camera"
+                        android:textColor="#1E1E1E"
+                        android:textSize="16sp"
+                        android:fontFamily="sans-serif"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/option_photo"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:padding="12dp">
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        app:cardCornerRadius="16dp"
+                        app:cardElevation="0dp"
+                        app:cardBackgroundColor="#F5F5F5">
+
+                        <ImageView
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/ic_image"
+                            app:tint="#1E1E1E"/>
+                    </androidx.cardview.widget.CardView>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:text="Photos"
+                        android:textColor="#1E1E1E"
+                        android:textSize="16sp"
+                        android:fontFamily="sans-serif"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/option_file"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:padding="12dp">
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        app:cardCornerRadius="16dp"
+                        app:cardElevation="0dp"
+                        app:cardBackgroundColor="#F5F5F5">
+
+                        <ImageView
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/ic_file_attach"
+                            app:tint="#1E1E1E"/>
+                    </androidx.cardview.widget.CardView>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:text="Files"
+                        android:textColor="#1E1E1E"
+                        android:textSize="16sp"
+                        android:fontFamily="sans-serif"/>
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <HorizontalScrollView
+                android:id="@+id/attachment_preview_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="24dp"
+                android:paddingBottom="12dp"
+                android:visibility="gone"
+                android:scrollbars="none"
+                app:layout_constraintBottom_toTopOf="@id/input_container">
+
+                <LinearLayout
+                    android:id="@+id/attachment_preview_layout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"/>
+            </HorizontalScrollView>
 
             <LinearLayout
                 android:id="@+id/input_container"
@@ -224,13 +406,13 @@
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
                 android:paddingHorizontal="24dp"
-                app:layout_constraintTop_toTopOf="parent">
+                app:layout_constraintBottom_toBottomOf="parent">
 
                 <ImageView
-                    android:id="@+id/settings_button"
+                    android:id="@+id/attachment_button"
                     android:layout_width="24dp"
                     android:layout_height="24dp"
-                    android:src="@drawable/ic_tune"
+                    android:src="@drawable/ic_sliders"
                     android:clickable="true"
                     android:focusable="true"
                     android:background="?attr/selectableItemBackgroundBorderless"
@@ -282,61 +464,28 @@
         android:layout_width="300dp"
         android:layout_height="match_parent"
         android:layout_gravity="start"
-        android:background="@android:color/white"
-        android:padding="24dp">
+        android:background="#F5F5F5"
+        android:paddingHorizontal="20dp"
+        android:paddingVertical="24dp">
 
-        <ImageView
-            android:id="@+id/ivLogo"
-            android:layout_width="32dp"
-            android:layout_height="32dp"
-            android:src="@drawable/osmium2"
-            android:scaleType="fitCenter"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <ImageView
-            android:id="@+id/close_drawer"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:src="@drawable/ic_close"
-            android:clickable="true"
-            android:focusable="true"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            app:tint="#1E1E1E"
-            app:layout_constraintEnd_toEndOf="parent"
+        <EditText
+            android:id="@+id/search_input"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/bg_search_input"
+            android:drawableStart="@drawable/ic_search"
+            android:drawablePadding="12dp"
+            android:drawableTint="#9E9E9E"
+            android:hint="Search"
+            android:paddingHorizontal="16dp"
+            android:textColor="#1E1E1E"
+            android:textColorHint="#BDBDBD"
+            android:textSize="15sp"
             app:layout_constraintTop_toTopOf="parent" />
 
         <LinearLayout
             android:id="@+id/new_chat"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:clickable="true"
-            android:focusable="true"
-            android:background="?attr/selectableItemBackground"
-            android:paddingVertical="12dp"
-            app:layout_constraintTop_toBottomOf="@id/ivLogo">
-
-            <ImageView
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:src="@drawable/ic_edit"
-                app:tint="#616161" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:text="New Chat"
-                android:textColor="#1E1E1E"
-                android:textSize="15sp"
-                android:fontFamily="sans-serif-medium"/>
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/search_chat"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
@@ -346,168 +495,134 @@
             android:focusable="true"
             android:background="?attr/selectableItemBackground"
             android:paddingVertical="12dp"
-            app:layout_constraintTop_toBottomOf="@id/new_chat">
+            app:layout_constraintTop_toBottomOf="@id/search_input">
 
             <ImageView
                 android:layout_width="20dp"
                 android:layout_height="20dp"
-                android:src="@drawable/ic_search"
-                app:tint="#616161" />
+                android:src="@drawable/ic_edit"
+                app:tint="#1E1E1E" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:text="Search chat &amp; items"
+                android:text="New Chat"
                 android:textColor="#1E1E1E"
-                android:textSize="15sp"
-                android:fontFamily="sans-serif-medium"/>
+                android:textSize="16sp"
+                android:fontFamily="sans-serif"/>
         </LinearLayout>
 
         <TextView
-            android:id="@+id/tvHeaderGenerated"
+            android:id="@+id/tvHeaderToday"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
-            android:text="Your generated items"
-            android:textColor="#1E1E1E"
-            android:textSize="14sp"
-            android:textStyle="bold"
+            android:layout_marginTop="32dp"
+            android:text="Today"
+            android:textColor="#9E9E9E"
+            android:textSize="13sp"
+            android:fontFamily="sans-serif"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/search_chat" />
-
-        <ImageView
-            android:layout_width="16dp"
-            android:layout_height="16dp"
-            android:src="@drawable/ic_chevron_right"
-            app:tint="#616161"
-            app:layout_constraintBottom_toBottomOf="@id/tvHeaderGenerated"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@id/tvHeaderGenerated" />
-
-        <HorizontalScrollView
-            android:id="@+id/scrollCards"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:scrollbars="none"
-            app:layout_constraintTop_toBottomOf="@id/tvHeaderGenerated">
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <View
-                    android:layout_width="120dp"
-                    android:layout_height="80dp"
-                    android:layout_marginEnd="12dp"
-                    android:background="@drawable/bg_placeholder_card" />
-
-                <View
-                    android:layout_width="120dp"
-                    android:layout_height="80dp"
-                    android:background="@drawable/bg_placeholder_card" />
-            </LinearLayout>
-        </HorizontalScrollView>
-
-        <TextView
-            android:id="@+id/tvHeaderChats"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
-            android:text="Your chats"
-            android:textColor="#1E1E1E"
-            android:textSize="14sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/scrollCards" />
+            app:layout_constraintTop_toBottomOf="@id/new_chat" />
 
         <LinearLayout
+            android:id="@+id/chat_list"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:layout_marginTop="16dp"
-            app:layout_constraintTop_toBottomOf="@id/tvHeaderChats">
+            app:layout_constraintTop_toBottomOf="@id/tvHeaderToday">
 
-            <LinearLayout
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingVertical="12dp"
-                android:gravity="center_vertical"
+                android:text="What Does My Name Mean"
+                android:textColor="#1E1E1E"
+                android:textSize="15sp"
+                android:fontFamily="sans-serif"
+                android:maxLines="1"
+                android:ellipsize="end"
                 android:clickable="true"
                 android:focusable="true"
-                android:background="?attr/selectableItemBackground">
-                
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="The Power of Subsconsious Mind"
-                    android:textColor="#616161"
-                    android:textSize="14sp"
-                    android:maxLines="1"
-                    android:ellipsize="end"/>
+                android:background="?attr/selectableItemBackground"/>
 
-                <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:src="@drawable/ic_more_horiz"
-                    app:tint="#616161"/>
-            </LinearLayout>
-
-            <LinearLayout
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingVertical="12dp"
-                android:gravity="center_vertical"
+                android:text="What Does My Name Mean"
+                android:textColor="#1E1E1E"
+                android:textSize="15sp"
+                android:fontFamily="sans-serif"
+                android:maxLines="1"
+                android:ellipsize="end"
                 android:clickable="true"
                 android:focusable="true"
-                android:background="?attr/selectableItemBackground">
+                android:background="?attr/selectableItemBackground"/>
 
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Explain Ramanujan's Infinite Sum"
-                    android:textColor="#616161"
-                    android:textSize="14sp"
-                    android:maxLines="1"
-                    android:ellipsize="end"/>
-
-                <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:src="@drawable/ic_more_horiz"
-                    app:tint="#616161"/>
-            </LinearLayout>
-
-            <LinearLayout
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingVertical="12dp"
-                android:gravity="center_vertical"
+                android:text="Starting a Conversation"
+                android:textColor="#1E1E1E"
+                android:textSize="15sp"
+                android:fontFamily="sans-serif"
+                android:maxLines="1"
+                android:ellipsize="end"
                 android:clickable="true"
                 android:focusable="true"
-                android:background="?attr/selectableItemBackground">
+                android:background="?attr/selectableItemBackground"/>
 
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Design Essential Figma"
-                    android:textColor="#616161"
-                    android:textSize="14sp"
-                    android:maxLines="1"
-                    android:ellipsize="end"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingVertical="12dp"
+                android:text="Greeting User"
+                android:textColor="#1E1E1E"
+                android:textSize="15sp"
+                android:fontFamily="sans-serif"
+                android:maxLines="1"
+                android:ellipsize="end"
+                android:clickable="true"
+                android:focusable="true"
+                android:background="?attr/selectableItemBackground"/>
+        </LinearLayout>
 
-                <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:src="@drawable/ic_more_horiz"
-                    app:tint="#616161"/>
-            </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingVertical="16dp"
+            android:layout_marginBottom="16dp"
+            app:layout_constraintBottom_toBottomOf="parent">
 
+            <ImageView
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:src="@drawable/osmium2"
+                android:scaleType="centerCrop"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginStart="12dp"
+                android:text="Suman Yadav"
+                android:textColor="#1E1E1E"
+                android:textSize="15sp"
+                android:fontFamily="sans-serif-medium"/>
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_settings"
+                android:clickable="true"
+                android:focusable="true"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                app:tint="#616161"/>
         </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

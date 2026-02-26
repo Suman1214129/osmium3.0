@@ -31,8 +31,8 @@ class SignupActivity : AppCompatActivity() {
                 Toast.makeText(this, "Please enter phone number", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
-            if (phoneNumber.length < 10) {
-                Toast.makeText(this, "Please enter valid phone number", Toast.LENGTH_SHORT).show()
+            if (phoneNumber.length != 10) {
+                Toast.makeText(this, "Phone number must be exactly 10 digits", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
             val phone = "${binding.tvCountryCode.text}${phoneNumber}"

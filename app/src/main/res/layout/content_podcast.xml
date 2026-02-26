@@ -5,6 +5,7 @@
     android:layout_height="match_parent">
 
     <androidx.core.widget.NestedScrollView
+        android:id="@+id/podcastScrollView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:fillViewport="true"
@@ -20,41 +21,57 @@
             android:padding="20dp">
 
             <TextView
+                android:id="@+id/speaker1Name"
                 style="@style/SpeakerNameStyle"
                 android:text="Ishaan" />
 
             <TextView
+                android:id="@+id/text1"
                 style="@style/TranscriptBodyStyle"
+                android:padding="8dp"
+                android:background="@android:color/transparent"
                 android:text="Today we are discussing a concept that quietly defines whether a product succeeds or fails User-Centric Design. It is a term that is often used but rarely understood in its full depth." />
 
             <View style="@style/TranscriptDividerStyle" />
 
             <TextView
+                android:id="@+id/speaker2Name"
                 style="@style/SpeakerNameStyle"
                 android:text="Neha" />
 
             <TextView
+                android:id="@+id/text2"
                 style="@style/TranscriptBodyStyle"
+                android:padding="8dp"
+                android:background="@android:color/transparent"
                 android:text="That is true. Many people assume user-centric design is about making interfaces look clean or visually appealing. In reality it is far more fundamental. It is about designing products around human behavior not assumptions." />
 
             <View style="@style/TranscriptDividerStyle" />
 
             <TextView
+                android:id="@+id/speaker3Name"
                 style="@style/SpeakerNameStyle"
                 android:text="Ishaan" />
 
             <TextView
+                android:id="@+id/text3"
                 style="@style/TranscriptBodyStyle"
+                android:padding="8dp"
+                android:background="@android:color/transparent"
                 android:text="Exactly. At its core user-centric design asks a very simple question What is the user trying to achieve and what stands in their way?" />
 
             <View style="@style/TranscriptDividerStyle" />
 
             <TextView
+                android:id="@+id/speaker4Name"
                 style="@style/SpeakerNameStyle"
                 android:text="Neha" />
 
             <TextView
+                android:id="@+id/text4"
                 style="@style/TranscriptBodyStyle"
+                android:padding="8dp"
+                android:background="@android:color/transparent"
                 android:text="And answering that requires shifting perspective. Instead of asking What features can we add we need to ask..." />
 
             <Space android:layout_width="match_parent" android:layout_height="100dp" />
@@ -76,13 +93,15 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <ProgressBar
-                style="?android:attr/progressBarStyleHorizontal"
+            <SeekBar
+                android:id="@+id/podcastProgressBar"
                 android:layout_width="match_parent"
-                android:layout_height="2dp"
-                android:progress="35"
+                android:layout_height="wrap_content"
+                android:progress="0"
+                android:max="100"
                 android:progressTint="#1E1E1E"
-                android:backgroundTint="#E0E0E0"
+                android:progressBackgroundTint="#E0E0E0"
+                android:thumbTint="#1E1E1E"
                 android:layout_marginBottom="12dp"/>
 
             <LinearLayout
@@ -124,6 +143,7 @@
                 </LinearLayout>
 
                 <ImageView
+                    android:id="@+id/btnBackward"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:src="@drawable/ic_arrow_left_curved"
@@ -132,6 +152,7 @@
                     app:tint="#000000"/>
 
                 <ImageView
+                    android:id="@+id/btnPlayPodcast"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:layout_marginStart="8dp"
@@ -141,6 +162,7 @@
                     app:tint="#000000"/>
 
                 <ImageView
+                    android:id="@+id/btnForward"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:layout_marginStart="8dp"

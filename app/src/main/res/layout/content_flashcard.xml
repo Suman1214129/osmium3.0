@@ -28,7 +28,7 @@
             android:layout_gravity="bottom"
             android:layout_marginBottom="20dp"
             app:cardCornerRadius="24dp"
-            app:cardElevation="4dp"
+            app:cardElevation="0dp"
             app:cardBackgroundColor="#D8D8D8"/>
 
         <androidx.cardview.widget.CardView
@@ -38,7 +38,7 @@
             android:layout_gravity="bottom"
             android:layout_marginBottom="10dp"
             app:cardCornerRadius="24dp"
-            app:cardElevation="6dp"
+            app:cardElevation="0dp"
             app:cardBackgroundColor="#E8E8E8"/>
 
         <androidx.cardview.widget.CardView
@@ -47,7 +47,7 @@
             android:layout_height="match_parent"
             android:layout_gravity="bottom"
             app:cardCornerRadius="24dp"
-            app:cardElevation="12dp"
+            app:cardElevation="0dp"
             app:cardBackgroundColor="#33342E">
 
             <LinearLayout

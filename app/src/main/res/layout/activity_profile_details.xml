@@ -46,7 +46,7 @@
         android:layout_marginTop="48dp"
         android:background="@drawable/bg_input_outline"
         android:fontFamily="sans-serif"
-        android:hint="Enter yuor name"
+        android:hint="Enter your name"
         android:inputType="textPersonName"
         android:paddingHorizontal="16dp"
         android:textColor="#1E1E1E"

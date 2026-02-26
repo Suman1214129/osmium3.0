@@ -34,6 +34,11 @@ class ProfileDetailsActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
             
+            if (name.length < 3 || !name.contains(" ")) {
+                Toast.makeText(this, "Please enter your full name (first and last name)", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+            
             if (birthday.isEmpty()) {
                 Toast.makeText(this, "Please enter your birthday", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
