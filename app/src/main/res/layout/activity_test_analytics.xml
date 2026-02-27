@@ -37,6 +37,7 @@
                 android:textSize="18sp"
                 android:textStyle="bold"
                 android:textColor="#1C1C1C"
+                android:fontFamily="@font/baskervville"
                 android:gravity="center" />
 
             <View
@@ -61,7 +62,8 @@
                 android:text="Test Summary"
                 android:textSize="16sp"
                 android:textStyle="bold"
-                android:textColor="#1C1C1C" />
+                android:textColor="#1C1C1C"
+                android:fontFamily="@font/season_mix" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -105,7 +107,7 @@
                     android:text="Your Score"
                     android:textSize="14sp"
                     android:textColor="#757575"
-                    android:fontFamily="sans-serif-medium" />
+                    android:fontFamily="@font/public_sans" />
 
             </LinearLayout>
 
@@ -124,6 +126,7 @@
                     android:gravity="bottom">
 
                     <TextView
+                        android:id="@+id/scoreValue"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="181"
@@ -149,6 +152,7 @@
                     android:layout_weight="1" />
 
                 <TextView
+                    android:id="@+id/attemptedText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="( 54/75 Attempted )"
@@ -187,7 +191,7 @@
                     android:text="Your Accuracy"
                     android:textSize="14sp"
                     android:textColor="#757575"
-                    android:fontFamily="sans-serif-medium" />
+                    android:fontFamily="@font/public_sans" />
 
             </LinearLayout>
 
@@ -205,6 +209,7 @@
                     android:gravity="bottom">
 
                     <TextView
+                        android:id="@+id/accuracyValue"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="79"
@@ -214,6 +219,7 @@
                         android:fontFamily="serif" />
 
                     <TextView
+                        android:id="@+id/accuracyDecimal"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text=".29%"
@@ -240,12 +246,13 @@
                     android:paddingVertical="6dp">
 
                     <TextView
+                        android:id="@+id/correctAttemptedText"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="43/54 Correct"
                         android:textSize="12sp"
                         android:textColor="#4CAF50"
-                        android:fontFamily="sans-serif-medium" />
+                        android:fontFamily="@font/public_sans" />
 
                 </LinearLayout>
 
@@ -269,7 +276,8 @@
                 android:text="Section-wise Performance"
                 android:textSize="16sp"
                 android:textStyle="bold"
-                android:textColor="#1C1C1C" />
+                android:textColor="#1C1C1C"
+                android:fontFamily="@font/season_mix" />
 
         </LinearLayout>
 
@@ -302,7 +310,7 @@
 
                 <View
                     android:layout_width="match_parent"
-                    android:layout_height="3dp"
+                    android:layout_height="2dp"
                     android:background="#1E1E1E" />
             </LinearLayout>
 
@@ -396,6 +404,7 @@
                             android:paddingTop="4dp">
 
                             <TextView
+                                android:id="@+id/physicsSectionScore"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="45"
@@ -441,6 +450,7 @@
                             android:paddingTop="4dp">
 
                             <TextView
+                                android:id="@+id/physicsSectionAttempted"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="25"
@@ -486,6 +496,7 @@
                             android:paddingTop="4dp">
 
                             <TextView
+                                android:id="@+id/physicsSectionAccuracy"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="75"
@@ -494,6 +505,7 @@
                                 android:textStyle="bold" />
 
                             <TextView
+                                android:id="@+id/physicsSectionAccuracyDecimal"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text=".35%"

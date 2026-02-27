@@ -3,27 +3,36 @@ package com.osmiumai.app
 import android.content.Intent
 import android.os.Bundle
 import android.os.CountDownTimer
+import android.util.Log
 import android.view.View
+import android.webkit.WebView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.osmiumai.app.databinding.ActivityMockTestBinding
+import org.json.JSONObject
 
-data class MockQuestion(val id: Int, val subject: String, val questionText: String, val optionA: String, val optionB: String, val optionC: String, val optionD: String)
+data class MockQuestion(val id: Int, val subject: String, val questionText: String, val optionA: String, val optionB: String, val optionC: String, val optionD: String, val imageUrl: String? = null)
 
 class MockTestActivity : AppCompatActivity() {
     
     private lateinit var binding: ActivityMockTestBinding
     private var countDownTimer: CountDownTimer? = null
+    private var questionTimer: CountDownTimer? = null
     private var currentSubject = 0
     private var currentQuestionIndex = 0
     private val userAnswers = mutableMapOf<Int, Int>()
+    private val bookmarkedQuestions = mutableSetOf<Int>()
+    private val questionTimes = mutableMapOf<Int, Long>()
+    private var questionStartTime = 0L
+    private val allQuestions = mutableMapOf<String, List<MockQuestion>>()
     
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMockTestBinding.inflate(layoutInflater)
         setContentView(binding.root)
         supportActionBar?.hide()
+        loadQuestionsFromJSON()
         setupUI()
         setupTabClickListeners()
         setupOptionClickListeners()
@@ -31,18 +40,59 @@ class MockTestActivity : AppCompatActivity() {
         loadQuestion()
     }
     
+    private fun loadQuestionsFromJSON() {
+        val json = assets.open("mock_test_questions.json").bufferedReader().use { it.readText() }
+        val jsonObject = JSONObject(json)
+        
+        val physicsArray = jsonObject.getJSONArray("physics")
+        val physicsList = mutableListOf<MockQuestion>()
+        for (i in 0 until physicsArray.length()) {
+            val q = physicsArray.getJSONObject(i)
+            val imageUrl = if (q.has("imageUrl")) q.getString("imageUrl") else null
+            physicsList.add(MockQuestion(i + 1, "Physics", q.getString("question"), 
+                q.getString("optionA"), q.getString("optionB"), 
+                q.getString("optionC"), q.getString("optionD"), imageUrl))
+        }
+        
+        val chemistryArray = jsonObject.getJSONArray("chemistry")
+        val chemistryList = mutableListOf<MockQuestion>()
+        for (i in 0 until chemistryArray.length()) {
+            val q = chemistryArray.getJSONObject(i)
+            val imageUrl = if (q.has("imageUrl")) q.getString("imageUrl") else null
+            chemistryList.add(MockQuestion(26 + i, "Chemistry", q.getString("question"), 
+                q.getString("optionA"), q.getString("optionB"), 
+                q.getString("optionC"), q.getString("optionD"), imageUrl))
+        }
+        
+        val mathsArray = jsonObject.getJSONArray("mathematics")
+        val mathsList = mutableListOf<MockQuestion>()
+        for (i in 0 until mathsArray.length()) {
+            val q = mathsArray.getJSONObject(i)
+            val imageUrl = if (q.has("imageUrl")) q.getString("imageUrl") else null
+            mathsList.add(MockQuestion(51 + i, "Mathematics", q.getString("question"), 
+                q.getString("optionA"), q.getString("optionB"), 
+                q.getString("optionC"), q.getString("optionD"), imageUrl))
+        }
+        
+        allQuestions["physics"] = physicsList
+        allQuestions["chemistry"] = chemistryList
+        allQuestions["mathematics"] = mathsList
+    }
+    
     private fun getQuestion(subject: Int, index: Int): MockQuestion {
-        val id = subject * 25 + index + 1
         return when(subject) {
-            0 -> MockQuestion(id, "Physics", "Question ${index+1}: A particle moves with constant acceleration. Find the acceleration.", "1 m/s²", "2 m/s²", "3 m/s²", "4 m/s²")
-            1 -> MockQuestion(id, "Chemistry", "Question ${index+1}: What is the atomic number of Carbon?", "4", "6", "8", "12")
-            else -> MockQuestion(id, "Mathematics", "Question ${index+1}: What is the value of π (pi)?", "3.14", "2.71", "1.41", "1.73")
+            0 -> allQuestions["physics"]?.get(index) ?: MockQuestion(1, "Physics", "Loading...", "", "", "", "", null)
+            1 -> allQuestions["chemistry"]?.get(index) ?: MockQuestion(26, "Chemistry", "Loading...", "", "", "", "", null)
+            else -> allQuestions["mathematics"]?.get(index) ?: MockQuestion(51, "Mathematics", "Loading...", "", "", "", "", null)
         }
     }
     
     private fun setupUI() {
         binding.submitButton.setOnClickListener {
-            startActivity(Intent(this, TestAnalyticsActivity::class.java))
+            val intent = Intent(this, TestAnalyticsActivity::class.java)
+            intent.putExtra("userAnswers", HashMap(userAnswers))
+            intent.putExtra("questionTimes", HashMap(questionTimes))
+            startActivity(intent)
         }
         binding.previousButton.setOnClickListener {
             if (currentQuestionIndex > 0) {
@@ -62,20 +112,105 @@ class MockTestActivity : AppCompatActivity() {
                 closeSidebar()
             }
         }
+        binding.bookmarkIcon.setOnClickListener {
+            val questionId = getQuestion(currentSubject, currentQuestionIndex).id
+            if (bookmarkedQuestions.contains(questionId)) {
+                bookmarkedQuestions.remove(questionId)
+            } else {
+                bookmarkedQuestions.add(questionId)
+            }
+            updateBookmarkIcon()
+        }
+        setupGridClickListeners()
+    }
+    
+    private fun setupGridClickListeners() {
+        val sidebar = binding.sidebar
+        for (subject in 0..2) {
+            for (q in 0..24) {
+                val gridId = resources.getIdentifier("q${subject}_${q+1}", "id", packageName)
+                if (gridId != 0) {
+                    sidebar.findViewById<TextView>(gridId)?.setOnClickListener {
+                        currentSubject = subject
+                        currentQuestionIndex = q
+                        selectTab(subject)
+                        loadQuestion()
+                        closeSidebar()
+                    }
+                }
+            }
+        }
     }
     
     private fun loadQuestion() {
+        stopQuestionTimer()
         val question = getQuestion(currentSubject, currentQuestionIndex)
+        binding.questionNumber.text = (currentQuestionIndex + 1).toString()
+        binding.questionText.text = question.questionText
+        
+        val questionImage = binding.root.findViewById<WebView>(R.id.questionImage)
+        if (!question.imageUrl.isNullOrEmpty()) {
+            questionImage?.visibility = View.VISIBLE
+            questionImage?.settings?.apply {
+                javaScriptEnabled = true
+                loadWithOverviewMode = true
+                useWideViewPort = true
+            }
+            val html = """<html><body style='margin:0;padding:30px;background:#F7F5F3;text-align:center;display:flex;justify-content:center;align-items:center;'><img src='${question.imageUrl}' style='max-width:100%;height:auto;display:block;'/></body></html>"""
+            questionImage?.loadDataWithBaseURL(null, html, "text/html", "UTF-8", null)
+        } else {
+            questionImage?.visibility = View.GONE
+        }
+        
+        // Update options
         val scrollView = binding.root.getChildAt(0) as? android.view.ViewGroup
         val mainLayout = scrollView?.getChildAt(1) as? android.widget.ScrollView
         val contentLayout = mainLayout?.getChildAt(0) as? android.widget.LinearLayout
-        (contentLayout?.getChildAt(0) as? TextView)?.text = question.questionText
-        val optionsContainer = contentLayout?.getChildAt(1) as? android.widget.LinearLayout
+        val optionsContainer = contentLayout?.getChildAt(2) as? android.widget.LinearLayout
         ((optionsContainer?.getChildAt(0) as? android.widget.LinearLayout)?.getChildAt(1) as? TextView)?.text = question.optionA
         ((optionsContainer?.getChildAt(2) as? android.widget.LinearLayout)?.getChildAt(1) as? TextView)?.text = question.optionB
         ((optionsContainer?.getChildAt(4) as? android.widget.LinearLayout)?.getChildAt(1) as? TextView)?.text = question.optionC
         ((optionsContainer?.getChildAt(6) as? android.widget.LinearLayout)?.getChildAt(1) as? TextView)?.text = question.optionD
+        
         userAnswers[question.id]?.let { selectOption(it) } ?: clearOptionSelection()
+        updateBookmarkIcon()
+        updateGridState()
+        startQuestionTimer()
+    }
+    
+    private fun startQuestionTimer() {
+        val questionId = getQuestion(currentSubject, currentQuestionIndex).id
+        val previousTime = questionTimes[questionId] ?: 0L
+        questionStartTime = System.currentTimeMillis()
+        questionTimer = object : CountDownTimer(Long.MAX_VALUE, 1000) {
+            override fun onTick(millisUntilFinished: Long) {
+                val elapsed = previousTime + (System.currentTimeMillis() - questionStartTime)
+                val totalSeconds = elapsed / 1000
+                val minutes = totalSeconds / 60
+                val seconds = totalSeconds % 60
+                binding.questionTimer.text = String.format("%d:%02d", minutes, seconds)
+            }
+            override fun onFinish() {}
+        }.start()
+    }
+    
+    private fun stopQuestionTimer() {
+        questionTimer?.cancel()
+        if (questionStartTime > 0) {
+            val questionId = getQuestion(currentSubject, currentQuestionIndex).id
+            val elapsed = System.currentTimeMillis() - questionStartTime
+            questionTimes[questionId] = (questionTimes[questionId] ?: 0L) + elapsed
+        }
+    }
+    
+    private fun updateBookmarkIcon() {
+        val questionId = getQuestion(currentSubject, currentQuestionIndex).id
+        if (bookmarkedQuestions.contains(questionId)) {
+            binding.bookmarkIcon.setImageResource(R.drawable.ic_bookmark_filled)
+        } else {
+            binding.bookmarkIcon.setImageResource(R.drawable.ic_bookmark_border)
+        }
+        updateGridState()
     }
     
     private fun toggleSidebar() {
@@ -96,20 +231,48 @@ class MockTestActivity : AppCompatActivity() {
     
     private fun setupOptionClickListeners() {
         binding.optionA.setOnClickListener { 
-            userAnswers[getQuestion(currentSubject, currentQuestionIndex).id] = 0
-            selectOption(0) 
+            val questionId = getQuestion(currentSubject, currentQuestionIndex).id
+            if (userAnswers[questionId] == 0) {
+                userAnswers.remove(questionId)
+                clearOptionSelection()
+            } else {
+                userAnswers[questionId] = 0
+                selectOption(0)
+            }
+            updateGridState()
         }
         binding.optionB.setOnClickListener { 
-            userAnswers[getQuestion(currentSubject, currentQuestionIndex).id] = 1
-            selectOption(1) 
+            val questionId = getQuestion(currentSubject, currentQuestionIndex).id
+            if (userAnswers[questionId] == 1) {
+                userAnswers.remove(questionId)
+                clearOptionSelection()
+            } else {
+                userAnswers[questionId] = 1
+                selectOption(1)
+            }
+            updateGridState()
         }
         binding.optionC.setOnClickListener { 
-            userAnswers[getQuestion(currentSubject, currentQuestionIndex).id] = 2
-            selectOption(2) 
+            val questionId = getQuestion(currentSubject, currentQuestionIndex).id
+            if (userAnswers[questionId] == 2) {
+                userAnswers.remove(questionId)
+                clearOptionSelection()
+            } else {
+                userAnswers[questionId] = 2
+                selectOption(2)
+            }
+            updateGridState()
         }
         binding.optionD.setOnClickListener { 
-            userAnswers[getQuestion(currentSubject, currentQuestionIndex).id] = 3
-            selectOption(3) 
+            val questionId = getQuestion(currentSubject, currentQuestionIndex).id
+            if (userAnswers[questionId] == 3) {
+                userAnswers.remove(questionId)
+                clearOptionSelection()
+            } else {
+                userAnswers[questionId] = 3
+                selectOption(3)
+            }
+            updateGridState()
         }
     }
     
@@ -211,5 +374,51 @@ class MockTestActivity : AppCompatActivity() {
     override fun onDestroy() {
         super.onDestroy()
         countDownTimer?.cancel()
+        questionTimer?.cancel()
+    }
+    
+    private fun updateGridState() {
+        val counts = Array(3) { intArrayOf(0, 0, 0) }
+        for (subject in 0..2) {
+            for (q in 0..24) {
+                val questionId = subject * 25 + q + 1
+                val gridId = resources.getIdentifier("q${subject}_${q+1}", "id", packageName)
+                if (gridId != 0) {
+                    binding.sidebar.findViewById<TextView>(gridId)?.apply {
+                        val isCurrent = subject == currentSubject && q == currentQuestionIndex
+                        when {
+                            isCurrent -> {
+                                setBackgroundResource(R.drawable.bg_current_question)
+                                setTextColor(android.graphics.Color.parseColor("#FFFFFF"))
+                            }
+                            bookmarkedQuestions.contains(questionId) -> {
+                                setBackgroundResource(R.drawable.bg_marked)
+                                setTextColor(android.graphics.Color.parseColor("#7E57C2"))
+                                counts[subject][2]++
+                            }
+                            userAnswers.containsKey(questionId) -> {
+                                setBackgroundResource(R.drawable.bg_answered)
+                                setTextColor(android.graphics.Color.parseColor("#1C1C1C"))
+                                counts[subject][0]++
+                            }
+                            else -> {
+                                setBackgroundResource(R.drawable.bg_not_answered)
+                                setTextColor(android.graphics.Color.parseColor("#9E9E9E"))
+                                counts[subject][1]++
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        binding.physicsAnswered.text = "● ${counts[0][0]} answered"
+        binding.physicsNotAnswered.text = "○ ${counts[0][1]} Not answered"
+        binding.physicsMarked.text = "● ${counts[0][2]} Marked"
+        binding.chemistryAnswered.text = "● ${counts[1][0]} answered"
+        binding.chemistryNotAnswered.text = "○ ${counts[1][1]} Not answered"
+        binding.chemistryMarked.text = "● ${counts[1][2]} Marked"
+        binding.mathsAnswered.text = "● ${counts[2][0]} answered"
+        binding.mathsNotAnswered.text = "○ ${counts[2][1]} Not answered"
+        binding.mathsMarked.text = "● ${counts[2][2]} Marked"
     }
 }

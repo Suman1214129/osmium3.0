@@ -1,0 +1,683 @@
+{
+  "physics": [
+    {
+      "id": 1,
+      "question": "A particle is projected vertically upward with velocity 40 m/s. The time taken to reach maximum height is (g = 10 m/s²):",
+      "optionA": "2 s",
+      "optionB": "4 s",
+      "optionC": "6 s",
+      "optionD": "8 s",
+      "correctAnswer": "B"
+    },
+    {
+      "id": 2,
+      "question": "The dimensional formula of coefficient of viscosity is:",
+      "optionA": "[ML⁻¹T⁻¹]",
+      "optionB": "[MLT⁻¹]",
+      "optionC": "[ML⁻¹T⁻²]",
+      "optionD": "[MLT⁻²]",
+      "correctAnswer": "A"
+    },
+    {
+      "id": 3,
+      "question": "A force of 10 N acts on a body of mass 2 kg for 3 seconds. The change in momentum is:",
+      "optionA": "15 kg m/s",
+      "optionB": "20 kg m/s",
+      "optionC": "30 kg m/s",
+      "optionD": "60 kg m/s",
+      "correctAnswer": "C"
+    },
+    {
+      "id": 4,
+      "question": "The escape velocity from Earth's surface is approximately:",
+      "optionA": "7.2 km/s",
+      "optionB": "9.8 km/s",
+      "optionC": "11.2 km/s",
+      "optionD": "15.0 km/s",
+      "correctAnswer": "C"
+    },
+    {
+      "id": 5,
+      "question": "The work done in stretching a spring by 0.1 m, if spring constant is 100 N/m:",
+      "optionA": "0.5 J",
+      "optionB": "1.0 J",
+      "optionC": "5.0 J",
+      "optionD": "10.0 J",
+      "correctAnswer": "A"
+    },
+    {
+      "id": 6,
+      "question": "The frequency of a tuning fork is 256 Hz. The time period is:",
+      "optionA": "0.0039 s",
+      "optionB": "0.039 s",
+      "optionC": "0.39 s",
+      "optionD": "3.9 s",
+      "correctAnswer": "A"
+    },
+    {
+      "id": 7,
+      "question": "Two resistors of 4Ω and 6Ω are connected in parallel. The equivalent resistance is:",
+      "optionA": "2.4 Ω",
+      "optionB": "5 Ω",
+      "optionC": "10 Ω",
+      "optionD": "24 Ω",
+      "correctAnswer": "A"
+    },
+    {
+      "id": 8,
+      "question": "The magnetic field at the center of a circular coil of radius r carrying current I is:",
+      "optionA": "μ₀I/r",
+      "optionB": "μ₀I/2r",
+      "optionC": "μ₀I/4r",
+      "optionD": "2μ₀I/r",
+      "correctAnswer": "B"
+    },
+    {
+      "id": 9,
+      "question": "The refractive index of glass is 1.5. The critical angle for glass-air interface is:",
+      "optionA": "30°",
+      "optionB": "42°",
+      "optionC": "48°",
+      "optionD": "60°",
+      "correctAnswer": "B"
+    },
+    {
+      "id": 10,
+      "question": "The energy of a photon of wavelength 500 nm is (h = 6.6 × 10⁻³⁴ Js, c = 3 × 10⁸ m/s):",
+      "optionA": "2.5 eV",
+      "optionB": "3.0 eV",
+      "optionC": "4.0 eV",
+      "optionD": "5.0 eV",
+      "correctAnswer": "A"
+    },
+    {
+      "id": 11,
+      "question": "A body of mass 10 kg moving with velocity 5 m/s collides with another body of mass 5 kg at rest. If collision is perfectly inelastic, final velocity is:",
+      "optionA": "2.5 m/s",
+      "optionB": "3.33 m/s",
+      "optionC": "5 m/s",
+      "optionD": "7.5 m/s",
+      "correctAnswer": "B"
+    },
+    {
+      "id": 12,
+      "question": "The moment of inertia of a solid sphere of mass M and radius R about its diameter is:",
+      "optionA": "MR²/2",
+      "optionB": "2MR²/3",
+      "optionC": "2MR²/5",
+      "optionD": "MR²/5",
+      "correctAnswer": "C"
+    },
+    {
+      "id": 13,
+      "question": "The coefficient of linear expansion of a metal is 12 × 10⁻⁶ /°C. The coefficient of volume expansion is:",
+      "optionA": "12 × 10⁻⁶ /°C",
+      "optionB": "24 × 10⁻⁶ /°C",
+      "optionC": "36 × 10⁻⁶ /°C",
+      "optionD": "48 × 10⁻⁶ /°C",
+      "correctAnswer": "C"
+    },
+    {
+      "id": 14,
+      "question": "The efficiency of a Carnot engine operating between 400 K and 300 K is:",
+      "optionA": "15%",
+      "optionB": "20%",
+      "optionC": "25%",
+      "optionD": "30%",
+      "correctAnswer": "C"
+    },
+    {
+      "id": 15,
+      "question": "The de Broglie wavelength of an electron accelerated through 100 V is approximately:",
+      "optionA": "0.12 nm",
+      "optionB": "1.2 nm",
+      "optionC": "12 nm",
+      "optionD": "120 nm",
+      "correctAnswer": "A"
+    },
+    {
+      "id": 16,
+      "question": "The capacitance of a parallel plate capacitor increases when:",
+      "optionA": "Distance between plates increases",
+      "optionB": "Area of plates decreases",
+      "optionC": "Dielectric constant increases",
+      "optionD": "Charge on plates increases",
+      "correctAnswer": "C"
+    },
+    {
+      "id": 17,
+      "question": "The power dissipated in a resistor of 10Ω carrying current of 2A is:",
+      "optionA": "20 W",
+      "optionB": "40 W",
+      "optionC": "80 W",
+      "optionD": "100 W",
+      "correctAnswer": "B"
+    },
+    {
+      "id": 18,
+      "question": "The self-inductance of a coil is 5 H. The emf induced when current changes at 2 A/s is:",
+      "optionA": "2.5 V",
+      "optionB": "5 V",
+      "optionC": "10 V",
+      "optionD": "20 V",
+      "correctAnswer": "C"
+    },
+    {
+      "id": 19,
+      "question": "The wavelength of light in a medium of refractive index 1.5 is 400 nm. Its wavelength in vacuum is:",
+      "optionA": "267 nm",
+      "optionB": "400 nm",
+      "optionC": "600 nm",
+      "optionD": "800 nm",
+      "correctAnswer": "C"
+    },
+    {
+      "id": 20,
+      "question": "The binding energy per nucleon is maximum for:",
+      "optionA": "Helium",
+      "optionB": "Carbon",
+      "optionC": "Iron",
+      "optionD": "Uranium",
+      "correctAnswer": "C"
+    },
+    {
+      "id": 21,
+      "question": "A satellite orbits Earth at height h. If Earth's radius is R, orbital velocity is proportional to:",
+      "optionA": "√(R+h)",
+      "optionB": "1/√(R+h)",
+      "optionC": "(R+h)",
+      "optionD": "1/(R+h)",
+      "correctAnswer": "B"
+    },
+    {
+      "id": 22,
+      "question": "The ratio of kinetic energy to potential energy of an electron in Bohr orbit is:",
+      "optionA": "1:1",
+      "optionB": "1:2",
+      "optionC": "2:1",
+      "optionD": "1:-2",
+      "correctAnswer": "D"
+    },
+    {
+      "id": 23,
+      "question": "The impedance of an LCR circuit at resonance is:",
+      "optionA": "Maximum",
+      "optionB": "Minimum",
+      "optionC": "Zero",
+      "optionD": "Infinite",
+      "correctAnswer": "B"
+    },
+    {
+      "id": 24,
+      "question": "The stopping potential for photoelectric effect depends on:",
+      "optionA": "Intensity of light",
+      "optionB": "Frequency of light",
+      "optionC": "Work function only",
+      "optionD": "Time of exposure",
+      "correctAnswer": "B"
+    },
+    {
+      "id": 25,
+      "question": "The half-life of a radioactive substance is 10 days. The fraction remaining after 30 days is:",
+      "optionA": "1/2",
+      "optionB": "1/4",
+      "optionC": "1/8",
+      "optionD": "1/16",
+      "correctAnswer": "C"
+    }
+  ],
+  "chemistry": [
+    {
+      "id": 1,
+      "question": "The electronic configuration of Cr (Z=24) is:",
+      "optionA": "[Ar] 3d⁴ 4s²",
+      "optionB": "[Ar] 3d⁵ 4s¹",
+      "optionC": "[Ar] 3d⁶",
+      "optionD": "[Ar] 3d³ 4s³",
+      "correctAnswer": "B"
+    },
+    {
+      "id": 2,
+      "question": "Which of the following has highest ionization energy?",
+      "optionA": "Li",
+      "optionB": "Na",
+      "optionC": "K",
+      "optionD": "Cs",
+      "correctAnswer": "A"
+    },
+    {
+      "id": 3,
+      "question": "The shape of NH₃ molecule is:",
+      "optionA": "Linear",
+      "optionB": "Trigonal planar",
+      "optionC": "Pyramidal",
+      "optionD": "Tetrahedral",
+      "correctAnswer": "C"
+    },
+    {
+      "id": 4,
+      "question": "The oxidation state of Cr in K₂Cr₂O₇ is:",
+      "optionA": "+3",
+      "optionB": "+4",
+      "optionC": "+6",
+      "optionD": "+7",
+      "correctAnswer": "C"
+    },
+    {
+      "id": 5,
+      "question": "Which gas is evolved when zinc reacts with dilute HCl?",
+      "optionA": "O₂",
+      "optionB": "H₂",
+      "optionC": "Cl₂",
+      "optionD": "CO₂",
+      "correctAnswer": "B"
+    },
+    {
+      "id": 6,
+      "question": "The pH of 0.01 M HCl solution is:",
+      "optionA": "1",
+      "optionB": "2",
+      "optionC": "3",
+      "optionD": "4",
+      "correctAnswer": "B"
+    },
+    {
+      "id": 7,
+      "question": "The IUPAC name of CH₃-CH(CH₃)-CH₂-CH₃ is:",
+      "optionA": "2-methylbutane",
+      "optionB": "3-methylbutane",
+      "optionC": "Isopentane",
+      "optionD": "Neopentane",
+      "correctAnswer": "A"
+    },
+    {
+      "id": 8,
+      "question": "Which of the following is most acidic?",
+      "optionA": "Phenol",
+      "optionB": "Ethanol",
+      "optionC": "Water",
+      "optionD": "Acetic acid",
+      "correctAnswer": "D"
+    },
+    {
+      "id": 9,
+      "question": "The number of moles in 22 g of CO₂ is:",
+      "optionA": "0.25",
+      "optionB": "0.5",
+      "optionC": "1.0",
+      "optionD": "2.0",
+      "correctAnswer": "B"
+    },
+    {
+      "id": 10,
+      "question": "Which element shows maximum catenation?",
+      "optionA": "C",
+      "optionB": "Si",
+      "optionC": "Ge",
+      "optionD": "Sn",
+      "correctAnswer": "A"
+    },
+    {
+      "id": 11,
+      "question": "The hybridization of carbon in diamond is:",
+      "optionA": "sp",
+      "optionB": "sp²",
+      "optionC": "sp³",
+      "optionD": "sp³d",
+      "correctAnswer": "C"
+    },
+    {
+      "id": 12,
+      "question": "Which of the following is a Lewis acid?",
+      "optionA": "NH₃",
+      "optionB": "BF₃",
+      "optionC": "H₂O",
+      "optionD": "CH₄",
+      "correctAnswer": "B"
+    },
+    {
+      "id": 13,
+      "question": "The molarity of pure water is:",
+      "optionA": "18 M",
+      "optionB": "55.5 M",
+      "optionC": "1 M",
+      "optionD": "100 M",
+      "correctAnswer": "B"
+    },
+    {
+      "id": 14,
+      "question": "Which of the following has zero dipole moment?",
+      "optionA": "H₂O",
+      "optionB": "NH₃",
+      "optionC": "CO₂",
+      "optionD": "HCl",
+      "correctAnswer": "C"
+    },
+    {
+      "id": 15,
+      "question": "The number of unpaired electrons in Fe²⁺ (Z=26) is:",
+      "optionA": "2",
+      "optionB": "4",
+      "optionC": "5",
+      "optionD": "6",
+      "correctAnswer": "B"
+    },
+    {
+      "id": 16,
+      "question": "Which of the following is an endothermic reaction?",
+      "optionA": "Combustion",
+      "optionB": "Respiration",
+      "optionC": "Photosynthesis",
+      "optionD": "Neutralization",
+      "correctAnswer": "C"
+    },
+    {
+      "id": 17,
+      "question": "The rate of reaction increases with temperature because:",
+      "optionA": "Collision frequency increases",
+      "optionB": "Activation energy decreases",
+      "optionC": "More molecules have energy ≥ Ea",
+      "optionD": "Catalyst is more effective",
+      "correctAnswer": "C"
+    },
+    {
+      "id": 18,
+      "question": "Which of the following is most stable carbocation?",
+      "optionA": "CH₃⁺",
+      "optionB": "C₂H₅⁺",
+      "optionC": "(CH₃)₂CH⁺",
+      "optionD": "(CH₃)₃C⁺",
+      "correctAnswer": "D"
+    },
+    {
+      "id": 19,
+      "question": "The functional group in aldehydes is:",
+      "optionA": "-OH",
+      "optionB": "-CHO",
+      "optionC": "-COOH",
+      "optionD": "-CO-",
+      "correctAnswer": "B"
+    },
+    {
+      "id": 20,
+      "question": "Which of the following is an aromatic compound?",
+      "optionA": "Cyclohexane",
+      "optionB": "Benzene",
+      "optionC": "Cyclohexene",
+      "optionD": "Cyclopentane",
+      "correctAnswer": "B"
+    },
+    {
+      "id": 21,
+      "question": "The Avogadro number is approximately:",
+      "optionA": "6.022 × 10²¹",
+      "optionB": "6.022 × 10²²",
+      "optionC": "6.022 × 10²³",
+      "optionD": "6.022 × 10²⁴",
+      "correctAnswer": "C"
+    },
+    {
+      "id": 22,
+      "question": "Which of the following is a buffer solution?",
+      "optionA": "HCl + NaCl",
+      "optionB": "CH₃COOH + CH₃COONa",
+      "optionC": "NaOH + NaCl",
+      "optionD": "HCl + NaOH",
+      "correctAnswer": "B"
+    },
+    {
+      "id": 23,
+      "question": "The common oxidation state of halogens is:",
+      "optionA": "+1",
+      "optionB": "-1",
+      "optionC": "+2",
+      "optionD": "-2",
+      "correctAnswer": "B"
+    },
+    {
+      "id": 24,
+      "question": "Which of the following is a greenhouse gas?",
+      "optionA": "O₂",
+      "optionB": "N₂",
+      "optionC": "CO₂",
+      "optionD": "He",
+      "correctAnswer": "C"
+    },
+    {
+      "id": 25,
+      "question": "The process of converting ore into metal is called:",
+      "optionA": "Roasting",
+      "optionB": "Calcination",
+      "optionC": "Smelting",
+      "optionD": "Refining",
+      "correctAnswer": "C"
+    }
+  ],
+  "mathematics": [
+    {
+      "id": 1,
+      "question": "In differential geometry, a Kähler form ω on a complex manifold M is a closed 2-form that is also the imaginary part of a Hermitian metric. If ω = i∂∂̄φ for some real function φ, what is φ called?",
+      "optionA": "Kähler potential",
+      "optionB": "Hermitian function",
+      "optionC": "Complex metric",
+      "optionD": "Symplectic potential",
+      "correctAnswer": "A"
+    },
+    {
+      "id": 2,
+      "question": "If f(x) = x³ - 3x² + 4, then f'(2) is:",
+      "optionA": "0",
+      "optionB": "4",
+      "optionC": "6",
+      "optionD": "12",
+      "correctAnswer": "A"
+    },
+    {
+      "id": 3,
+      "question": "The value of lim(x→0) (sin x)/x is:",
+      "optionA": "0",
+      "optionB": "1",
+      "optionC": "∞",
+      "optionD": "Does not exist",
+      "correctAnswer": "B"
+    },
+    {
+      "id": 4,
+      "question": "If A = [1 2; 3 4], then det(A) is:",
+      "optionA": "-2",
+      "optionB": "2",
+      "optionC": "10",
+      "optionD": "-10",
+      "correctAnswer": "A"
+    },
+    {
+      "id": 5,
+      "question": "The number of ways to arrange 5 different books on a shelf is:",
+      "optionA": "25",
+      "optionB": "60",
+      "optionC": "120",
+      "optionD": "720",
+      "correctAnswer": "C"
+    },
+    {
+      "id": 6,
+      "question": "If P(A) = 0.6 and P(B) = 0.4, and A and B are independent, then P(A ∩ B) is:",
+      "optionA": "0.24",
+      "optionB": "0.4",
+      "optionC": "0.6",
+      "optionD": "1.0",
+      "correctAnswer": "A"
+    },
+    {
+      "id": 7,
+      "question": "The equation of a circle with center (3, 4) and radius 5 is:",
+      "optionA": "(x-3)² + (y-4)² = 5",
+      "optionB": "(x-3)² + (y-4)² = 25",
+      "optionC": "(x+3)² + (y+4)² = 25",
+      "optionD": "x² + y² = 25",
+      "correctAnswer": "B"
+    },
+    {
+      "id": 8,
+      "question": "The sum of first n natural numbers is:",
+      "optionA": "n(n+1)",
+      "optionB": "n(n+1)/2",
+      "optionC": "n²",
+      "optionD": "2n",
+      "correctAnswer": "B"
+    },
+    {
+      "id": 9,
+      "question": "If log₁₀ 2 = 0.3010, then log₁₀ 8 is:",
+      "optionA": "0.6020",
+      "optionB": "0.9030",
+      "optionC": "2.4080",
+      "optionD": "0.3010",
+      "correctAnswer": "B"
+    },
+    {
+      "id": 10,
+      "question": "The roots of x² - 5x + 6 = 0 are:",
+      "optionA": "2, 3",
+      "optionB": "-2, -3",
+      "optionC": "1, 6",
+      "optionD": "-1, -6",
+      "correctAnswer": "A"
+    },
+    {
+      "id": 11,
+      "question": "The value of ∫₀¹ x² dx is:",
+      "optionA": "1/2",
+      "optionB": "1/3",
+      "optionC": "1/4",
+      "optionD": "1",
+      "correctAnswer": "B"
+    },
+    {
+      "id": 12,
+      "question": "If sin θ = 3/5, then cos θ is (θ in first quadrant):",
+      "optionA": "3/5",
+      "optionB": "4/5",
+      "optionC": "5/3",
+      "optionD": "5/4",
+      "correctAnswer": "B"
+    },
+    {
+      "id": 13,
+      "question": "The distance between points (1, 2) and (4, 6) is:",
+      "optionA": "3",
+      "optionB": "4",
+      "optionC": "5",
+      "optionD": "7",
+      "correctAnswer": "C"
+    },
+    {
+      "id": 14,
+      "question": "The slope of the line 3x + 4y = 12 is:",
+      "optionA": "3/4",
+      "optionB": "-3/4",
+      "optionC": "4/3",
+      "optionD": "-4/3",
+      "correctAnswer": "B"
+    },
+    {
+      "id": 15,
+      "question": "If vectors a and b are perpendicular, then a·b is:",
+      "optionA": "1",
+      "optionB": "-1",
+      "optionC": "0",
+      "optionD": "|a||b|",
+      "correctAnswer": "C"
+    },
+    {
+      "id": 16,
+      "question": "The area of a triangle with vertices (0,0), (3,0), (0,4) is:",
+      "optionA": "6",
+      "optionB": "12",
+      "optionC": "7",
+      "optionD": "24",
+      "correctAnswer": "A"
+    },
+    {
+      "id": 17,
+      "question": "The value of i² (where i = √-1) is:",
+      "optionA": "1",
+      "optionB": "-1",
+      "optionC": "i",
+      "optionD": "0",
+      "correctAnswer": "B"
+    },
+    {
+      "id": 18,
+      "question": "The number of diagonals in a hexagon is:",
+      "optionA": "6",
+      "optionB": "9",
+      "optionC": "12",
+      "optionD": "15",
+      "correctAnswer": "B"
+    },
+    {
+      "id": 19,
+      "question": "If f(x) = eˣ, then f'(x) is:",
+      "optionA": "eˣ",
+      "optionB": "xeˣ⁻¹",
+      "optionC": "eˣ⁻¹",
+      "optionD": "1",
+      "correctAnswer": "A"
+    },
+    {
+      "id": 20,
+      "question": "The mean of 2, 4, 6, 8, 10 is:",
+      "optionA": "5",
+      "optionB": "6",
+      "optionC": "7",
+      "optionD": "8",
+      "correctAnswer": "B"
+    },
+    {
+      "id": 21,
+      "question": "The value of tan 45° is:",
+      "optionA": "0",
+      "optionB": "1",
+      "optionC": "√3",
+      "optionD": "1/√3",
+      "correctAnswer": "B"
+    },
+    {
+      "id": 22,
+      "question": "If A and B are mutually exclusive events, then P(A ∪ B) is:",
+      "optionA": "P(A) × P(B)",
+      "optionB": "P(A) + P(B)",
+      "optionC": "P(A) - P(B)",
+      "optionD": "0",
+      "correctAnswer": "B"
+    },
+    {
+      "id": 23,
+      "question": "The derivative of ln x is:",
+      "optionA": "1/x",
+      "optionB": "x",
+      "optionC": "ln x",
+      "optionD": "eˣ",
+      "correctAnswer": "A"
+    },
+    {
+      "id": 24,
+      "question": "The sum of angles in a triangle is:",
+      "optionA": "90°",
+      "optionB": "180°",
+      "optionC": "270°",
+      "optionD": "360°",
+      "correctAnswer": "B"
+    },
+    {
+      "id": 25,
+      "question": "If |x| = 5, then x can be:",
+      "optionA": "Only 5",
+      "optionB": "Only -5",
+      "optionC": "5 or -5",
+      "optionD": "0",
+      "correctAnswer": "C"
+    }
+  ]
+}

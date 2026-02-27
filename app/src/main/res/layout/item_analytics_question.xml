@@ -1,0 +1,331 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@drawable/question_card_bg"
+    android:layout_marginHorizontal="16dp"
+    android:layout_marginBottom="16dp"
+    android:padding="16dp"
+    android:elevation="2dp">
+
+    <!-- Question Header -->
+    <LinearLayout
+        android:id="@+id/questionHeader"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:clickable="true"
+        android:focusable="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/questionNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Question 1."
+                android:textSize="13sp"
+                android:textColor="#757575"
+                android:layout_marginEnd="8dp" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="1" />
+
+            <ImageView
+                android:id="@+id/dropdownIcon"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:src="@drawable/ic_expand_more" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/questionPreview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:textColor="#1C1C1C"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:layout_marginTop="4dp" />
+
+    </LinearLayout>
+
+    <!-- Question Details Container -->
+    <LinearLayout
+        android:id="@+id/questionDetails"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- Question Text -->
+        <TextView
+            android:id="@+id/questionText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:textColor="#1C1C1C"
+            android:lineSpacingExtra="4dp"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Answer Status -->
+        <LinearLayout
+            android:id="@+id/answerStatus"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="8dp">
+
+            <TextView
+                android:id="@+id/yourAnswerLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Your Answer: "
+                android:textSize="12sp"
+                android:textColor="#757575" />
+
+            <TextView
+                android:id="@+id/yourAnswerValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:layout_marginEnd="16dp" />
+
+            <TextView
+                android:id="@+id/correctLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Correct: "
+                android:textSize="12sp"
+                android:textColor="#757575" />
+
+            <TextView
+                android:id="@+id/correctValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:textColor="#4CAF50"
+                android:layout_marginEnd="16dp" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="1" />
+
+            <LinearLayout
+                android:id="@+id/askMentorButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:background="@drawable/ask_mentor_border"
+                android:paddingHorizontal="12dp"
+                android:paddingVertical="8dp"
+                android:clickable="true"
+                android:focusable="true">
+
+                <ImageView
+                    android:layout_width="14dp"
+                    android:layout_height="14dp"
+                    android:src="@drawable/ic_chat_mentor"
+                    android:layout_marginEnd="4dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Ask Mentor"
+                    android:textSize="12sp"
+                    android:textColor="#C78F15" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <!-- Time and Subject Info -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="16dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Time Spent: "
+                android:textSize="12sp"
+                android:textColor="#757575" />
+
+            <TextView
+                android:id="@+id/timeSpent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2:23 Min"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:textColor="#1C1C1C"
+                android:layout_marginEnd="16dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Expected: "
+                android:textSize="12sp"
+                android:textColor="#757575" />
+
+            <TextView
+                android:id="@+id/expectedTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="180s"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:textColor="#1C1C1C" />
+
+        </LinearLayout>
+
+        <!-- Subject Tags -->
+        <LinearLayout
+            android:id="@+id/topicTags"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Options Label -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Options:"
+            android:textSize="12sp"
+            android:textColor="#757575"
+            android:layout_marginBottom="12dp" />
+
+        <!-- Option A -->
+        <LinearLayout
+            android:id="@+id/optionA"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:padding="12dp"
+            android:layout_marginBottom="8dp">
+
+            <TextView
+                android:id="@+id/optionALabel"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:text="A"
+                android:textSize="12sp"
+                android:gravity="center"
+                android:layout_marginEnd="12dp" />
+
+            <TextView
+                android:id="@+id/optionAText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textSize="14sp"
+                android:textColor="#1C1C1C" />
+
+        </LinearLayout>
+
+        <!-- Option B -->
+        <LinearLayout
+            android:id="@+id/optionB"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:padding="12dp"
+            android:layout_marginBottom="8dp">
+
+            <TextView
+                android:id="@+id/optionBLabel"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:text="B"
+                android:textSize="12sp"
+                android:gravity="center"
+                android:layout_marginEnd="12dp" />
+
+            <TextView
+                android:id="@+id/optionBText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textSize="14sp"
+                android:textColor="#1C1C1C" />
+
+        </LinearLayout>
+
+        <!-- Option C -->
+        <LinearLayout
+            android:id="@+id/optionC"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:padding="12dp"
+            android:layout_marginBottom="8dp">
+
+            <TextView
+                android:id="@+id/optionCLabel"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:text="C"
+                android:textSize="12sp"
+                android:gravity="center"
+                android:layout_marginEnd="12dp" />
+
+            <TextView
+                android:id="@+id/optionCText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textSize="14sp"
+                android:textColor="#1C1C1C" />
+
+        </LinearLayout>
+
+        <!-- Option D -->
+        <LinearLayout
+            android:id="@+id/optionD"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:padding="12dp">
+
+            <TextView
+                android:id="@+id/optionDLabel"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:text="D"
+                android:textSize="12sp"
+                android:gravity="center"
+                android:layout_marginEnd="12dp" />
+
+            <TextView
+                android:id="@+id/optionDText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textSize="14sp"
+                android:textColor="#1C1C1C" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>
