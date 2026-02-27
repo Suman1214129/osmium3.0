@@ -128,19 +128,19 @@ class MockTestActivity : AppCompatActivity() {
         clearOptionSelection()
         when (optionIndex) {
             0 -> {
-                binding.optionACircle.setBackgroundResource(R.drawable.bg_option_selected)
+                binding.optionACircle.setBackgroundResource(R.drawable.bg_option_selected_mock)
                 binding.optionACircle.setTextColor(ContextCompat.getColor(this, android.R.color.white))
             }
             1 -> {
-                binding.optionBCircle.setBackgroundResource(R.drawable.bg_option_selected)
+                binding.optionBCircle.setBackgroundResource(R.drawable.bg_option_selected_mock)
                 binding.optionBCircle.setTextColor(ContextCompat.getColor(this, android.R.color.white))
             }
             2 -> {
-                binding.optionCCircle.setBackgroundResource(R.drawable.bg_option_selected)
+                binding.optionCCircle.setBackgroundResource(R.drawable.bg_option_selected_mock)
                 binding.optionCCircle.setTextColor(ContextCompat.getColor(this, android.R.color.white))
             }
             3 -> {
-                binding.optionDCircle.setBackgroundResource(R.drawable.bg_option_selected)
+                binding.optionDCircle.setBackgroundResource(R.drawable.bg_option_selected_mock)
                 binding.optionDCircle.setTextColor(ContextCompat.getColor(this, android.R.color.white))
             }
         }

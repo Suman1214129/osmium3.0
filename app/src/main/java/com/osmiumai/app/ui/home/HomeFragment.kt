@@ -62,20 +62,60 @@ class HomeFragment : Fragment() {
             val intent = Intent(requireContext(), com.osmiumai.app.CourseOverviewActivity::class.java)
             startActivity(intent)
         }
-    }
-
-    private fun setupCareerCardListeners() {
-        // Software Developer Card
-        view?.findViewById<View>(R.id.careerCardSoftware)?.setOnClickListener {
-            val intent = Intent(requireContext(), com.osmiumai.app.CareerRoadmapActivity::class.java)
-            intent.putExtra("CAREER_TITLE", "Software Developer")
+        
+        binding.testCardDSA.setOnClickListener {
+            val intent = Intent(requireContext(), com.osmiumai.app.TestAnalyticsActivity::class.java)
             startActivity(intent)
         }
         
-        // Android Developer Card
-        view?.findViewById<View>(R.id.careerCardAndroid)?.setOnClickListener {
-            val intent = Intent(requireContext(), com.osmiumai.app.CareerRoadmapActivity::class.java)
-            intent.putExtra("CAREER_TITLE", "Android Developer")
+        binding.testCardJEE.setOnClickListener {
+            val intent = Intent(requireContext(), com.osmiumai.app.TestAnalyticsActivity::class.java)
+            startActivity(intent)
+        }
+        
+        binding.testCardPhysics.setOnClickListener {
+            val intent = Intent(requireContext(), com.osmiumai.app.TestAnalyticsActivity::class.java)
+            startActivity(intent)
+        }
+        
+        binding.testCardChemistry.setOnClickListener {
+            val intent = Intent(requireContext(), com.osmiumai.app.TestAnalyticsActivity::class.java)
+            startActivity(intent)
+        }
+        
+        binding.testCardMath.setOnClickListener {
+            val intent = Intent(requireContext(), com.osmiumai.app.TestAnalyticsActivity::class.java)
+            startActivity(intent)
+        }
+        
+        binding.testCardBiology.setOnClickListener {
+            val intent = Intent(requireContext(), com.osmiumai.app.TestAnalyticsActivity::class.java)
+            startActivity(intent)
+        }
+        
+        binding.testItemDSA.setOnClickListener {
+            findNavController().navigate(R.id.navigation_tests)
+        }
+        
+        binding.testItemJEE.setOnClickListener {
+            findNavController().navigate(R.id.navigation_tests)
+        }
+        
+        binding.testItemPhysics.setOnClickListener {
+            findNavController().navigate(R.id.navigation_tests)
+        }
+    }
+
+    private fun setupCareerCardListeners() {
+        binding.careerCardSoftware.setOnClickListener {
+            val intent = Intent(requireContext(), com.osmiumai.app.CareerDetailActivity::class.java)
+            intent.putExtra("CAREER_TYPE", "software")
+            startActivity(intent)
+        }
+        
+        binding.careerCardAndroid.setOnClickListener {
+            val intent = Intent(requireContext(), com.osmiumai.app.CareerDetailActivity::class.java)
+            intent.putExtra("CAREER_TYPE", "android")
             startActivity(intent)
         }
     }
@@ -121,6 +161,21 @@ class HomeFragment : Fragment() {
                 tab.background = unselectedBg
                 tab.setTextColor(unselectedColor)
                 tab.setTypeface(null, android.graphics.Typeface.NORMAL)
+            }
+        }
+        
+        when (tabIndex) {
+            0 -> {
+                binding.cardPersonalizedPath.visibility = View.VISIBLE
+                binding.cardTestYourself.visibility = View.GONE
+            }
+            1 -> {
+                binding.cardPersonalizedPath.visibility = View.GONE
+                binding.cardTestYourself.visibility = View.VISIBLE
+            }
+            else -> {
+                binding.cardPersonalizedPath.visibility = View.VISIBLE
+                binding.cardTestYourself.visibility = View.GONE
             }
         }
     }

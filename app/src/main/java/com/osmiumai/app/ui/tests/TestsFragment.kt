@@ -10,6 +10,7 @@ import android.widget.HorizontalScrollView
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.osmiumai.app.R
+import com.osmiumai.app.TestAnalyticsActivity
 import com.osmiumai.app.UploadPapersActivity
 import com.osmiumai.app.databinding.FragmentTestsBinding
 import com.google.android.material.chip.Chip
@@ -31,6 +32,7 @@ class TestsFragment : Fragment() {
         setupPaginationDots()
         setupTryNowButton()
         setupNotificationButton()
+        setupTestCardClickListeners()
         return binding.root
     }
 
@@ -107,6 +109,24 @@ class TestsFragment : Fragment() {
         binding.btnNotificationTests.setOnClickListener {
             val intent = Intent(requireContext(), com.osmiumai.app.ui.notifications.NotificationsActivity::class.java)
             startActivity(intent)
+        }
+    }
+
+    private fun setupTestCardClickListeners() {
+        val testCards = listOf(
+            binding.testCard1,
+            binding.testCard2,
+            binding.testCard3,
+            binding.testCard4,
+            binding.testCard5,
+            binding.testCard6
+        )
+        
+        testCards.forEach { card ->
+            card.setOnClickListener {
+                val intent = Intent(requireContext(), TestAnalyticsActivity::class.java)
+                startActivity(intent)
+            }
         }
     }
 

@@ -23,7 +23,7 @@
         <item name="android:textStyle">normal</item>
         <item name="android:textColor">#1E1E1E</item>
         <item name="android:textSize">14sp</item>
-        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:fontFamily">@font/season_mix</item>
     </style>
     
     <style name="BottomNavActiveIndicator">
@@ -36,7 +36,7 @@
         <item name="chipCornerRadius">18dp</item>
         <item name="chipStrokeWidth">0dp</item>
         <item name="android:textSize">14sp</item>
-        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:fontFamily">@font/season_mix</item>
         <item name="checkedIconVisible">false</item>
         <item name="rippleColor">#D7CCC8</item>
     </style>
@@ -57,7 +57,7 @@
         <item name="android:textColor">#424242</item>
         <item name="android:textSize">15sp</item>
         <item name="android:lineSpacingMultiplier">1.4</item>
-        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:fontFamily">@font/season_mix</item>
     </style>
 
     <style name="TranscriptDividerStyle">
@@ -268,7 +268,7 @@
         <item name="chipStrokeWidth">0dp</item>
         <item name="chipCornerRadius">20dp</item>
         <item name="android:textSize">13sp</item>
-        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:fontFamily">@font/season_mix</item>
         <item name="checkedIconVisible">false</item>
         <item name="chipIconVisible">false</item>
         <item name="chipBackgroundColor">#F0F0F0</item>

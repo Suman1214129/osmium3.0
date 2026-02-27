@@ -2,5 +2,6 @@
 <resources>
     <array name="preloaded_fonts" translatable="false">
         <item>@font/baskervville</item>
+        <item>@font/season_mix</item>
     </array>
 </resources>

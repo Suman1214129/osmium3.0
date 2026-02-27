@@ -15,6 +15,7 @@ import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.webkit.WebView
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
@@ -90,8 +91,16 @@ class AiMentorFragment : Fragment() {
         setupButtons()
         setupActionChips()
         setupChatMenuButton()
+        loadSidebarAvatar()
         
         return binding.root
+    }
+    
+    private fun loadSidebarAvatar() {
+        binding.navView.findViewById<WebView>(R.id.wvSidebarAvatar)?.apply {
+            settings.javaScriptEnabled = false
+            loadUrl("https://api.dicebear.com/9.x/glass/svg?seed=Jameson")
+        }
     }
     
     private fun setupProBadge() {
@@ -436,16 +445,13 @@ class AiMentorFragment : Fragment() {
     }
     
     private fun sendMessage(message: String) {
-        // Hide welcome container and show chat
         binding.welcomeContainer.isVisible = false
         binding.chatContainerLayout.isVisible = true
         
-        // Add user message
         addUserMessage(message)
         
-        // Generate AI response
         viewLifecycleOwner.lifecycleScope.launch {
-            delay(1000) // Simulate thinking time
+            delay(1000)
             val aiResponse = generateAIResponse(message)
             addAIResponse(aiResponse)
         }
@@ -483,18 +489,14 @@ class AiMentorFragment : Fragment() {
     private fun addAIResponse(response: String) {
         val aiResponseBinding = ItemAiResponseBinding.inflate(layoutInflater)
         
-        // Set intro text
-        aiResponseBinding.aiIntroText.text = "Below is a clear, structured explanation, followed by common mistakes students make. This is written in a student-friendly, exam-oriented way (JEE / NEET aligned)."
+        aiResponseBinding.aiIntroText.text = "AI Response:"
         
-        // Parse and add structured content
         parseAndAddContent(response, aiResponseBinding.aiContentContainer)
         
-        // Add copy functionality
         aiResponseBinding.copyResponseButton.setOnClickListener {
             copyToClipboard(response)
         }
         
-        // Add space before AI response
         val space = View(context)
         val params = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, 60)
         space.layoutParams = params
@@ -584,22 +586,21 @@ class AiMentorFragment : Fragment() {
     
     private fun generateAIResponse(userMessage: String): String {
         return when {
-            userMessage.contains("Chemical Bonding", ignoreCase = true) || userMessage.contains("study next", ignoreCase = true) -> 
-                "**1. What is Chemical Bonding?**\n\nChemical bonding explains how and why atoms join to form molecules and compounds.\n\nAtoms bond to:\n• Achieve lower energy\n• Attain a stable electronic configuration (often octet or duplet)\n\n**2. What is Molecular weight?**\n\nMolecular weight explains how and why atoms join to form molecules and compounds."
+            userMessage.contains("name mean", ignoreCase = true) -> 
+                "**The Meaning of Your Name**\n\nOracle is a unique and powerful name with deep significance:\n\n• Derived from Latin 'oraculum' meaning divine announcement\n• Represents wisdom, prophecy, and guidance\n• Associated with ancient Greek oracles who provided counsel\n• Symbolizes someone who offers insight and truth"
             
-            userMessage.contains("study plan", ignoreCase = true) -> 
-                "**Your Personalized Study Plan**\n\n**1. Morning Session (9-11 AM)**\n• Review yesterday's topics\n• Focus on weak areas\n\n**2. Afternoon Session (2-4 PM)**\n• New concept learning\n• Practice problems\n\n**3. Evening Session (7-9 PM)**\n• Revision and notes\n• Mock tests"
+            userMessage.contains("weekend trip", ignoreCase = true) || userMessage.contains("plan", ignoreCase = true) -> 
+                "**Weekend Trip Planning**\n\n**Day 1:**\n• Morning: Visit local attractions\n• Afternoon: Try local cuisine\n• Evening: Explore nightlife\n\n**Day 2:**\n• Morning: Nature walk or hiking\n• Afternoon: Shopping and souvenirs\n• Evening: Relaxation and return\n\n**Tips:**\n• Book accommodations in advance\n• Check weather forecast\n• Pack light but essential items"
             
-            userMessage.contains("weak areas", ignoreCase = true) -> 
-                "**Areas Needing Attention**\n\n**1. Chemical Bonding - 65% accuracy**\n• Focus on molecular geometry\n• Practice Lewis structures\n\n**2. Thermodynamics - 70% accuracy**\n• Review entropy concepts\n• Solve numerical problems\n\n**3. Organic Chemistry - 68% accuracy**\n• Memorize reaction mechanisms\n• Practice nomenclature"
-            
-            userMessage.contains("exam topics", ignoreCase = true) -> 
-                "**High-Probability Exam Topics**\n\n**1. Chemical Bonding & Structure (85% chance)**\n• Lewis structures\n• VSEPR theory\n• Hybridization\n\n**2. Thermodynamics (80% chance)**\n• First law applications\n• Entropy calculations\n• Gibbs free energy\n\n**3. Organic Reactions (75% chance)**\n• Substitution mechanisms\n• Addition reactions\n• Elimination reactions"
+            userMessage.contains("AI news", ignoreCase = true) || userMessage.contains("latest", ignoreCase = true) -> 
+                "**Latest AI Developments in India**\n\n**1. Government Initiatives**\n• National AI Portal launched\n• AI for All program expansion\n• Investment in AI research centers\n\n**2. Industry Growth**\n• Major tech companies expanding AI teams\n• Startups raising funding for AI solutions\n• AI adoption in healthcare and agriculture\n\n**3. Education**\n• AI courses in universities\n• Skill development programs\n• Industry-academia partnerships"
             
             else -> 
-                "**Understanding Your Query**\n\nLet me help you with: \"$userMessage\"\n\n**1. Key Concepts**\n• Start with fundamental principles\n• Build understanding step by step\n\n**2. Practice Approach**\n• Solve basic examples first\n• Progress to complex problems\n• Take regular practice tests\n\n**3. Study Tips**\n• Make comprehensive notes\n• Use visual aids and diagrams\n• Schedule regular revision sessions"
+                "**Understanding Your Query**\n\nLet me help you with: \"$userMessage\"\n\n**Key Points:**\n• I'm here to assist with any questions\n• Feel free to ask about any topic\n• I can help with study materials, general knowledge, and more\n\n**How I Can Help:**\n• Answer questions\n• Explain concepts\n• Provide guidance\n• Offer suggestions"
         }
     }
+    
+
     
     private fun scrollToBottom() {
         binding.chatScrollView.post {

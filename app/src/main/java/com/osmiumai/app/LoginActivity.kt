@@ -5,6 +5,8 @@ import android.os.Bundle
 import android.text.InputType
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.WindowCompat
+import androidx.core.view.WindowInsetsControllerCompat
 import com.osmiumai.app.databinding.ActivityLoginBinding
 
 class LoginActivity : AppCompatActivity() {
@@ -16,6 +18,8 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         
         supportActionBar?.hide()
+        WindowCompat.setDecorFitsSystemWindows(window, false)
+        WindowInsetsControllerCompat(window, window.decorView).isAppearanceLightStatusBars = true
         
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)

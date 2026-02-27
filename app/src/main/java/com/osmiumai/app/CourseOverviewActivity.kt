@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.WindowCompat
 import com.osmiumai.app.databinding.ActivityCourseOverviewBinding
 
 class CourseOverviewActivity : AppCompatActivity() {
@@ -17,6 +18,8 @@ class CourseOverviewActivity : AppCompatActivity() {
         setContentView(binding.root)
         
         supportActionBar?.hide()
+        WindowCompat.setDecorFitsSystemWindows(window, false)
+        window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
         
         binding.ivBack.setOnClickListener {
             finish()

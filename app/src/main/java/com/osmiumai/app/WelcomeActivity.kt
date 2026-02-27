@@ -3,6 +3,8 @@ package com.osmiumai.app
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.WindowCompat
+import androidx.core.view.WindowInsetsControllerCompat
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
@@ -17,6 +19,8 @@ class WelcomeActivity : AppCompatActivity() {
         setTheme(R.style.Theme_Susu)
         
         supportActionBar?.hide()
+        WindowCompat.setDecorFitsSystemWindows(window, false)
+        WindowInsetsControllerCompat(window, window.decorView).isAppearanceLightStatusBars = true
         
         binding = ActivityWelcomeBinding.inflate(layoutInflater)
         setContentView(binding.root)

@@ -42,13 +42,6 @@
                     android:background="?attr/selectableItemBackgroundBorderless"
                     app:tint="#1E1E1E" />
 
-                <ImageView
-                    android:layout_width="120dp"
-                    android:layout_height="32dp"
-                    android:layout_marginStart="16dp"
-                    android:src="@drawable/osmium"
-                    android:scaleType="fitStart" />
-
                 <View
                     android:layout_width="0dp"
                     android:layout_height="1dp"
@@ -98,15 +91,15 @@
 
             <LinearLayout
                 android:id="@+id/chip_study_plan"
-                android:layout_width="match_parent"
+                android:layout_width="258dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
-                android:orientation="horizontal"
-                android:gravity="center_vertical"
                 android:background="@drawable/bg_chip_white"
-                android:padding="16dp"
                 android:clickable="true"
-                android:focusable="true">
+                android:focusable="true"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="16dp">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -119,15 +112,15 @@
 
             <LinearLayout
                 android:id="@+id/chip_weak_areas"
-                android:layout_width="match_parent"
+                android:layout_width="260dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
-                android:orientation="horizontal"
-                android:gravity="center_vertical"
                 android:background="@drawable/bg_chip_white"
-                android:padding="16dp"
                 android:clickable="true"
-                android:focusable="true">
+                android:focusable="true"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="16dp">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -140,15 +133,15 @@
 
             <LinearLayout
                 android:id="@+id/chip_study_next"
-                android:layout_width="match_parent"
+                android:layout_width="256dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
-                android:orientation="horizontal"
-                android:gravity="center_vertical"
                 android:background="@drawable/bg_chip_white"
-                android:padding="16dp"
                 android:clickable="true"
-                android:focusable="true">
+                android:focusable="true"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="16dp">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -181,34 +174,19 @@
                 android:background="#F9F9F9"
                 app:layout_constraintTop_toTopOf="parent">
 
-                <LinearLayout
+                <TextView
+                    android:id="@+id/pro_badge_chat"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal">
-
-                    <ImageView
-                        android:layout_width="120dp"
-                        android:layout_height="32dp"
-                        android:src="@drawable/osmium"
-                        android:scaleType="fitStart"
-                        android:layout_marginEnd="8dp" />
-
-                    <TextView
-                        android:id="@+id/pro_badge_chat"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:background="@drawable/bg_badge_pro"
-                        android:paddingHorizontal="6dp"
-                        android:paddingVertical="2dp"
-                        android:text="PRO"
-                        android:textColor="#5D4037"
-                        android:textSize="10sp"
-                        android:textStyle="bold"
-                        android:letterSpacing="0.05"
-                        android:visibility="gone" />
-                </LinearLayout>
+                    android:background="@drawable/bg_badge_pro"
+                    android:paddingHorizontal="6dp"
+                    android:paddingVertical="2dp"
+                    android:text="PRO"
+                    android:textColor="#5D4037"
+                    android:textSize="10sp"
+                    android:textStyle="bold"
+                    android:letterSpacing="0.05"
+                    android:visibility="gone" />
 
                 <View
                     android:layout_width="0dp"
@@ -599,11 +577,18 @@
             android:layout_marginBottom="16dp"
             app:layout_constraintBottom_toBottomOf="parent">
 
-            <ImageView
+            <androidx.cardview.widget.CardView
                 android:layout_width="32dp"
                 android:layout_height="32dp"
-                android:src="@drawable/osmium2"
-                android:scaleType="centerCrop"/>
+                app:cardCornerRadius="16dp"
+                app:cardElevation="0dp">
+                
+                <WebView
+                    android:id="@+id/wvSidebarAvatar"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@android:color/transparent"/>
+            </androidx.cardview.widget.CardView>
 
             <TextView
                 android:layout_width="0dp"

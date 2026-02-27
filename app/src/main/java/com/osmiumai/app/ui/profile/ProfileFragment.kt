@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
+import android.webkit.WebView
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.PopupMenu
@@ -39,6 +40,7 @@ class ProfileFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        loadProfileAvatar()
         setupMonthDropdown()
         setupExamTabs()
         setupStrengthTabs()
@@ -47,6 +49,13 @@ class ProfileFragment : Fragment() {
         setupEditProfile()
         setupSettings()
         setupNotifications()
+    }
+
+    private fun loadProfileAvatar() {
+        binding.root.findViewById<WebView>(R.id.wvProfileAvatar)?.apply {
+            settings.javaScriptEnabled = false
+            loadUrl("https://api.dicebear.com/9.x/glass/svg?seed=Jameson")
+        }
     }
 
     private fun setupMonthDropdown() {

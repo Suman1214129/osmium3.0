@@ -3,8 +3,10 @@ package com.osmiumai.app
 import android.content.Intent
 import android.os.Bundle
 import android.text.InputType
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.WindowCompat
 import com.osmiumai.app.databinding.ActivityLoginEmailBinding
 
 class LoginEmailActivity : AppCompatActivity() {
@@ -16,6 +18,8 @@ class LoginEmailActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         
         supportActionBar?.hide()
+        WindowCompat.setDecorFitsSystemWindows(window, false)
+        window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
         
         binding = ActivityLoginEmailBinding.inflate(layoutInflater)
         setContentView(binding.root)

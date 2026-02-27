@@ -2,7 +2,9 @@ package com.osmiumai.app
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.WindowCompat
 import com.osmiumai.app.databinding.ActivityStartCourseBinding
 import com.google.android.material.chip.Chip
 
@@ -16,6 +18,8 @@ class StartCourseActivity : AppCompatActivity() {
         setContentView(binding.root)
         
         supportActionBar?.hide()
+        WindowCompat.setDecorFitsSystemWindows(window, false)
+        window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
         
         binding.ivBack.setOnClickListener {
             finish()

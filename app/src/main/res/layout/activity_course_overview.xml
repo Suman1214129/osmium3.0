@@ -17,10 +17,23 @@
         android:layout_width="24dp"
         android:layout_height="24dp"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="80dp"
         android:src="@drawable/ic_arrow_back"
         app:tint="#1E1E1E"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/btnNotifications"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginTop="76dp"
+        android:background="@drawable/circle_white"
+        android:padding="6dp"
+        android:src="@drawable/ic_bell"
+        app:tint="#1E1E1E"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.core.widget.NestedScrollView
@@ -129,8 +142,8 @@
                         android:text="Introduction:"
                         android:fontFamily="@font/baskervville"
                         android:textStyle="bold"
-                        android:textSize="16sp"
-                        android:textColor="#1E1E1E"/>
+                        android:textSize="18sp"
+                        android:textColor="#000000"/>
                 </LinearLayout>
 
                 <TextView
@@ -165,8 +178,8 @@
                     android:text="Lessons:"
                     android:fontFamily="@font/baskervville"
                     android:textStyle="bold"
-                    android:textSize="16sp"
-                    android:textColor="#1E1E1E"/>
+                    android:textSize="18sp"
+                    android:textColor="#000000"/>
             </LinearLayout>
 
             <androidx.cardview.widget.CardView

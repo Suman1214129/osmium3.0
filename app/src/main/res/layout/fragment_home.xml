@@ -20,10 +20,10 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
+            android:layout_marginTop="48dp"
             android:layout_marginBottom="@dimen/section_spacing"
-            android:layout_marginTop="@dimen/header_top_margin">
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
 
             <LinearLayout
                 android:layout_width="0dp"
@@ -31,59 +31,59 @@
                 android:layout_weight="1"
                 android:gravity="center_vertical">
 
-            <ImageView
-                android:layout_width="120dp"
-                android:layout_height="32dp"
-                android:src="@drawable/osmium"
-                android:scaleType="fitStart"/>
+                <ImageView
+                    android:layout_width="120dp"
+                    android:layout_height="32dp"
+                    android:scaleType="fitStart"
+                    android:src="@drawable/osmium" />
             </LinearLayout>
 
             <ImageView
                 android:id="@+id/btnNotificationHome"
                 android:layout_width="22dp"
                 android:layout_height="22dp"
-                android:src="@drawable/ic_bell"/>
+                android:src="@drawable/ic_bell" />
         </LinearLayout>
 
         <!-- Greeting UPDATED -->
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_marginBottom="28dp">
+            android:layout_marginBottom="28dp"
+            android:orientation="vertical">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/baskervville"
                 android:text="Hello"
                 android:textColor="#1E1E1E"
                 android:textSize="36sp"
-                android:fontFamily="@font/baskervville"
                 android:textStyle="bold" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/baskervville"
                 android:text="Oracle Khatua"
                 android:textColor="#9E9E9E"
                 android:textSize="32sp"
-                android:fontFamily="@font/baskervville"
                 android:textStyle="bold|italic" />
 
         </LinearLayout>
-        
+
 
         <!-- Start New Course Button -->
         <androidx.cardview.widget.CardView
             android:id="@+id/btnStartNewCourse"
             android:layout_width="match_parent"
             android:layout_height="56dp"
-            app:cardCornerRadius="28dp"
-            app:cardBackgroundColor="#1F1F1F"
-            app:cardElevation="0dp"
             android:layout_marginBottom="20dp"
             android:clickable="true"
-            android:focusable="true">
+            android:focusable="true"
+            app:cardBackgroundColor="#1F1F1F"
+            app:cardCornerRadius="28dp"
+            app:cardElevation="0dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -94,16 +94,15 @@
                 <ImageView
                     android:layout_width="18dp"
                     android:layout_height="18dp"
-                    android:src="@drawable/ic_book_white"
-                    android:layout_marginEnd="10dp"/>
+                    android:layout_marginEnd="10dp"
+                    android:src="@drawable/ic_book_white" />
 
                 <TextView
-                    android:text="Start new course"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="16sp"
+                    android:text="Start new course"
                     android:textColor="#FFFFFF"
-                    android:textStyle="bold"/>
+                    android:textSize="16sp" />
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
@@ -112,11 +111,11 @@
             android:id="@+id/analyticsCard"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:cardCornerRadius="18dp"
-            app:cardElevation="0dp"
+            android:layout_marginBottom="34dp"
             android:clickable="true"
             android:focusable="true"
-            android:layout_marginBottom="34dp">
+            app:cardCornerRadius="18dp"
+            app:cardElevation="0dp">
 
             <FrameLayout
                 android:layout_width="match_parent"
@@ -126,16 +125,16 @@
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:src="@drawable/bc"
-                    android:scaleType="centerCrop"/>
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/bc" />
 
                 <!-- Content Overlay -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="18dp"
                     android:gravity="center_vertical"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:padding="18dp">
 
                     <!-- Text Section -->
                     <LinearLayout
@@ -147,27 +146,28 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:fontFamily="sans-serif"
+                            android:fontFamily="@font/season_mix"
                             android:text="See your Analytics"
                             android:textColor="#333333"
-                            android:textSize="20sp" />
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:fontFamily="@font/season_mix"
                             android:text="Check how's your performance"
-                            android:textSize="15sp"
-                            android:fontFamily="sans-serif"
-                            android:textColor="#78848F"
-                            android:layout_marginTop="4dp"/>
+                            android:textColor="#666666"
+                            android:textSize="15sp" />
                     </LinearLayout>
 
                     <!-- Arrow -->
                     <ImageView
                         android:layout_width="18dp"
                         android:layout_height="18dp"
-                        android:src="@drawable/ic_arrow_right"
-                        android:tint="#1C1C1C"/>
+                        android:src="@drawable/ic_chevron_right"
+                        android:tint="#1C1C1C" />
                 </LinearLayout>
 
             </FrameLayout>
@@ -178,28 +178,28 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
+            android:fontFamily="@font/season_mix"
             android:text="Your courses"
-            android:textSize="20sp"
-            android:fontFamily="@font/baskervville"
-            android:textStyle="bold"
             android:textColor="#000000"
-            android:layout_marginBottom="4dp" />
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:fontFamily="@font/season_mix"
             android:text="Courses you've worked on recently"
-            android:textSize="13sp"
-            android:fontFamily="@font/public_sans"
             android:textColor="#666666"
-            android:layout_marginBottom="16dp" />
+            android:textSize="14sp" />
 
         <!-- Course Cards -->
         <HorizontalScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:scrollbars="none"
-            android:layout_marginBottom="32dp">
+            android:layout_marginBottom="32dp"
+            android:scrollbars="none">
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -211,91 +211,92 @@
                     android:id="@+id/courseCardNuclearPhysics"
                     android:layout_width="160dp"
                     android:layout_height="190dp"
-                    app:cardCornerRadius="18dp"
-                    app:cardElevation="0dp"
+                    android:layout_marginEnd="16dp"
                     android:clickable="true"
                     android:focusable="true"
-                    android:layout_marginEnd="16dp">
+                    app:cardCornerRadius="18dp"
+                    app:cardElevation="0dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:background="#EDEFE0"
                         android:orientation="vertical"
-                        android:padding="16dp"
-                        android:background="#EDEFE0">
+                        android:padding="16dp">
 
                         <!-- Top Row: Icon + Chip -->
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:orientation="horizontal"
+                            android:layout_marginBottom="14dp"
                             android:gravity="center_vertical"
-                            android:layout_marginBottom="14dp">
+                            android:orientation="horizontal">
 
                             <!-- Icon Bubble -->
                             <ImageView
                                 android:layout_width="40dp"
                                 android:layout_height="40dp"
-                                android:src="@drawable/figma"
-                                android:layout_marginEnd="8dp"/>
+                                android:layout_marginEnd="8dp"
+                                android:src="@drawable/figma" />
 
                             <!-- JEE/NEET Chip -->
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="JEE/NEET"
-                                android:textSize="11sp"
-                                android:textColor="#2C2C2C"
                                 android:background="@drawable/bg_chip_light"
                                 android:paddingHorizontal="10dp"
-                                android:paddingVertical="4dp"/>
+                                android:paddingVertical="4dp"
+                                android:text="JEE/NEET"
+                                android:textColor="#2C2C2C"
+                                android:textSize="11sp" />
                         </LinearLayout>
 
                         <!-- Title -->
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Nuclear Physics"
-                            android:textSize="15sp"
                             android:fontFamily="@font/baskervville"
-                            android:textStyle="bold"
+                            android:lineSpacingExtra="2dp"
+                            android:text="Nuclear Physics"
                             android:textColor="#1C1C1C"
-                            android:lineSpacingExtra="2dp"/>
+                            android:textSize="15sp"
+                            android:textStyle="bold" />
 
                         <!-- Spacer -->
                         <View
                             android:layout_width="0dp"
                             android:layout_height="0dp"
-                            android:layout_weight="1"/>
+                            android:layout_weight="1" />
 
                         <!-- Divider -->
                         <View
                             android:layout_width="match_parent"
                             android:layout_height="1dp"
-                            android:background="#D0D6D3"
-                            android:layout_marginBottom="10dp"/>
+                            android:layout_marginBottom="10dp"
+                            android:background="#D0D6D3" />
 
                         <!-- Footer -->
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            android:gravity="center_vertical">
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
 
                             <TextView
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:text="4/8 lessons"
-                                android:textSize="12sp"
                                 android:fontFamily="@font/public_sans"
-                                android:textColor="#5F5F5F"/>
+                                android:text="4/8 lessons"
+                                android:textColor="#5F5F5F"
+                                android:textSize="14sp"
+                                android:textStyle="bold" />
 
                             <ImageView
                                 android:layout_width="16dp"
                                 android:layout_height="16dp"
-                                android:src="@drawable/ic_arrow_right"
-                                android:tint="#1C1C1C"/>
+                                android:src="@drawable/ic_chevron_right"
+                                android:tint="#1C1C1C" />
                         </LinearLayout>
 
                     </LinearLayout>
@@ -307,91 +308,92 @@
                     android:id="@+id/courseCardDSA"
                     android:layout_width="160dp"
                     android:layout_height="190dp"
-                    app:cardCornerRadius="18dp"
-                    app:cardElevation="0dp"
+                    android:layout_marginEnd="16dp"
                     android:clickable="true"
                     android:focusable="true"
-                    android:layout_marginEnd="16dp">
+                    app:cardCornerRadius="18dp"
+                    app:cardElevation="0dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:background="#E3EBEE"
                         android:orientation="vertical"
-                        android:padding="16dp"
-                        android:background="#E3EBEE">
+                        android:padding="16dp">
 
                         <!-- Top Row: Icon + Chip -->
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:orientation="horizontal"
+                            android:layout_marginBottom="14dp"
                             android:gravity="center_vertical"
-                            android:layout_marginBottom="14dp">
+                            android:orientation="horizontal">
 
                             <!-- Icon Bubble -->
                             <ImageView
                                 android:layout_width="40dp"
                                 android:layout_height="40dp"
-                                android:src="@drawable/dat"
-                                android:layout_marginEnd="8dp"/>
+                                android:layout_marginEnd="8dp"
+                                android:src="@drawable/dat" />
 
                             <!-- Coding Chip -->
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Coding"
-                                android:textSize="11sp"
-                                android:textColor="#2C2C2C"
                                 android:background="@drawable/bg_chip_light"
                                 android:paddingHorizontal="10dp"
-                                android:paddingVertical="4dp"/>
+                                android:paddingVertical="4dp"
+                                android:text="Coding"
+                                android:textColor="#2C2C2C"
+                                android:textSize="11sp" />
                         </LinearLayout>
 
                         <!-- Title -->
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Data Structure &amp; Algorithm in Java"
-                            android:textSize="15sp"
                             android:fontFamily="@font/baskervville"
-                            android:textStyle="bold"
+                            android:lineSpacingExtra="2dp"
+                            android:text="Data Structure &amp; Algorithm in Java"
                             android:textColor="#1C1C1C"
-                            android:lineSpacingExtra="2dp"/>
+                            android:textSize="15sp"
+                            android:textStyle="bold" />
 
                         <!-- Spacer -->
                         <View
                             android:layout_width="0dp"
                             android:layout_height="0dp"
-                            android:layout_weight="1"/>
+                            android:layout_weight="1" />
 
                         <!-- Divider -->
                         <View
                             android:layout_width="match_parent"
                             android:layout_height="1dp"
-                            android:background="#D0D6D3"
-                            android:layout_marginBottom="10dp"/>
+                            android:layout_marginBottom="10dp"
+                            android:background="#D0D6D3" />
 
                         <!-- Footer -->
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            android:gravity="center_vertical">
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
 
                             <TextView
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:text="6/13 lessons"
-                                android:textSize="12sp"
                                 android:fontFamily="@font/public_sans"
-                                android:textColor="#5F5F5F"/>
+                                android:text="6/13 lessons"
+                                android:textColor="#5F5F5F"
+                                android:textSize="14sp"
+                                android:textStyle="bold" />
 
                             <ImageView
                                 android:layout_width="16dp"
                                 android:layout_height="16dp"
-                                android:src="@drawable/ic_arrow_right"
-                                android:tint="#1C1C1C"/>
+                                android:src="@drawable/ic_chevron_right"
+                                android:tint="#1C1C1C" />
                         </LinearLayout>
 
                     </LinearLayout>
@@ -403,90 +405,91 @@
                     android:id="@+id/courseCardJava"
                     android:layout_width="160dp"
                     android:layout_height="190dp"
-                    app:cardCornerRadius="18dp"
-                    app:cardElevation="0dp"
                     android:clickable="true"
-                    android:focusable="true">
+                    android:focusable="true"
+                    app:cardCornerRadius="18dp"
+                    app:cardElevation="0dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:background="#E4EBE7"
                         android:orientation="vertical"
-                        android:padding="16dp"
-                        android:background="#E4EBE7">
+                        android:padding="16dp">
 
                         <!-- Top Row: Icon + Chip -->
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:orientation="horizontal"
+                            android:layout_marginBottom="14dp"
                             android:gravity="center_vertical"
-                            android:layout_marginBottom="14dp">
+                            android:orientation="horizontal">
 
                             <!-- Icon Bubble -->
                             <ImageView
                                 android:layout_width="40dp"
                                 android:layout_height="40dp"
-                                android:src="@drawable/jav"
-                                android:layout_marginEnd="8dp"/>
+                                android:layout_marginEnd="8dp"
+                                android:src="@drawable/jav" />
 
                             <!-- Coding Chip -->
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Coding"
-                                android:textSize="11sp"
-                                android:textColor="#2C2C2C"
                                 android:background="@drawable/bg_chip_light"
                                 android:paddingHorizontal="10dp"
-                                android:paddingVertical="4dp"/>
+                                android:paddingVertical="4dp"
+                                android:text="Coding"
+                                android:textColor="#2C2C2C"
+                                android:textSize="11sp" />
                         </LinearLayout>
 
                         <!-- Title -->
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Java"
-                            android:textSize="15sp"
                             android:fontFamily="@font/baskervville"
-                            android:textStyle="bold"
+                            android:lineSpacingExtra="2dp"
+                            android:text="Java"
                             android:textColor="#1C1C1C"
-                            android:lineSpacingExtra="2dp"/>
+                            android:textSize="15sp"
+                            android:textStyle="bold" />
 
                         <!-- Spacer -->
                         <View
                             android:layout_width="0dp"
                             android:layout_height="0dp"
-                            android:layout_weight="1"/>
+                            android:layout_weight="1" />
 
                         <!-- Divider -->
                         <View
                             android:layout_width="match_parent"
                             android:layout_height="1dp"
-                            android:background="#D0D6D3"
-                            android:layout_marginBottom="10dp"/>
+                            android:layout_marginBottom="10dp"
+                            android:background="#D0D6D3" />
 
                         <!-- Footer -->
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            android:gravity="center_vertical">
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
 
                             <TextView
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:text="4/11 lessons"
-                                android:textSize="12sp"
                                 android:fontFamily="@font/public_sans"
-                                android:textColor="#5F5F5F"/>
+                                android:text="4/11 lessons"
+                                android:textColor="#5F5F5F"
+                                android:textSize="14sp"
+                                android:textStyle="bold" />
 
                             <ImageView
                                 android:layout_width="16dp"
                                 android:layout_height="16dp"
-                                android:src="@drawable/ic_arrow_right"
-                                android:tint="#1C1C1C"/>
+                                android:src="@drawable/ic_chevron_right"
+                                android:tint="#1C1C1C" />
                         </LinearLayout>
 
                     </LinearLayout>
@@ -501,29 +504,29 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
+            android:fontFamily="@font/season_mix"
             android:text="Recent done tests"
-            android:textSize="20sp"
-            android:fontFamily="@font/baskervville"
-            android:textStyle="bold"
             android:textColor="#000000"
-            android:layout_marginBottom="4dp" />
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:fontFamily="@font/season_mix"
             android:text="See your performance on recent tests"
-            android:textSize="13sp"
-            android:fontFamily="@font/public_sans"
             android:textColor="#666666"
-            android:layout_marginBottom="16dp" />
+            android:textSize="14sp" />
 
         <!-- Test Items -->
         <HorizontalScrollView
             android:id="@+id/testsScrollView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:scrollbars="none"
-            android:layout_marginBottom="16dp">
+            android:layout_marginBottom="16dp"
+            android:scrollbars="none">
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -534,102 +537,33 @@
                 <LinearLayout
                     android:layout_width="300dp"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_marginEnd="16dp">
+                    android:layout_marginEnd="16dp"
+                    android:orientation="vertical">
 
                     <!-- DSA Test -->
                     <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/testCardDSA"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        app:cardCornerRadius="16dp"
-                        app:cardElevation="0dp"
-                        android:layout_marginBottom="12dp">
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            android:gravity="center_vertical"
-                            android:padding="16dp"
-                            android:background="#FFFFFF">
-
-                            <!-- Left Icon -->
-                            <FrameLayout
-                                android:layout_width="36dp"
-                                android:layout_height="36dp"
-                                android:background="@drawable/bg_test_icon"
-                                android:layout_marginEnd="14dp">
-
-                                <ImageView
-                                    android:layout_width="18dp"
-                                    android:layout_height="18dp"
-                                    android:src="@drawable/ic_clipboard_test"
-                                    android:layout_gravity="center"/>
-                            </FrameLayout>
-
-                            <!-- Text Content -->
-                            <LinearLayout
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:orientation="vertical">
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="16 May, 2025"
-                                    android:textSize="11sp"
-                                    android:fontFamily="@font/public_sans"
-                                    android:textColor="#8A8A8A"/>
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="DSA with Java"
-                                    android:textSize="16sp"
-                                    android:fontFamily="@font/baskervville"
-                                    android:textStyle="bold"
-                                    android:textColor="#1C1C1C"
-                                    android:layout_marginTop="2dp"/>
-                            </LinearLayout>
-
-                            <!-- Arrow -->
-                            <ImageView
-                                android:layout_width="16dp"
-                                android:layout_height="16dp"
-                                android:src="@drawable/ic_arrow_right"
-                                android:tint="#1C1C1C"/>
-                        </LinearLayout>
-                    </com.google.android.material.card.MaterialCardView>
-
-                    <!-- JEE Test -->
-                    <com.google.android.material.card.MaterialCardView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="12dp"
+                        android:clickable="true"
+                        android:focusable="true"
                         app:cardCornerRadius="16dp"
                         app:cardElevation="0dp">
 
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:orientation="horizontal"
+                            android:background="#FFFFFF"
                             android:gravity="center_vertical"
-                            android:padding="16dp"
-                            android:background="#FFFFFF">
+                            android:orientation="horizontal"
+                            android:padding="16dp">
 
-                            <!-- Left Icon -->
-                            <FrameLayout
-                                android:layout_width="36dp"
-                                android:layout_height="36dp"
-                                android:background="@drawable/bg_test_icon"
-                                android:layout_marginEnd="14dp">
-
-                                <ImageView
-                                    android:layout_width="18dp"
-                                    android:layout_height="18dp"
-                                    android:src="@drawable/ic_clipboard_test"
-                                    android:layout_gravity="center"/>
-                            </FrameLayout>
+                            <ImageView
+                                android:layout_width="24dp"
+                                android:layout_height="24dp"
+                                android:layout_marginEnd="14dp"
+                                android:src="@drawable/ic_pdf" />
 
                             <!-- Text Content -->
                             <LinearLayout
@@ -641,28 +575,89 @@
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="19 May, 2025"
-                                    android:textSize="11sp"
                                     android:fontFamily="@font/public_sans"
-                                    android:textColor="#8A8A8A"/>
+                                    android:text="16 May, 2025"
+                                    android:textColor="#8A8A8A"
+                                    android:textSize="13sp"
+                                    android:textStyle="bold" />
 
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="JEE Mains"
-                                    android:textSize="16sp"
-                                    android:fontFamily="@font/baskervville"
-                                    android:textStyle="bold"
+                                    android:layout_marginTop="2dp"
+                                    android:fontFamily="@font/public_sans"
+                                    android:text="DSA with Java"
                                     android:textColor="#1C1C1C"
-                                    android:layout_marginTop="2dp"/>
+                                    android:textSize="15sp"
+                                    android:textStyle="bold" />
                             </LinearLayout>
 
                             <!-- Arrow -->
                             <ImageView
                                 android:layout_width="16dp"
                                 android:layout_height="16dp"
-                                android:src="@drawable/ic_arrow_right"
-                                android:tint="#1C1C1C"/>
+                                android:src="@drawable/ic_chevron_right"
+                                android:tint="#1C1C1C" />
+                        </LinearLayout>
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <!-- JEE Test -->
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/testCardJEE"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:clickable="true"
+                        android:focusable="true"
+                        app:cardCornerRadius="16dp"
+                        app:cardElevation="0dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="#FFFFFF"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal"
+                            android:padding="16dp">
+
+                            <ImageView
+                                android:layout_width="24dp"
+                                android:layout_height="24dp"
+                                android:layout_marginEnd="14dp"
+                                android:src="@drawable/ic_pdf" />
+
+                            <!-- Text Content -->
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/public_sans"
+                                    android:text="19 May, 2025"
+                                    android:textColor="#8A8A8A"
+                                    android:textSize="13sp"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="2dp"
+                                    android:fontFamily="@font/public_sans"
+                                    android:text="JEE Mains"
+                                    android:textColor="#1C1C1C"
+                                    android:textSize="15sp"
+                                    android:textStyle="bold" />
+                            </LinearLayout>
+
+                            <!-- Arrow -->
+                            <ImageView
+                                android:layout_width="16dp"
+                                android:layout_height="16dp"
+                                android:src="@drawable/ic_chevron_right"
+                                android:tint="#1C1C1C" />
                         </LinearLayout>
                     </com.google.android.material.card.MaterialCardView>
 
@@ -672,102 +667,33 @@
                 <LinearLayout
                     android:layout_width="300dp"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_marginEnd="16dp">
+                    android:layout_marginEnd="16dp"
+                    android:orientation="vertical">
 
                     <!-- Physics Test -->
                     <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/testCardPhysics"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        app:cardCornerRadius="16dp"
-                        app:cardElevation="0dp"
-                        android:layout_marginBottom="12dp">
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            android:gravity="center_vertical"
-                            android:padding="16dp"
-                            android:background="#FFFFFF">
-
-                            <!-- Left Icon -->
-                            <FrameLayout
-                                android:layout_width="36dp"
-                                android:layout_height="36dp"
-                                android:background="@drawable/bg_test_icon"
-                                android:layout_marginEnd="14dp">
-
-                                <ImageView
-                                    android:layout_width="18dp"
-                                    android:layout_height="18dp"
-                                    android:src="@drawable/ic_clipboard_test"
-                                    android:layout_gravity="center"/>
-                            </FrameLayout>
-
-                            <!-- Text Content -->
-                            <LinearLayout
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:orientation="vertical">
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="22 May, 2025"
-                                    android:textSize="11sp"
-                                    android:fontFamily="@font/public_sans"
-                                    android:textColor="#8A8A8A"/>
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="Physics Mock Test"
-                                    android:textSize="16sp"
-                                    android:fontFamily="@font/baskervville"
-                                    android:textStyle="bold"
-                                    android:textColor="#1C1C1C"
-                                    android:layout_marginTop="2dp"/>
-                            </LinearLayout>
-
-                            <!-- Arrow -->
-                            <ImageView
-                                android:layout_width="16dp"
-                                android:layout_height="16dp"
-                                android:src="@drawable/ic_arrow_right"
-                                android:tint="#1C1C1C"/>
-                        </LinearLayout>
-                    </com.google.android.material.card.MaterialCardView>
-
-                    <!-- Chemistry Test -->
-                    <com.google.android.material.card.MaterialCardView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="12dp"
+                        android:clickable="true"
+                        android:focusable="true"
                         app:cardCornerRadius="16dp"
                         app:cardElevation="0dp">
 
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:orientation="horizontal"
+                            android:background="#FFFFFF"
                             android:gravity="center_vertical"
-                            android:padding="16dp"
-                            android:background="#FFFFFF">
+                            android:orientation="horizontal"
+                            android:padding="16dp">
 
-                            <!-- Left Icon -->
-                            <FrameLayout
-                                android:layout_width="36dp"
-                                android:layout_height="36dp"
-                                android:background="@drawable/bg_test_icon"
-                                android:layout_marginEnd="14dp">
-
-                                <ImageView
-                                    android:layout_width="18dp"
-                                    android:layout_height="18dp"
-                                    android:src="@drawable/ic_clipboard_test"
-                                    android:layout_gravity="center"/>
-                            </FrameLayout>
+                            <ImageView
+                                android:layout_width="24dp"
+                                android:layout_height="24dp"
+                                android:layout_marginEnd="14dp"
+                                android:src="@drawable/ic_pdf" />
 
                             <!-- Text Content -->
                             <LinearLayout
@@ -779,28 +705,89 @@
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="25 May, 2025"
-                                    android:textSize="11sp"
                                     android:fontFamily="@font/public_sans"
-                                    android:textColor="#8A8A8A"/>
+                                    android:text="22 May, 2025"
+                                    android:textColor="#8A8A8A"
+                                    android:textSize="13sp"
+                                    android:textStyle="bold" />
 
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="Chemistry Test"
-                                    android:textSize="16sp"
-                                    android:fontFamily="@font/baskervville"
-                                    android:textStyle="bold"
+                                    android:layout_marginTop="2dp"
+                                    android:fontFamily="@font/public_sans"
+                                    android:text="Physics Mock Test"
                                     android:textColor="#1C1C1C"
-                                    android:layout_marginTop="2dp"/>
+                                    android:textSize="14sp"
+                                    android:textStyle="bold" />
                             </LinearLayout>
 
                             <!-- Arrow -->
                             <ImageView
                                 android:layout_width="16dp"
                                 android:layout_height="16dp"
-                                android:src="@drawable/ic_arrow_right"
-                                android:tint="#1C1C1C"/>
+                                android:src="@drawable/ic_chevron_right"
+                                android:tint="#1C1C1C" />
+                        </LinearLayout>
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <!-- Chemistry Test -->
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/testCardChemistry"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:clickable="true"
+                        android:focusable="true"
+                        app:cardCornerRadius="16dp"
+                        app:cardElevation="0dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="#FFFFFF"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal"
+                            android:padding="16dp">
+
+                            <ImageView
+                                android:layout_width="24dp"
+                                android:layout_height="24dp"
+                                android:layout_marginEnd="14dp"
+                                android:src="@drawable/ic_pdf" />
+
+                            <!-- Text Content -->
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/public_sans"
+                                    android:text="25 May, 2025"
+                                    android:textColor="#8A8A8A"
+                                    android:textSize="13sp"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="2dp"
+                                    android:fontFamily="@font/public_sans"
+                                    android:text="Chemistry Test"
+                                    android:textColor="#1C1C1C"
+                                    android:textSize="15sp"
+                                    android:textStyle="bold" />
+                            </LinearLayout>
+
+                            <!-- Arrow -->
+                            <ImageView
+                                android:layout_width="16dp"
+                                android:layout_height="16dp"
+                                android:src="@drawable/ic_chevron_right"
+                                android:tint="#1C1C1C" />
                         </LinearLayout>
                     </com.google.android.material.card.MaterialCardView>
 
@@ -814,97 +801,28 @@
 
                     <!-- Math Test -->
                     <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/testCardMath"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        app:cardCornerRadius="16dp"
-                        app:cardElevation="0dp"
-                        android:layout_marginBottom="12dp">
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            android:gravity="center_vertical"
-                            android:padding="16dp"
-                            android:background="#FFFFFF">
-
-                            <!-- Left Icon -->
-                            <FrameLayout
-                                android:layout_width="36dp"
-                                android:layout_height="36dp"
-                                android:background="@drawable/bg_test_icon"
-                                android:layout_marginEnd="14dp">
-
-                                <ImageView
-                                    android:layout_width="18dp"
-                                    android:layout_height="18dp"
-                                    android:src="@drawable/ic_clipboard_test"
-                                    android:layout_gravity="center"/>
-                            </FrameLayout>
-
-                            <!-- Text Content -->
-                            <LinearLayout
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:orientation="vertical">
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="28 May, 2025"
-                                    android:textSize="11sp"
-                                    android:fontFamily="@font/public_sans"
-                                    android:textColor="#8A8A8A"/>
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="Mathematics"
-                                    android:textSize="16sp"
-                                    android:fontFamily="@font/baskervville"
-                                    android:textStyle="bold"
-                                    android:textColor="#1C1C1C"
-                                    android:layout_marginTop="2dp"/>
-                            </LinearLayout>
-
-                            <!-- Arrow -->
-                            <ImageView
-                                android:layout_width="16dp"
-                                android:layout_height="16dp"
-                                android:src="@drawable/ic_arrow_right"
-                                android:tint="#1C1C1C"/>
-                        </LinearLayout>
-                    </com.google.android.material.card.MaterialCardView>
-
-                    <!-- Biology Test -->
-                    <com.google.android.material.card.MaterialCardView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="12dp"
+                        android:clickable="true"
+                        android:focusable="true"
                         app:cardCornerRadius="16dp"
                         app:cardElevation="0dp">
 
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:orientation="horizontal"
+                            android:background="#FFFFFF"
                             android:gravity="center_vertical"
-                            android:padding="16dp"
-                            android:background="#FFFFFF">
+                            android:orientation="horizontal"
+                            android:padding="16dp">
 
-                            <!-- Left Icon -->
-                            <FrameLayout
-                                android:layout_width="36dp"
-                                android:layout_height="36dp"
-                                android:background="@drawable/bg_test_icon"
-                                android:layout_marginEnd="14dp">
-
-                                <ImageView
-                                    android:layout_width="18dp"
-                                    android:layout_height="18dp"
-                                    android:src="@drawable/ic_clipboard_test"
-                                    android:layout_gravity="center"/>
-                            </FrameLayout>
+                            <ImageView
+                                android:layout_width="24dp"
+                                android:layout_height="24dp"
+                                android:layout_marginEnd="14dp"
+                                android:src="@drawable/ic_pdf" />
 
                             <!-- Text Content -->
                             <LinearLayout
@@ -916,28 +834,89 @@
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="30 May, 2025"
-                                    android:textSize="11sp"
                                     android:fontFamily="@font/public_sans"
-                                    android:textColor="#8A8A8A"/>
+                                    android:text="28 May, 2025"
+                                    android:textColor="#8A8A8A"
+                                    android:textSize="13sp"
+                                    android:textStyle="bold" />
 
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="Biology Test"
-                                    android:textSize="16sp"
-                                    android:fontFamily="@font/baskervville"
-                                    android:textStyle="bold"
+                                    android:layout_marginTop="2dp"
+                                    android:fontFamily="@font/public_sans"
+                                    android:text="Mathematics"
                                     android:textColor="#1C1C1C"
-                                    android:layout_marginTop="2dp"/>
+                                    android:textSize="15sp"
+                                    android:textStyle="bold" />
                             </LinearLayout>
 
                             <!-- Arrow -->
                             <ImageView
                                 android:layout_width="16dp"
                                 android:layout_height="16dp"
-                                android:src="@drawable/ic_arrow_right"
-                                android:tint="#1C1C1C"/>
+                                android:src="@drawable/ic_chevron_right"
+                                android:tint="#1C1C1C" />
+                        </LinearLayout>
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <!-- Biology Test -->
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/testCardBiology"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:clickable="true"
+                        android:focusable="true"
+                        app:cardCornerRadius="16dp"
+                        app:cardElevation="0dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="#FFFFFF"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal"
+                            android:padding="16dp">
+
+                            <ImageView
+                                android:layout_width="24dp"
+                                android:layout_height="24dp"
+                                android:layout_marginEnd="14dp"
+                                android:src="@drawable/ic_pdf" />
+
+                            <!-- Text Content -->
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/public_sans"
+                                    android:text="30 May, 2025"
+                                    android:textColor="#8A8A8A"
+                                    android:textSize="13sp"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="2dp"
+                                    android:fontFamily="@font/public_sans"
+                                    android:text="Biology Test"
+                                    android:textColor="#1C1C1C"
+                                    android:textSize="15sp"
+                                    android:textStyle="bold" />
+                            </LinearLayout>
+
+                            <!-- Arrow -->
+                            <ImageView
+                                android:layout_width="16dp"
+                                android:layout_height="16dp"
+                                android:src="@drawable/ic_chevron_right"
+                                android:tint="#1C1C1C" />
                         </LinearLayout>
                     </com.google.android.material.card.MaterialCardView>
 
@@ -953,56 +932,56 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:orientation="horizontal"
-            android:layout_marginBottom="32dp">
+            android:layout_marginBottom="32dp"
+            android:orientation="horizontal">
 
             <View
                 android:id="@+id/dot1"
                 android:layout_width="8dp"
                 android:layout_height="8dp"
-                android:background="@drawable/dot_active"
-                android:layout_marginEnd="6dp"/>
+                android:layout_marginEnd="6dp"
+                android:background="@drawable/dot_active" />
 
             <View
                 android:id="@+id/dot2"
                 android:layout_width="8dp"
                 android:layout_height="8dp"
-                android:background="@drawable/dot_inactive"
-                android:layout_marginEnd="6dp"/>
+                android:layout_marginEnd="6dp"
+                android:background="@drawable/dot_inactive" />
 
             <View
                 android:id="@+id/dot3"
                 android:layout_width="8dp"
                 android:layout_height="8dp"
-                android:background="@drawable/dot_inactive"/>
+                android:background="@drawable/dot_inactive" />
         </LinearLayout>
 
         <!-- Suggested Actions Section -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
+            android:fontFamily="@font/season_mix"
             android:text="Suggested actions"
-            android:textSize="20sp"
-            android:fontFamily="@font/baskervville"
-            android:textStyle="bold"
             android:textColor="#000000"
-            android:layout_marginBottom="4dp" />
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:fontFamily="@font/season_mix"
             android:text="See what you can improve"
-            android:textSize="13sp"
-            android:fontFamily="@font/public_sans"
             android:textColor="#666666"
-            android:layout_marginBottom="16dp" />
+            android:textSize="14sp" />
 
         <!-- Filter Tabs -->
         <HorizontalScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:scrollbars="none"
-            android:layout_marginBottom="20dp">
+            android:layout_marginBottom="20dp"
+            android:scrollbars="none">
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -1013,57 +992,57 @@
                     android:id="@+id/tabPersonalized"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Personalized Path"
-                    android:textSize="14sp"
-                    android:textStyle="bold"
-                    android:textColor="#1C1C1C"
+                    android:layout_marginEnd="8dp"
+                    android:background="@drawable/bg_tab_selected"
+                    android:clickable="true"
+                    android:focusable="true"
                     android:paddingHorizontal="20dp"
                     android:paddingVertical="10dp"
-                    android:background="@drawable/bg_tab_selected"
-                    android:layout_marginEnd="8dp"
-                    android:clickable="true"
-                    android:focusable="true"/>
+                    android:text="Personalized Path"
+                    android:textColor="#1C1C1C"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/tabTestYourself"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Test Yourself"
-                    android:textSize="14sp"
-                    android:textColor="#666666"
+                    android:layout_marginEnd="8dp"
+                    android:background="@drawable/bg_tab_unselected"
+                    android:clickable="true"
+                    android:focusable="true"
                     android:paddingHorizontal="20dp"
                     android:paddingVertical="10dp"
-                    android:background="@drawable/bg_tab_unselected"
-                    android:layout_marginEnd="8dp"
-                    android:clickable="true"
-                    android:focusable="true"/>
+                    android:text="Test Yourself"
+                    android:textColor="#1C1C1C"
+                    android:textSize="14sp" />
 
                 <TextView
                     android:id="@+id/tabRecommended"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Recommended for You"
-                    android:textSize="14sp"
-                    android:textColor="#666666"
-                    android:paddingHorizontal="20dp"
-                    android:paddingVertical="10dp"
                     android:background="@drawable/bg_tab_unselected"
                     android:clickable="true"
-                    android:focusable="true"/>
+                    android:focusable="true"
+                    android:paddingHorizontal="20dp"
+                    android:paddingVertical="10dp"
+                    android:text="Recommended for You"
+                    android:textColor="#1C1C1C"
+                    android:textSize="14sp" />
 
             </LinearLayout>
 
         </HorizontalScrollView>
 
-        <!-- Action Items -->
+        <!-- Personalized Path Card -->
         <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardPersonalizedPath"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:backgroundTint="#FFFFFF"
+            android:visibility="visible"
             app:cardCornerRadius="18dp"
-            app:cardElevation="0dp"
-            app:strokeWidth="1dp"
-            app:strokeColor="#E0E0E0"
-            android:backgroundTint="#FFFFFF">
+            app:cardElevation="0dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -1072,105 +1051,232 @@
                 android:paddingHorizontal="16dp"
                 android:paddingVertical="8dp">
 
-            <!-- Electrostatic Quiz -->
+                <!-- Electrostatic Quiz -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingVertical="18dp">
+
+                    <ImageView
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:layout_marginEnd="16dp"
+                        android:src="@drawable/braing" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Do 5 Question quiz of Electrostatic"
+                        android:textColor="#1C1C1C"
+                        android:textSize="16sp" />
+
+                    <ImageView
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:src="@drawable/ic_chevron_right"
+                        android:tint="#7A7A7A" />
+                </LinearLayout>
+
+                <!-- Divider -->
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#EFEFEF" />
+
+                <!-- Newton's Third Law -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingVertical="18dp">
+
+                    <ImageView
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:layout_marginEnd="16dp"
+                        android:src="@drawable/book_copy" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:lineSpacingExtra="2dp"
+                        android:text="Clear the most common misconception in “Newton’s Third Law”"
+                        android:textColor="#1C1C1C"
+                        android:textSize="16sp" />
+
+                    <ImageView
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:src="@drawable/ic_chevron_right"
+                        android:tint="#7A7A7A" />
+                </LinearLayout>
+
+                <!-- Divider -->
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#EFEFEF" />
+
+                <!-- Modern Physics Quiz -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingVertical="18dp">
+
+                    <ImageView
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:layout_marginEnd="16dp"
+                        android:src="@drawable/bb" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Do 5 Question quiz of modern physics"
+                        android:textColor="#1C1C1C"
+                        android:textSize="16sp" />
+
+                    <ImageView
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:src="@drawable/ic_chevron_right"
+                        android:tint="#7A7A7A" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Test Yourself Card -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardTestYourself"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#FFFFFF"
+            android:visibility="gone"
+            app:cardCornerRadius="18dp"
+            app:cardElevation="0dp">
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center_vertical"
-                android:paddingVertical="18dp">
+                android:orientation="vertical"
+                android:paddingHorizontal="16dp"
+                android:paddingVertical="8dp">
 
-                <ImageView
-                    android:layout_width="32dp"
-                    android:layout_height="32dp"
-                    android:src="@drawable/braing"
-                    android:layout_marginEnd="16dp"/>
-
-                <TextView
-                    android:layout_width="0dp"
+                <LinearLayout
+                    android:id="@+id/testItemDSA"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Do 5 Question quiz of Electrostatic"
-                    android:textSize="16sp"
-                    android:textColor="#1C1C1C"/>
+                    android:background="?attr/selectableItemBackground"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingVertical="18dp">
 
-                <ImageView
-                    android:layout_width="16dp"
-                    android:layout_height="16dp"
-                    android:src="@drawable/ic_arrow_right"
-                    android:tint="#7A7A7A"/>
-            </LinearLayout>
+                    <ImageView
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:layout_marginEnd="16dp"
+                        android:src="@drawable/dat" />
 
-            <!-- Divider -->
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="#EFEFEF"/>
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Take DSA Practice Test"
+                        android:textColor="#1C1C1C"
+                        android:textSize="16sp" />
 
-            <!-- Newton's Third Law -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center_vertical"
-                android:paddingVertical="18dp">
+                    <ImageView
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:src="@drawable/ic_chevron_right"
+                        android:tint="#7A7A7A" />
+                </LinearLayout>
 
-                <ImageView
-                    android:layout_width="32dp"
-                    android:layout_height="32dp"
-                    android:src="@drawable/book_copy"
-                    android:layout_marginEnd="16dp"/>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#EFEFEF" />
 
-                <TextView
-                    android:layout_width="0dp"
+                <LinearLayout
+                    android:id="@+id/testItemJEE"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Clear the most common misconception in “Newton’s Third Law”"
-                    android:textSize="16sp"
-                    android:textColor="#1C1C1C"
-                    android:lineSpacingExtra="2dp"/>
+                    android:background="?attr/selectableItemBackground"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingVertical="18dp">
 
-                <ImageView
-                    android:layout_width="16dp"
-                    android:layout_height="16dp"
-                    android:src="@drawable/ic_arrow_right"
-                    android:tint="#7A7A7A"/>
-            </LinearLayout>
+                    <ImageView
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:layout_marginEnd="16dp"
+                        android:src="@drawable/figma" />
 
-            <!-- Divider -->
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="#EFEFEF"/>
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Attempt JEE Mock Test"
+                        android:textColor="#1C1C1C"
+                        android:textSize="16sp" />
 
-            <!-- Modern Physics Quiz -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center_vertical"
-                android:paddingVertical="18dp">
+                    <ImageView
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:src="@drawable/ic_chevron_right"
+                        android:tint="#7A7A7A" />
+                </LinearLayout>
 
-                <ImageView
-                    android:layout_width="32dp"
-                    android:layout_height="32dp"
-                    android:src="@drawable/bb"
-                    android:layout_marginEnd="16dp"/>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#EFEFEF" />
 
-                <TextView
-                    android:layout_width="0dp"
+                <LinearLayout
+                    android:id="@+id/testItemPhysics"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Do 5 Question quiz of modern physics"
-                    android:textSize="16sp"
-                    android:textColor="#1C1C1C"/>
+                    android:background="?attr/selectableItemBackground"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingVertical="18dp">
 
-                <ImageView
-                    android:layout_width="16dp"
-                    android:layout_height="16dp"
-                    android:src="@drawable/ic_arrow_right"
-                    android:tint="#7A7A7A"/>
-            </LinearLayout>
+                    <ImageView
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:layout_marginEnd="16dp"
+                        android:src="@drawable/braing" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Complete Physics Assessment"
+                        android:textColor="#1C1C1C"
+                        android:textSize="16sp" />
+
+                    <ImageView
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:src="@drawable/ic_chevron_right"
+                        android:tint="#7A7A7A" />
+                </LinearLayout>
 
             </LinearLayout>
 
@@ -1180,22 +1286,22 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Recommended career path"
-            android:textSize="20sp"
-            android:fontFamily="@font/baskervville"
-            android:textStyle="bold"
-            android:textColor="#000000"
             android:layout_marginTop="32dp"
-            android:layout_marginBottom="4dp" />
+            android:layout_marginBottom="4dp"
+            android:fontFamily="@font/season_mix"
+            android:text="Recommended career path"
+            android:textColor="#000000"
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:fontFamily="@font/season_mix"
             android:text="Career recommendation for you"
-            android:textSize="13sp"
-            android:fontFamily="@font/public_sans"
             android:textColor="#666666"
-            android:layout_marginBottom="16dp" />
+            android:textSize="14sp" />
 
         <!-- Career Path Cards -->
         <HorizontalScrollView
@@ -1213,12 +1319,12 @@
                     android:id="@+id/careerCardSoftware"
                     android:layout_width="240dp"
                     android:layout_height="wrap_content"
-                    app:cardCornerRadius="12dp"
-                    app:cardElevation="0dp"
+                    android:layout_marginEnd="16dp"
                     android:backgroundTint="#F1F0EC"
                     android:clickable="true"
                     android:focusable="true"
-                    android:layout_marginEnd="16dp">
+                    app:cardCornerRadius="12dp"
+                    app:cardElevation="0dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -1229,35 +1335,36 @@
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:orientation="horizontal"
+                            android:layout_marginBottom="12dp"
                             android:gravity="center_vertical"
-                            android:layout_marginBottom="12dp">
+                            android:orientation="horizontal">
 
                             <ImageView
                                 android:layout_width="24dp"
                                 android:layout_height="24dp"
-                                android:src="@drawable/ic_code_arrow"/>
+                                android:src="@drawable/ic_code_arrow" />
 
                         </LinearLayout>
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Software Developer"
-                            android:textSize="18sp"
+                            android:layout_marginBottom="8dp"
                             android:fontFamily="@font/baskervville"
-                            android:textStyle="bold"
+                            android:text="Software Developer"
                             android:textColor="#1C1C1C"
-                            android:layout_marginBottom="8dp"/>
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Frequently engages with topics, tests, or activities linked to this career."
-                            android:textSize="14sp"
                             android:fontFamily="@font/public_sans"
-                            android:textColor="#8B8B8B"
-                            android:lineSpacingExtra="2dp"/>
+                            android:lineSpacingExtra="2dp"
+                            android:text="Frequently engages with topics, tests, or activities linked to this career."
+                            android:textColor="#5E5E56"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
 
                     </LinearLayout>
 
@@ -1268,11 +1375,11 @@
                     android:id="@+id/careerCardAndroid"
                     android:layout_width="240dp"
                     android:layout_height="wrap_content"
-                    app:cardCornerRadius="12dp"
-                    app:cardElevation="0dp"
                     android:backgroundTint="#F1F0EC"
                     android:clickable="true"
-                    android:focusable="true">
+                    android:focusable="true"
+                    app:cardCornerRadius="12dp"
+                    app:cardElevation="0dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -1283,35 +1390,36 @@
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:orientation="horizontal"
+                            android:layout_marginBottom="12dp"
                             android:gravity="center_vertical"
-                            android:layout_marginBottom="12dp">
+                            android:orientation="horizontal">
 
                             <ImageView
                                 android:layout_width="24dp"
                                 android:layout_height="24dp"
-                                android:src="@drawable/ic_android_robot"/>
+                                android:src="@drawable/ic_android_robot" />
 
                         </LinearLayout>
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Android Developer"
-                            android:textSize="18sp"
+                            android:layout_marginBottom="8dp"
                             android:fontFamily="@font/baskervville"
-                            android:textStyle="bold"
+                            android:text="Android Developer"
                             android:textColor="#1C1C1C"
-                            android:layout_marginBottom="8dp"/>
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Strong performance in coding and programming aptitude."
-                            android:textSize="14sp"
                             android:fontFamily="@font/public_sans"
-                            android:textColor="#8B8B8B"
-                            android:lineSpacingExtra="2dp"/>
+                            android:lineSpacingExtra="2dp"
+                            android:text="Strong performance in React Native indicating natural aptitude."
+                            android:textColor="#5E5E56"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
 
                     </LinearLayout>
 

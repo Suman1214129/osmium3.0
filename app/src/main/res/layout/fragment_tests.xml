@@ -106,19 +106,20 @@
             android:layout_height="wrap_content"
             android:text="Recent done tests"
             android:textSize="18sp"
-            android:fontFamily="@font/baskervville"
+            android:fontFamily="@font/season_mix"
             android:textStyle="bold"
-            android:textColor="#1C1C1C"
-            android:layout_marginBottom="8dp"/>
+            android:textColor="#000000"
+            android:layout_marginBottom="4dp"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="See your performance on recent tests"
-            android:textSize="16sp"
-            android:fontFamily="@font/public_sans"
-            android:textColor="#8B8B8B"
-            android:layout_marginBottom="20dp"/>
+            android:textSize="14sp"
+            android:fontFamily="@font/season_mix"
+            android:textStyle="bold"
+            android:textColor="#666666"
+            android:layout_marginBottom="16dp"/>
 
         <!-- Filter Chips -->
         <HorizontalScrollView
@@ -202,6 +203,7 @@
 
                     <!-- DSA with Java Test -->
                     <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/testCard1"
                         android:layout_width="320dp"
                         android:layout_height="wrap_content"
                         app:cardCornerRadius="16dp"
@@ -209,6 +211,8 @@
                         app:cardBackgroundColor="#FFFFFF"
                         app:strokeColor="#EEEEEE"
                         app:strokeWidth="1dp"
+                        android:clickable="true"
+                        android:focusable="true"
                         android:layout_marginBottom="12dp">
 
                         <androidx.constraintlayout.widget.ConstraintLayout
@@ -345,13 +349,16 @@
 
                     <!-- JEE MAIN 1 Test -->
                     <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/testCard2"
                         android:layout_width="320dp"
                         android:layout_height="wrap_content"
                         app:cardCornerRadius="16dp"
                         app:cardElevation="0dp"
                         app:cardBackgroundColor="#FFFFFF"
                         app:strokeColor="#EEEEEE"
-                        app:strokeWidth="1dp">
+                        app:strokeWidth="1dp"
+                        android:clickable="true"
+                        android:focusable="true">
 
                         <androidx.constraintlayout.widget.ConstraintLayout
                             android:layout_width="match_parent"
@@ -496,6 +503,7 @@
 
                     <!-- Physics Mechanics Test -->
                     <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/testCard3"
                         android:layout_width="320dp"
                         android:layout_height="wrap_content"
                         app:cardCornerRadius="16dp"
@@ -503,6 +511,8 @@
                         app:cardBackgroundColor="#FFFFFF"
                         app:strokeColor="#EEEEEE"
                         app:strokeWidth="1dp"
+                        android:clickable="true"
+                        android:focusable="true"
                         android:layout_marginBottom="12dp">
 
                         <androidx.constraintlayout.widget.ConstraintLayout
@@ -639,13 +649,16 @@
 
                     <!-- Chemistry Organic Test -->
                     <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/testCard4"
                         android:layout_width="320dp"
                         android:layout_height="wrap_content"
                         app:cardCornerRadius="16dp"
                         app:cardElevation="0dp"
                         app:cardBackgroundColor="#FFFFFF"
                         app:strokeColor="#EEEEEE"
-                        app:strokeWidth="1dp">
+                        app:strokeWidth="1dp"
+                        android:clickable="true"
+                        android:focusable="true">
 
                         <androidx.constraintlayout.widget.ConstraintLayout
                             android:layout_width="match_parent"
@@ -789,6 +802,7 @@
 
                     <!-- Mathematics Calculus Test -->
                     <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/testCard5"
                         android:layout_width="320dp"
                         android:layout_height="wrap_content"
                         app:cardCornerRadius="16dp"
@@ -796,6 +810,8 @@
                         app:cardBackgroundColor="#FFFFFF"
                         app:strokeColor="#EEEEEE"
                         app:strokeWidth="1dp"
+                        android:clickable="true"
+                        android:focusable="true"
                         android:layout_marginBottom="12dp">
 
                         <androidx.constraintlayout.widget.ConstraintLayout
@@ -932,13 +948,16 @@
 
                     <!-- English Grammar Test -->
                     <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/testCard6"
                         android:layout_width="320dp"
                         android:layout_height="wrap_content"
                         app:cardCornerRadius="16dp"
                         app:cardElevation="0dp"
                         app:cardBackgroundColor="#FFFFFF"
                         app:strokeColor="#EEEEEE"
-                        app:strokeWidth="1dp">
+                        app:strokeWidth="1dp"
+                        android:clickable="true"
+                        android:focusable="true">
 
                         <androidx.constraintlayout.widget.ConstraintLayout
                             android:layout_width="match_parent"

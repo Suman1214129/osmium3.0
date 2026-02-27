@@ -3,6 +3,8 @@ package com.osmiumai.app
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.WindowCompat
+import androidx.core.view.WindowInsetsControllerCompat
 import com.osmiumai.app.databinding.ActivityWelcomeScreen1Binding
 
 class WelcomeScreen1Activity : AppCompatActivity() {
@@ -13,6 +15,8 @@ class WelcomeScreen1Activity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         
         supportActionBar?.hide()
+        WindowCompat.setDecorFitsSystemWindows(window, false)
+        WindowInsetsControllerCompat(window, window.decorView).isAppearanceLightStatusBars = true
         
         binding = ActivityWelcomeScreen1Binding.inflate(layoutInflater)
         setContentView(binding.root)

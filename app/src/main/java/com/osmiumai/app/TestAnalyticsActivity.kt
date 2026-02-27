@@ -6,6 +6,7 @@ import android.view.View
 import android.view.animation.Animation
 import android.view.animation.RotateAnimation
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.WindowCompat
 import com.osmiumai.app.databinding.ActivityTestAnalyticsBinding
 
 class TestAnalyticsActivity : AppCompatActivity() {
@@ -20,6 +21,8 @@ class TestAnalyticsActivity : AppCompatActivity() {
         setContentView(binding.root)
         
         supportActionBar?.hide()
+        WindowCompat.setDecorFitsSystemWindows(window, false)
+        window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
         
         binding.backButton.setOnClickListener {
             finish()
