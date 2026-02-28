@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FAF9F7"
+    android:background="#F7F5F3"
     android:fillViewport="true"
     tools:context=".ui.home.HomeFragment">
 
@@ -146,20 +146,18 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:fontFamily="@font/season_mix"
+                            android:fontFamily="sans-serif-medium"
                             android:text="See your Analytics"
-                            android:textColor="#333333"
-                            android:textSize="18sp"
-                            android:textStyle="bold" />
+                            android:textColor="#1E1E1E"
+                            android:textSize="18sp" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="4dp"
-                            android:fontFamily="@font/season_mix"
                             android:text="Check how's your performance"
-                            android:textColor="#666666"
-                            android:textSize="15sp" />
+                            android:textColor="#616161"
+                            android:textSize="14sp" />
                     </LinearLayout>
 
                     <!-- Arrow -->
@@ -179,19 +177,17 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="4dp"
-            android:fontFamily="@font/season_mix"
+            android:fontFamily="sans-serif-medium"
             android:text="Your courses"
-            android:textColor="#000000"
-            android:textSize="18sp"
-            android:textStyle="bold" />
+            android:textColor="#1E1E1E"
+            android:textSize="18sp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
-            android:fontFamily="@font/season_mix"
             android:text="Courses you've worked on recently"
-            android:textColor="#666666"
+            android:textColor="#616161"
             android:textSize="14sp" />
 
         <!-- Course Cards -->
@@ -505,19 +501,17 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="4dp"
-            android:fontFamily="@font/season_mix"
+            android:fontFamily="sans-serif-medium"
             android:text="Recent done tests"
-            android:textColor="#000000"
-            android:textSize="18sp"
-            android:textStyle="bold" />
+            android:textColor="#1E1E1E"
+            android:textSize="18sp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
-            android:fontFamily="@font/season_mix"
             android:text="See your performance on recent tests"
-            android:textColor="#666666"
+            android:textColor="#616161"
             android:textSize="14sp" />
 
         <!-- Test Items -->
@@ -961,19 +955,17 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="4dp"
-            android:fontFamily="@font/season_mix"
+            android:fontFamily="sans-serif-medium"
             android:text="Suggested actions"
-            android:textColor="#000000"
-            android:textSize="18sp"
-            android:textStyle="bold" />
+            android:textColor="#1E1E1E"
+            android:textSize="18sp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
-            android:fontFamily="@font/season_mix"
             android:text="See what you can improve"
-            android:textColor="#666666"
+            android:textColor="#616161"
             android:textSize="14sp" />
 
         <!-- Filter Tabs -->
@@ -993,22 +985,21 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="8dp"
-                    android:background="@drawable/bg_tab_selected"
+                    android:background="@drawable/bg_pill_white"
                     android:clickable="true"
                     android:focusable="true"
                     android:paddingHorizontal="20dp"
                     android:paddingVertical="10dp"
                     android:text="Personalized Path"
                     android:textColor="#1C1C1C"
-                    android:textSize="14sp"
-                    android:textStyle="bold" />
+                    android:textSize="14sp" />
 
                 <TextView
                     android:id="@+id/tabTestYourself"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="8dp"
-                    android:background="@drawable/bg_tab_unselected"
+                    android:background="@drawable/bg_pill_gray_light"
                     android:clickable="true"
                     android:focusable="true"
                     android:paddingHorizontal="20dp"
@@ -1021,7 +1012,7 @@
                     android:id="@+id/tabRecommended"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/bg_tab_unselected"
+                    android:background="@drawable/bg_pill_gray_light"
                     android:clickable="true"
                     android:focusable="true"
                     android:paddingHorizontal="20dp"
@@ -1288,19 +1279,17 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
             android:layout_marginBottom="4dp"
-            android:fontFamily="@font/season_mix"
+            android:fontFamily="sans-serif-medium"
             android:text="Recommended career path"
-            android:textColor="#000000"
-            android:textSize="18sp"
-            android:textStyle="bold" />
+            android:textColor="#1E1E1E"
+            android:textSize="18sp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
-            android:fontFamily="@font/season_mix"
             android:text="Career recommendation for you"
-            android:textColor="#666666"
+            android:textColor="#616161"
             android:textSize="14sp" />
 
         <!-- Career Path Cards -->

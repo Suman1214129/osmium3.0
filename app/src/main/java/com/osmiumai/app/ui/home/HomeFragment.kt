@@ -156,11 +156,9 @@ class HomeFragment : Fragment() {
             if (index == tabIndex) {
                 tab.background = selectedBg
                 tab.setTextColor(selectedColor)
-                tab.setTypeface(null, android.graphics.Typeface.BOLD)
             } else {
                 tab.background = unselectedBg
                 tab.setTextColor(unselectedColor)
-                tab.setTypeface(null, android.graphics.Typeface.NORMAL)
             }
         }
         

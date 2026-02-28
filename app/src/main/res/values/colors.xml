@@ -9,6 +9,7 @@
     <color name="white">#FFFFFFFF</color>
     <color name="chip_unselected_bg">#F0F0F0</color>
     <color name="chip_unselected_text">#6B6B6B</color>
+    <color name="chip_selected_text">#1E1E1E</color>
     
     <!-- Bottom Navigation Colors -->
     <color name="bottom_nav_selected">#1C1C1C</color>

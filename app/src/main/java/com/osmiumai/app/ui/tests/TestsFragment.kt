@@ -59,8 +59,8 @@ class TestsFragment : Fragment() {
         allChips.forEach { chip ->
             if (chip == clickedChip) {
                 // Selected state
-                chip.chipBackgroundColor = ColorStateList.valueOf(ContextCompat.getColor(requireContext(), android.R.color.black))
-                chip.setTextColor(ContextCompat.getColor(requireContext(), android.R.color.white))
+                chip.chipBackgroundColor = ColorStateList.valueOf(ContextCompat.getColor(requireContext(), android.R.color.white))
+                chip.setTextColor(ContextCompat.getColor(requireContext(), R.color.chip_selected_text))
             } else {
                 // Unselected state
                 chip.chipBackgroundColor = ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.chip_unselected_bg))

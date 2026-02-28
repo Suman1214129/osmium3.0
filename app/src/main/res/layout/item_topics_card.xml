@@ -32,10 +32,13 @@
             android:gravity="center_vertical"
             android:paddingHorizontal="12dp"
             android:paddingVertical="6dp"
+            android:clickable="true"
+            android:focusable="true"
             app:layout_constraintStart_toEndOf="@id/lblSection"
             app:layout_constraintTop_toTopOf="parent">
 
             <TextView
+                android:id="@+id/tvSubject"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Physics"
@@ -106,6 +109,8 @@
             android:background="@drawable/circle_gray_very_light"
             android:padding="10dp"
             android:src="@drawable/ic_arrow_right_nav"
+            android:clickable="true"
+            android:focusable="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/listContainer"/>
 
@@ -117,6 +122,8 @@
             android:background="@drawable/circle_gray_very_light"
             android:padding="10dp"
             android:src="@drawable/ic_arrow_left"
+            android:clickable="true"
+            android:focusable="true"
             app:layout_constraintBottom_toBottomOf="@id/btnNext"
             app:layout_constraintEnd_toStartOf="@id/btnNext"
             app:layout_constraintTop_toTopOf="@id/btnNext"/>

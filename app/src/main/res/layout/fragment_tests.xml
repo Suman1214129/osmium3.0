@@ -68,9 +68,9 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="4dp"
                     android:text="AI-Powered Mock Test"
-                    android:textColor="#1C1C1C"
+                    android:textColor="#1E1E1E"
                     android:textSize="18sp"
-                    android:textStyle="bold" />
+                    android:fontFamily="sans-serif-medium" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -106,9 +106,8 @@
             android:layout_height="wrap_content"
             android:text="Recent done tests"
             android:textSize="18sp"
-            android:fontFamily="@font/season_mix"
-            android:textStyle="bold"
-            android:textColor="#000000"
+            android:fontFamily="sans-serif-medium"
+            android:textColor="#1E1E1E"
             android:layout_marginBottom="4dp"/>
 
         <TextView
@@ -116,9 +115,7 @@
             android:layout_height="wrap_content"
             android:text="See your performance on recent tests"
             android:textSize="14sp"
-            android:fontFamily="@font/season_mix"
-            android:textStyle="bold"
-            android:textColor="#666666"
+            android:textColor="#616161"
             android:layout_marginBottom="16dp"/>
 
         <!-- Filter Chips -->
@@ -138,9 +135,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="All"
-                    android:textColor="#FFFFFF"
-                    android:textStyle="bold"
-                    app:chipBackgroundColor="#1C1C1C"
+                    android:textColor="#1E1E1E"
+                    app:chipBackgroundColor="@android:color/white"
                     app:chipStrokeWidth="0dp"
                     app:chipCornerRadius="16dp"
                     android:layout_marginEnd="8dp"/>
@@ -150,7 +146,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="JEE MAINS"
-                    android:textColor="#6B6B6B"
+                    android:textColor="#737373"
                     app:chipBackgroundColor="#F0F0F0"
                     app:chipStrokeWidth="0dp"
                     app:chipCornerRadius="16dp"
@@ -161,7 +157,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="GATE"
-                    android:textColor="#6B6B6B"
+                    android:textColor="#737373"
                     app:chipBackgroundColor="#F0F0F0"
                     app:chipStrokeWidth="0dp"
                     app:chipCornerRadius="16dp"
@@ -172,7 +168,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="SSC-CGL"
-                    android:textColor="#6B6B6B"
+                    android:textColor="#737373"
                     app:chipBackgroundColor="#F0F0F0"
                     app:chipStrokeWidth="0dp"
                     app:chipCornerRadius="16dp"/>

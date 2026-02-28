@@ -1,9 +1,11 @@
 package com.osmiumai.app.views
 
+import android.animation.ValueAnimator
 import android.content.Context
 import android.graphics.*
 import android.util.AttributeSet
 import android.view.View
+import android.view.animation.DecelerateInterpolator
 
 class LineChartView @JvmOverloads constructor(
     context: Context,
@@ -34,7 +36,33 @@ class LineChartView @JvmOverloads constructor(
         style = Paint.Style.STROKE
     }
 
-    private val dataPoints = listOf(150f, 140f, 180f, 255f)
+    private var dataPoints = listOf(150f, 140f, 180f, 255f)
+    private var animatedDataPoints = dataPoints.toList()
+    private var animationProgress = 1f
+
+    fun setData(newData: List<Float>, animate: Boolean = true) {
+        val oldData = dataPoints
+        dataPoints = newData
+        
+        if (animate) {
+            ValueAnimator.ofFloat(0f, 1f).apply {
+                duration = 500
+                interpolator = DecelerateInterpolator()
+                addUpdateListener { animator ->
+                    animationProgress = animator.animatedValue as Float
+                    animatedDataPoints = dataPoints.mapIndexed { index, value ->
+                        val oldValue = oldData.getOrElse(index) { value }
+                        oldValue + (value - oldValue) * animationProgress
+                    }
+                    invalidate()
+                }
+                start()
+            }
+        } else {
+            animatedDataPoints = dataPoints
+            invalidate()
+        }
+    }
 
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
@@ -44,8 +72,8 @@ class LineChartView @JvmOverloads constructor(
         val maxValue = 300f
         val padding = 20f
 
-        val points = dataPoints.mapIndexed { index, value ->
-            val x = padding + (w - 2 * padding) * index / (dataPoints.size - 1)
+        val points = animatedDataPoints.mapIndexed { index, value ->
+            val x = padding + (w - 2 * padding) * index / (animatedDataPoints.size - 1)
             val y = h - padding - (h - 2 * padding) * (value / maxValue)
             PointF(x, y)
         }
