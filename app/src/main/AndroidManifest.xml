@@ -113,9 +113,6 @@
             android:name="com.osmiumai.app.ui.settings.HelpCenterActivity"
             android:exported="false" />
         <activity
-            android:name="com.osmiumai.app.ui.notifications.NotificationsActivity"
-            android:exported="false" />
-        <activity
             android:name="com.osmiumai.app.CareerDetailActivity"
             android:exported="false" />
 

@@ -93,6 +93,13 @@ class AiMentorFragment : Fragment() {
         setupChatMenuButton()
         loadSidebarAvatar()
         
+        activity?.intent?.getStringExtra("question_text")?.let { question ->
+            binding.root.post {
+                sendMessage(question)
+            }
+            activity?.intent?.removeExtra("question_text")
+        }
+        
         return binding.root
     }
     

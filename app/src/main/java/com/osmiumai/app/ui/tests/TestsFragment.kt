@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.HorizontalScrollView
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.osmiumai.app.R
 import com.osmiumai.app.TestAnalyticsActivity
 import com.osmiumai.app.UploadPapersActivity
@@ -107,8 +108,7 @@ class TestsFragment : Fragment() {
 
     private fun setupNotificationButton() {
         binding.btnNotificationTests.setOnClickListener {
-            val intent = Intent(requireContext(), com.osmiumai.app.ui.notifications.NotificationsActivity::class.java)
-            startActivity(intent)
+            findNavController().navigate(R.id.navigation_notifications)
         }
     }
 

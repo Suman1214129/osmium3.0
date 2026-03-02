@@ -9,7 +9,7 @@ import com.osmiumai.app.WelcomeActivity
 import com.osmiumai.app.databinding.ActivitySettingsBinding
 import com.osmiumai.app.databinding.DialogEditProfileBinding
 import com.google.android.material.bottomsheet.BottomSheetDialog
-import com.osmiumai.app.ui.notifications.NotificationsActivity
+import com.osmiumai.app.MainActivity
 
 class SettingsActivity : AppCompatActivity() {
 
@@ -47,7 +47,9 @@ class SettingsActivity : AppCompatActivity() {
         }
 
         binding.btnNotifications.setOnClickListener {
-            startActivity(Intent(this, NotificationsActivity::class.java))
+            val intent = Intent(this, MainActivity::class.java)
+            intent.putExtra("navigate_to", "notifications")
+            startActivity(intent)
         }
 
         binding.btnNotificationSettings.setOnClickListener {

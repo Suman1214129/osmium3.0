@@ -14,6 +14,7 @@ class SignupActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySignupBinding
     private var selectedCountryCode = "+91"
     private var selectedCountryName = "India (+91)"
+    private lateinit var googleAuthHelper: GoogleAuthHelper
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,6 +25,8 @@ class SignupActivity : AppCompatActivity() {
         
         binding = ActivitySignupBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        
+        googleAuthHelper = GoogleAuthHelper(this)
 
         binding.containerCountry.setOnClickListener {
             showCountryPicker()
@@ -46,14 +49,41 @@ class SignupActivity : AppCompatActivity() {
         }
         
         binding.btnGoogleSignup.setOnClickListener {
-            startActivity(Intent(this, MainActivity::class.java))
-            finish()
+            signInWithGoogle()
         }
         
         binding.tvLoginLink.setOnClickListener {
             startActivity(Intent(this, LoginActivity::class.java))
             finish()
         }
+    }
+    
+    private fun signInWithGoogle() {
+        googleAuthHelper.signInWithGoogle(
+            onSuccess = { credential ->
+                val email = credential.id
+                val displayName = credential.displayName
+                val profilePicUrl = credential.profilePictureUri?.toString()
+                
+                // Save user data to SharedPreferences
+                val prefs = getSharedPreferences("OsmiumPrefs", MODE_PRIVATE)
+                prefs.edit().apply {
+                    putString("user_email", email)
+                    putString("user_name", displayName)
+                    putString("user_profile_pic", profilePicUrl)
+                    putBoolean("is_logged_in", true)
+                    putString("login_method", "google")
+                    apply()
+                }
+                
+                Toast.makeText(this, "Welcome, $displayName!", Toast.LENGTH_SHORT).show()
+                startActivity(Intent(this, MainActivity::class.java))
+                finish()
+            },
+            onError = { error ->
+                Toast.makeText(this, "Sign-in failed: $error", Toast.LENGTH_LONG).show()
+            }
+        )
     }
     
     private fun showCountryPicker() {

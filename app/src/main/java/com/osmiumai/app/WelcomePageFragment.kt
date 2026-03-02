@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.osmiumai.app.databinding.FragmentWelcomePageBinding
 
@@ -13,10 +14,12 @@ class WelcomePageFragment : Fragment() {
     private var _binding: FragmentWelcomePageBinding? = null
     private val binding get() = _binding!!
     private var pagePosition = 0
+    private lateinit var googleAuthHelper: GoogleAuthHelper
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         pagePosition = arguments?.getInt(ARG_POSITION) ?: 0
+        googleAuthHelper = GoogleAuthHelper(requireContext())
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
@@ -67,7 +70,7 @@ class WelcomePageFragment : Fragment() {
         }
         
         binding.btnGoogle.setOnClickListener {
-            startActivity(Intent(requireContext(), SignupActivity::class.java))
+            signInWithGoogle()
         }
         
         binding.btnPhone.setOnClickListener {
@@ -82,6 +85,33 @@ class WelcomePageFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+    
+    private fun signInWithGoogle() {
+        googleAuthHelper.signInWithGoogle(
+            onSuccess = { credential ->
+                val email = credential.id
+                val displayName = credential.displayName
+                val profilePicUrl = credential.profilePictureUri?.toString()
+                
+                val prefs = requireContext().getSharedPreferences("OsmiumPrefs", android.content.Context.MODE_PRIVATE)
+                prefs.edit().apply {
+                    putString("user_email", email)
+                    putString("user_name", displayName)
+                    putString("user_profile_pic", profilePicUrl)
+                    putBoolean("is_logged_in", true)
+                    putString("login_method", "google")
+                    apply()
+                }
+                
+                Toast.makeText(requireContext(), "Welcome, $displayName!", Toast.LENGTH_SHORT).show()
+                startActivity(Intent(requireContext(), MainActivity::class.java))
+                activity?.finish()
+            },
+            onError = { error ->
+                Toast.makeText(requireContext(), "Sign-in failed: $error\n\nPlease configure Web Client ID", Toast.LENGTH_LONG).show()
+            }
+        )
     }
 
     companion object {

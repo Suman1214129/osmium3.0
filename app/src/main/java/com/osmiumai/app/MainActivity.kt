@@ -21,7 +21,7 @@ class MainActivity : AppCompatActivity() {
         supportActionBar?.hide()
         
         WindowCompat.setDecorFitsSystemWindows(window, false)
-        window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
+        WindowCompat.getInsetsController(window, window.decorView).isAppearanceLightStatusBars = true
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -45,6 +45,9 @@ class MainActivity : AppCompatActivity() {
                 "ai_mentor" -> {
                     navController.navigate(R.id.navigation_ai_mentor)
                     navView.selectedItemId = R.id.navigation_ai_mentor
+                }
+                "notifications" -> {
+                    navController.navigate(R.id.navigation_notifications)
                 }
             }
         }
@@ -90,6 +93,10 @@ class MainActivity : AppCompatActivity() {
                     val navController = findNavController(R.id.nav_host_fragment_activity_main)
                     navController.navigate(R.id.navigation_ai_mentor)
                     binding.navView.selectedItemId = R.id.navigation_ai_mentor
+                }
+                "notifications" -> {
+                    val navController = findNavController(R.id.nav_host_fragment_activity_main)
+                    navController.navigate(R.id.navigation_notifications)
                 }
             }
         }

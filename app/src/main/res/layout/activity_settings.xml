@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F9F9F9">
+    android:background="#F7F5F3">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -43,17 +43,16 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="12dp"
             android:text="Files"
-            android:fontFamily="@font/public_sans"
-            android:textColor="#616161"
-            android:textSize="13sp"
-            android:textStyle="bold" />
+            android:fontFamily="sans-serif-medium"
+            android:textColor="#1E1E1E"
+            android:textSize="16sp" />
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="24dp"
             app:cardBackgroundColor="#FFFFFF"
-            app:cardCornerRadius="16dp"
+            app:cardCornerRadius="18dp"
             app:cardElevation="0dp">
 
             <LinearLayout
@@ -84,7 +83,8 @@
                         android:text="File Manager"
                         android:fontFamily="@font/public_sans"
                         android:textColor="#1E1E1E"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
 
                     <ImageView
                         android:layout_width="16dp"
@@ -118,7 +118,8 @@
                         android:text="Cloud Storage"
                         android:fontFamily="@font/public_sans"
                         android:textColor="#1E1E1E"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
 
                     <ImageView
                         android:layout_width="16dp"
@@ -152,7 +153,8 @@
                         android:text="Downloads"
                         android:fontFamily="@font/public_sans"
                         android:textColor="#1E1E1E"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
 
                     <ImageView
                         android:layout_width="16dp"
@@ -168,17 +170,16 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="12dp"
             android:text="Account"
-            android:fontFamily="@font/public_sans"
-            android:textColor="#616161"
-            android:textSize="13sp"
-            android:textStyle="bold" />
+            android:fontFamily="sans-serif-medium"
+            android:textColor="#1E1E1E"
+            android:textSize="16sp" />
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="24dp"
             app:cardBackgroundColor="#FFFFFF"
-            app:cardCornerRadius="16dp"
+            app:cardCornerRadius="18dp"
             app:cardElevation="0dp">
 
             <LinearLayout
@@ -209,7 +210,8 @@
                         android:text="Edit Profile"
                         android:fontFamily="@font/public_sans"
                         android:textColor="#1E1E1E"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
 
                     <ImageView
                         android:layout_width="16dp"
@@ -243,7 +245,8 @@
                         android:text="Notifications"
                         android:fontFamily="@font/public_sans"
                         android:textColor="#1E1E1E"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
 
                     <ImageView
                         android:layout_width="16dp"
@@ -277,7 +280,8 @@
                         android:text="Notification Settings"
                         android:fontFamily="@font/public_sans"
                         android:textColor="#1E1E1E"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
 
                     <ImageView
                         android:layout_width="16dp"
@@ -311,7 +315,8 @@
                         android:text="Privacy &amp; Security"
                         android:fontFamily="@font/public_sans"
                         android:textColor="#1E1E1E"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
 
                     <ImageView
                         android:layout_width="16dp"
@@ -345,7 +350,8 @@
                         android:text="Subscription"
                         android:fontFamily="@font/public_sans"
                         android:textColor="#1E1E1E"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
 
                     <ImageView
                         android:layout_width="16dp"
@@ -361,17 +367,16 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="12dp"
             android:text="Support"
-            android:fontFamily="@font/public_sans"
-            android:textColor="#616161"
-            android:textSize="13sp"
-            android:textStyle="bold" />
+            android:fontFamily="sans-serif-medium"
+            android:textColor="#1E1E1E"
+            android:textSize="16sp" />
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="24dp"
             app:cardBackgroundColor="#FFFFFF"
-            app:cardCornerRadius="16dp"
+            app:cardCornerRadius="18dp"
             app:cardElevation="0dp">
 
             <LinearLayout
@@ -402,7 +407,8 @@
                         android:text="Help Center"
                         android:fontFamily="@font/public_sans"
                         android:textColor="#1E1E1E"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
 
                     <ImageView
                         android:layout_width="16dp"
@@ -436,7 +442,8 @@
                         android:text="Contact Us"
                         android:fontFamily="@font/public_sans"
                         android:textColor="#1E1E1E"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
 
                     <ImageView
                         android:layout_width="16dp"
@@ -470,7 +477,8 @@
                         android:text="Feedback"
                         android:fontFamily="@font/public_sans"
                         android:textColor="#1E1E1E"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
 
                     <ImageView
                         android:layout_width="16dp"
@@ -486,7 +494,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:cardBackgroundColor="#FFFFFF"
-            app:cardCornerRadius="16dp"
+            app:cardCornerRadius="18dp"
             app:cardElevation="0dp">
 
             <LinearLayout
@@ -503,15 +511,16 @@
                     android:rotation="180"
                     app:tint="#D32F2F" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="12dp"
-                    android:text="Logout"
-                    android:fontFamily="@font/public_sans"
-                    android:textColor="#D32F2F"
-                    android:textSize="15sp"
-                    android:textStyle="bold" />
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_weight="1"
+                        android:text="Logout"
+                        android:fontFamily="@font/public_sans"
+                        android:textColor="#D32F2F"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
             </LinearLayout>
         </androidx.cardview.widget.CardView>
     </LinearLayout>

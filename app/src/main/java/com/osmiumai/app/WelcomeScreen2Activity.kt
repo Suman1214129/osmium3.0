@@ -3,7 +3,9 @@ package com.osmiumai.app
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.ViewCompat
 import androidx.core.view.WindowCompat
+import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
 import com.osmiumai.app.databinding.ActivityWelcomeScreen2Binding
 
@@ -20,6 +22,10 @@ class WelcomeScreen2Activity : AppCompatActivity() {
         
         binding = ActivityWelcomeScreen2Binding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        ViewCompat.setOnApplyWindowInsetsListener(binding.root) { v, insets ->
+            insets
+        }
 
         binding.btnContinue.setOnClickListener {
             startActivity(Intent(this, WelcomeScreen3Activity::class.java))

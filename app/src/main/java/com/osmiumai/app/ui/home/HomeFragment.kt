@@ -40,8 +40,7 @@ class HomeFragment : Fragment() {
         }
         
         binding.btnNotificationHome.setOnClickListener {
-            val intent = Intent(requireContext(), com.osmiumai.app.ui.notifications.NotificationsActivity::class.java)
-            startActivity(intent)
+            findNavController().navigate(R.id.navigation_notifications)
         }
         
         binding.analyticsCard.setOnClickListener {

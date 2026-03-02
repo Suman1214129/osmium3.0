@@ -17,6 +17,7 @@ import androidx.fragment.app.Fragment
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.osmiumai.app.R
 import com.osmiumai.app.databinding.FragmentProfileBinding
+import androidx.navigation.fragment.findNavController
 import com.osmiumai.app.databinding.DialogEditProfileBinding
 import kotlin.math.abs
 
@@ -473,7 +474,7 @@ class ProfileFragment : Fragment() {
 
     private fun setupNotifications() {
         binding.root.findViewById<ImageView>(R.id.btnNotifications)?.setOnClickListener {
-            startActivity(Intent(requireContext(), com.osmiumai.app.ui.notifications.NotificationsActivity::class.java))
+            findNavController().navigate(R.id.navigation_notifications)
         }
     }
 

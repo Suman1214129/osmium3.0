@@ -718,6 +718,18 @@ class TopicLearnActivity : AppCompatActivity() {
             resultView.visibility = View.GONE
             switchToQuiz()
         }
+        
+        resultView.findViewById<TextView>(R.id.btnViewSolution).setOnClickListener {
+            val solutionsContainer = resultView.findViewById<android.widget.LinearLayout>(R.id.solutionsContainer)
+            if (solutionsContainer.visibility == View.GONE) {
+                if (solutionsContainer.childCount == 0) {
+                    loadQuizSolutions(solutionsContainer)
+                }
+                solutionsContainer.visibility = View.VISIBLE
+            } else {
+                solutionsContainer.visibility = View.GONE
+            }
+        }
     }
     
     private fun dpToPx(dp: Int): Int {
@@ -888,5 +900,96 @@ class TopicLearnActivity : AppCompatActivity() {
                 }.start()
             }.start()
         }.start()
+    }
+    
+    private fun loadQuizSolutions(container: android.widget.LinearLayout) {
+        questions.forEachIndexed { index, question ->
+            val questionCard = LayoutInflater.from(this).inflate(R.layout.item_analytics_question, container, false)
+            
+            questionCard.findViewById<TextView>(R.id.questionNumber).text = "Question ${index + 1}."
+            questionCard.findViewById<TextView>(R.id.questionPreview).text = question.first
+            questionCard.findViewById<TextView>(R.id.questionText).text = question.first
+            
+            val userAnswer = userAnswers[index] ?: -1
+            val correctAnswer = question.third
+            val isCorrect = userAnswer == correctAnswer
+            
+            questionCard.findViewById<TextView>(R.id.yourAnswerValue).apply {
+                text = if (userAnswer >= 0) "${('A' + userAnswer)}" else "Not answered"
+                setTextColor(if (isCorrect) 0xFF4CAF50.toInt() else 0xFFE53935.toInt())
+            }
+            
+            questionCard.findViewById<TextView>(R.id.correctValue).text = "${('A' + correctAnswer)}"
+            questionCard.findViewById<TextView>(R.id.timeSpent)?.text = "1:30 Min"
+            questionCard.findViewById<TextView>(R.id.expectedTime)?.text = "120s"
+            
+            val topicTags = questionCard.findViewById<android.widget.LinearLayout>(R.id.topicTags)
+            topicTags?.removeAllViews()
+            
+            val optionViews = listOf(
+                questionCard.findViewById<android.widget.LinearLayout>(R.id.optionA),
+                questionCard.findViewById<android.widget.LinearLayout>(R.id.optionB),
+                questionCard.findViewById<android.widget.LinearLayout>(R.id.optionC),
+                questionCard.findViewById<android.widget.LinearLayout>(R.id.optionD)
+            )
+            
+            val optionTexts = listOf(R.id.optionAText, R.id.optionBText, R.id.optionCText, R.id.optionDText)
+            val optionLabels = listOf(R.id.optionALabel, R.id.optionBLabel, R.id.optionCLabel, R.id.optionDLabel)
+            
+            question.second.forEachIndexed { optIndex, optText ->
+                optionViews[optIndex].findViewById<TextView>(optionTexts[optIndex]).text = optText
+                optionViews[optIndex].findViewById<TextView>(optionLabels[optIndex]).text = "${('A' + optIndex)}"
+                
+                when {
+                    optIndex == correctAnswer -> {
+                        optionViews[optIndex].setBackgroundResource(R.drawable.bg_option_correct)
+                        optionViews[optIndex].findViewById<TextView>(optionLabels[optIndex]).apply {
+                            setBackgroundResource(R.drawable.circle_green)
+                            setTextColor(0xFFFFFFFF.toInt())
+                        }
+                    }
+                    optIndex == userAnswer && !isCorrect -> {
+                        optionViews[optIndex].setBackgroundResource(R.drawable.bg_option_wrong)
+                        optionViews[optIndex].findViewById<TextView>(optionLabels[optIndex]).apply {
+                            setBackgroundResource(R.drawable.circle_red)
+                            setTextColor(0xFFFFFFFF.toInt())
+                        }
+                    }
+                    else -> {
+                        optionViews[optIndex].setBackgroundResource(R.drawable.bg_option_card)
+                        optionViews[optIndex].findViewById<TextView>(optionLabels[optIndex]).apply {
+                            setBackgroundResource(R.drawable.circle_gray_light)
+                            setTextColor(0xFF757575.toInt())
+                        }
+                    }
+                }
+            }
+            
+            val questionDetails = questionCard.findViewById<android.widget.LinearLayout>(R.id.questionDetails)
+            val questionHeader = questionCard.findViewById<android.widget.LinearLayout>(R.id.questionHeader)
+            val dropdownIcon = questionCard.findViewById<android.widget.ImageView>(R.id.dropdownIcon)
+            
+            questionDetails.visibility = View.GONE
+            dropdownIcon.rotation = 0f
+            
+            questionHeader.setOnClickListener {
+                if (questionDetails.visibility == View.GONE) {
+                    questionDetails.visibility = View.VISIBLE
+                    dropdownIcon.rotation = 180f
+                } else {
+                    questionDetails.visibility = View.GONE
+                    dropdownIcon.rotation = 0f
+                }
+            }
+            
+            questionCard.findViewById<android.widget.LinearLayout>(R.id.askMentorButton).setOnClickListener {
+                val intent = android.content.Intent(this, MainActivity::class.java)
+                intent.putExtra("navigate_to", "ai_mentor")
+                intent.putExtra("question_text", question.first)
+                startActivity(intent)
+            }
+            
+            container.addView(questionCard)
+        }
     }
 }

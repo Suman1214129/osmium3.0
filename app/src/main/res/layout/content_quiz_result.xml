@@ -10,8 +10,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:gravity="center_horizontal"
-        android:padding="24dp">
+        android:gravity="center_horizontal">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            android:padding="24dp">
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -79,8 +85,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="9"
-                        android:fontFamily="@font/baskervville"
-                        android:textStyle="bold"
                         android:textSize="32sp"
                         android:textColor="#1E1E1E"/>
                     <TextView
@@ -115,8 +119,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="02:26"
-                    android:fontFamily="@font/baskervville"
-                    android:textStyle="bold"
                     android:textSize="32sp"
                     android:textColor="#1E1E1E"/>
             </LinearLayout>
@@ -176,6 +178,15 @@
             </LinearLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/solutionsContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone" />
 
     </LinearLayout>
 

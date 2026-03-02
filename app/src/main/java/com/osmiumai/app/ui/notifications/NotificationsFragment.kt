@@ -22,17 +22,19 @@ class NotificationsFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val notificationsViewModel =
-            ViewModelProvider(this).get(NotificationsViewModel::class.java)
-
         _binding = FragmentNotificationsBinding.inflate(inflater, container, false)
-        val root: View = binding.root
-
-        val textView: TextView = binding.textNotifications
-        notificationsViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
+        
+        binding.btnBack.setOnClickListener {
+            requireActivity().onBackPressedDispatcher.onBackPressed()
         }
-        return root
+        
+        binding.btnMarkAllRead.setOnClickListener {
+            binding.notif1.visibility = View.GONE
+            binding.notif2.visibility = View.GONE
+            binding.notif3.visibility = View.GONE
+        }
+        
+        return binding.root
     }
 
     override fun onDestroyView() {
