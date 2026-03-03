@@ -34,11 +34,6 @@ class WelcomeActivity : AppCompatActivity() {
                 binding.progressBar.progress = (position + 1) * 25
             }
         })
-        
-        binding.btnSkip.setOnClickListener {
-            startActivity(Intent(this, MainActivity::class.java))
-            finish()
-        }
     }
     
     fun nextPage() {

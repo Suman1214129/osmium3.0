@@ -49,54 +49,64 @@
         <!-- AI-Powered Mock Test Card -->
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
-            android:layout_height="160dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="0dp"
+            android:layout_marginEnd="0dp"
             app:cardCornerRadius="16dp"
             app:cardElevation="0dp"
-            android:backgroundTint="#F8F4E6"
+            app:cardMaxElevation="0dp"
             android:layout_marginBottom="24dp">
 
-            <LinearLayout
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="206dp"
                 android:background="@drawable/testbg"
-                android:orientation="vertical"
-                android:padding="16dp"
-                android:gravity="top">
+                android:padding="20dp">
 
                 <TextView
+                    android:id="@+id/tvMockTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="4dp"
                     android:text="AI-Powered Mock Test"
                     android:textColor="#1E1E1E"
-                    android:textSize="18sp"
-                    android:fontFamily="sans-serif-medium" />
+                    android:textSize="20sp"
+                    android:fontFamily="sans-serif-medium"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:id="@+id/tvMockDesc"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="8dp"
-                    android:lineSpacingExtra="0dp"
-                    android:text="Just upload your past papers - we'll\ngenerate a mock that actually\npredicts your upcoming exam\npattern."
+                    android:layout_marginTop="8dp"
+                    android:maxWidth="240dp"
+                    android:lineSpacingExtra="2dp"
+                    android:text="Just upload your past papers - we'll \ngenerate a mock that actually \npredicts your upcoming exam \npattern."
                     android:textColor="#4A4A4A"
-                    android:textSize="12sp" />
+                    android:textSize="13sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tvMockTitle" />
 
                 <TextView
                     android:id="@+id/tryNowButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="140dp"
+                    android:layout_height="42dp"
+                    android:layout_marginTop="12dp"
                     android:background="@drawable/try_now_button_bg"
                     android:clickable="true"
                     android:focusable="true"
                     android:gravity="center"
-                    android:paddingHorizontal="18dp"
-                    android:paddingVertical="8dp"
                     android:text="Try now"
                     android:textColor="#1C1C1C"
-                    android:textSize="13sp"
-                    android:textStyle="bold" />
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tvMockDesc" />
 
-            </LinearLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
         </com.google.android.material.card.MaterialCardView>
 

@@ -193,7 +193,6 @@
             android:layout_height="52dp"
             android:layout_marginTop="40dp"
             android:background="@drawable/bg_btn_glow"
-            android:elevation="16dp"
             android:gravity="center"
             android:text="Select Plan"
             android:textColor="#FFFFFF"
