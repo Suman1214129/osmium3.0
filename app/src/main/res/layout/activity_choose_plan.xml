@@ -1,0 +1,733 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F7F5F3"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:paddingHorizontal="20dp"
+            android:paddingTop="16dp"
+            android:paddingBottom="24dp">
+
+            <ImageView
+                android:id="@+id/btnBack"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_arrow_left"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                app:tint="#1E1E1E" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_weight="1"
+                android:text="Choose your plan"
+                android:fontFamily="@font/public_sans"
+                android:textColor="#1E1E1E"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingHorizontal="20dp"
+            android:paddingBottom="24dp">
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardGoPlan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                app:cardBackgroundColor="#FFFFFF"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="0dp"
+                app:strokeColor="#E0E0E0"
+                app:strokeWidth="1dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="20dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Free"
+                        android:fontFamily="@font/public_sans"
+                        android:textColor="#1E1E1E"
+                        android:textSize="24sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="Renews for ₹399.00/month. Cancel anytime."
+                        android:fontFamily="@font/public_sans"
+                        android:textColor="#757575"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="Keep learning with AI-powered study tools"
+                        android:fontFamily="@font/public_sans"
+                        android:textColor="#1E1E1E"
+                        android:textSize="15sp" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnCurrentPlan"
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:layout_marginTop="16dp"
+                        android:text="Your current plan"
+                        android:fontFamily="@font/public_sans"
+                        android:textColor="#757575"
+                        android:textSize="15sp"
+                        android:textAllCaps="false"
+                        app:backgroundTint="#F5F5F5"
+                        app:cornerRadius="8dp" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnManageSubscription"
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:layout_marginTop="8dp"
+                        android:text="Manage Subscription"
+                        android:fontFamily="@font/public_sans"
+                        android:textColor="#1E1E1E"
+                        android:textSize="15sp"
+                        android:textAllCaps="false"
+                        app:backgroundTint="#FFFFFF"
+                        app:cornerRadius="8dp"
+                        app:strokeColor="#E0E0E0"
+                        app:strokeWidth="1dp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_marginTop="16dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="12dp">
+
+                            <TextView
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:text="✓"
+                                android:gravity="center"
+                                android:textColor="#4CAF50"
+                                android:textSize="16sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:layout_marginStart="12dp"
+                                android:text="Access to AI study assistant"
+                                android:fontFamily="@font/public_sans"
+                                android:textColor="#1E1E1E"
+                                android:textSize="14sp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="12dp">
+
+                            <TextView
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:text="✓"
+                                android:gravity="center"
+                                android:textColor="#4CAF50"
+                                android:textSize="16sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:layout_marginStart="12dp"
+                                android:text="Extended access to advanced AI models"
+                                android:fontFamily="@font/public_sans"
+                                android:textColor="#1E1E1E"
+                                android:textSize="14sp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="12dp">
+
+                            <TextView
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:text="✓"
+                                android:gravity="center"
+                                android:textColor="#4CAF50"
+                                android:textSize="16sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:layout_marginStart="12dp"
+                                android:text="Upload study materials and generate tests"
+                                android:fontFamily="@font/public_sans"
+                                android:textColor="#1E1E1E"
+                                android:textSize="14sp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="12dp">
+
+                            <TextView
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:text="✓"
+                                android:gravity="center"
+                                android:textColor="#4CAF50"
+                                android:textSize="16sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:layout_marginStart="12dp"
+                                android:text="AI-powered learning analytics"
+                                android:fontFamily="@font/public_sans"
+                                android:textColor="#1E1E1E"
+                                android:textSize="14sp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="12dp">
+
+                            <TextView
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:text="✓"
+                                android:gravity="center"
+                                android:textColor="#4CAF50"
+                                android:textSize="16sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:layout_marginStart="12dp"
+                                android:text="Personalized study recommendations"
+                                android:fontFamily="@font/public_sans"
+                                android:textColor="#1E1E1E"
+                                android:textSize="14sp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:text="✓"
+                                android:gravity="center"
+                                android:textColor="#4CAF50"
+                                android:textSize="16sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:layout_marginStart="12dp"
+                                android:text="Limited access to mock tests"
+                                android:fontFamily="@font/public_sans"
+                                android:textColor="#1E1E1E"
+                                android:textSize="14sp" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardPlusPlan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                app:cardBackgroundColor="#FFFFFF"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="0dp"
+                app:strokeColor="#E0E0E0"
+                app:strokeWidth="1dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="20dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Plus"
+                        android:fontFamily="@font/public_sans"
+                        android:textColor="#1E1E1E"
+                        android:textSize="24sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="Renews for ₹1,950.00/month. Cancel anytime."
+                        android:fontFamily="@font/public_sans"
+                        android:textColor="#757575"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="Access premium features and unlimited learning"
+                        android:fontFamily="@font/public_sans"
+                        android:textColor="#1E1E1E"
+                        android:textSize="15sp" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnGetPlus"
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:layout_marginTop="16dp"
+                        android:text="Get Plus"
+                        android:fontFamily="@font/public_sans"
+                        android:textColor="#FFFFFF"
+                        android:textSize="15sp"
+                        android:textAllCaps="false"
+                        app:backgroundTint="#1E1E1E"
+                        app:cornerRadius="8dp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_marginTop="16dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="12dp">
+
+                            <TextView
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:text="✓"
+                                android:gravity="center"
+                                android:textColor="#4CAF50"
+                                android:textSize="16sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:layout_marginStart="12dp"
+                                android:text="Everything in Go"
+                                android:fontFamily="@font/public_sans"
+                                android:textColor="#1E1E1E"
+                                android:textSize="14sp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="12dp">
+
+                            <TextView
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:text="✓"
+                                android:gravity="center"
+                                android:textColor="#4CAF50"
+                                android:textSize="16sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:layout_marginStart="12dp"
+                                android:text="Unlimited mock tests and practice questions"
+                                android:fontFamily="@font/public_sans"
+                                android:textColor="#1E1E1E"
+                                android:textSize="14sp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="12dp">
+
+                            <TextView
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:text="✓"
+                                android:gravity="center"
+                                android:textColor="#4CAF50"
+                                android:textSize="16sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:layout_marginStart="12dp"
+                                android:text="Advanced analytics and performance tracking"
+                                android:fontFamily="@font/public_sans"
+                                android:textColor="#1E1E1E"
+                                android:textSize="14sp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="12dp">
+
+                            <TextView
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:text="✓"
+                                android:gravity="center"
+                                android:textColor="#4CAF50"
+                                android:textSize="16sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:layout_marginStart="12dp"
+                                android:text="Offline access to study materials"
+                                android:fontFamily="@font/public_sans"
+                                android:textColor="#1E1E1E"
+                                android:textSize="14sp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="12dp">
+
+                            <TextView
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:text="✓"
+                                android:gravity="center"
+                                android:textColor="#4CAF50"
+                                android:textSize="16sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:layout_marginStart="12dp"
+                                android:text="Priority support"
+                                android:fontFamily="@font/public_sans"
+                                android:textColor="#1E1E1E"
+                                android:textSize="14sp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="12dp">
+
+                            <TextView
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:text="✓"
+                                android:gravity="center"
+                                android:textColor="#4CAF50"
+                                android:textSize="16sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:layout_marginStart="12dp"
+                                android:text="AI-generated study podcasts"
+                                android:fontFamily="@font/public_sans"
+                                android:textColor="#1E1E1E"
+                                android:textSize="14sp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:text="✓"
+                                android:gravity="center"
+                                android:textColor="#4CAF50"
+                                android:textSize="16sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:layout_marginStart="12dp"
+                                android:text="Early access to new features"
+                                android:fontFamily="@font/public_sans"
+                                android:textColor="#1E1E1E"
+                                android:textSize="14sp" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardProPlan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                app:cardBackgroundColor="#FFFFFF"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="0dp"
+                app:strokeColor="#E0E0E0"
+                app:strokeWidth="1dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="20dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Pro"
+                        android:fontFamily="@font/public_sans"
+                        android:textColor="#1E1E1E"
+                        android:textSize="24sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="Renews for ₹19,900.00/month. Cancel anytime."
+                        android:fontFamily="@font/public_sans"
+                        android:textColor="#757575"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="Get the ultimate learning experience with all features"
+                        android:fontFamily="@font/public_sans"
+                        android:textColor="#1E1E1E"
+                        android:textSize="15sp" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnGetPro"
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:layout_marginTop="16dp"
+                        android:text="Get Pro"
+                        android:fontFamily="@font/public_sans"
+                        android:textColor="#FFFFFF"
+                        android:textSize="15sp"
+                        android:textAllCaps="false"
+                        app:backgroundTint="#1E1E1E"
+                        app:cornerRadius="8dp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_marginTop="16dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="12dp">
+
+                            <TextView
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:text="✓"
+                                android:gravity="center"
+                                android:textColor="#4CAF50"
+                                android:textSize="16sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:layout_marginStart="12dp"
+                                android:text="Everything in Plus"
+                                android:fontFamily="@font/public_sans"
+                                android:textColor="#1E1E1E"
+                                android:textSize="14sp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="12dp">
+
+                            <TextView
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:text="✓"
+                                android:gravity="center"
+                                android:textColor="#4CAF50"
+                                android:textSize="16sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:layout_marginStart="12dp"
+                                android:text="Unlimited access to all AI models"
+                                android:fontFamily="@font/public_sans"
+                                android:textColor="#1E1E1E"
+                                android:textSize="14sp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="12dp">
+
+                            <TextView
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:text="✓"
+                                android:gravity="center"
+                                android:textColor="#4CAF50"
+                                android:textSize="16sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:layout_marginStart="12dp"
+                                android:text="Personal AI mentor for 1-on-1 guidance"
+                                android:fontFamily="@font/public_sans"
+                                android:textColor="#1E1E1E"
+                                android:textSize="14sp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="12dp">
+
+                            <TextView
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:text="✓"
+                                android:gravity="center"
+                                android:textColor="#4CAF50"
+                                android:textSize="16sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:layout_marginStart="12dp"
+                                android:text="Advanced career guidance and roadmaps"
+                                android:fontFamily="@font/public_sans"
+                                android:textColor="#1E1E1E"
+                                android:textSize="14sp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:text="✓"
+                                android:gravity="center"
+                                android:textColor="#4CAF50"
+                                android:textSize="16sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:layout_marginStart="12dp"
+                                android:text="Certification upon course completion"
+                                android:fontFamily="@font/public_sans"
+                                android:textColor="#1E1E1E"
+                                android:textSize="14sp" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:text="Best value for serious learners. Terms apply."
+                        android:fontFamily="@font/public_sans"
+                        android:textColor="#757575"
+                        android:textSize="12sp" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <TextView
+                android:id="@+id/btnRestoreSubscription"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="32dp"
+                android:text="Restore subscription"
+                android:fontFamily="@font/public_sans"
+                android:textColor="#757575"
+                android:textSize="15sp"
+                android:background="?attr/selectableItemBackground"
+                android:padding="12dp" />
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

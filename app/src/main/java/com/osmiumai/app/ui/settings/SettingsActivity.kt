@@ -67,7 +67,7 @@ class SettingsActivity : AppCompatActivity() {
 
         // Subscription
         binding.btnSubscription.setOnClickListener {
-            startActivity(Intent(this, SubscriptionActivity::class.java))
+            startActivity(Intent(this, ChoosePlanActivity::class.java))
         }
 
         // Support
