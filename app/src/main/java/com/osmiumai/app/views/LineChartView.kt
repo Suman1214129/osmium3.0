@@ -4,8 +4,10 @@ import android.animation.ValueAnimator
 import android.content.Context
 import android.graphics.*
 import android.util.AttributeSet
+import android.view.MotionEvent
 import android.view.View
 import android.view.animation.DecelerateInterpolator
+import kotlin.math.sqrt
 
 class LineChartView @JvmOverloads constructor(
     context: Context,
@@ -39,6 +41,20 @@ class LineChartView @JvmOverloads constructor(
     private var dataPoints = listOf(150f, 140f, 180f, 255f)
     private var animatedDataPoints = dataPoints.toList()
     private var animationProgress = 1f
+    private var selectedPointIndex: Int? = null
+    private var points = listOf<PointF>()
+    
+    private val popupPaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
+        color = Color.parseColor("#D4AF37")
+        style = Paint.Style.FILL
+    }
+    
+    private val popupTextPaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
+        color = Color.WHITE
+        textSize = 20f
+        textAlign = Paint.Align.CENTER
+        typeface = Typeface.create(Typeface.DEFAULT, Typeface.BOLD)
+    }
 
     fun setData(newData: List<Float>, animate: Boolean = true) {
         val oldData = dataPoints
@@ -64,6 +80,31 @@ class LineChartView @JvmOverloads constructor(
         }
     }
 
+    override fun onTouchEvent(event: MotionEvent): Boolean {
+        when (event.action) {
+            MotionEvent.ACTION_DOWN -> {
+                val touchX = event.x
+                val touchY = event.y
+                val touchRadius = 50f
+                
+                val clickedIndex = points.indexOfFirst { point ->
+                    val distance = sqrt((touchX - point.x) * (touchX - point.x) + (touchY - point.y) * (touchY - point.y))
+                    distance <= touchRadius
+                }
+                
+                selectedPointIndex = if (clickedIndex != -1) {
+                    if (selectedPointIndex == clickedIndex) null else clickedIndex
+                } else {
+                    null
+                }
+                
+                invalidate()
+                return true
+            }
+        }
+        return super.onTouchEvent(event)
+    }
+    
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
 
@@ -72,7 +113,7 @@ class LineChartView @JvmOverloads constructor(
         val maxValue = 300f
         val padding = 20f
 
-        val points = animatedDataPoints.mapIndexed { index, value ->
+        points = animatedDataPoints.mapIndexed { index, value ->
             val x = padding + (w - 2 * padding) * index / (animatedDataPoints.size - 1)
             val y = h - padding - (h - 2 * padding) * (value / maxValue)
             PointF(x, y)
@@ -112,9 +153,31 @@ class LineChartView @JvmOverloads constructor(
         
         canvas.drawPath(linePath, linePaint)
 
-        points.forEach { point ->
+        points.forEachIndexed { index, point ->
             canvas.drawCircle(point.x, point.y, 8f, pointPaint)
             canvas.drawCircle(point.x, point.y, 8f, pointStrokePaint)
+            
+            if (selectedPointIndex == index) {
+                val value = dataPoints[index].toInt()
+                val text = value.toString()
+                val textBounds = Rect()
+                popupTextPaint.getTextBounds(text, 0, text.length, textBounds)
+                
+                val popupWidth = textBounds.width() + 20f
+                val popupHeight = textBounds.height() + 16f
+                val popupX = point.x
+                val popupY = point.y - 35f
+                
+                val rect = RectF(
+                    popupX - popupWidth / 2,
+                    popupY - popupHeight / 2,
+                    popupX + popupWidth / 2,
+                    popupY + popupHeight / 2
+                )
+                canvas.drawRoundRect(rect, 8f, 8f, popupPaint)
+                
+                canvas.drawText(text, popupX, popupY + textBounds.height() / 2, popupTextPaint)
+            }
         }
     }
 }

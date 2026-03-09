@@ -42,7 +42,12 @@ class TestAnalyticsActivity : AppCompatActivity() {
         calculateResults()
         setupViews()
         
-        binding.backButton.setOnClickListener { finish() }
+        binding.backButton.setOnClickListener { 
+            val intent = Intent(this, MainActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
+            startActivity(intent)
+            finish()
+        }
     }
     
     private fun loadCorrectAnswers() {

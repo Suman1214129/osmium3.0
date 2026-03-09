@@ -65,16 +65,16 @@ class SignupActivity : AppCompatActivity() {
                 val displayName = credential.displayName
                 val profilePicUrl = credential.profilePictureUri?.toString()
                 
-                // Save user data to SharedPreferences
                 val prefs = getSharedPreferences("OsmiumPrefs", MODE_PRIVATE)
                 prefs.edit().apply {
                     putString("user_email", email)
                     putString("user_name", displayName)
                     putString("user_profile_pic", profilePicUrl)
-                    putBoolean("is_logged_in", true)
                     putString("login_method", "google")
                     apply()
                 }
+                
+                SessionManager.setLoggedIn(this, true)
                 
                 Toast.makeText(this, "Welcome, $displayName!", Toast.LENGTH_SHORT).show()
                 startActivity(Intent(this, MainActivity::class.java))

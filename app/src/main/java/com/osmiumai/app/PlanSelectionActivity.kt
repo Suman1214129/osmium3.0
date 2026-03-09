@@ -166,6 +166,7 @@ class PlanSelectionActivity : AppCompatActivity(), PaymentResultListener {
     }
 
     private fun navigateToHome() {
+        SessionManager.setLoggedIn(this, true)
         startActivity(Intent(this, MainActivity::class.java))
         finishAffinity()
     }

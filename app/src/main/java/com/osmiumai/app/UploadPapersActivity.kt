@@ -1,25 +1,41 @@
 package com.osmiumai.app
 
+import android.Manifest
 import android.app.Activity
 import android.app.Dialog
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import android.view.LayoutInflater
+import android.view.Window
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.osmiumai.app.databinding.ActivityUploadPapersBinding
-import com.osmiumai.app.databinding.DialogGeneratingTestBinding
 
 class UploadPapersActivity : AppCompatActivity() {
     
     private lateinit var binding: ActivityUploadPapersBinding
     private val uploadedFiles = mutableListOf<UploadedFile>()
     private lateinit var adapter: UploadedFilesAdapter
+    private var loadingDialog: Dialog? = null
+    private val handler = Handler(Looper.getMainLooper())
+    
+    private val notificationPermissionLauncher = registerForActivityResult(
+        ActivityResultContracts.RequestPermission()
+    ) { isGranted ->
+        if (isGranted) {
+            proceedWithTestGeneration()
+        } else {
+            Toast.makeText(this, "Notification permission denied. You won't receive test ready notification.", Toast.LENGTH_LONG).show()
+            proceedWithTestGeneration()
+        }
+    }
     
     private val filePickerLauncher = registerForActivityResult(
         ActivityResultContracts.StartActivityForResult()
@@ -27,13 +43,11 @@ class UploadPapersActivity : AppCompatActivity() {
         if (result.resultCode == Activity.RESULT_OK) {
             result.data?.let { data ->
                 if (data.clipData != null) {
-                    // Multiple files selected
                     for (i in 0 until data.clipData!!.itemCount) {
                         val uri = data.clipData!!.getItemAt(i).uri
                         addFile(uri)
                     }
                 } else {
-                    // Single file selected
                     data.data?.let { uri -> addFile(uri) }
                 }
             }
@@ -45,7 +59,6 @@ class UploadPapersActivity : AppCompatActivity() {
         binding = ActivityUploadPapersBinding.inflate(layoutInflater)
         setContentView(binding.root)
         
-        // Hide action bar
         supportActionBar?.hide()
         
         setupUI()
@@ -67,7 +80,7 @@ class UploadPapersActivity : AppCompatActivity() {
         
         binding.generateTestButton.setOnClickListener {
             if (uploadedFiles.size >= 5) {
-                showGeneratingDialog()
+                startTestGeneration()
             } else {
                 Toast.makeText(this, "Please upload at least 5 files", Toast.LENGTH_SHORT).show()
             }
@@ -130,42 +143,52 @@ class UploadPapersActivity : AppCompatActivity() {
         binding.generateTestButton.alpha = if (uploadedFiles.size >= 5) 1.0f else 0.5f
     }
     
-    private fun showGeneratingDialog() {
-        val dialog = Dialog(this)
-        val dialogBinding = DialogGeneratingTestBinding.inflate(LayoutInflater.from(this))
-        dialog.setContentView(dialogBinding.root)
-        dialog.setCancelable(false)
-        dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
-        
-        // Start rotation animation on the ring only
-        val rotateAnimation = android.view.animation.AnimationUtils.loadAnimation(this, R.anim.rotate_loading)
-        dialogBinding.loadingRing.startAnimation(rotateAnimation)
-        
-        // Initially disable save button
-        dialogBinding.saveButton.isEnabled = false
-        dialogBinding.saveButton.alpha = 0.5f
-        
-        // Enable save button after 5 seconds
-        Handler(Looper.getMainLooper()).postDelayed({
-            dialogBinding.saveButton.isEnabled = true
-            dialogBinding.saveButton.alpha = 1.0f
-        }, 5000)
-        
-        dialogBinding.cancelButton.setOnClickListener {
-            dialogBinding.loadingRing.clearAnimation()
-            dialog.dismiss()
+    private fun startTestGeneration() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            when {
+                ContextCompat.checkSelfPermission(
+                    this,
+                    Manifest.permission.POST_NOTIFICATIONS
+                ) == PackageManager.PERMISSION_GRANTED -> {
+                    proceedWithTestGeneration()
+                }
+                else -> {
+                    notificationPermissionLauncher.launch(Manifest.permission.POST_NOTIFICATIONS)
+                }
+            }
+        } else {
+            proceedWithTestGeneration()
         }
+    }
+    
+    private fun proceedWithTestGeneration() {
+        showLoadingDialog()
+        TestGenerationNotificationHelper.scheduleNotification(this, 30000)
         
-        dialogBinding.saveButton.setOnClickListener {
-            if (dialogBinding.saveButton.isEnabled) {
-                dialogBinding.loadingRing.clearAnimation()
-                dialog.dismiss()
+        handler.postDelayed({
+            loadingDialog?.dismiss()
+            if (!isFinishing) {
                 val intent = Intent(this, MockTestActivity::class.java)
                 startActivity(intent)
+                finish()
             }
+        }, 30000)
+    }
+    
+    private fun showLoadingDialog() {
+        loadingDialog = Dialog(this).apply {
+            requestWindowFeature(Window.FEATURE_NO_TITLE)
+            setContentView(R.layout.dialog_test_generation)
+            setCancelable(true)
+            window?.setBackgroundDrawableResource(android.R.color.transparent)
+            show()
         }
-        
-        dialog.show()
+    }
+    
+    override fun onDestroy() {
+        super.onDestroy()
+        handler.removeCallbacksAndMessages(null)
+        loadingDialog?.dismiss()
     }
 }
 

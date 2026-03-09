@@ -51,6 +51,7 @@ class LoginActivity : AppCompatActivity() {
                 Toast.makeText(this, "Please enter password", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
+            SessionManager.setLoggedIn(this, true)
             startActivity(Intent(this, MainActivity::class.java))
             finish()
         }
@@ -61,6 +62,7 @@ class LoginActivity : AppCompatActivity() {
         }
         
         binding.btnGoogleLogin.setOnClickListener {
+            SessionManager.setLoggedIn(this, true)
             startActivity(Intent(this, MainActivity::class.java))
             finish()
         }

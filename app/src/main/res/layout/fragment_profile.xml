@@ -177,6 +177,7 @@
                 </LinearLayout>
 
                 <TextView
+                    android:id="@+id/tvActivitySummary"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
@@ -197,6 +198,7 @@
                     android:scrollbars="none">
 
                     <androidx.gridlayout.widget.GridLayout
+                        android:id="@+id/activityGrid"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         app:columnCount="11"

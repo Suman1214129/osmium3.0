@@ -99,10 +99,11 @@ class WelcomePageFragment : Fragment() {
                     putString("user_email", email)
                     putString("user_name", displayName)
                     putString("user_profile_pic", profilePicUrl)
-                    putBoolean("is_logged_in", true)
                     putString("login_method", "google")
                     apply()
                 }
+                
+                SessionManager.setLoggedIn(requireContext(), true)
                 
                 Toast.makeText(requireContext(), "Welcome, $displayName!", Toast.LENGTH_SHORT).show()
                 startActivity(Intent(requireContext(), MainActivity::class.java))

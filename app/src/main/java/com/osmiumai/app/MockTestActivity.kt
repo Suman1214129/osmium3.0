@@ -93,6 +93,7 @@ class MockTestActivity : AppCompatActivity() {
             intent.putExtra("userAnswers", HashMap(userAnswers))
             intent.putExtra("questionTimes", HashMap(questionTimes))
             startActivity(intent)
+            finish()
         }
         binding.previousButton.setOnClickListener {
             if (currentQuestionIndex > 0) {

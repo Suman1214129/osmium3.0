@@ -27,6 +27,8 @@
         android:paddingHorizontal="12dp"
         android:paddingVertical="6dp"
         android:background="@drawable/bg_status_visited"
+        android:clickable="true"
+        android:focusable="true"
         android:visibility="visible" />
 
     <TextView

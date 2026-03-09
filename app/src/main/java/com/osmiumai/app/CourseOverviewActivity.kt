@@ -36,6 +36,10 @@ class CourseOverviewActivity : AppCompatActivity() {
             visibility = View.VISIBLE
             setBackgroundResource(R.drawable.bg_status_visited)
             setTextColor(0xFF707070.toInt())
+            setOnClickListener {
+                val intent = Intent(this@CourseOverviewActivity, TopicLearnActivity::class.java)
+                startActivity(intent)
+            }
         }
         binding.lesson1.tvContinueButton.visibility = View.GONE
         

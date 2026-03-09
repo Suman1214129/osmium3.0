@@ -41,8 +41,8 @@ class AiMentorFragment : Fragment() {
     private val binding get() = _binding!!
     private var isProUser = false
     private var currentPhotoUri: Uri? = null
-    private var pendingAttachmentUri: Uri? = null
-    private var pendingAttachmentType: String? = null
+    private var pendingAttachmentUris: MutableList<Uri> = mutableListOf()
+    private var pendingAttachmentTypes: MutableList<String> = mutableListOf()
     
     private val speechRecognizerLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
         if (result.resultCode == Activity.RESULT_OK) {
@@ -70,12 +70,16 @@ class AiMentorFragment : Fragment() {
         }
     }
     
-    private val galleryLauncher = registerForActivityResult(ActivityResultContracts.GetContent()) { uri ->
-        uri?.let { showAttachmentPreview(it, "image") }
+    private val galleryLauncher = registerForActivityResult(ActivityResultContracts.GetMultipleContents()) { uris ->
+        if (uris.isNotEmpty()) {
+            uris.forEach { uri -> showAttachmentPreview(uri, "image") }
+        }
     }
     
-    private val fileLauncher = registerForActivityResult(ActivityResultContracts.GetContent()) { uri ->
-        uri?.let { showAttachmentPreview(it, "file") }
+    private val fileLauncher = registerForActivityResult(ActivityResultContracts.OpenMultipleDocuments()) { uris ->
+        if (uris.isNotEmpty()) {
+            uris.forEach { uri -> showAttachmentPreview(uri, "file") }
+        }
     }
 
     override fun onCreateView(
@@ -151,7 +155,7 @@ class AiMentorFragment : Fragment() {
         
         binding.sendButton.setOnClickListener {
             val message = binding.chatInput.text.toString().trim()
-            if (pendingAttachmentUri != null) {
+            if (pendingAttachmentUris.isNotEmpty()) {
                 sendMessageWithAttachment(message)
             } else if (message.isNotEmpty()) {
                 sendMessage(message)
@@ -177,17 +181,14 @@ class AiMentorFragment : Fragment() {
         
         binding.optionCamera.setOnClickListener {
             openCamera()
-            hideAttachmentOptions()
         }
         
         binding.optionPhoto.setOnClickListener {
             openGallery()
-            hideAttachmentOptions()
         }
         
         binding.optionFile.setOnClickListener {
             openFilePicker()
-            hideAttachmentOptions()
         }
         
         binding.micButton.setOnClickListener {
@@ -246,75 +247,83 @@ class AiMentorFragment : Fragment() {
     }
     
     private fun openFilePicker() {
-        fileLauncher.launch("*/*")
+        fileLauncher.launch(arrayOf("*/*"))
     }
     
     private fun showAttachmentPreview(uri: Uri, type: String) {
-        pendingAttachmentUri = uri
-        pendingAttachmentType = type
-        hideAttachmentOptions()
+        pendingAttachmentUris.add(uri)
+        pendingAttachmentTypes.add(type)
         
         binding.attachmentPreviewContainer.isVisible = true
-        binding.attachmentPreviewLayout.removeAllViews()
         
-        val previewCard = androidx.cardview.widget.CardView(requireContext()).apply {
-            layoutParams = LinearLayout.LayoutParams(200, 200).apply {
-                marginEnd = 16
-            }
-            radius = 16f
-            cardElevation = 4f
-            
-            if (type == "image") {
-                val imageView = ImageView(requireContext()).apply {
-                    layoutParams = ViewGroup.LayoutParams(
-                        ViewGroup.LayoutParams.MATCH_PARENT,
-                        ViewGroup.LayoutParams.MATCH_PARENT
-                    )
-                    scaleType = ImageView.ScaleType.CENTER_CROP
-                    setImageURI(uri)
-                }
-                addView(imageView)
-            } else {
-                setCardBackgroundColor(0xFFF5F5F5.toInt())
-                val fileLayout = LinearLayout(requireContext()).apply {
-                    orientation = LinearLayout.VERTICAL
-                    gravity = android.view.Gravity.CENTER
-                    setPadding(20, 20, 20, 20)
-                    
-                    addView(ImageView(requireContext()).apply {
-                        layoutParams = LinearLayout.LayoutParams(60, 60)
-                        setImageResource(R.drawable.ic_file_attach)
-                        setColorFilter(0xFF1976D2.toInt())
-                    })
-                    
-                    addView(TextView(requireContext()).apply {
-                        layoutParams = LinearLayout.LayoutParams(
-                            LinearLayout.LayoutParams.WRAP_CONTENT,
-                            LinearLayout.LayoutParams.WRAP_CONTENT
-                        ).apply { topMargin = 12 }
-                        text = getFileName(uri)
-                        textSize = 12f
-                        setTextColor(0xFF1E1E1E.toInt())
-                        maxLines = 2
-                        ellipsize = android.text.TextUtils.TruncateAt.MIDDLE
-                    })
-                }
-                addView(fileLayout)
-            }
-            
-            val closeButton = ImageView(requireContext()).apply {
-                layoutParams = android.widget.FrameLayout.LayoutParams(32, 32).apply {
-                    gravity = android.view.Gravity.TOP or android.view.Gravity.END
-                    setMargins(8, 8, 8, 8)
-                }
-                setImageResource(android.R.drawable.ic_menu_close_clear_cancel)
-                setColorFilter(0xFFFFFFFF.toInt())
-                setBackgroundResource(android.R.drawable.btn_default)
-                background.setTint(0x88000000.toInt())
-                setOnClickListener { clearAttachmentPreview() }
-            }
-            addView(closeButton)
+        val previewCard = androidx.cardview.widget.CardView(requireContext())
+        previewCard.layoutParams = LinearLayout.LayoutParams(120, 120).apply {
+            marginEnd = 12
         }
+        previewCard.radius = 12f
+        previewCard.cardElevation = 2f
+        
+        if (type == "image") {
+            val imageView = ImageView(requireContext()).apply {
+                layoutParams = ViewGroup.LayoutParams(
+                    ViewGroup.LayoutParams.MATCH_PARENT,
+                    ViewGroup.LayoutParams.MATCH_PARENT
+                )
+                scaleType = ImageView.ScaleType.CENTER_CROP
+                setImageURI(uri)
+            }
+            previewCard.addView(imageView)
+        } else {
+            previewCard.setCardBackgroundColor(0xFFF5F5F5.toInt())
+            val fileLayout = LinearLayout(requireContext()).apply {
+                orientation = LinearLayout.VERTICAL
+                gravity = android.view.Gravity.CENTER
+                setPadding(12, 12, 12, 12)
+                
+                addView(ImageView(requireContext()).apply {
+                    layoutParams = LinearLayout.LayoutParams(40, 40)
+                    setImageResource(R.drawable.ic_file_attach)
+                    setColorFilter(0xFF1976D2.toInt())
+                })
+                
+                addView(TextView(requireContext()).apply {
+                    layoutParams = LinearLayout.LayoutParams(
+                        LinearLayout.LayoutParams.WRAP_CONTENT,
+                        LinearLayout.LayoutParams.WRAP_CONTENT
+                    ).apply { topMargin = 8 }
+                    text = getFileName(uri)
+                    textSize = 10f
+                    setTextColor(0xFF1E1E1E.toInt())
+                    maxLines = 2
+                    maxWidth = 100
+                    ellipsize = android.text.TextUtils.TruncateAt.MIDDLE
+                })
+            }
+            previewCard.addView(fileLayout)
+        }
+        
+        val closeButton = ImageView(requireContext()).apply {
+            layoutParams = android.widget.FrameLayout.LayoutParams(24, 24).apply {
+                gravity = android.view.Gravity.TOP or android.view.Gravity.END
+                setMargins(4, 4, 4, 4)
+            }
+            setImageResource(android.R.drawable.ic_menu_close_clear_cancel)
+            setColorFilter(0xFFFFFFFF.toInt())
+            setBackgroundResource(android.R.drawable.btn_default)
+            background.setTint(0x88000000.toInt())
+            setOnClickListener { 
+                binding.attachmentPreviewLayout.removeView(previewCard)
+                val index = pendingAttachmentUris.indexOf(uri)
+                if (index >= 0) {
+                    pendingAttachmentUris.removeAt(index)
+                    pendingAttachmentTypes.removeAt(index)
+                }
+                if (pendingAttachmentUris.isEmpty()) {
+                    clearAttachmentPreview()
+                }
+            }
+        }
+        previewCard.addView(closeButton)
         
         binding.attachmentPreviewLayout.addView(previewCard)
         binding.sendButton.isVisible = true
@@ -322,8 +331,8 @@ class AiMentorFragment : Fragment() {
     }
     
     private fun clearAttachmentPreview() {
-        pendingAttachmentUri = null
-        pendingAttachmentType = null
+        pendingAttachmentUris.clear()
+        pendingAttachmentTypes.clear()
         binding.attachmentPreviewContainer.isVisible = false
         binding.attachmentPreviewLayout.removeAllViews()
         if (binding.chatInput.text.isEmpty()) {
@@ -346,8 +355,9 @@ class AiMentorFragment : Fragment() {
             }
         }
         
-        pendingAttachmentUri?.let { uri ->
-            if (pendingAttachmentType == "image") {
+        pendingAttachmentUris.forEachIndexed { index, uri ->
+            val type = pendingAttachmentTypes[index]
+            if (type == "image") {
                 androidx.cardview.widget.CardView(requireContext()).apply {
                     layoutParams = LinearLayout.LayoutParams(
                         LinearLayout.LayoutParams.WRAP_CONTENT,
@@ -423,7 +433,7 @@ class AiMentorFragment : Fragment() {
         binding.chatInput.text.clear()
         clearAttachmentPreview()
         
-        generateAIResponseForMedia(pendingAttachmentType ?: "image")
+        generateAIResponseForMedia(pendingAttachmentTypes.firstOrNull() ?: "image")
     }
     
     private fun getFileName(uri: Uri): String {

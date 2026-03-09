@@ -52,16 +52,17 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="0dp"
             android:layout_marginEnd="0dp"
-            app:cardCornerRadius="16dp"
+            app:cardCornerRadius="20dp"
             app:cardElevation="0dp"
-            app:cardMaxElevation="0dp"
+            android:clipChildren="true"
+            android:clipToPadding="true"
             android:layout_marginBottom="24dp">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:minHeight="206dp"
-                android:background="@drawable/testbg"
+                android:background="@drawable/testbg2"
                 android:padding="20dp">
 
                 <TextView

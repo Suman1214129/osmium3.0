@@ -53,6 +53,7 @@
                 android:background="@drawable/circle_dot_gold" />
 
             <TextView
+                android:id="@+id/tvUnreadCount"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -88,6 +89,12 @@
             android:orientation="vertical"
             android:paddingTop="16dp"
             android:paddingBottom="24dp">
+
+            <LinearLayout
+                android:id="@+id/notificationsContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" />
 
             <LinearLayout
                 android:id="@+id/notif1"

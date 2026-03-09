@@ -77,6 +77,9 @@ dependencies {
     // Glide for image loading
     implementation("com.github.bumptech.glide:glide:4.16.0")
     
+    // Gson for JSON serialization
+    implementation("com.google.code.gson:gson:2.10.1")
+    
     // Google Sign-In
     implementation("com.google.android.gms:play-services-auth:20.7.0")
     implementation("androidx.credentials:credentials:1.2.2")

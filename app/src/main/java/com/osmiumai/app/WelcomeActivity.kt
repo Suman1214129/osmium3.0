@@ -18,6 +18,12 @@ class WelcomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setTheme(R.style.Theme_Susu)
         
+        if (SessionManager.isLoggedIn(this)) {
+            startActivity(Intent(this, MainActivity::class.java))
+            finish()
+            return
+        }
+        
         supportActionBar?.hide()
         window.statusBarColor = android.graphics.Color.parseColor("#F7F7F7")
         WindowCompat.setDecorFitsSystemWindows(window, false)

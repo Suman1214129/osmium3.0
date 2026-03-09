@@ -63,8 +63,8 @@
             </LinearLayout>
 
             <ImageView
-                android:layout_width="79dp"
-                android:layout_height="71dp"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
                 android:layout_marginTop="80dp"
                 android:scaleType="fitCenter"
                 android:src="@drawable/osmium2" />
@@ -236,6 +236,23 @@
             android:elevation="10dp"
             app:layout_constraintBottom_toBottomOf="parent">
 
+            <HorizontalScrollView
+                android:id="@+id/attachment_preview_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="24dp"
+                android:paddingBottom="12dp"
+                android:visibility="gone"
+                android:scrollbars="none"
+                app:layout_constraintBottom_toTopOf="@id/attachment_options">
+
+                <LinearLayout
+                    android:id="@+id/attachment_preview_layout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"/>
+            </HorizontalScrollView>
+
             <LinearLayout
                 android:id="@+id/attachment_options"
                 android:layout_width="match_parent"
@@ -243,7 +260,7 @@
                 android:orientation="horizontal"
                 android:gravity="center"
                 android:paddingHorizontal="32dp"
-                android:paddingBottom="24dp"
+                android:paddingBottom="12dp"
                 android:visibility="gone"
                 app:layout_constraintBottom_toTopOf="@id/input_container">
 
@@ -260,15 +277,15 @@
                     android:padding="12dp">
 
                     <androidx.cardview.widget.CardView
-                        android:layout_width="80dp"
-                        android:layout_height="80dp"
-                        app:cardCornerRadius="16dp"
+                        android:layout_width="56dp"
+                        android:layout_height="56dp"
+                        app:cardCornerRadius="12dp"
                         app:cardElevation="0dp"
                         app:cardBackgroundColor="#F5F5F5">
 
                         <ImageView
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
+                            android:layout_width="28dp"
+                            android:layout_height="28dp"
                             android:layout_gravity="center"
                             android:src="@drawable/ic_camera"
                             app:tint="#1E1E1E"/>
@@ -277,10 +294,10 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="12dp"
+                        android:layout_marginTop="8dp"
                         android:text="Camera"
                         android:textColor="#1E1E1E"
-                        android:textSize="16sp"
+                        android:textSize="14sp"
                         android:fontFamily="sans-serif"/>
                 </LinearLayout>
 
@@ -297,15 +314,15 @@
                     android:padding="12dp">
 
                     <androidx.cardview.widget.CardView
-                        android:layout_width="80dp"
-                        android:layout_height="80dp"
-                        app:cardCornerRadius="16dp"
+                        android:layout_width="56dp"
+                        android:layout_height="56dp"
+                        app:cardCornerRadius="12dp"
                         app:cardElevation="0dp"
                         app:cardBackgroundColor="#F5F5F5">
 
                         <ImageView
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
+                            android:layout_width="28dp"
+                            android:layout_height="28dp"
                             android:layout_gravity="center"
                             android:src="@drawable/ic_image"
                             app:tint="#1E1E1E"/>
@@ -314,10 +331,10 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="12dp"
+                        android:layout_marginTop="8dp"
                         android:text="Photos"
                         android:textColor="#1E1E1E"
-                        android:textSize="16sp"
+                        android:textSize="14sp"
                         android:fontFamily="sans-serif"/>
                 </LinearLayout>
 
@@ -334,15 +351,15 @@
                     android:padding="12dp">
 
                     <androidx.cardview.widget.CardView
-                        android:layout_width="80dp"
-                        android:layout_height="80dp"
-                        app:cardCornerRadius="16dp"
+                        android:layout_width="56dp"
+                        android:layout_height="56dp"
+                        app:cardCornerRadius="12dp"
                         app:cardElevation="0dp"
                         app:cardBackgroundColor="#F5F5F5">
 
                         <ImageView
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
+                            android:layout_width="28dp"
+                            android:layout_height="28dp"
                             android:layout_gravity="center"
                             android:src="@drawable/ic_file_attach"
                             app:tint="#1E1E1E"/>
@@ -351,31 +368,14 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="12dp"
+                        android:layout_marginTop="8dp"
                         android:text="Files"
                         android:textColor="#1E1E1E"
-                        android:textSize="16sp"
+                        android:textSize="14sp"
                         android:fontFamily="sans-serif"/>
                 </LinearLayout>
 
             </LinearLayout>
-
-            <HorizontalScrollView
-                android:id="@+id/attachment_preview_container"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingHorizontal="24dp"
-                android:paddingBottom="12dp"
-                android:visibility="gone"
-                android:scrollbars="none"
-                app:layout_constraintBottom_toTopOf="@id/input_container">
-
-                <LinearLayout
-                    android:id="@+id/attachment_preview_layout"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"/>
-            </HorizontalScrollView>
 
             <LinearLayout
                 android:id="@+id/input_container"
