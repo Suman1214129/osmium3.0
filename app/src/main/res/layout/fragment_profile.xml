@@ -870,18 +870,17 @@
                 android:id="@+id/tabSuggestionJeeMains"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/bg_pill_white_border"
+                android:clickable="true"
+                android:focusable="true"
+                android:paddingStart="16dp"
+                android:paddingTop="8dp"
+                android:paddingEnd="16dp"
+                android:paddingBottom="8dp"
                 android:text="JEE MAINS"
                 android:textColor="#1E1E1E"
-                android:textSize="12sp"
-                android:textStyle="bold"
-                android:background="@drawable/bg_pill_white_border"
-                android:paddingStart="16dp"
-                android:paddingEnd="16dp"
-                android:paddingTop="8dp"
-                android:paddingBottom="8dp"
-                android:layout_marginEnd="8dp"
-                android:clickable="true"
-                android:focusable="true"/>
+                android:textSize="12sp" />
 
             <TextView
                 android:id="@+id/tabSuggestionGate"

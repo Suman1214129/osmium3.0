@@ -36,6 +36,9 @@ class ProfileFragment : Fragment() {
     private lateinit var strongCard: View
     private lateinit var lineChartView: com.osmiumai.app.views.LineChartView
     private var selectedTimePeriod = "This month"
+    private var selectedMonth: Int? = null
+    private val monthNames = listOf("January", "February", "March", "April", "May", "June", 
+                                     "July", "August", "September", "October", "November", "December")
     
     data class LearningActivity(
         val daysActive: Int,
@@ -84,16 +87,26 @@ class ProfileFragment : Fragment() {
             )
         ),
         "Last 3 months" to LearningActivity(
-            daysActive = 65,
-            dayData = generateMonthlyData(90)
+            daysActive = 3,
+            dayData = listOf(
+                DayActivity(1, DayType.GREEN), DayActivity(2, DayType.BLUE), DayActivity(3, DayType.ORANGE)
+            )
         ),
         "Last 6 months" to LearningActivity(
-            daysActive = 128,
-            dayData = generateMonthlyData(180)
+            daysActive = 6,
+            dayData = listOf(
+                DayActivity(1, DayType.GREEN), DayActivity(2, DayType.BLUE), DayActivity(3, DayType.GREEN),
+                DayActivity(4, DayType.GREEN), DayActivity(5, DayType.ORANGE), DayActivity(6, DayType.GREEN)
+            )
         ),
         "This year" to LearningActivity(
-            daysActive = 245,
-            dayData = generateMonthlyData(365)
+            daysActive = 8,
+            dayData = listOf(
+                DayActivity(1, DayType.GREEN), DayActivity(2, DayType.BLUE), DayActivity(3, DayType.GREEN),
+                DayActivity(4, DayType.NEUTRAL), DayActivity(5, DayType.ORANGE), DayActivity(6, DayType.GREEN),
+                DayActivity(7, DayType.GREEN), DayActivity(8, DayType.BLUE), DayActivity(9, DayType.NEUTRAL),
+                DayActivity(10, DayType.GREEN), DayActivity(11, DayType.NEUTRAL), DayActivity(12, DayType.NEUTRAL)
+            )
         )
     )
     
@@ -248,6 +261,7 @@ class ProfileFragment : Fragment() {
                 menuInflater.inflate(R.menu.menu_month_filter, menu)
                 setOnMenuItemClickListener { item ->
                     selectedTimePeriod = item.title.toString()
+                    selectedMonth = null
                     binding.monthText.text = selectedTimePeriod
                     updateLearningActivity()
                     true
@@ -264,9 +278,9 @@ class ProfileFragment : Fragment() {
         val activityText = when (selectedTimePeriod) {
             "This month" -> "You showed up on ${activity.daysActive} days this month 🔥"
             "Last month" -> "You showed up on ${activity.daysActive} days last month 🔥"
-            "Last 3 months" -> "You showed up on ${activity.daysActive} days in last 3 months 🔥"
-            "Last 6 months" -> "You showed up on ${activity.daysActive} days in last 6 months 🔥"
-            "This year" -> "You showed up on ${activity.daysActive} days this year 🔥"
+            "Last 3 months" -> if (selectedMonth != null) "${monthNames[selectedMonth!! - 1]} activity" else "You were active in ${activity.daysActive} months 🔥"
+            "Last 6 months" -> if (selectedMonth != null) "${monthNames[selectedMonth!! - 1]} activity" else "You were active in ${activity.daysActive} months 🔥"
+            "This year" -> if (selectedMonth != null) "${monthNames[selectedMonth!! - 1]} activity" else "You were active in ${activity.daysActive} months this year 🔥"
             else -> "You showed up on ${activity.daysActive} days 🔥"
         }
         
@@ -280,23 +294,61 @@ class ProfileFragment : Fragment() {
         val gridLayout = binding.root.findViewById<androidx.gridlayout.widget.GridLayout>(R.id.activityGrid)
         gridLayout?.removeAllViews()
         
-        dayData.forEach { dayActivity ->
-            val dayView = TextView(requireContext()).apply {
-                text = dayActivity.day.toString()
-                gravity = android.view.Gravity.CENTER
-                layoutParams = ViewGroup.MarginLayoutParams(48, 48).apply {
-                    setMargins(8, 8, 8, 8)
-                }
-                when (dayActivity.type) {
-                    DayType.NEUTRAL -> setBackgroundResource(R.drawable.bg_day_neutral)
-                    DayType.GREEN -> setBackgroundResource(R.drawable.bg_day_green)
-                    DayType.BLUE -> setBackgroundResource(R.drawable.bg_day_blue)
-                    DayType.ORANGE -> setBackgroundResource(R.drawable.bg_day_orange)
-                }
-                setTextColor(0xFF1E1E1E.toInt())
-                textSize = 12f
+        val isMonthView = selectedMonth != null && (selectedTimePeriod == "Last 3 months" || selectedTimePeriod == "Last 6 months" || selectedTimePeriod == "This year")
+        
+        if (isMonthView) {
+            val daysInMonth = when (selectedMonth) {
+                2 -> 28
+                4, 6, 9, 11 -> 30
+                else -> 31
             }
-            gridLayout?.addView(dayView)
+            (1..daysInMonth).forEach { day ->
+                val dayView = TextView(requireContext()).apply {
+                    text = day.toString()
+                    gravity = android.view.Gravity.CENTER
+                    layoutParams = ViewGroup.MarginLayoutParams(48, 48).apply {
+                        setMargins(8, 8, 8, 8)
+                    }
+                    val random = (0..3).random()
+                    when (random) {
+                        0 -> setBackgroundResource(R.drawable.bg_day_neutral)
+                        1 -> setBackgroundResource(R.drawable.bg_day_green)
+                        2 -> setBackgroundResource(R.drawable.bg_day_blue)
+                        else -> setBackgroundResource(R.drawable.bg_day_orange)
+                    }
+                    setTextColor(0xFF1E1E1E.toInt())
+                    textSize = 12f
+                }
+                gridLayout?.addView(dayView)
+            }
+        } else {
+            dayData.forEach { dayActivity ->
+                val dayView = TextView(requireContext()).apply {
+                    text = dayActivity.day.toString()
+                    gravity = android.view.Gravity.CENTER
+                    layoutParams = ViewGroup.MarginLayoutParams(48, 48).apply {
+                        setMargins(8, 8, 8, 8)
+                    }
+                    when (dayActivity.type) {
+                        DayType.NEUTRAL -> setBackgroundResource(R.drawable.bg_day_neutral)
+                        DayType.GREEN -> setBackgroundResource(R.drawable.bg_day_green)
+                        DayType.BLUE -> setBackgroundResource(R.drawable.bg_day_blue)
+                        DayType.ORANGE -> setBackgroundResource(R.drawable.bg_day_orange)
+                    }
+                    setTextColor(0xFF1E1E1E.toInt())
+                    textSize = 12f
+                    
+                    if (selectedTimePeriod == "Last 3 months" || selectedTimePeriod == "Last 6 months" || selectedTimePeriod == "This year") {
+                        isClickable = true
+                        isFocusable = true
+                        setOnClickListener {
+                            selectedMonth = dayActivity.day
+                            updateLearningActivity()
+                        }
+                    }
+                }
+                gridLayout?.addView(dayView)
+            }
         }
     }
     
@@ -659,19 +711,5 @@ class ProfileFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
-    
-    companion object {
-        private fun generateMonthlyData(days: Int): List<DayActivity> {
-            return (1..days).map { day ->
-                val random = (0..100).random()
-                val type = when {
-                    random < 20 -> DayType.NEUTRAL
-                    random < 50 -> DayType.GREEN
-                    random < 75 -> DayType.BLUE
-                    else -> DayType.ORANGE
-                }
-                DayActivity(day, type)
-            }
-        }
-    }
+
 }
