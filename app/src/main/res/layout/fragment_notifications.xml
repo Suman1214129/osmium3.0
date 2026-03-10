@@ -8,6 +8,7 @@
     android:orientation="vertical"
     tools:context=".ui.notifications.NotificationsFragment">
 
+    <!-- Header -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -19,7 +20,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center_vertical">
+            android:gravity="center_vertical"
+            android:layout_marginBottom="20dp">
 
             <ImageView
                 android:id="@+id/btnBack"
@@ -32,283 +34,206 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
+                android:layout_marginStart="14dp"
                 android:text="Notifications"
                 android:fontFamily="@font/baskervville"
                 android:textColor="#1E1E1E"
                 android:textSize="34sp"
-                android:letterSpacing="-0.02"
+                android:letterSpacing="-0.01"
                 android:textStyle="bold" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:gravity="center_vertical">
-
-            <View
-                android:layout_width="4dp"
-                android:layout_height="4dp"
-                android:background="@drawable/circle_dot_gold" />
-
-            <TextView
-                android:id="@+id/tvUnreadCount"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_marginStart="8dp"
-                android:text="3 unread"
-                android:fontFamily="@font/public_sans"
-                android:textColor="#616161"
-                android:textSize="14sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/btnMarkAllRead"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Clear all"
-                android:fontFamily="@font/public_sans"
-                android:textColor="#B8935A"
-                android:textSize="14sp"
-                android:textStyle="bold"
-                android:background="?attr/selectableItemBackground"
-                android:padding="4dp" />
         </LinearLayout>
     </LinearLayout>
 
+    <!-- Status Row -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="24dp"
+        android:gravity="center_vertical">
+
+        <View
+            android:id="@+id/unreadDot"
+            android:layout_width="7dp"
+            android:layout_height="7dp"
+            android:background="@drawable/circle_dot_gold" />
+
+        <TextView
+            android:id="@+id/tvUnreadCount"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="8dp"
+            android:text="4 unread"
+            android:fontFamily="@font/public_sans"
+            android:textColor="#616161"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/btnMarkAllRead"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Clear all"
+            android:fontFamily="@font/public_sans"
+            android:textColor="#B8935A"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:background="?attr/selectableItemBackground"
+            android:padding="4dp" />
+    </LinearLayout>
+
+    <!-- Divider -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#EBEBEB"
+        android:layout_marginHorizontal="24dp"
+        android:layout_marginTop="14dp" />
+
+    <!-- Filter Chips -->
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="none"
+        android:paddingHorizontal="24dp"
+        android:paddingTop="16dp">
+
+        <LinearLayout
+            android:id="@+id/filterChipsContainer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/chipAll"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="All"
+                android:fontFamily="@font/public_sans"
+                android:textSize="12.5sp"
+                android:textStyle="bold"
+                android:textColor="#1E1E1E"
+                android:background="@drawable/chip_active"
+                android:paddingHorizontal="15dp"
+                android:paddingVertical="7dp"
+                android:layout_marginEnd="8dp" />
+
+            <TextView
+                android:id="@+id/chipUnread"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Unread"
+                android:fontFamily="@font/public_sans"
+                android:textSize="12.5sp"
+                android:textStyle="bold"
+                android:textColor="#6B6B6B"
+                android:background="@drawable/chip_inactive"
+                android:paddingHorizontal="15dp"
+                android:paddingVertical="7dp"
+                android:layout_marginEnd="8dp" />
+
+            <TextView
+                android:id="@+id/chipCourse"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Course"
+                android:fontFamily="@font/public_sans"
+                android:textSize="12.5sp"
+                android:textStyle="bold"
+                android:textColor="#6B6B6B"
+                android:background="@drawable/chip_inactive"
+                android:paddingHorizontal="15dp"
+                android:paddingVertical="7dp"
+                android:layout_marginEnd="8dp" />
+
+            <TextView
+                android:id="@+id/chipTest"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Test Result"
+                android:fontFamily="@font/public_sans"
+                android:textSize="12.5sp"
+                android:textStyle="bold"
+                android:textColor="#6B6B6B"
+                android:background="@drawable/chip_inactive"
+                android:paddingHorizontal="15dp"
+                android:paddingVertical="7dp"
+                android:layout_marginEnd="8dp" />
+
+        </LinearLayout>
+    </HorizontalScrollView>
+
+    <!-- Scroll Area -->
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scrollbars="none">
+        android:scrollbars="none"
+        android:paddingBottom="40dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:paddingTop="16dp"
-            android:paddingBottom="24dp">
+            android:orientation="vertical">
+
+            <!-- Today Section -->
+            <TextView
+                android:id="@+id/labelToday"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="TODAY"
+                android:fontFamily="@font/public_sans"
+                android:textSize="11sp"
+                android:textStyle="bold"
+                android:textColor="#9E9E9E"
+                android:letterSpacing="0.1"
+                android:paddingHorizontal="24dp"
+                android:paddingTop="20dp"
+                android:paddingBottom="10dp" />
 
             <LinearLayout
                 android:id="@+id/notificationsContainer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical" />
+                android:orientation="vertical"
+                android:paddingHorizontal="16dp" />
 
+            <!-- Empty State -->
             <LinearLayout
-                android:id="@+id/notif1"
+                android:id="@+id/emptyState"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:paddingHorizontal="24dp"
-                android:paddingVertical="16dp"
-                android:background="?attr/selectableItemBackground">
+                android:orientation="vertical"
+                android:gravity="center"
+                android:padding="60dp"
+                android:visibility="gone">
 
-                <View
-                    android:layout_width="3dp"
-                    android:layout_height="match_parent"
-                    android:background="#B8935A" />
-
-                <LinearLayout
-                    android:layout_width="0dp"
+                <TextView
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:layout_marginStart="16dp"
-                    android:orientation="vertical">
+                    android:text="✅"
+                    android:textSize="52sp"
+                    android:layout_marginBottom="16dp" />
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center_vertical">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="All caught up"
+                    android:fontFamily="@font/baskervville"
+                    android:textSize="22sp"
+                    android:textStyle="bold"
+                    android:textColor="#1E1E1E"
+                    android:layout_marginBottom="8dp" />
 
-                        <ImageView
-                            android:layout_width="20dp"
-                            android:layout_height="20dp"
-                            android:src="@drawable/ic_book"
-                            app:tint="#B8935A" />
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:layout_marginStart="8dp"
-                            android:text="New Course"
-                            android:fontFamily="@font/public_sans"
-                            android:textColor="#B8935A"
-                            android:textSize="12sp"
-                            android:textStyle="bold"
-                            android:letterSpacing="0.05" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="2h"
-                            android:fontFamily="@font/public_sans"
-                            android:textColor="#9E9E9E"
-                            android:textSize="12sp"
-                            android:textStyle="bold" />
-                    </LinearLayout>
-
-                    <TextView
-                        android:id="@+id/text_notifications"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:text="Advanced Data Structures course is now available for you"
-                        android:fontFamily="@font/public_sans"
-                        android:textColor="#1E1E1E"
-                        android:lineSpacingExtra="2dp"
-                        android:textSize="15sp" />
-                </LinearLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="You've seen everything.\nCheck back later for new updates."
+                    android:fontFamily="@font/public_sans"
+                    android:textSize="14sp"
+                    android:textColor="#616161"
+                    android:gravity="center"
+                    android:lineSpacingExtra="2dp" />
             </LinearLayout>
 
-            <View style="@style/DividerStyle" />
-
-            <LinearLayout
-                android:id="@+id/notif2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:paddingHorizontal="24dp"
-                android:paddingVertical="16dp"
-                android:background="?attr/selectableItemBackground">
-
-                <View
-                    android:layout_width="3dp"
-                    android:layout_height="match_parent"
-                    android:background="#4CAF50" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:orientation="vertical">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center_vertical">
-
-                        <ImageView
-                            android:layout_width="20dp"
-                            android:layout_height="20dp"
-                            android:src="@drawable/ic_check_circle"
-                            app:tint="#4CAF50" />
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:layout_marginStart="8dp"
-                            android:text="Test Result"
-                            android:fontFamily="@font/public_sans"
-                            android:textColor="#4CAF50"
-                            android:textSize="12sp"
-                            android:textStyle="bold"
-                            android:letterSpacing="0.05" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="5h"
-                            android:fontFamily="@font/public_sans"
-                            android:textColor="#9E9E9E"
-                            android:textSize="12sp"
-                            android:textStyle="bold" />
-                    </LinearLayout>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:text="You scored 85% in JEE MAINS Mock Test"
-                        android:fontFamily="@font/public_sans"
-                        android:textColor="#1E1E1E"
-                        android:lineSpacingExtra="2dp"
-                        android:textSize="15sp" />
-                </LinearLayout>
-            </LinearLayout>
-
-            <View style="@style/DividerStyle" />
-
-            <LinearLayout
-                android:id="@+id/notif3"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:paddingHorizontal="24dp"
-                android:paddingVertical="16dp"
-                android:background="?attr/selectableItemBackground">
-
-                <View
-                    android:layout_width="3dp"
-                    android:layout_height="match_parent"
-                    android:background="#FF9800" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:orientation="vertical">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center_vertical">
-
-                        <ImageView
-                            android:layout_width="20dp"
-                            android:layout_height="20dp"
-                            android:src="@drawable/ic_diamond"
-                            app:tint="#FF9800" />
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:layout_marginStart="8dp"
-                            android:text="Premium"
-                            android:fontFamily="@font/public_sans"
-                            android:textColor="#FF9800"
-                            android:textSize="12sp"
-                            android:textStyle="bold"
-                            android:letterSpacing="0.05" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="1d"
-                            android:fontFamily="@font/public_sans"
-                            android:textColor="#9E9E9E"
-                            android:textSize="12sp"
-                            android:textStyle="bold" />
-                    </LinearLayout>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:text="Your premium plan will expire in 30 days"
-                        android:fontFamily="@font/public_sans"
-                        android:textColor="#1E1E1E"
-                        android:lineSpacingExtra="2dp"
-                        android:textSize="15sp" />
-                </LinearLayout>
-            </LinearLayout>
-
-            <View style="@style/DividerStyle" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="32dp"
-                android:text="All caught up"
-                android:fontFamily="@font/baskervville"
-                android:textColor="#BDBDBD"
-                android:textSize="14sp"
-                android:textStyle="italic" />
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

@@ -45,6 +45,9 @@ class MainActivity : AppCompatActivity() {
                 "ai_mentor" -> {
                     navController.navigate(R.id.navigation_ai_mentor)
                     navView.selectedItemId = R.id.navigation_ai_mentor
+                    intent.getStringExtra("question_text")?.let { questionText ->
+                        setIntent(intent)
+                    }
                 }
                 "notifications" -> {
                     navController.navigate(R.id.navigation_notifications)
@@ -87,6 +90,7 @@ class MainActivity : AppCompatActivity() {
     
     override fun onNewIntent(intent: Intent?) {
         super.onNewIntent(intent)
+        setIntent(intent)
         intent?.getStringExtra("navigate_to")?.let { destination ->
             when (destination) {
                 "ai_mentor" -> {

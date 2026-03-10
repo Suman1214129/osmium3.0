@@ -68,9 +68,11 @@ object TestGenerationNotificationHelper {
         
         val appNotification = AppNotification(
             id = UUID.randomUUID().toString(),
-            title = "Your Mock Test is Ready! 🎉",
+            title = "Mock Test Ready",
             message = "Your AI-powered mock test has been generated successfully. Tap to start!",
-            timestamp = System.currentTimeMillis()
+            timestamp = System.currentTimeMillis(),
+            type = "test",
+            iconName = "ic_phosphor_check_circle"
         )
         NotificationStorageManager.addNotification(context, appNotification)
     }

@@ -10,7 +10,9 @@ data class AppNotification(
     val title: String,
     val message: String,
     val timestamp: Long,
-    val isRead: Boolean = false
+    val isRead: Boolean = false,
+    val type: String = "general",
+    val iconName: String = "ic_phosphor_bell"
 )
 
 object NotificationStorageManager {

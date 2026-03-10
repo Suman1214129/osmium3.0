@@ -101,7 +101,6 @@ class AiMentorFragment : Fragment() {
             binding.root.post {
                 sendMessage(question)
             }
-            activity?.intent?.removeExtra("question_text")
         }
         
         return binding.root

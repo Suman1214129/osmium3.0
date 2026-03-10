@@ -242,7 +242,7 @@ class TestAnalyticsActivity : AppCompatActivity() {
             cardView.findViewById<LinearLayout>(R.id.askMentorButton).setOnClickListener {
                 val intent = Intent(this, MainActivity::class.java)
                 intent.putExtra("navigate_to", "ai_mentor")
-                intent.putExtra("questionText", q.text)
+                intent.putExtra("question_text", q.text)
                 intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
                 startActivity(intent)
             }
