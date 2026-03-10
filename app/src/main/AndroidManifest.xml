@@ -50,7 +50,7 @@
             android:name="com.osmiumai.app.SignupEmailActivity"
             android:exported="false" />
         <activity
-            android:name="com.osmiumai.app.WelcomeActivity"
+            android:name="com.osmiumai.app.SplashActivity"
             android:exported="true"
             android:theme="@style/Theme.Susu.Splash">
             <intent-filter>
@@ -58,6 +58,11 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name="com.osmiumai.app.WelcomeActivity"
+            android:exported="true"
+            android:theme="@style/Theme.Susu">
         </activity>
         <activity
             android:name="com.osmiumai.app.WelcomeScreen1Activity"
