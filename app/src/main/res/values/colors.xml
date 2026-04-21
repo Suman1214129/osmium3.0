@@ -28,4 +28,5 @@
     <color name="gold">#B8935A</color>
     <color name="surface">#FFFFFF</color>
     <color name="border">#EBEBEB</color>
+    <color name="your_custom_color">#D9D7A8</color>
 </resources>
