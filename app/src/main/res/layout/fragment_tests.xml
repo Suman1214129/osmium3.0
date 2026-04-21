@@ -54,15 +54,17 @@
             android:layout_marginEnd="0dp"
             app:cardCornerRadius="20dp"
             app:cardElevation="0dp"
+            app:cardBackgroundColor="@android:color/transparent"
             android:clipChildren="true"
             android:clipToPadding="true"
             android:layout_marginBottom="24dp">
 
             <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/mockTestCardLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:minHeight="206dp"
-                android:background="@drawable/testbg2"
+                android:background="@drawable/bg_mock_test_card"
                 android:padding="20dp">
 
                 <TextView
@@ -106,6 +108,19 @@
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/tvMockDesc" />
+
+                <!-- Stars cluster (Frame 850.svg) -->
+                <ImageView
+                    android:id="@+id/starsCluster"
+                    android:layout_width="134dp"
+                    android:layout_height="144dp"
+                    android:layout_marginEnd="12dp"
+                    android:contentDescription="@null"
+                    android:src="@drawable/ic_stars_cluster"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="1.0" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

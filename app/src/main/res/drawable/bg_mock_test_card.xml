@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Orange base left to right -->
+    <item>
+        <shape android:shape="rectangle">
+            <gradient
+                android:type="linear"
+                android:angle="0"
+                android:startColor="#FFB870"
+                android:centerColor="#FFB870"
+                android:endColor="#E3B0F5" />
+        </shape>
+    </item>
+
+    <!-- White fade in the blend/transition zone (center) -->
+    <item>
+        <shape android:shape="rectangle">
+            <gradient
+                android:type="radial"
+                android:gradientRadius="180dp"
+                android:centerX="0.62"
+                android:centerY="0.4"
+                android:startColor="#88FFFFFF"
+                android:endColor="#00FFFFFF" />
+        </shape>
+    </item>
+
+    <!-- Subtle white glow bottom-left of orange section -->
+    <item>
+        <shape android:shape="rectangle">
+            <gradient
+                android:type="radial"
+                android:gradientRadius="80dp"
+                android:centerX="0.1"
+                android:centerY="1.0"
+                android:startColor="#44FFFFFF"
+                android:endColor="#00FFFFFF" />
+        </shape>
+    </item>
+
+    <!-- Purple radial from bottom-right corner -->
+    <item>
+        <shape android:shape="rectangle">
+            <gradient
+                android:type="radial"
+                android:gradientRadius="200dp"
+                android:centerX="1.0"
+                android:centerY="1.0"
+                android:startColor="#AAD89BFF"
+                android:endColor="#00D89BFF" />
+        </shape>
+    </item>
+
+</layer-list>

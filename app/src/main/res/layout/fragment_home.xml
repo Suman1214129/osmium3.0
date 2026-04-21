@@ -110,7 +110,7 @@
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/analyticsCard"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="80dp"
             android:layout_marginBottom="34dp"
             android:clickable="true"
             android:focusable="true"
@@ -119,22 +119,21 @@
 
             <FrameLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="match_parent">
 
-                <!-- Background Image -->
-                <ImageView
+                <!-- Gradient Background -->
+                <View
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/bc" />
+                    android:background="@drawable/bc" />
 
                 <!-- Content Overlay -->
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:gravity="center_vertical"
                     android:orientation="horizontal"
-                    android:padding="18dp">
+                    android:paddingHorizontal="18dp">
 
                     <!-- Text Section -->
                     <LinearLayout

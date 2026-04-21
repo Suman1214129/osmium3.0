@@ -13,13 +13,11 @@
         android:layout_height="match_parent"
         android:background="#F9F9F9">
 
-        <LinearLayout
+        <androidx.core.widget.NestedScrollView
             android:id="@+id/welcome_container"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:orientation="vertical"
-            android:paddingHorizontal="24dp"
-            android:paddingTop="24dp"
+            android:fillViewport="true"
             android:visibility="visible"
             app:layout_constraintBottom_toTopOf="@+id/bottom_input_area"
             app:layout_constraintTop_toTopOf="parent">
@@ -27,131 +25,281 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
-                android:paddingBottom="16dp"
-                android:layout_marginTop="40dp">
+                android:orientation="vertical"
+                android:paddingHorizontal="20dp"
+                android:paddingTop="52dp"
+                android:paddingBottom="24dp">
 
+                <!-- Top bar -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_marginBottom="32dp">
+
+                    <ImageView
+                        android:id="@+id/menu_button"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:src="@drawable/ic_menu"
+                        android:padding="8dp"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:contentDescription="Open menu"
+                        android:background="?attr/selectableItemBackgroundBorderless"
+                        app:tint="#1E1E1E" />
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="1dp"
+                        android:layout_weight="1" />
+
+                    <TextView
+                        android:id="@+id/pro_badge"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bg_badge_pro"
+                        android:paddingHorizontal="10dp"
+                        android:paddingVertical="4dp"
+                        android:text="PRO"
+                        android:textColor="#5D4037"
+                        android:textSize="10sp"
+                        android:textStyle="bold"
+                        android:letterSpacing="0.08"
+                        android:visibility="gone" />
+
+                </LinearLayout>
+
+                <!-- Logo -->
                 <ImageView
-                    android:id="@+id/menu_button"
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:src="@drawable/ic_menu"
-                    android:clickable="true"
-                    android:focusable="true"
-                    android:background="?attr/selectableItemBackgroundBorderless"
-                    app:tint="#1E1E1E" />
+                    android:layout_width="44dp"
+                    android:layout_height="44dp"
+                    android:src="@drawable/osmium2"
+                    android:scaleType="fitCenter"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginBottom="16dp"
+                    android:contentDescription="Osmium AI" />
 
+                <!-- Greeting -->
+                <TextView
+                    android:id="@+id/tv_greeting_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Hi, Oracle &#128075;"
+                    android:textColor="#1E1E1E"
+                    android:textSize="26sp"
+                    android:fontFamily="@font/baskervville"
+                    android:textStyle="bold"
+                    android:gravity="center"
+                    android:layout_marginBottom="6dp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="What can I help you with today?"
+                    android:textColor="#757575"
+                    android:textSize="14sp"
+                    android:fontFamily="sans-serif"
+                    android:gravity="center"
+                    android:layout_marginBottom="24dp" />
+
+                <!-- Row 1 -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="8dp">
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/chip_study_plan"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginEnd="5dp"
+                        android:clickable="true"
+                        android:focusable="true"
+                        app:cardCornerRadius="12dp"
+                        app:cardElevation="0dp"
+                        app:cardBackgroundColor="#F5F5F5"
+                        app:strokeColor="#E8E8E8"
+                        app:strokeWidth="1dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical"
+                            android:paddingHorizontal="12dp"
+                            android:paddingVertical="11dp">
+
+                            <ImageView
+                                android:layout_width="15dp"
+                                android:layout_height="15dp"
+                                android:layout_marginEnd="8dp"
+                                android:src="@drawable/ic_phosphor_book"
+                                app:tint="#888888" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="Generate notes"
+                                android:textColor="#3A3A3A"
+                                android:textSize="12sp"
+                                android:fontFamily="sans-serif"
+                                android:maxLines="2"
+                                android:lineSpacingExtra="1dp" />
+
+                        </LinearLayout>
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/chip_weak_areas"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginStart="5dp"
+                        android:clickable="true"
+                        android:focusable="true"
+                        app:cardCornerRadius="12dp"
+                        app:cardElevation="0dp"
+                        app:cardBackgroundColor="#F5F5F5"
+                        app:strokeColor="#E8E8E8"
+                        app:strokeWidth="1dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical"
+                            android:paddingHorizontal="12dp"
+                            android:paddingVertical="11dp">
+
+                            <ImageView
+                                android:layout_width="15dp"
+                                android:layout_height="15dp"
+                                android:layout_marginEnd="8dp"
+                                android:src="@drawable/ic_phosphor_chat"
+                                app:tint="#888888" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="Clear my doubt"
+                                android:textColor="#3A3A3A"
+                                android:textSize="12sp"
+                                android:fontFamily="sans-serif"
+                                android:maxLines="2"
+                                android:lineSpacingExtra="1dp" />
+
+                        </LinearLayout>
+                    </com.google.android.material.card.MaterialCardView>
+
+                </LinearLayout>
+
+                <!-- Row 2 -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/chip_study_next"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginEnd="5dp"
+                        android:clickable="true"
+                        android:focusable="true"
+                        app:cardCornerRadius="12dp"
+                        app:cardElevation="0dp"
+                        app:cardBackgroundColor="#F5F5F5"
+                        app:strokeColor="#E8E8E8"
+                        app:strokeWidth="1dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical"
+                            android:paddingHorizontal="12dp"
+                            android:paddingVertical="11dp">
+
+                            <ImageView
+                                android:layout_width="15dp"
+                                android:layout_height="15dp"
+                                android:layout_marginEnd="8dp"
+                                android:src="@drawable/ic_phosphor_lightbulb"
+                                app:tint="#888888" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="Solve maths question"
+                                android:textColor="#3A3A3A"
+                                android:textSize="12sp"
+                                android:fontFamily="sans-serif"
+                                android:maxLines="2"
+                                android:lineSpacingExtra="1dp" />
+
+                        </LinearLayout>
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/chip_quick_start"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginStart="5dp"
+                        android:clickable="true"
+                        android:focusable="true"
+                        app:cardCornerRadius="12dp"
+                        app:cardElevation="0dp"
+                        app:cardBackgroundColor="#F5F5F5"
+                        app:strokeColor="#E8E8E8"
+                        app:strokeWidth="1dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical"
+                            android:paddingHorizontal="12dp"
+                            android:paddingVertical="11dp">
+
+                            <ImageView
+                                android:layout_width="15dp"
+                                android:layout_height="15dp"
+                                android:layout_marginEnd="8dp"
+                                android:src="@drawable/ic_phosphor_rocket"
+                                app:tint="#888888" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="Make a study plan"
+                                android:textColor="#3A3A3A"
+                                android:textSize="12sp"
+                                android:fontFamily="sans-serif"
+                                android:maxLines="2"
+                                android:lineSpacingExtra="1dp" />
+
+                        </LinearLayout>
+                    </com.google.android.material.card.MaterialCardView>
+
+                </LinearLayout>
+
+                <!-- Bottom spacer: equal to top spacer, centers the chips block -->
                 <View
-                    android:layout_width="0dp"
-                    android:layout_height="1dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
                     android:layout_weight="1" />
 
-                <TextView
-                    android:id="@+id/pro_badge"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/bg_badge_pro"
-                    android:paddingHorizontal="6dp"
-                    android:paddingVertical="2dp"
-                    android:text="PRO"
-                    android:textColor="#5D4037"
-                    android:textSize="10sp"
-                    android:textStyle="bold"
-                    android:letterSpacing="0.05"
-                    android:visibility="gone"/>
             </LinearLayout>
-
-            <ImageView
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:layout_marginTop="80dp"
-                android:scaleType="fitCenter"
-                android:src="@drawable/osmium2" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
-                android:fontFamily="@font/baskervville"
-                android:textStyle="bold"
-                android:text="Hi, Oracle Khatua"
-                android:textColor="#1E1E1E"
-                android:textSize="18sp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:fontFamily="@font/baskervville"
-                android:textStyle="bold"
-                android:text="Good Morning"
-                android:textColor="#1E1E1E"
-                android:textSize="40sp" />
-
-            <LinearLayout
-                android:id="@+id/chip_study_plan"
-                android:layout_width="258dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="32dp"
-                android:background="@drawable/bg_chip_white"
-                android:clickable="true"
-                android:focusable="true"
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
-                android:padding="16dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:text="What does my name mean?"
-                    android:textColor="#1E1E1E"
-                    android:textSize="16sp" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/chip_weak_areas"
-                android:layout_width="260dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                android:background="@drawable/bg_chip_white"
-                android:clickable="true"
-                android:focusable="true"
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
-                android:padding="16dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:text="Help me plan a weekend trip"
-                    android:textColor="#1E1E1E"
-                    android:textSize="16sp" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/chip_study_next"
-                android:layout_width="256dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                android:background="@drawable/bg_chip_white"
-                android:clickable="true"
-                android:focusable="true"
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
-                android:padding="16dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:text="Latest AI news in India"
-                    android:textColor="#1E1E1E"
-                    android:textSize="16sp" />
-            </LinearLayout>
-        </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/chat_container_layout"
@@ -236,22 +384,18 @@
             android:elevation="10dp"
             app:layout_constraintBottom_toBottomOf="parent">
 
-            <HorizontalScrollView
-                android:id="@+id/attachment_preview_container"
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvAttachmentPreview"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingHorizontal="24dp"
-                android:paddingBottom="12dp"
+                android:paddingHorizontal="16dp"
+                android:paddingBottom="10dp"
+                android:clipToPadding="false"
                 android:visibility="gone"
+                android:overScrollMode="never"
                 android:scrollbars="none"
-                app:layout_constraintBottom_toTopOf="@id/attachment_options">
-
-                <LinearLayout
-                    android:id="@+id/attachment_preview_layout"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"/>
-            </HorizontalScrollView>
+                app:layout_constraintBottom_toTopOf="@id/attachment_options"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <LinearLayout
                 android:id="@+id/attachment_options"
@@ -403,7 +547,7 @@
                     android:layout_weight="1"
                     android:layout_marginStart="16dp"
                     android:background="@null"
-                    android:hint="Have any doubts?"
+                    android:hint="Ask me anything..."
                     android:textColor="#1E1E1E"
                     android:textColorHint="#9E9E9E"
                     android:textSize="16sp"
@@ -496,79 +640,41 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
-            android:text="Today"
+            android:text="Recent"
             android:textColor="#9E9E9E"
-            android:textSize="13sp"
+            android:textSize="12sp"
             android:fontFamily="sans-serif"
+            android:letterSpacing="0.06"
+            android:textAllCaps="true"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/new_chat" />
 
-        <LinearLayout
-            android:id="@+id/chat_list"
+        <TextView
+            android:id="@+id/tvEmptyHistory"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
             android:layout_marginTop="16dp"
-            app:layout_constraintTop_toBottomOf="@id/tvHeaderToday">
+            android:text="No chats yet"
+            android:textColor="#BDBDBD"
+            android:textSize="13sp"
+            android:fontFamily="sans-serif"
+            android:gravity="center"
+            android:paddingVertical="24dp"
+            android:visibility="gone"
+            app:layout_constraintTop_toBottomOf="@id/tvHeaderToday" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingVertical="12dp"
-                android:text="What Does My Name Mean"
-                android:textColor="#1E1E1E"
-                android:textSize="15sp"
-                android:fontFamily="sans-serif"
-                android:maxLines="1"
-                android:ellipsize="end"
-                android:clickable="true"
-                android:focusable="true"
-                android:background="?attr/selectableItemBackground"/>
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingVertical="12dp"
-                android:text="What Does My Name Mean"
-                android:textColor="#1E1E1E"
-                android:textSize="15sp"
-                android:fontFamily="sans-serif"
-                android:maxLines="1"
-                android:ellipsize="end"
-                android:clickable="true"
-                android:focusable="true"
-                android:background="?attr/selectableItemBackground"/>
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingVertical="12dp"
-                android:text="Starting a Conversation"
-                android:textColor="#1E1E1E"
-                android:textSize="15sp"
-                android:fontFamily="sans-serif"
-                android:maxLines="1"
-                android:ellipsize="end"
-                android:clickable="true"
-                android:focusable="true"
-                android:background="?attr/selectableItemBackground"/>
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingVertical="12dp"
-                android:text="Greeting User"
-                android:textColor="#1E1E1E"
-                android:textSize="15sp"
-                android:fontFamily="sans-serif"
-                android:maxLines="1"
-                android:ellipsize="end"
-                android:clickable="true"
-                android:focusable="true"
-                android:background="?attr/selectableItemBackground"/>
-        </LinearLayout>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvChatHistory"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="8dp"
+            android:overScrollMode="never"
+            android:scrollbars="none"
+            app:layout_constraintTop_toBottomOf="@id/tvHeaderToday"
+            app:layout_constraintBottom_toTopOf="@id/sidebarUserRow" />
 
         <LinearLayout
+            android:id="@+id/sidebarUserRow"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
@@ -577,37 +683,32 @@
             android:layout_marginBottom="16dp"
             app:layout_constraintBottom_toBottomOf="parent">
 
-            <androidx.cardview.widget.CardView
+            <ImageView
+                android:id="@+id/ivSidebarAvatar"
                 android:layout_width="32dp"
                 android:layout_height="32dp"
-                app:cardCornerRadius="16dp"
-                app:cardElevation="0dp">
-                
-                <WebView
-                    android:id="@+id/wvSidebarAvatar"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@android:color/transparent"/>
-            </androidx.cardview.widget.CardView>
+                android:src="@drawable/ic_profile_avatar"
+                android:scaleType="centerCrop" />
 
             <TextView
+                android:id="@+id/tvSidebarUsername"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:layout_marginStart="12dp"
-                android:text="Suman Yadav"
+                android:text="Oracle"
                 android:textColor="#1E1E1E"
-                android:textSize="15sp"
-                android:fontFamily="sans-serif-medium"/>
+                android:textSize="14sp"
+                android:fontFamily="sans-serif-medium" />
 
             <ImageView
-                android:layout_width="24dp"
-                android:layout_height="24dp"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
                 android:src="@drawable/ic_settings"
                 android:clickable="true"
                 android:focusable="true"
                 android:background="?attr/selectableItemBackgroundBorderless"
-                app:tint="#616161"/>
+                app:tint="#616161" />
         </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
