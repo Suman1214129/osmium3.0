@@ -25,6 +25,7 @@ class SettingsActivity : AppCompatActivity() {
 
         loadUserProfile()
         setupClickListeners()
+        binding.tvVersion.text = "Osmium AI v${packageManager.getPackageInfo(packageName, 0).versionName}"
     }
 
     private fun loadUserProfile() {
@@ -42,14 +43,6 @@ class SettingsActivity : AppCompatActivity() {
         // Account
         binding.btnEditProfile.setOnClickListener {
             showEditProfileDialog()
-        }
-
-        binding.btnLinkedAccounts.setOnClickListener {
-            Toast.makeText(this, "Linked Accounts", Toast.LENGTH_SHORT).show()
-        }
-
-        binding.btnChangePassword.setOnClickListener {
-            Toast.makeText(this, "Change Password", Toast.LENGTH_SHORT).show()
         }
 
         binding.btnDeleteAccount.setOnClickListener {
@@ -76,17 +69,11 @@ class SettingsActivity : AppCompatActivity() {
             startActivity(Intent(this, HelpCenterActivity::class.java))
         }
 
-        binding.btnReportBug.setOnClickListener {
-            Toast.makeText(this, "Report a Bug", Toast.LENGTH_SHORT).show()
-        }
-
         binding.btnFeedback.setOnClickListener {
             try {
-                val intent = Intent(Intent.ACTION_VIEW, android.net.Uri.parse("market://details?id=$packageName"))
-                startActivity(intent)
+                startActivity(Intent(Intent.ACTION_VIEW, android.net.Uri.parse("market://details?id=$packageName")))
             } catch (e: Exception) {
-                val intent = Intent(Intent.ACTION_VIEW, android.net.Uri.parse("https://play.google.com/store/apps/details?id=$packageName"))
-                startActivity(intent)
+                startActivity(Intent(Intent.ACTION_VIEW, android.net.Uri.parse("https://play.google.com/store/apps/details?id=$packageName")))
             }
         }
 
@@ -118,10 +105,48 @@ class SettingsActivity : AppCompatActivity() {
         val dialogBinding = DialogEditProfileBinding.inflate(layoutInflater)
         dialog.setContentView(dialogBinding.root)
 
+        // Fix black corners
+        dialog.window?.findViewById<android.view.View>(com.google.android.material.R.id.design_bottom_sheet)
+            ?.setBackgroundResource(android.R.color.transparent)
+
+        val prefs = getSharedPreferences("OsmiumPrefs", MODE_PRIVATE)
+
+        // Pre-fill all fields
+        dialogBinding.etFullName.setText(prefs.getString("user_name", ""))
+        dialogBinding.etEmail.setText(prefs.getString("user_email", ""))
+        dialogBinding.etPhone.setText(prefs.getString("user_phone", ""))
+        val savedExam = prefs.getString("user_exam", "JEE MAINS")
+        dialogBinding.tvSelectedExam.text = savedExam
+
+        // Exam picker
+        val exams = arrayOf("JEE MAINS", "JEE ADVANCED", "NEET UG", "GATE", "UPSC", "Other")
+        dialogBinding.dropdownExam.setOnClickListener {
+            androidx.appcompat.app.AlertDialog.Builder(this)
+                .setTitle("Select Target Exam")
+                .setItems(exams) { _, which ->
+                    dialogBinding.tvSelectedExam.text = exams[which]
+                }
+                .show()
+        }
+
         dialogBinding.btnClose.setOnClickListener { dialog.dismiss() }
         dialogBinding.btnCancel.setOnClickListener { dialog.dismiss() }
-        
+
         dialogBinding.btnSave.setOnClickListener {
+            val name = dialogBinding.etFullName.text.toString().trim()
+            val email = dialogBinding.etEmail.text.toString().trim()
+            if (name.isEmpty() || email.isEmpty()) {
+                Toast.makeText(this, "Name and email cannot be empty", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+            prefs.edit()
+                .putString("user_name", name)
+                .putString("user_email", email)
+                .putString("user_phone", dialogBinding.etPhone.text.toString().trim())
+                .putString("user_exam", dialogBinding.tvSelectedExam.text.toString())
+                .apply()
+            binding.tvUserName.text = name
+            binding.tvUserEmail.text = email
             Toast.makeText(this, "Profile updated", Toast.LENGTH_SHORT).show()
             dialog.dismiss()
         }

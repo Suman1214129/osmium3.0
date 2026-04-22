@@ -7,6 +7,7 @@
     android:orientation="vertical"
     android:padding="24dp">
 
+    <!-- Header -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -17,9 +18,10 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:fontFamily="@font/baskervville"
             android:text="Edit Profile"
             android:textColor="#1E1E1E"
-            android:textSize="20sp"
+            android:textSize="22sp"
             android:textStyle="bold" />
 
         <ImageView
@@ -29,6 +31,7 @@
             android:background="@drawable/circle_gray_very_light"
             android:padding="8dp"
             android:src="@drawable/ic_close"
+            android:contentDescription="Close"
             app:tint="#424242" />
     </LinearLayout>
 
@@ -36,14 +39,16 @@
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_marginTop="16dp"
+        android:layout_marginBottom="24dp"
         android:background="#F5F5F5" />
 
+    <!-- Avatar -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
         android:gravity="center"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:layout_marginBottom="28dp">
 
         <androidx.cardview.widget.CardView
             android:layout_width="80dp"
@@ -56,7 +61,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:scaleType="centerCrop"
-                android:src="@drawable/circle_gradient" />
+                android:src="@drawable/circle_gradient"
+                android:contentDescription="Profile picture" />
         </androidx.cardview.widget.CardView>
 
         <TextView
@@ -65,19 +71,20 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
             android:background="@drawable/bg_btn_outline_gray"
-            android:paddingStart="16dp"
-            android:paddingTop="8dp"
-            android:paddingEnd="16dp"
-            android:paddingBottom="8dp"
+            android:fontFamily="@font/public_sans"
+            android:paddingHorizontal="16dp"
+            android:paddingVertical="8dp"
             android:text="Change Photo"
             android:textColor="#1E1E1E"
             android:textSize="12sp" />
     </LinearLayout>
 
+    <!-- Full Name -->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginBottom="8dp"
+        android:fontFamily="@font/public_sans"
         android:text="Full Name"
         android:textColor="#616161"
         android:textSize="13sp" />
@@ -86,20 +93,22 @@
         android:id="@+id/etFullName"
         android:layout_width="match_parent"
         android:layout_height="48dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginBottom="20dp"
         android:background="@drawable/bg_outline_rounded"
+        android:fontFamily="@font/public_sans"
         android:hint="Enter your name"
-        android:paddingStart="16dp"
-        android:paddingEnd="16dp"
-        android:text="Oracle Khatua"
+        android:inputType="textPersonName|textCapWords"
+        android:paddingHorizontal="16dp"
         android:textColor="#1E1E1E"
         android:textColorHint="#9E9E9E"
         android:textSize="14sp" />
 
+    <!-- Email -->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginBottom="8dp"
+        android:fontFamily="@font/public_sans"
         android:text="Email Address"
         android:textColor="#616161"
         android:textSize="13sp" />
@@ -108,21 +117,22 @@
         android:id="@+id/etEmail"
         android:layout_width="match_parent"
         android:layout_height="48dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginBottom="20dp"
         android:background="@drawable/bg_outline_rounded"
+        android:fontFamily="@font/public_sans"
         android:hint="Enter your email"
         android:inputType="textEmailAddress"
-        android:paddingStart="16dp"
-        android:paddingEnd="16dp"
-        android:text="Khatua@osmium.com"
+        android:paddingHorizontal="16dp"
         android:textColor="#1E1E1E"
         android:textColorHint="#9E9E9E"
         android:textSize="14sp" />
 
+    <!-- Phone Number -->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginBottom="8dp"
+        android:fontFamily="@font/public_sans"
         android:text="Phone Number"
         android:textColor="#616161"
         android:textSize="13sp" />
@@ -131,20 +141,22 @@
         android:id="@+id/etPhone"
         android:layout_width="match_parent"
         android:layout_height="48dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginBottom="20dp"
         android:background="@drawable/bg_outline_rounded"
+        android:fontFamily="@font/public_sans"
         android:hint="Enter your phone number"
         android:inputType="phone"
-        android:paddingStart="16dp"
-        android:paddingEnd="16dp"
+        android:paddingHorizontal="16dp"
         android:textColor="#1E1E1E"
         android:textColorHint="#9E9E9E"
         android:textSize="14sp" />
 
+    <!-- Target Exam -->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginBottom="8dp"
+        android:fontFamily="@font/public_sans"
         android:text="Target Exam"
         android:textColor="#616161"
         android:textSize="13sp" />
@@ -153,20 +165,20 @@
         android:id="@+id/dropdownExam"
         android:layout_width="match_parent"
         android:layout_height="48dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginBottom="32dp"
         android:background="@drawable/bg_outline_rounded"
         android:clickable="true"
         android:focusable="true"
         android:gravity="center_vertical"
         android:orientation="horizontal"
-        android:paddingStart="16dp"
-        android:paddingEnd="16dp">
+        android:paddingHorizontal="16dp">
 
         <TextView
             android:id="@+id/tvSelectedExam"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:fontFamily="@font/public_sans"
             android:text="JEE MAINS"
             android:textColor="#1E1E1E"
             android:textSize="14sp" />
@@ -175,13 +187,14 @@
             android:layout_width="20dp"
             android:layout_height="20dp"
             android:src="@drawable/ic_expand_more"
+            android:contentDescription=""
             app:tint="#616161" />
     </LinearLayout>
 
+    <!-- Action buttons -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
         android:orientation="horizontal">
 
         <TextView
@@ -191,6 +204,7 @@
             android:layout_marginEnd="8dp"
             android:layout_weight="1"
             android:background="@drawable/bg_btn_outline_gray"
+            android:fontFamily="@font/public_sans"
             android:gravity="center"
             android:text="Cancel"
             android:textColor="#424242"
@@ -204,6 +218,7 @@
             android:layout_marginStart="8dp"
             android:layout_weight="1"
             android:background="@drawable/bg_btn_black"
+            android:fontFamily="@font/public_sans"
             android:gravity="center"
             android:text="Save Changes"
             android:textColor="#FFFFFF"
