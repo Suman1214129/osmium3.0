@@ -10,7 +10,6 @@ import com.osmiumai.app.WelcomeActivity
 import com.osmiumai.app.databinding.ActivitySettingsBinding
 import com.osmiumai.app.databinding.DialogEditProfileBinding
 import com.google.android.material.bottomsheet.BottomSheetDialog
-import com.osmiumai.app.MainActivity
 
 class SettingsActivity : AppCompatActivity() {
 
@@ -32,26 +31,27 @@ class SettingsActivity : AppCompatActivity() {
         val prefs = getSharedPreferences("OsmiumPrefs", MODE_PRIVATE)
         val userName = prefs.getString("user_name", "User")
         val userEmail = prefs.getString("user_email", "user@osmium.ai")
-        
+
         binding.tvUserName.text = userName
         binding.tvUserEmail.text = userEmail
     }
 
     private fun setupClickListeners() {
         binding.btnBack.setOnClickListener { finish() }
-        
-        // Account
+
+        // Profile card → edit profile
         binding.btnEditProfile.setOnClickListener {
             showEditProfileDialog()
         }
 
-        binding.btnDeleteAccount.setOnClickListener {
-            showDeleteAccountDialog()
+        // Profile details → same edit profile
+        binding.btnProfileDetails.setOnClickListener {
+            showEditProfileDialog()
         }
 
-        // Storage
-        binding.btnFileManager.setOnClickListener {
-            startActivity(Intent(this, FileManagerActivity::class.java))
+        // Password
+        binding.btnPassword.setOnClickListener {
+            Toast.makeText(this, "Change password coming soon", Toast.LENGTH_SHORT).show()
         }
 
         // Notifications
@@ -59,36 +59,54 @@ class SettingsActivity : AppCompatActivity() {
             startActivity(Intent(this, NotificationSettingsActivity::class.java))
         }
 
-        // Subscription
-        binding.btnSubscription.setOnClickListener {
-            startActivity(Intent(this, ChoosePlanActivity::class.java))
+        // Storage / File Manager
+        binding.btnFileManager.setOnClickListener {
+            startActivity(Intent(this, FileManagerActivity::class.java))
         }
 
-        // Support
+        // Send Feedback
+        binding.btnFeedback.setOnClickListener {
+            startActivity(Intent(this, FeedbackActivity::class.java))
+        }
+
+        // About application
+        binding.btnAbout.setOnClickListener {
+            showAboutDialog()
+        }
+
+        // Help/FAQ
         binding.btnHelp.setOnClickListener {
             startActivity(Intent(this, HelpCenterActivity::class.java))
         }
 
-        binding.btnFeedback.setOnClickListener {
-            try {
-                startActivity(Intent(Intent.ACTION_VIEW, android.net.Uri.parse("market://details?id=$packageName")))
-            } catch (e: Exception) {
-                startActivity(Intent(Intent.ACTION_VIEW, android.net.Uri.parse("https://play.google.com/store/apps/details?id=$packageName")))
-            }
+        // Deactivate account
+        binding.btnDeleteAccount.setOnClickListener {
+            showDeleteAccountDialog()
         }
 
-        // Logout
+        // Log Out
         binding.btnLogout.setOnClickListener {
             showLogoutDialog()
         }
     }
 
+    private fun showAboutDialog() {
+        val version = packageManager.getPackageInfo(packageName, 0).versionName
+        AlertDialog.Builder(this)
+            .setTitle("About Osmium AI")
+            .setMessage("Version $version\n\nOsmium AI is your intelligent learning companion for exam preparation.\n\n© 2026 Osmium AI. All rights reserved.")
+            .setPositiveButton("OK", null)
+            .show()
+    }
+
     private fun showDeleteAccountDialog() {
         AlertDialog.Builder(this)
-            .setTitle("Delete Account")
-            .setMessage("Are you sure you want to delete your account? This action cannot be undone.")
-            .setPositiveButton("Delete") { _, _ ->
-                Toast.makeText(this, "Account deleted", Toast.LENGTH_SHORT).show()
+            .setTitle("Deactivate Account")
+            .setMessage("Are you sure you want to deactivate your account? This action cannot be undone.")
+            .setPositiveButton("Deactivate") { _, _ ->
+                getSharedPreferences("OsmiumPrefs", MODE_PRIVATE).edit().clear().apply()
+                SessionManager.logout(this)
+                Toast.makeText(this, "Account deactivated", Toast.LENGTH_SHORT).show()
                 val intent = Intent(this, WelcomeActivity::class.java)
                 intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                 startActivity(intent)
@@ -98,30 +116,40 @@ class SettingsActivity : AppCompatActivity() {
             .show()
     }
 
-
+    private fun showLogoutDialog() {
+        AlertDialog.Builder(this)
+            .setTitle("Log Out")
+            .setMessage("Are you sure you want to log out?")
+            .setPositiveButton("Log Out") { _, _ ->
+                SessionManager.logout(this)
+                val intent = Intent(this, WelcomeActivity::class.java)
+                intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                startActivity(intent)
+                finish()
+            }
+            .setNegativeButton("Cancel", null)
+            .show()
+    }
 
     private fun showEditProfileDialog() {
         val dialog = BottomSheetDialog(this)
         val dialogBinding = DialogEditProfileBinding.inflate(layoutInflater)
         dialog.setContentView(dialogBinding.root)
 
-        // Fix black corners
         dialog.window?.findViewById<android.view.View>(com.google.android.material.R.id.design_bottom_sheet)
             ?.setBackgroundResource(android.R.color.transparent)
 
         val prefs = getSharedPreferences("OsmiumPrefs", MODE_PRIVATE)
 
-        // Pre-fill all fields
         dialogBinding.etFullName.setText(prefs.getString("user_name", ""))
         dialogBinding.etEmail.setText(prefs.getString("user_email", ""))
         dialogBinding.etPhone.setText(prefs.getString("user_phone", ""))
         val savedExam = prefs.getString("user_exam", "JEE MAINS")
         dialogBinding.tvSelectedExam.text = savedExam
 
-        // Exam picker
         val exams = arrayOf("JEE MAINS", "JEE ADVANCED", "NEET UG", "GATE", "UPSC", "Other")
         dialogBinding.dropdownExam.setOnClickListener {
-            androidx.appcompat.app.AlertDialog.Builder(this)
+            AlertDialog.Builder(this)
                 .setTitle("Select Target Exam")
                 .setItems(exams) { _, which ->
                     dialogBinding.tvSelectedExam.text = exams[which]
@@ -152,22 +180,5 @@ class SettingsActivity : AppCompatActivity() {
         }
 
         dialog.show()
-    }
-
-
-
-    private fun showLogoutDialog() {
-        AlertDialog.Builder(this)
-            .setTitle("Log Out")
-            .setMessage("Are you sure you want to log out?")
-            .setPositiveButton("Log Out") { _, _ ->
-                SessionManager.logout(this)
-                val intent = Intent(this, WelcomeActivity::class.java)
-                intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-                startActivity(intent)
-                finish()
-            }
-            .setNegativeButton("Cancel", null)
-            .show()
     }
 }
